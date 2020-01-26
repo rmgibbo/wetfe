@@ -67,6 +67,10 @@
             <artifactId>kotlin-stdlib-jdk8</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib-js</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
@@ -77,29 +81,10 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.junit.vintage</groupId>
-                    <artifactId>junit-vintage-engine</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>org.springframework.amqp</groupId>
-            <artifactId>spring-rabbit-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        -->
     </dependencies>
 
     <build>
         <sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -109,9 +94,6 @@
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
                 <configuration>
-                    <args>
-                        <arg>-Xjsr305=strict</arg>
-                    </args>
                     <compilerPlugins>
                         <plugin>spring</plugin>
                         <plugin>jpa</plugin>
@@ -129,6 +111,31 @@
                         <version>${kotlin.version}</version>
                     </dependency>
                 </dependencies>
+                <executions>
+                    <!-- Javascript Transpilation -->
+                    <execution>
+                        <id>compile-js</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>js</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin/wetfe/core/chara</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                    <!-- Spring/JVM? -->
+                    <execution>
+                        <id>compile-jvm</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>${project.basedir}/src/main/kotlin</sourceDir>
+                            </sourceDirs>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
 
             <plugin>
@@ -146,7 +153,11 @@
                             <resources>
                                 <resource>
                                     <directory>target/classes/static</directory>
-                                    <filtering>true</filtering>
+                                    <filtering>false</filtering>
+                                </resource>
+                                <resource>
+                                    <directory>target/js</directory>
+                                    <filtering>false</filtering>
                                 </resource>
                             </resources>
                         </configuration>

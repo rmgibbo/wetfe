@@ -1,7 +1,5 @@
 package wetfe.core.chara
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
-import com.fasterxml.jackson.module.kotlin.readValue
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
@@ -9,7 +7,7 @@ import kotlin.random.Random
  *  Modification
  *  ------------------------------------
  */
-data class Modification<T>(val value: T, val type: String, val notes: String = "", val timestamp: Long = System.currentTimeMillis())
+data class Modification<T>(val value: T, val type: String, val notes: String = "", val timestamp: Long)
 
 /**
  *  ModHistory
@@ -188,6 +186,9 @@ enum class StateCondition(val key: String, val priority: Int) {
     DEAD("DEAD", 90);
 }
 
+const val MAX_INT = 65535
+const val MIN_INT = -65535
+
 /**
  *  Attribute
  *  -----------------------------------
@@ -195,9 +196,9 @@ enum class StateCondition(val key: String, val priority: Int) {
  */
 object Attribute {
     enum class Limit(val min: Int, val max: Int) {
-        UNBOUNDED(Integer.MIN_VALUE, Integer.MAX_VALUE),
-        POS_UNBOUNDED(0, Integer.MAX_VALUE),
-        CHIP(Integer.MIN_VALUE, Integer.MAX_VALUE),
+        UNBOUNDED(MIN_INT, MAX_INT),
+        POS_UNBOUNDED(1, MAX_INT),
+        CHIP(0, MAX_INT),
         CORE(0, 20),
         D20(1, 20);
 
@@ -377,16 +378,17 @@ data class CharaData(val key: String = newKey(),
 
     companion object {
         fun newKey() : String {
-            return "NewCharacter-" + System.currentTimeMillis()
+            return "NewCharacter-" + Random.nextLong(1000, 1000000).toString()
         }
 
-        /**
-         * Deserialize json string into new CharData
-         * @param json The string to deserialize
-         */
-        fun deserialize(json: String) : CharaData {
-            return jacksonObjectMapper().readValue(json)
-        }
+//        /**
+//         * Deserialize json string into new CharData
+//         * @param json The string to deserialize
+//         */
+//        fun deserialize(json: String) : CharaData {
+//            //return jacksonObjectMapper().readValue(json)
+//            return JSON.parse(json)
+//        }
     }
 }
 

@@ -1,10 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Encounter</title>
+    <base target="_bottom">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
+          integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
+          integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="wetfe.css">
 </head>
 <body>
 
+<nav class="navbar we-navbar sticky-top navbar-light bg-light mb-1">
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_items">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar_items">
+        <div class="navbar-nav">
+
+            <div class="nav-item my-1">
+                <div class="row">
+                    <!-- DATA INFO -->
+                    <div class="col-6">
+                      <span class="navbar-text text-left">Loaded
+                      <strong class="info-int" id="num-loaded-players">0</strong> players,
+                      <strong class="info-int" id="num-loaded-beings">0</strong> beings.
+                      </span>
+                    </div>
+                    <!-- LOAD DATA -->
+                    <div class="col-3">
+                        <button class="nav-item btn-block btn btn-outline-success" id="load-data-btn" type="button"
+                                onclick="loadData()">
+                            <i class="fas fa-cloud-download-alt">&nbsp;</i>
+                            <span>Load Data</span>
+                        </button>
+                    </div>
+                    <!-- LOAD TEST DATA -->
+                    <div class="col-3">
+                        <button class="btn btn-block btn-outline-warning" id="load-test-data-btn" type="button"
+                                onclick="loadTestData()">
+                            <i class="fas fa-cloud-download-alt">&nbsp;</i>
+                            <span>Load Test Data</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="nav-item my-1">
+                <div class="row">
+
+                    <!-- SEARCH BAR -->
+                    <div class="col-6">
+                        <div class="input-group">
+                            <input class="form-control" type="search" placeholder="Search by Name"
+                                   onsearch="onNameSearch(this)">
+                            <div class="input-group-append">
+                                <button class="btn btn-dark" id="name-search-add-btn" type="button">
+                                    <span>Add</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ADD PLAYER -->
+                    <div class="col-3 dropdown">
+                        <button class="btn btn-dark btn-block dropdown-toggle we-add-player-btn mr-10" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-grin-beam-sweat fa-lg">&nbsp;</i>
+                        </button>
+                        <div class="dropdown-menu we-player-ddmenu">
+                            <button class="dropdown-item" type="button" data-playermap-key="*"
+                                    onclick="addPlayerParticipant(this)">
+                                <span>ADD ALL</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ADD BEING -->
+                    <div class="col-3 dropdown">
+                        <button class="btn btn-dark btn-block dropdown-toggle we-add-being-btn mr10" type="button"
+                                data-toggle="dropdown">
+                            <i class="fas fa-spider fa-lg">&nbsp;</i>
+                        </button>
+                        <div class="dropdown-menu we-being-ddmenu"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOGGLE PARTICIPANTS -->
+    <span class="navbar-text">
+        <button class="btn btn btn-outline-dark we-part-toggle-btn" type="button"
+                onclick="toggleUnselectedParticipants()">
+          <i class="fas">&nbsp;</i>
+          <span class="we-part-toggle-btn-txt">...</span>
+        </button>
+    </span>
+
+    <!-- NEXT TURN -->
+    <span class="navbar-text">
+        <button class="btn btn-lg btn-outline-primary mb-1" id="next-turn-btn" type="button"
+                onclick="activateNextParticipant()">
+          <i class="fas fa-hourglass-end">&nbsp;</i>
+          <span>Begin Round 1</span>
+        </button>
+        <h4 class="text-center mt-1">
+        <span class="badge badge-secondary">
+          <span id="key-mod-qty"></span>
+          <span>&nbsp;</span>
+          <span id="key-mod-param"></span>
+        </span>
+        </h4>
+    </span>
+
+    <!-- KEY MOD INPUT -->
+    <span class="navbar-text">
+        <div class="btn-group-vertical btn-group-sm btn-group-toggle" data-toggle="buttons">
+          <label class="btn btn-sm btn-outline-success active" id="key-mod-listener" onclick="onClickKeyModBtn(this)">
+            <input type="radio" id="key-mod-listener-input" autocomplete="off" checked>
+            <span>Key Mods ON</span>
+          </label>
+          <label class="btn btn-sm btn-outline-dark" id="key-mod-muter" onclick="onClickKeyModBtn(this)">
+            <input type="radio" id="key-mod-muter-input" autocomplete="off">
+            <span>Key Mods OFF</span>
+          </label>
+        </div>
+      </span>
+
+    <!-- WETFE-Web Brand -->
+    <a class="navbar-brand"
+       href="https://script.google.com/macros/s/AKfycbzLQDl--EHWqASoBPahKaOLdteeYpKjue5XG-fwduvi_9iUr-ud/exec">
+        <i class="fas fa-won-sign" data-toggle="tooltip" title="WETFE-Web"></i>
+    </a>
+
+</nav>
+
+<div class="container-fluid">
+
+    <!-- PARTICIPANT TOOLBAR -->
+    <div class="btn-toolbar we-part-toolbar my-2">
+        <div class="btn-group btn-group-lg we-pbtngrp mx-2">
+            <!-- KEEP THIS EMPTY -->
+        </div>
+    </div>
+
+    <!-- PARTICIPANT TABLE -->
+    <div class="participants-div my-2">
+        <table class="table table-hover table-sm we-ptable">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Round Order">#</th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Momentum">M</th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Condition">C</th>
+                <th scope="col" class="text-left" data-toggle="tooltip" title="Short Name">Name</th>
+                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                    title="<h6>Health Stack</h6><span class='we-text-power-light'>power chips</span><br><span class='we-text-soul-light'>soul chips</span>">
+                    <span class="we-text-soul-light">H</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                    title="<h6>Damage Stack</h6><span class='we-text-break-light'>break chips</span><br><span class='we-text-soul-light'>soul chips</span>">
+                    <span class="we-text-soul-light">D</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                    title="<h6>Fatigue Stack</h6><span class='we-text-affliction-light'>affliction chips</span><br><span class='we-text-soul-light'>soul chips</span>">
+                    <span class="we-text-soul-light">F</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Soul Pool">
+                    <span class="we-text-soul-light text-weight-bold">P</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Stagger Threshold"><span
+                        class="we-text-stagger-light">G</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Constitution"><span
+                        class="we-text-con">CON</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Dexterity"><span class="we-text-dex">DEX</span>
+                </th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Intelligence"><span
+                        class="we-text-int">INT</span></th>
+                <th scope="col" class="text-center" data-toggle="tooltip" title="Willpower"><span class="we-text-wil">WIL</span>
+                </th>
+                <th scope="col" class="text-right"></th>
+            </tr>
+            </thead>
+            <tbody class="we-ptbody">
+            <!-- KEEP THIS EMPTY -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- RESET -->
+    <div class="row justify-content-end">
+        <div class="col text-right">
+            <button class="btn btn-sm btn-outline-danger" id="reset-btn" type="button" onclick="resetParticipantList()">
+                <i class="fas fa-redo-alt">&nbsp;</i>
+                <span>Reset</span>
+            </button>
+        </div>
+    </div>
+
+</div> <!-- main container -->
+
+<!-- CLONE: PLAYER DROPDOWN -->
+<button class="dropdown-item we-player-dditem we-clone-element d-none" type="button"
+        onclick="addPlayerParticipant(this)"></button>
+
+<!-- CLONE: BEING DROPDOWN -->
+<button class="dropdown-item we-being-dditem we-clone-element d-none" type="button"
+        onclick="addBeingParticipant(this)"></button>
+
+<!-- CLONE: PARTICIPANT TOOLBAR BUTTON -->
+<button class="btn btn-sm we-pbtn we-clone-element mr-1 d-none" type="button" onclick="selectParticipant(this)">
+    <span class="we-pbtn-txt"></span></button>
+
+<table class="d-none">
+    <thead class="d-none"></thead>
+    <tbody class="d-none">
+    <!-- CLONE: PASTICIPANT ROW -->
+    <tr class="we-prow we-clone-element d-none">
+        <th scope="row" class="we-prow-order text-center align-middle" data-toggle="tooltip" title="100.0"></th>
+        <td class="we-prow-momentum text-center align-middle text-monospace" data-pstate-key="momentum"></td>
+        <td class="we-prow-condition text-center align-middle" data-pstate-key="condition">
+            <h4><i class="we-prow-condition-i fas" data-toggle="tooltip"></i></h4></td>
+        <td class="we-prow-name text-left align-middle" data-pstate-key="name"></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-power we-text-power" data-pstate-key="power"></span><br>
+            <span class="we-prow-health we-text-soul" data-pstate-key="health"></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-break we-text-break" data-pstate-key="break"></span><br>
+            <span class="we-prow-damage we-text-soul" data-pstate-key="damage"></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-affliction we-text-affliction" data-pstate-key="affliction"></span><br>
+            <span class="we-prow-fatigue we-text-soul" data-pstate-key="fatigue"></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-pool we-text-pool font-weight-bold" data-pstate-key="pool"></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-stagger we-text-stagger" data-pstate-key="stagger"></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-con we-text-con" data-pstate-key="con" data-attr-state=""></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-dex we-text-dex" data-pstate-key="dex" data-attr-state=""></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-int we-text-int" data-pstate-key="int" data-attr-state=""></span></td>
+        <td class="text-center align-middle text-monospace">
+            <span class="we-prow-wil we-text-wil" data-pstate-key="wil" data-attr-state=""></span></td>
+        <td class="text-right align-middle">
+            <button class="btn btn-sm btn-outline-secondary d-none" type="button" onclick="removeParticipant(this)">
+                <i class="fas fa-trash"></i>
+            </button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!-- SERIALIZATION TEXT AREA -->
+<!--<textarea id="data-serialization-text" class="form-control"></textarea>-->
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="text.js"></script>
+<script src="encounter.js"></script>
 </body>
 </html>

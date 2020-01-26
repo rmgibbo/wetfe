@@ -1,2 +1,2 @@
 theme: jekyll-theme-slate
-source: wetfe/src/main/resources/static
+exclude: [src]

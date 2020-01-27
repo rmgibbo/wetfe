@@ -5,7 +5,7 @@ Copyright © 2016 Ryan Gibbons
 
 
 
-    The software comprising this GitHub project is licensed under  
+    The software comprising this GitHub repository is licensed under  
     the GNU Affero General Public License as published by  
     the Free Software Foundation, either version 3 of the License, or  
     (at your option) any later version.

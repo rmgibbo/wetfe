@@ -1,7 +1,7 @@
 # WETFE
 "What Ever The Fuck Ever"  
 "What Ever The Fun Ever"  
-Copyright © 2016 Ryan Gibbons
+Copyright © 2020 Ryan Gibbons
   
   
   

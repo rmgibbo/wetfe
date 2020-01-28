@@ -1,20 +1,22 @@
 var data = null; // data loaded from the cloud: player, being, etc.
-var encdata = {}; // encounter data, webapp state info
-var round = 0; // current round number
-var api = 0; // active participant index (in encdata.parts)
-var tpi = 0; // target participant index (in encdata.parts)
+// var encdata = {}; // encounter data, webapp state info
+// var round = 0; // current round number
+// var api = 0; // active participant index (in encdata.parts)
+// var tpi = 0; // target participant index (in encdata.parts)
 var unselected_hidden = true;
 
-var condition_map = {
-    'NORMAL': { key: 'NORMAL', priority: 0, class: 'd-none', tooltip: '' },
-    'BLITZING': { key: 'BLITZING', class: 'fa-bolt', priority: 30, tooltip: 'Blitzing' },
-    'TURTLING': { key: 'TURTLING', class: 'fa-chess-rook', priority: 30, tooltip: 'Turtling' },
-    'CHANNELING': { key: 'CHANNELING', class: 'fa-hat-wizard', priority: 30, tooltip: 'Channeling' },
-    'STAGGERED': { key: 'STAGGERED', priority: 70, class: 'fa-haykal', tooltip: 'Staggered' },
-    'UNCONSCIOUS': { key: 'UNCONSCIOUS', priority: 80, class: 'fa-dizzy', tooltip: 'Unconscious' },
-    'COMATOSE': { key: 'COMATOSE', priority: 90, class: 'fa-user-injured', tooltip: 'Comatose' },
-    'DEAD': { key: 'DEAD', class: 'fa-skull', priority: 100, tooltip: 'Dead' }
-};
+let encounter = new Encounter(EncounterType.COMBAT);
+
+// var condition_map = {
+//     'NORMAL': { key: 'NORMAL', priority: 0, class: 'd-none', tooltip: '' },
+//     'BLITZING': { key: 'BLITZING', class: 'fa-bolt', priority: 30, tooltip: 'Blitzing' },
+//     'TURTLING': { key: 'TURTLING', class: 'fa-chess-rook', priority: 30, tooltip: 'Turtling' },
+//     'CHANNELING': { key: 'CHANNELING', class: 'fa-hat-wizard', priority: 30, tooltip: 'Channeling' },
+//     'STAGGERED': { key: 'STAGGERED', priority: 70, class: 'fa-haykal', tooltip: 'Staggered' },
+//     'UNCONSCIOUS': { key: 'UNCONSCIOUS', priority: 80, class: 'fa-dizzy', tooltip: 'Unconscious' },
+//     'COMATOSE': { key: 'COMATOSE', priority: 90, class: 'fa-user-injured', tooltip: 'Comatose' },
+//     'DEAD': { key: 'DEAD', class: 'fa-skull', priority: 100, tooltip: 'Dead' }
+// };
 
 function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -31,104 +33,94 @@ function focusKeyModListener() {
 }
 
 function setTpi(i) {
-    if (!Array.isArray(encdata.parts) || encdata.parts.length < 1) {
-        tpi = 0;
-        return;
-    }
-    if (i >= encdata.parts.length) i = (encdata.parts.length - 1);
-    if (i < 0) i = 0;
-    if (i === tpi) return;
-    tpi = i;
-    var pstate = encdata.parts[tpi];
+    encounter.targetParticipantIndex = i;
+    let targetKey = encounter.getTargetParticipant().key;
 
     // update particpant toolbar
-    var $cur_tbtn = $('.we-target-pbtn');
+    let $cur_tbtn = $('.we-target-pbtn');
     $cur_tbtn.removeClass('we-target-pbtn').addClass('we-unselected-pbtn');
-    var $new_tbtn = $('.we-pbtn[data-pkey="' + pstate.key + '"]');
+    let $new_tbtn = $('.we-pbtn[data-pkey="' + targetKey + '"]');
     $new_tbtn.removeClass('we-unselected-prow').addClass('we-target-pbtn');
 
     // update participant table
-    var $cur_tprow = $('.we-target-prow');
+    let $cur_tprow = $('.we-target-prow');
     $cur_tprow.removeClass('we-target-prow').addClass('we-unselected-prow');
     if (unselected_hidden) $cur_tprow.addClass('d-none');
-    var $new_tprow = $('.we-prow[data-pkey="' + pstate.key + '"]');
+    let $new_tprow = $('.we-prow[data-pkey="' + targetKey + '"]');
     $new_tprow.removeClass('we-unselected-prow d-none').addClass('we-target-prow');
 }
 
-function getParticipantKey(name) {
-    if (!encdata.keymap) encdata.keymap = {};
-    var tmap = encdata.keymap;
-    var n = name;
-    var t = n.charAt(0) + n.charAt(1) + n.charAt(2);
-    if (!t) t = 'Unk';
-    if (!tmap[t]) {
-        tmap[t] = 1;
-    } else {
-        var i = ++tmap[t];
-        t = t.substring(0, (i > 9 ? 1 : 2)) + i;
-    }
-    return t;
-}
+// function getParticipantKey(name) {
+//     if (!encdata.keymap) encdata.keymap = {};
+//     var tmap = encdata.keymap;
+//     var n = name;
+//     var t = n.charAt(0) + n.charAt(1) + n.charAt(2);
+//     if (!t) t = 'Unk';
+//     if (!tmap[t]) {
+//         tmap[t] = 1;
+//     } else {
+//         var i = ++tmap[t];
+//         t = t.substring(0, (i > 9 ? 1 : 2)) + i;
+//     }
+//     return t;
+// }
 
-function newParticipant(p, k, is_player) {
-    const pstate = {};
-    pstate.k = k; // key into the original data map
-    pstate.key = getParticipantKey(p.short_name); // unique id for this encounter
-    pstate.status = is_player ? 'friend' : 'foe';
-    pstate.init = 0.00;
-    pstate.momentum = 0;
-    pstate.condition = {};
-    pstate.name = p.short_name;
-    pstate.pool = is_player ?
-        (p.soul_pool.base + p.soul_pool.racial + p.soul_pool.class + p.soul_pool.level + p.soul_pool.invested) :
-        (p.soul_pool);
-    pstate.power = 0;
-    pstate.health = pstate.pool; //TODO: minus chips reserved in fonts
-    pstate.break = 0;
-    pstate.damage = 0;
-    pstate.affliction = 0;
-    pstate.fatigue = 0;
-    pstate.stagger = is_player ? null : p.stagger_threshold;
-    for (var a of ['con', 'dex', 'int', 'wil']) {
-        pstate[a] = { state: '' };
-        pstate[a].val = is_player ?
-            (p.core_attributes[a].base + p.core_attributes[a].racial + p.core_attributes[a].class + p.core_attributes[a].invested) :
-            (p.core_attributes[a]);
-    }
-    pstate.consumed = false;
-    return pstate;
-}
+// function newParticipant(p, k, is_player) {
+//     const pstate = {};
+//     pstate.k = k; // key into the original data map
+//     pstate.key = getParticipantKey(p.short_name); // unique id for this encounter
+//     pstate.status = is_player ? 'friend' : 'foe';
+//     pstate.init = 0.00;
+//     pstate.momentum = 0;
+//     pstate.condition = {};
+//     pstate.name = p.short_name;
+//     pstate.pool = is_player ?
+//         (p.soul_pool.base + p.soul_pool.racial + p.soul_pool.class + p.soul_pool.level + p.soul_pool.invested) :
+//         (p.soul_pool);
+//     pstate.power = 0;
+//     pstate.health = pstate.pool; //TODO: minus chips reserved in fonts
+//     pstate.break = 0;
+//     pstate.damage = 0;
+//     pstate.affliction = 0;
+//     pstate.fatigue = 0;
+//     pstate.stagger = is_player ? null : p.stagger_threshold;
+//     for (var a of ['con', 'dex', 'int', 'wil']) {
+//         pstate[a] = { state: '' };
+//         pstate[a].val = is_player ?
+//             (p.core_attributes[a].base + p.core_attributes[a].racial + p.core_attributes[a].class + p.core_attributes[a].invested) :
+//             (p.core_attributes[a]);
+//     }
+//     pstate.consumed = false;
+//     return pstate;
+// }
 
-function addPlayerState(pmk) {
-    var p = data.playermap[pmk];
-    if (p) {
-        var pstate = newParticipant(p, pmk, true);
-        encdata.parts.push(pstate);
-        encdata.partmap[pstate.key] = pstate;
+function addPlayerParticipant(pmk) {
+    let cdata = data.playermap[pmk];
+    if (cdata) {
+        encounter.addParticipant(new CharacterParticipant(cdata));
         $('.we-player-dditem[data-playermap-key="' + pmk + '"]').addClass('d-none');
     }
 }
 
-function addBeingState(bmk) {
-    var b = data.beingmap[bmk];
-    if (b) {
-        var pstate = newParticipant(b, bmk,false);
-        encdata.parts.push(pstate);
-        encdata.partmap[pstate.key] = pstate;
-    }
-}
+// function addBeingState(bmk) {
+//     var b = data.beingmap[bmk];
+//     if (b) {
+//         var pstate = newParticipant(b, bmk,false);
+//         encdata.parts.push(pstate);
+//         encdata.partmap[pstate.key] = pstate;
+//     }
+// }
 
-function addPlayerParticipant(element) {
+function addPlayerParticipants(element) {
     if (!data || !data.playermap) return;
-    if (!Array.isArray(encdata.parts)) encdata.parts = [];
-    if (!encdata.partmap || typeof encdata.partmap !== 'object') encdata.partmap = {};
-    var pmk = (typeof element === 'string') ? element : element.getAttribute('data-playermap-key');
+    let pmk = (typeof element === 'string') ? element :
+        element.getAttribute('data-playermap-key');
     if (pmk === '*') {
         Object.keys(data.playermap).forEach(function(k) {
-            addPlayerState(k);
+            addPlayerParticipant(k);
         });
     } else {
-        addPlayerState(pmk);
+        addPlayerParticipant(pmk);
     }
     drawPartsTable();
 }
@@ -179,21 +171,27 @@ function toggleUnselectedParticipants() {
     focusKeyModListener();
 }
 
-function setPartParam($prow, pstate, key, val) {
-    pstate[key] = val;
-    $prow.find('[data-pstate-key="' + key + '"]').html(pstate[key]);
+function drawParticipantState($prow, participant) {
+    $prow.find('[data-pstate-key="health"]').html(participant.getHealth());
+    $prow.find('[data-pstate-key="damage"]').html(participant.getDamage());
+    $prow.find('[data-pstate-key="fatigue"]').html(participant.getFatigue());
+    $prow.find('[data-pstate-key="power"]').html(participant.getPower());
+    $prow.find('[data-pstate-key="break"]').html(participant.getBreakage());
+    $prow.find('[data-pstate-key="afflication"]').html(participant.getAffliction());
+    $prow.find('[data-pstate-key="momentum"]').html(participant.getMomentum());
+    drawCondition($prow, participant.getCondition());
 }
 
-function incrementPartParam($prow, pstate, key, val) {
-    if (typeof val !== 'number') val = 1;
-    pstate[key] += val;
-    $prow.find('[data-pstate-key="' + key + '"]').html(pstate[key]);
-}
-
-function decrementPartParam($prow, pstate, key, val) {
-    if (typeof val !== 'number') val = 1;
-    incrementPartParam($prow, pstate, key, (-1 * val));
-}
+// function incrementPartParam($prow, pstate, key, val) {
+//     if (typeof val !== 'number') val = 1;
+//     pstate[key] += val;
+//     $prow.find('[data-pstate-key="' + key + '"]').html(pstate[key]);
+// }
+//
+// function decrementPartParam($prow, pstate, key, val) {
+//     if (typeof val !== 'number') val = 1;
+//     incrementPartParam($prow, pstate, key, (-1 * val));
+// }
 
 function getFaClasses(i, str) {
     var classes = str.split(' ');
@@ -230,187 +228,59 @@ function addPartCondition($prow, pstate, ckey, force) {
     drawCondition($prow, condition);
 }
 
-function gainPower($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    var val = Math.min(pstate.pool, (pstate.power + qty));
-    setPartParam($prow, pstate, 'power', val);
+function gainPower($prow, participant, qty) {
+    participant.gainPower(qty);
+    drawParticipantState($prow, participant);
 }
 
-function consumePower($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    if (qty > 0 && qty < pstate.power) {
-        pstate.consumed = true;
-    }
-    var val = Math.max(0, pstate.power - qty);
-    setPartParam($prow, pstate, 'power', val);
+function consumePower($prow, participant, qty) {
+    participant.consumePower(qty);
+    drawParticipantState($prow, participant);
 }
 
-function sufferBreak($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    var max = pstate.pool;
-    var val = pstate.break + qty;
-    if (pstate.health < 1) {
-        setPartParam($prow, pstate, 'break', val);
-        fulminateWounds($prow, pstate);
-    } else if (val > max) {
-        setPartParam($prow, pstate, 'break', max);
-        takeDamage($prow, pstate, (val - max));
-    } else {
-        setPartParam($prow, pstate, 'break', val);
-    }
+function sufferBreak($prow, participant, qty) {
+    participant.sufferBreak(qty);
+    drawParticipantState($prow, participant);
 }
 
-function fulminateWounds($prow, pstate) {
-    var w = pstate.break;
-    if (w < 1) return;
-    var ftg = 0;
-    for (var i = 0; i < w; ++i) {
-        if (rand(0, 4) < 1) ++ftg;
-    }
-    setPartParam($prow, pstate, 'break', 0);
-    console.log('Fulminated all (' + w +') of ' + pstate.name + '\'s wounds, incurring ' + ftg + ' fatigue.');
-    if (ftg < 1) return;
-    if (pstate.damage < 1) {
-        addPartCondition($prow, pstate, 'DEAD');
-        return;
-    }
-    ftg = Math.min(ftg, pstate.damage);
-    var remaining_damage = pstate.damage - ftg;
-    incrementPartParam($prow, pstate, 'fatigue', ftg);
-    setPartParam($prow, pstate, 'damage', remaining_damage);
-    if (remaining_damage < 1) {
-        addPartCondition($prow, pstate, 'COMATOSE');
-    }
+function fulminate($prow, participant) {
+    participant.fulminate();
+    drawParticipantState($prow, participant);
 }
 
-function mendBreak($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1 || pstate.break < 1) return;
-    var val = Math.max(0, (pstate.break - qty));
-    setPartParam($prow, pstate, 'break', val);
+function mendBreak($prow, participant, qty) {
+    participant.mendBreak(qty);
+    drawParticipantState($prow, participant);
 }
 
-function contractAffliction($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    var max = pstate.pool;
-    var val = pstate.affliction + qty;
-    if (val > max) {
-        setPartParam($prow, pstate, 'affliction', max);
-        addPartCondition($prow, pstate, 'UNCONSCIOUS');
-    } else {
-        setPartParam($prow, pstate, 'affliction', val);
-    }
+function contractAffliction($prow, participant, qty) {
+    participant.contractAffliction(qty);
+    drawParticipantState($prow, participant);
 }
 
-function eradicateAffliction($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1 || pstate.affliction < 1) return;
-    var val = Math.max(0, (pstate.affliction - qty));
-    setPartParam($prow, pstate, 'affliction', val);
+function eradicateAffliction($prow, participant, qty) {
+    participant.eradicateAffliction(qty);
+    drawParticipantState($prow, participant);
 }
 
-function takeDamage($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    qty -= pstate.power;
-    if (qty > 0) {
-        if (pstate.power > 0) {
-            setPartParam($prow, pstate, 'power', 0);
-        }
-        if (pstate.health > 0) {
-            if (pstate.stagger && qty >= pstate.stagger) {
-                addPartCondition($prow, pstate, 'STAGGERED');
-            }
-            qty = Math.min(qty, pstate.health);
-            var remaining_health = pstate.health - qty;
-            setPartParam($prow, pstate, 'health', remaining_health);
-            if (remaining_health > 0) {
-                incrementPartParam($prow, pstate, 'damage', qty);
-            } else {
-                if (qty > 1) {
-                    incrementPartParam($prow, pstate, 'damage', (qty - 1));
-                }
-                incrementPartParam($prow, pstate, 'fatigue');
-                addPartCondition($prow, pstate, 'UNCONSCIOUS');
-                fulminateWounds($prow, pstate);
-            }
-        } else if (pstate.damage > 0) {
-            qty = Math.min(qty, pstate.damage);
-            var remaining_damage = pstate.damage - qty;
-            incrementPartParam($prow, pstate, 'fatigue', qty);
-            setPartParam($prow, pstate, 'damage', remaining_damage);
-            if (remaining_damage <= 0) {
-                addPartCondition($prow, pstate, 'COMATOSE');
-            }
-        } else {
-            addPartCondition($prow, pstate, 'DEAD');
-        }
-    } else if (qty === 0) {
-        setPartParam($prow, pstate, 'power', 0);
-    } else {
-        pstate.consumed = true;
-        setPartParam($prow, pstate, 'power', Math.abs(qty));
-    }
+function takeDamage($prow, participant, qty) {
+    participant.takeDamage(qty);
+    drawParticipantState($prow, participant);
 }
 
-function healDamage($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    if (pstate.break > 0) {
-        var remaining_break = pstate.break - qty;
-        setPartParam($prow, pstate, 'break', Math.max(0, remaining_break));
-        qty = remaining_break >= 0 ? 0 : Math.abs(remaining_break);
-    }
-    if (qty < 1) return;
-    qty = Math.min(qty, pstate.damage)
-    var remaining_damage = pstate.damage - qty;
-    setPartParam($prow, pstate, 'damage', remaining_damage);
-    incrementPartParam($prow, pstate, 'health', qty);
-    if (pstate.condition.key === 'UNCONSCIOUS' && pstate.health > 0) {
-        addPartCondition($prow, pstate, 'NORMAL', true);
-    }
+function healDamage($prow, participant, qty) {
+    participant.healDamage(qty);
+    drawParticipantState($prow, participant);
 }
 
-function accumulateFatigue($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    if (pstate.power > 0) {
-        setPartParam($prow, pstate, 'power', 0);
-        qty--;
-    }
-    if (qty < 1) return;
-    if (pstate.health > 0) {
-        var hqty = Math.min(qty, pstate.health);
-        var remaining_health = pstate.health - hqty;
-        setPartParam($prow, pstate, 'health', remaining_health);
-        incrementPartParam($prow, pstate, 'fatigue', hqty);
-        if (remaining_health === 0) {
-            fulminateWounds($prow, pstate);
-            addPartCondition($prow, pstate, 'UNCONSCIOUS');
-        }
-        qty -= hqty;
-    }
-    if (qty < 1) return;
-    if (pstate.damage > 0) {
-        qty = Math.min(qty, pstate.damage);
-        var remaining_damage = pstate.damage - qty;
-        setPartParam($prow, pstate, 'damage', remaining_damage);
-        incrementPartParam($prow, pstate, 'fatigue', qty);
-        if (remaining_damage === 0) {
-            addPartCondition($prow, pstate, 'COMATOSE');
-        }
-        qty = 0;
-    } else {
-        addPartCondition($prow, pstate, 'DEAD');
-    }
+function accumulateFatigue($prow, participant, qty) {
+    participant.accumulateFatigue(qty);
+    drawParticipantState($prow, participant);
 }
 
-function restoreFatigue($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    if (pstate.fatigue < 1 || pstate.affliction >= pstate.fatigue) return;
-    var restorable_ftg = pstate.fatigue - pstate.affliction;
-    qty = Math.min(qty, restorable_ftg);
-    decrementPartParam($prow, pstate, 'fatigue', qty);
-    incrementPartParam($prow, pstate, 'health', qty);
-    if (pstate.health > 0 && (pstate.condition.key === 'UNCONSCIOUS' ||
-        pstate.condition.key === 'COMATOSE')) {
-        addPartCondition($prow, pstate, 'NORMAL', true);
-    }
+function restoreFatigue($prow, participant, qty) {
+    participant.restoreFatigue(qty);
+    drawParticipantState($prow, participant);
 }
 
 function modifyCoreAttribute($prow, pstate, qty, param) {
@@ -458,14 +328,14 @@ function modifyCoreAttribute($prow, pstate, qty, param) {
     }
 }
 
-function flowMomentum($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    incrementPartParam($prow, pstate, 'momentum', qty);
+function flowMomentum($prow, participant, qty) {
+    participant.flowMomentum(qty);
+    drawParticipantState($prow, participant);
 }
 
-function ebbMomentum($prow, pstate, qty) {
-    if (typeof qty !== 'number' || qty < 1) return;
-    decrementPartParam($prow, pstate, 'momentum', qty);
+function ebbMomentum($prow, participant, qty) {
+    participant.ebbMomentum(qty);
+    drawParticipantState($prow, participant);
 }
 
 function modifyParticipant(qty, param) {

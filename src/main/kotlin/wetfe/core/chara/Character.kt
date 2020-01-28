@@ -348,7 +348,7 @@ data class Event(val x: Int = 0,
  *  The serializable data of a Character.
  *  Stored in a .chara.json file.
  */
-data class CharaData(val key: String = newKey(),
+data class CharaData(val id: String = newId(),
                      var fullName: String = "Full Name",
                      var commonName: String = "Common Name",
                      var shortName: String = "Short Name",
@@ -377,7 +377,7 @@ data class CharaData(val key: String = newKey(),
                      var rollsheetLayout: MutableList<String> = mutableListOf()) {
 
     companion object {
-        fun newKey() : String {
+        fun newId() : String {
             return "NewCharacter-" + Random.nextLong(1000, 1000000).toString()
         }
 
@@ -392,15 +392,13 @@ data class CharaData(val key: String = newKey(),
     }
 }
 
-
-
 /**
  *  Character
  *  ------------------------------------
  *  The RPG mainstay object.
  *  Wraps CharaData to provide the meat to the bones.
  */
-class Character(charaData: CharaData = CharaData()) {
+open class Character(charaData: CharaData = CharaData()) {
     private val cdata: CharaData = charaData
 
     private val valcache: MutableMap<CoreParam, Int?> = mutableMapOf()
@@ -410,8 +408,25 @@ class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun getKey() : String {
-        return cdata.key
+    fun getId() : String {
+        return cdata.id
+    }
+
+    fun getName() : String {
+        return if (!cdata.shortName.isNullOrBlank()) cdata.shortName else
+            if (!cdata.commonName.isNullOrBlank()) cdata.commonName else cdata.fullName
+    }
+
+    fun getFullName() : String {
+        return cdata.fullName
+    }
+
+    fun getCommonName() : String {
+        return cdata.commonName
+    }
+
+    fun geShortName() : String {
+        return cdata.shortName
     }
 
     fun getTier() : Int {
@@ -455,6 +470,14 @@ class Character(charaData: CharaData = CharaData()) {
             cdata.state.condition = cond
         }
         return cdata.state.condition
+    }
+
+    fun applyCondition(cond: StateCondition) : StateCondition {
+        return setCondition(cond, false)
+    }
+
+    fun forceCondition(cond: StateCondition) : StateCondition {
+        return setCondition(cond, true)
     }
 
     fun setPower(n: Int) : Int {
@@ -504,11 +527,19 @@ class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun increment(param: StateParam, n: Int = 1) : Int {
+    fun increment(param: StateParam) : Int {
+        return adjustBy(param, 1)
+    }
+
+    fun decrement(param: StateParam) : Int {
+        return adjustBy(param, -1)
+    }
+
+    fun increment(param: StateParam, n: Int) : Int {
         return adjustBy(param, n)
     }
 
-    fun decrement(param: StateParam, n: Int = 1) : Int {
+    fun decrement(param: StateParam, n: Int) : Int {
         return adjustBy(param, -n)
     }
 

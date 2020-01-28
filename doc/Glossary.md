@@ -69,4 +69,4 @@
 | **trauma chip, Ⓣ** | The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue stack, where each trauma chip prevents one soul chip from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect. |
 | **willpower, WIL** | The quality encompassing a being’s mental health, mettle, and strength of character and convictions. |
 
-Copyright © 2016 Ryan Gibbons
+Copyright © 2016, 2017, 2018, 2019, 2020 Ryan Gibbons

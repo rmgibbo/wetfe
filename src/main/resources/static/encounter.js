@@ -79,9 +79,9 @@ function setTpi(i) {
 //         (p.soul_pool);
 //     pstate.power = 0;
 //     pstate.health = pstate.pool; //TODO: minus chips reserved in fonts
-//     pstate.break = 0;
-//     pstate.damage = 0;
 //     pstate.affliction = 0;
+//     pstate.damage = 0;
+//     pstate.trauma = 0;
 //     pstate.fatigue = 0;
 //     pstate.stagger = is_player ? null : p.stagger_threshold;
 //     for (var a of ['con', 'dex', 'int', 'wil']) {
@@ -176,8 +176,8 @@ function drawParticipantState($prow, participant) {
     $prow.find('[data-pstate-key="damage"]').html(participant.getDamage());
     $prow.find('[data-pstate-key="fatigue"]').html(participant.getFatigue());
     $prow.find('[data-pstate-key="power"]').html(participant.getPower());
-    $prow.find('[data-pstate-key="break"]').html(participant.getBreakage());
-    $prow.find('[data-pstate-key="afflication"]').html(participant.getAffliction());
+    $prow.find('[data-pstate-key="affliction"]').html(participant.getAffliction());
+    $prow.find('[data-pstate-key="trauma"]').html(participant.getTrauma());
     $prow.find('[data-pstate-key="momentum"]').html(participant.getMomentum());
     drawCondition($prow, participant.getCondition());
 }
@@ -238,8 +238,8 @@ function consumePower($prow, participant, qty) {
     drawParticipantState($prow, participant);
 }
 
-function sufferBreak($prow, participant, qty) {
-    participant.sufferBreak(qty);
+function sustainAffliction($prow, participant, qty) {
+    participant.sustainAffliction(qty);
     drawParticipantState($prow, participant);
 }
 
@@ -248,18 +248,18 @@ function fulminate($prow, participant) {
     drawParticipantState($prow, participant);
 }
 
-function mendBreak($prow, participant, qty) {
-    participant.mendBreak(qty);
+function cureAffliction($prow, participant, qty) {
+    participant.cureAffliction(qty);
     drawParticipantState($prow, participant);
 }
 
-function contractAffliction($prow, participant, qty) {
-    participant.contractAffliction(qty);
+function sufferTrauma($prow, participant, qty) {
+    participant.sufferTrauma(qty);
     drawParticipantState($prow, participant);
 }
 
-function eradicateAffliction($prow, participant, qty) {
-    participant.eradicateAffliction(qty);
+function alleviateTrauma($prow, participant, qty) {
+    participant.alleviateTrauma(qty);
     drawParticipantState($prow, participant);
 }
 
@@ -360,11 +360,11 @@ function modifyParticipant(qty, param) {
             case "consumption":
                 consumePower($prow, pstate, qty);
                 break;
-            case "breakage":
-                sufferBreak($prow, pstate, qty);
+            case "affliction":
+                sustainAffliction($prow, pstate, qty);
                 break;
             case "mending":
-                mendBreak($prow, pstate, qty);
+                cureAffliction($prow, pstate, qty);
                 break;
             case "damage":
                 takeDamage($prow, pstate, qty);
@@ -372,11 +372,11 @@ function modifyParticipant(qty, param) {
             case "healing":
                 healDamage($prow, pstate, qty);
                 break;
-            case "affliction":
-                contractAffliction($prow, pstate, qty);
+            case "trauma":
+                sufferTrauma($prow, pstate, qty);
                 break;
-            case "eradication":
-                eradicateAffliction($prow, pstate, qty);
+            case "relief":
+                alleviateTrauma($prow, pstate, qty);
                 break;
             case "fatigue":
                 accumulateFatigue($prow, pstate, qty);
@@ -537,9 +537,9 @@ function drawPartsTable() {
         $prow.find('.we-prow-name').html(pstate.name);
         $prow.find('.we-prow-power').html(pstate.power);
         $prow.find('.we-prow-health').html(pstate.health);
-        $prow.find('.we-prow-break').html(pstate.break);
-        $prow.find('.we-prow-damage').html(pstate.damage);
         $prow.find('.we-prow-affliction').html(pstate.affliction);
+        $prow.find('.we-prow-damage').html(pstate.damage);
+        $prow.find('.we-prow-trauma').html(pstate.trauma);
         $prow.find('.we-prow-fatigue').html(pstate.fatigue);
         $prow.find('.we-prow-pool').html(pstate.pool);
         $prow.find('.we-prow-stagger').html(pstate.stagger ? pstate.stagger : '');
@@ -653,15 +653,15 @@ var keymodmap = {
     "p": "power",
     "P": "consumption",
     "c": "consumption",
-    "b": "breakage",
+    "b": "affliction",
     "B": "mending",
-    "k": "breakage",
+    "k": "affliction",
     "K": "mending",
     "d": "damage",
     "h": "healing",
-    "a": "affliction",
-    "A": "eradication",
-    "e": "eradication",
+    "t": "trauma",
+    "T": "alleviate",
+    "r": "alleviate",
     "f": "fatigue",
     "F": "restoration",
     "r": "restoration",

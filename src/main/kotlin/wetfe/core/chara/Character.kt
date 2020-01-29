@@ -805,9 +805,9 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return magnitude of trauma effectively relieved
+     * @return magnitude of trauma effectively alleviated
      */
-    fun relieveTrauma(n: Int) : Int {
+    fun alleviateTrauma(n: Int) : Int {
         val trm = cdata.state.trauma
         if (n < 1 || trm < 1) return 0
         val a1 = (trm - n).coerceAtLeast(0)

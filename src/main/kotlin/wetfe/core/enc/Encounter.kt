@@ -34,7 +34,7 @@ interface Participant {
     fun getTrauma() : Int
     fun setTrauma(n: Int) : Int
     fun sufferTrauma(n: Int) : Int
-    fun relieveTrauma(n: Int) : Int
+    fun alleviateTrauma(n: Int) : Int
     ////
     fun fulminate() : Int
     ////

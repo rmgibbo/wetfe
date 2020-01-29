@@ -28,12 +28,12 @@ interface Participant {
     ////
     fun getAffliction() : Int
     fun setAffliction(n: Int) : Int
-    fun sufferAffliction(n: Int) : Int
+    fun sustainAffliction(n: Int) : Int
     fun cureAffliction(n: Int) : Int
     ////
     fun getTrauma() : Int
     fun setTrauma(n: Int) : Int
-    fun sustainTrauma(n: Int) : Int
+    fun sufferTrauma(n: Int) : Int
     fun relieveTrauma(n: Int) : Int
     ////
     fun fulminate() : Int
@@ -67,29 +67,6 @@ interface Participant {
 class CharacterParticipant(data: CharaData = CharaData()) : Character(data), Participant {
     override var key: String = ""
     override var initiative: Double = 0.00
-    override fun sufferAffliction(n: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun cureAffliction(n: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun getTrauma(): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun setTrauma(n: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun sustainTrauma(n: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun relieveTrauma(n: Int): Int {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
 }
 
 //class MonsterParticipant : Monster(), Participant {

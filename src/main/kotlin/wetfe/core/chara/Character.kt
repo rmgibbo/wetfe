@@ -146,12 +146,12 @@ enum class StatMode(val key: String) {
  *  The numerical parameters of a Character's (temporary) state.
  */
 enum class StateParam(val key: String) {
-    POWER("PWR"),
     HEALTH("HEL"),
-    BREAKAGE("BRK"),
     DAMAGE("DMG"),
-    AFFLICTION("AFL"),
     FATIGUE("FTG"),
+    POWER("PWR"),
+    AFFLICTION("AFL"),
+    TRAUMA("TRM"),
     MOMENTUM("MTM");
 
     companion object {
@@ -221,12 +221,12 @@ object Attribute {
 
             fun of(param: StateParam) : Limit {
                 return when (param) {
-                    StateParam.POWER -> CHIP
                     StateParam.HEALTH -> CHIP
-                    StateParam.BREAKAGE -> CHIP
                     StateParam.DAMAGE -> CHIP
-                    StateParam.AFFLICTION -> CHIP
                     StateParam.FATIGUE -> CHIP
+                    StateParam.POWER -> CHIP
+                    StateParam.AFFLICTION -> CHIP
+                    StateParam.TRAUMA -> CHIP
                     StateParam.MOMENTUM -> UNBOUNDED
                 }
             }
@@ -313,8 +313,8 @@ data class CharaState(var health: Int = 5,
                       var damage: Int = 0,
                       var fatigue: Int = 0,
                       var power: Int = 0,
-                      var breakage: Int = 0,
                       var affliction: Int = 0,
+                      var trauma: Int = 0,
                       var momentum: Int = 0,
                       var modes: StatModeState = StatModeState(),
                       var condition: StateCondition = StateCondition.NORMAL,
@@ -433,28 +433,28 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.specialty.evaluate().tier
     }
 
-    fun getPower() : Int {
-        return cdata.state.power
-    }
-
     fun getHealth() : Int {
         return cdata.state.health
-    }
-
-    fun getBreakage() : Int {
-        return cdata.state.breakage
     }
 
     fun getDamage() : Int {
         return cdata.state.damage
     }
 
+    fun getFatigue() : Int {
+        return cdata.state.fatigue
+    }
+
+    fun getPower() : Int {
+        return cdata.state.power
+    }
+
     fun getAffliction() : Int {
         return cdata.state.affliction
     }
 
-    fun getFatigue() : Int {
-        return cdata.state.fatigue
+    fun getTrauma() : Int {
+        return cdata.state.trauma
     }
 
     fun getMomentum() : Int {
@@ -480,19 +480,9 @@ open class Character(charaData: CharaData = CharaData()) {
         return setCondition(cond, true)
     }
 
-    fun setPower(n: Int) : Int {
-        cdata.state.power = Attribute.Limit.of(StateParam.POWER).coerce(n)
-        return cdata.state.power
-    }
-
     fun setHealth(n: Int) : Int {
         cdata.state.health = Attribute.Limit.of(StateParam.HEALTH).coerce(n)
         return cdata.state.health
-    }
-
-    fun setBreakage(n: Int) : Int {
-        cdata.state.breakage = Attribute.Limit.of(StateParam.BREAKAGE).coerce(n)
-        return cdata.state.breakage
     }
 
     fun setDamage(n: Int) : Int {
@@ -500,14 +490,24 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.state.damage
     }
 
+    fun setFatigue(n: Int) : Int {
+        cdata.state.fatigue = Attribute.Limit.of(StateParam.FATIGUE).coerce(n)
+        return cdata.state.fatigue
+    }
+
+    fun setPower(n: Int) : Int {
+        cdata.state.power = Attribute.Limit.of(StateParam.POWER).coerce(n)
+        return cdata.state.power
+    }
+
     fun setAffliction(n: Int) : Int {
         cdata.state.affliction = Attribute.Limit.of(StateParam.AFFLICTION).coerce(n)
         return cdata.state.affliction
     }
 
-    fun setFatigue(n: Int) : Int {
-        cdata.state.fatigue = Attribute.Limit.of(StateParam.FATIGUE).coerce(n)
-        return cdata.state.fatigue
+    fun setTrauma(n: Int) : Int {
+        cdata.state.trauma = Attribute.Limit.of(StateParam.TRAUMA).coerce(n)
+        return cdata.state.trauma
     }
 
     fun setMomentum(n: Int) : Int {
@@ -517,12 +517,12 @@ open class Character(charaData: CharaData = CharaData()) {
 
     fun adjustBy(param: StateParam, n: Int) : Int {
         return when (param) {
-            StateParam.POWER -> setPower(cdata.state.power + n)
             StateParam.HEALTH -> setPower(cdata.state.health + n)
-            StateParam.BREAKAGE -> setPower(cdata.state.breakage + n)
             StateParam.DAMAGE -> setPower(cdata.state.damage + n)
-            StateParam.AFFLICTION -> setPower(cdata.state.affliction + n)
             StateParam.FATIGUE -> setPower(cdata.state.fatigue + n)
+            StateParam.POWER -> setPower(cdata.state.power + n)
+            StateParam.AFFLICTION -> setPower(cdata.state.affliction + n)
+            StateParam.TRAUMA -> setPower(cdata.state.trauma + n)
             StateParam.MOMENTUM -> setMomentum(cdata.state.momentum + n)
         }
     }
@@ -545,12 +545,12 @@ open class Character(charaData: CharaData = CharaData()) {
 
     fun getParam(param: StateParam) : Int {
         return when (param) {
-            StateParam.POWER -> getPower()
             StateParam.HEALTH -> getHealth()
-            StateParam.BREAKAGE -> getBreakage()
             StateParam.DAMAGE -> getDamage()
-            StateParam.AFFLICTION -> getAffliction()
             StateParam.FATIGUE -> getFatigue()
+            StateParam.POWER -> getPower()
+            StateParam.AFFLICTION -> getAffliction()
+            StateParam.TRAUMA -> getTrauma()
             StateParam.MOMENTUM -> getMomentum()
         }
     }
@@ -561,12 +561,12 @@ open class Character(charaData: CharaData = CharaData()) {
 
     fun setParam(param: StateParam, n: Int) : Int {
         return when (param) {
-            StateParam.POWER -> setPower(n)
             StateParam.HEALTH -> setHealth(n)
-            StateParam.BREAKAGE -> setBreakage(n)
             StateParam.DAMAGE -> setDamage(n)
-            StateParam.AFFLICTION -> setAffliction(n)
             StateParam.FATIGUE -> setFatigue(n)
+            StateParam.POWER -> setPower(n)
+            StateParam.AFFLICTION -> setAffliction(n)
+            StateParam.TRAUMA -> setTrauma(n)
             StateParam.MOMENTUM -> setMomentum(n)
         }
     }
@@ -603,58 +603,7 @@ open class Character(charaData: CharaData = CharaData()) {
      */
 
     /**
-     * @return Quantity of fatigue accumulated as a result of the fulmination
-     */
-    fun fulminate() : Int {
-        val brk = cdata.state.breakage
-        if (brk < 1) return 0
-        var ftg = 0
-        for (i in 0 until brk) {
-            if (Random.nextInt(4) < 1) ++ftg
-        }
-        setBreakage(0)
-        //log.info('Fulminated all (' + b +') of ' + pstate.name + '\'s wounds, incurring ' + ftg + ' fatigue.');
-        if (ftg < 1) return 0
-        val dmg = cdata.state.damage
-        if (dmg < 1) {
-            setCondition(StateCondition.DEAD)
-        } else {
-            ftg = ftg.coerceAtMost(dmg)
-            val d2 = dmg - ftg
-            increment(StateParam.FATIGUE, ftg)
-            setDamage(d2)
-            if (d2 < 1) {
-                setCondition(StateCondition.COMATOSE)
-            }
-        }
-        return ftg
-    }
-
-    /**
-     * @return quantity of power effectively gained
-     */
-    fun gainPower(n: Int) : Int {
-        if (n < 0) return 0
-        val pwr = cdata.state.power
-        val p1 = (pwr + n).coerceAtMost(cdata.soulpool.evaluate())
-        return setPower(p1) - pwr
-    }
-
-    /**
-     * @return quantity of power effectively consumed
-     */
-    fun consumePower(n: Int) : Int {
-        if (n < 0) return 0
-        if (n > 0 && n < cdata.state.power) {
-            cdata.state.recentlyConsumedPower = true
-        }
-        val pwr = cdata.state.power
-        val p1 = (pwr - n).coerceAtLeast(0)
-        return pwr - setPower(p1)
-    }
-
-    /**
-     * @return quantity of damage effectively taken
+     * @return magnitude of damage effectively taken
      */
     fun takeDamage(n: Int) : Int {
         if (n < 1) return 0
@@ -703,15 +652,15 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return quantity of damage effectively healed
+     * @return magnitude of damage effectively healed
      */
     fun healDamage(n: Int) : Int {
         if (n < 1) return 0
         var n1 = n
-        val brk = cdata.state.breakage
-        if (brk > 0) {
-            val b1 = brk - n
-            setBreakage(b1.coerceAtLeast(0))
+        val afl = cdata.state.affliction
+        if (afl > 0) {
+            val b1 = afl - n
+            setAffliction(b1.coerceAtLeast(0))
             n1 = if (b1 >= 0) 0 else b1.absoluteValue
         }
         if (n1 < 1) return 0
@@ -724,62 +673,6 @@ open class Character(charaData: CharaData = CharaData()) {
             setCondition(StateCondition.NORMAL)
         }
         return n1
-    }
-
-    /**
-     * @return quantity of breakage effectively suffered
-     */
-    fun sufferBreak(n: Int) : Int {
-        if (n < 1) return 0
-        val brk = cdata.state.breakage
-        val max = cdata.soulpool.evaluate()
-        val b2 = brk + n
-        if (cdata.state.health < 1) {
-            setBreakage(b2)
-            fulminate()
-        } else if (b2 > max) {
-            setBreakage(max)
-            takeDamage(b2 - max)
-        } else {
-            setBreakage(b2)
-        }
-        return b2 - brk
-    }
-
-    /**
-     * @return quantity of breakage effectively mended
-     */
-    fun mendBreak(n: Int) : Int {
-        val brk = cdata.state.breakage
-        if (n < 1 || brk < 1) return 0
-        val b2 = (brk - n).coerceAtLeast(0)
-        return brk - setBreakage(b2)
-    }
-
-    /**
-     * @return quantity of afflictions effectively contracted
-     */
-    fun contractAffliction(n: Int) : Int {
-        if (n < 1) return 0
-        val max = cdata.soulpool.evaluate()
-        val a2 = cdata.state.affliction + n
-        return if (a2 > max) {
-            setCondition(StateCondition.UNCONSCIOUS)
-            setAffliction(max)
-        } else {
-            setAffliction(a2)
-        }
-    }
-
-    /**
-     * @return quantity of afflictions effectively eradicated
-     */
-    fun eradicateAffliction(n: Int) : Int {
-        val afl = cdata.state.affliction
-        if (n < 1 || afl < 1) return 0
-        val a1 = (afl - n).coerceAtLeast(0)
-        setAffliction(a1)
-        return afl - a1
     }
 
     /**
@@ -841,6 +734,113 @@ open class Character(charaData: CharaData = CharaData()) {
             setCondition(StateCondition.NORMAL, true)
         }
         return f2
+    }
+
+    /**
+     * @return magnitude of power effectively gained
+     */
+    fun gainPower(n: Int) : Int {
+        if (n < 0) return 0
+        val pwr = cdata.state.power
+        val p1 = (pwr + n).coerceAtMost(cdata.soulpool.evaluate())
+        return setPower(p1) - pwr
+    }
+
+    /**
+     * @return magnitude of power effectively consumed
+     */
+    fun consumePower(n: Int) : Int {
+        if (n < 0) return 0
+        if (n > 0 && n < cdata.state.power) {
+            cdata.state.recentlyConsumedPower = true
+        }
+        val pwr = cdata.state.power
+        val p1 = (pwr - n).coerceAtLeast(0)
+        return pwr - setPower(p1)
+    }
+
+    /**
+     * @return magnitude of affliction effectively sustained
+     */
+    fun sustainAffliction(n: Int) : Int {
+        if (n < 1) return 0
+        val brk = cdata.state.affliction
+        val max = cdata.soulpool.evaluate()
+        val b2 = brk + n
+        if (cdata.state.health < 1) {
+            setAffliction(b2)
+            fulminate()
+        } else if (b2 > max) {
+            setAffliction(max)
+            takeDamage(b2 - max)
+        } else {
+            setAffliction(b2)
+        }
+        return b2 - brk
+    }
+
+    /**
+     * @return magnitude of affliction effectively cured
+     */
+    fun cureAffliction(n: Int) : Int {
+        val afl = cdata.state.affliction
+        if (n < 1 || afl < 1) return 0
+        val b2 = (afl - n).coerceAtLeast(0)
+        return afl - setAffliction(b2)
+    }
+
+    /**
+     * @return magnitude of trauma effectively suffered
+     */
+    fun sufferTrauma(n: Int) : Int {
+        if (n < 1) return 0
+        val max = cdata.soulpool.evaluate()
+        val t2 = cdata.state.trauma + n
+        return if (t2 > max) {
+            setCondition(StateCondition.UNCONSCIOUS)
+            setTrauma(max)
+        } else {
+            setTrauma(t2)
+        }
+    }
+
+    /**
+     * @return magnitude of trauma effectively relieved
+     */
+    fun relieveTrauma(n: Int) : Int {
+        val trm = cdata.state.trauma
+        if (n < 1 || trm < 1) return 0
+        val a1 = (trm - n).coerceAtLeast(0)
+        setTrauma(a1)
+        return trm - a1
+    }
+
+    /**
+     * @return magnitude of fatigue accumulated as a result of the fulmination
+     */
+    fun fulminate() : Int {
+        val afl = cdata.state.affliction
+        if (afl < 1) return 0
+        var ftg = 0
+        for (i in 0 until afl) {
+            if (Random.nextInt(4) < 1) ++ftg
+        }
+        setAffliction(0)
+        //log.info('Fulminated all (' + b +') of ' + pstate.name + '\'s wounds, incurring ' + ftg + ' fatigue.');
+        if (ftg < 1) return 0
+        val dmg = cdata.state.damage
+        if (dmg < 1) {
+            setCondition(StateCondition.DEAD)
+        } else {
+            ftg = ftg.coerceAtMost(dmg)
+            val d2 = dmg - ftg
+            increment(StateParam.FATIGUE, ftg)
+            setDamage(d2)
+            if (d2 < 1) {
+                setCondition(StateCondition.COMATOSE)
+            }
+        }
+        return ftg
     }
 
     /**

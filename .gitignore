@@ -34,3 +34,6 @@ build/
 .mvn/
 mvnw
 mvnw.cmd
+
+### Project-Specific ###
+src/main/resources/static/kotlin.js

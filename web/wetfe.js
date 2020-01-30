@@ -22,7 +22,6 @@ var wetfe = function (_, Kotlin) {
   var IntRange = Kotlin.kotlin.ranges.IntRange;
   var substring = Kotlin.kotlin.text.substring_fc3b62$;
   var toString = Kotlin.toString;
-  var NotImplementedError_init = Kotlin.kotlin.NotImplementedError;
   Evolution.prototype = Object.create(ModHistory.prototype);
   Evolution.prototype.constructor = Evolution;
   Summation.prototype = Object.create(ModHistory.prototype);
@@ -458,44 +457,44 @@ var wetfe = function (_, Kotlin) {
   function StateParam_initFields() {
     StateParam_initFields = function () {
     };
-    StateParam$POWER_instance = new StateParam('POWER', 0, 'PWR');
-    StateParam$HEALTH_instance = new StateParam('HEALTH', 1, 'HEL');
-    StateParam$BREAKAGE_instance = new StateParam('BREAKAGE', 2, 'BRK');
-    StateParam$DAMAGE_instance = new StateParam('DAMAGE', 3, 'DMG');
+    StateParam$HEALTH_instance = new StateParam('HEALTH', 0, 'HEL');
+    StateParam$DAMAGE_instance = new StateParam('DAMAGE', 1, 'DMG');
+    StateParam$FATIGUE_instance = new StateParam('FATIGUE', 2, 'FTG');
+    StateParam$POWER_instance = new StateParam('POWER', 3, 'PWR');
     StateParam$AFFLICTION_instance = new StateParam('AFFLICTION', 4, 'AFL');
-    StateParam$FATIGUE_instance = new StateParam('FATIGUE', 5, 'FTG');
+    StateParam$TRAUMA_instance = new StateParam('TRAUMA', 5, 'TRM');
     StateParam$MOMENTUM_instance = new StateParam('MOMENTUM', 6, 'MTM');
     StateParam$Companion_getInstance();
-  }
-  var StateParam$POWER_instance;
-  function StateParam$POWER_getInstance() {
-    StateParam_initFields();
-    return StateParam$POWER_instance;
   }
   var StateParam$HEALTH_instance;
   function StateParam$HEALTH_getInstance() {
     StateParam_initFields();
     return StateParam$HEALTH_instance;
   }
-  var StateParam$BREAKAGE_instance;
-  function StateParam$BREAKAGE_getInstance() {
-    StateParam_initFields();
-    return StateParam$BREAKAGE_instance;
-  }
   var StateParam$DAMAGE_instance;
   function StateParam$DAMAGE_getInstance() {
     StateParam_initFields();
     return StateParam$DAMAGE_instance;
+  }
+  var StateParam$FATIGUE_instance;
+  function StateParam$FATIGUE_getInstance() {
+    StateParam_initFields();
+    return StateParam$FATIGUE_instance;
+  }
+  var StateParam$POWER_instance;
+  function StateParam$POWER_getInstance() {
+    StateParam_initFields();
+    return StateParam$POWER_instance;
   }
   var StateParam$AFFLICTION_instance;
   function StateParam$AFFLICTION_getInstance() {
     StateParam_initFields();
     return StateParam$AFFLICTION_instance;
   }
-  var StateParam$FATIGUE_instance;
-  function StateParam$FATIGUE_getInstance() {
+  var StateParam$TRAUMA_instance;
+  function StateParam$TRAUMA_getInstance() {
     StateParam_initFields();
-    return StateParam$FATIGUE_instance;
+    return StateParam$TRAUMA_instance;
   }
   var StateParam$MOMENTUM_instance;
   function StateParam$MOMENTUM_getInstance() {
@@ -537,23 +536,23 @@ var wetfe = function (_, Kotlin) {
     interfaces: [Enum]
   };
   function StateParam$values() {
-    return [StateParam$POWER_getInstance(), StateParam$HEALTH_getInstance(), StateParam$BREAKAGE_getInstance(), StateParam$DAMAGE_getInstance(), StateParam$AFFLICTION_getInstance(), StateParam$FATIGUE_getInstance(), StateParam$MOMENTUM_getInstance()];
+    return [StateParam$HEALTH_getInstance(), StateParam$DAMAGE_getInstance(), StateParam$FATIGUE_getInstance(), StateParam$POWER_getInstance(), StateParam$AFFLICTION_getInstance(), StateParam$TRAUMA_getInstance(), StateParam$MOMENTUM_getInstance()];
   }
   StateParam.values = StateParam$values;
   function StateParam$valueOf(name) {
     switch (name) {
-      case 'POWER':
-        return StateParam$POWER_getInstance();
       case 'HEALTH':
         return StateParam$HEALTH_getInstance();
-      case 'BREAKAGE':
-        return StateParam$BREAKAGE_getInstance();
       case 'DAMAGE':
         return StateParam$DAMAGE_getInstance();
-      case 'AFFLICTION':
-        return StateParam$AFFLICTION_getInstance();
       case 'FATIGUE':
         return StateParam$FATIGUE_getInstance();
+      case 'POWER':
+        return StateParam$POWER_getInstance();
+      case 'AFFLICTION':
+        return StateParam$AFFLICTION_getInstance();
+      case 'TRAUMA':
+        return StateParam$TRAUMA_getInstance();
       case 'MOMENTUM':
         return StateParam$MOMENTUM_getInstance();
       default:throwISE('No enum constant wetfe.core.chara.StateParam.' + name);
@@ -735,22 +734,22 @@ var wetfe = function (_, Kotlin) {
   Attribute$Limit$Companion.prototype.of_nfoh2z$ = function (param) {
     var tmp$;
     switch (param.name) {
-      case 'POWER':
-        tmp$ = Attribute$Limit$CHIP_getInstance();
-        break;
       case 'HEALTH':
-        tmp$ = Attribute$Limit$CHIP_getInstance();
-        break;
-      case 'BREAKAGE':
         tmp$ = Attribute$Limit$CHIP_getInstance();
         break;
       case 'DAMAGE':
         tmp$ = Attribute$Limit$CHIP_getInstance();
         break;
+      case 'FATIGUE':
+        tmp$ = Attribute$Limit$CHIP_getInstance();
+        break;
+      case 'POWER':
+        tmp$ = Attribute$Limit$CHIP_getInstance();
+        break;
       case 'AFFLICTION':
         tmp$ = Attribute$Limit$CHIP_getInstance();
         break;
-      case 'FATIGUE':
+      case 'TRAUMA':
         tmp$ = Attribute$Limit$CHIP_getInstance();
         break;
       case 'MOMENTUM':
@@ -1094,7 +1093,7 @@ var wetfe = function (_, Kotlin) {
   StatModeState.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.conMode, other.conMode) && Kotlin.equals(this.dexMode, other.dexMode) && Kotlin.equals(this.intMode, other.intMode) && Kotlin.equals(this.wilMode, other.wilMode)))));
   };
-  function CharaState(health, damage, fatigue, power, breakage, affliction, momentum, modes, condition, recentlyConsumedPower) {
+  function CharaState(health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, recentlyConsumedPower) {
     if (health === void 0)
       health = 5;
     if (damage === void 0)
@@ -1103,10 +1102,10 @@ var wetfe = function (_, Kotlin) {
       fatigue = 0;
     if (power === void 0)
       power = 0;
-    if (breakage === void 0)
-      breakage = 0;
     if (affliction === void 0)
       affliction = 0;
+    if (trauma === void 0)
+      trauma = 0;
     if (momentum === void 0)
       momentum = 0;
     if (modes === void 0)
@@ -1119,8 +1118,8 @@ var wetfe = function (_, Kotlin) {
     this.damage = damage;
     this.fatigue = fatigue;
     this.power = power;
-    this.breakage = breakage;
     this.affliction = affliction;
+    this.trauma = trauma;
     this.momentum = momentum;
     this.modes = modes;
     this.condition = condition;
@@ -1144,10 +1143,10 @@ var wetfe = function (_, Kotlin) {
     return this.power;
   };
   CharaState.prototype.component5 = function () {
-    return this.breakage;
+    return this.affliction;
   };
   CharaState.prototype.component6 = function () {
-    return this.affliction;
+    return this.trauma;
   };
   CharaState.prototype.component7 = function () {
     return this.momentum;
@@ -1161,11 +1160,11 @@ var wetfe = function (_, Kotlin) {
   CharaState.prototype.component10 = function () {
     return this.recentlyConsumedPower;
   };
-  CharaState.prototype.copy_t7ts57$ = function (health, damage, fatigue, power, breakage, affliction, momentum, modes, condition, recentlyConsumedPower) {
-    return new CharaState(health === void 0 ? this.health : health, damage === void 0 ? this.damage : damage, fatigue === void 0 ? this.fatigue : fatigue, power === void 0 ? this.power : power, breakage === void 0 ? this.breakage : breakage, affliction === void 0 ? this.affliction : affliction, momentum === void 0 ? this.momentum : momentum, modes === void 0 ? this.modes : modes, condition === void 0 ? this.condition : condition, recentlyConsumedPower === void 0 ? this.recentlyConsumedPower : recentlyConsumedPower);
+  CharaState.prototype.copy_t7ts57$ = function (health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, recentlyConsumedPower) {
+    return new CharaState(health === void 0 ? this.health : health, damage === void 0 ? this.damage : damage, fatigue === void 0 ? this.fatigue : fatigue, power === void 0 ? this.power : power, affliction === void 0 ? this.affliction : affliction, trauma === void 0 ? this.trauma : trauma, momentum === void 0 ? this.momentum : momentum, modes === void 0 ? this.modes : modes, condition === void 0 ? this.condition : condition, recentlyConsumedPower === void 0 ? this.recentlyConsumedPower : recentlyConsumedPower);
   };
   CharaState.prototype.toString = function () {
-    return 'CharaState(health=' + Kotlin.toString(this.health) + (', damage=' + Kotlin.toString(this.damage)) + (', fatigue=' + Kotlin.toString(this.fatigue)) + (', power=' + Kotlin.toString(this.power)) + (', breakage=' + Kotlin.toString(this.breakage)) + (', affliction=' + Kotlin.toString(this.affliction)) + (', momentum=' + Kotlin.toString(this.momentum)) + (', modes=' + Kotlin.toString(this.modes)) + (', condition=' + Kotlin.toString(this.condition)) + (', recentlyConsumedPower=' + Kotlin.toString(this.recentlyConsumedPower)) + ')';
+    return 'CharaState(health=' + Kotlin.toString(this.health) + (', damage=' + Kotlin.toString(this.damage)) + (', fatigue=' + Kotlin.toString(this.fatigue)) + (', power=' + Kotlin.toString(this.power)) + (', affliction=' + Kotlin.toString(this.affliction)) + (', trauma=' + Kotlin.toString(this.trauma)) + (', momentum=' + Kotlin.toString(this.momentum)) + (', modes=' + Kotlin.toString(this.modes)) + (', condition=' + Kotlin.toString(this.condition)) + (', recentlyConsumedPower=' + Kotlin.toString(this.recentlyConsumedPower)) + ')';
   };
   CharaState.prototype.hashCode = function () {
     var result = 0;
@@ -1173,8 +1172,8 @@ var wetfe = function (_, Kotlin) {
     result = result * 31 + Kotlin.hashCode(this.damage) | 0;
     result = result * 31 + Kotlin.hashCode(this.fatigue) | 0;
     result = result * 31 + Kotlin.hashCode(this.power) | 0;
-    result = result * 31 + Kotlin.hashCode(this.breakage) | 0;
     result = result * 31 + Kotlin.hashCode(this.affliction) | 0;
+    result = result * 31 + Kotlin.hashCode(this.trauma) | 0;
     result = result * 31 + Kotlin.hashCode(this.momentum) | 0;
     result = result * 31 + Kotlin.hashCode(this.modes) | 0;
     result = result * 31 + Kotlin.hashCode(this.condition) | 0;
@@ -1182,7 +1181,7 @@ var wetfe = function (_, Kotlin) {
     return result;
   };
   CharaState.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.health, other.health) && Kotlin.equals(this.damage, other.damage) && Kotlin.equals(this.fatigue, other.fatigue) && Kotlin.equals(this.power, other.power) && Kotlin.equals(this.breakage, other.breakage) && Kotlin.equals(this.affliction, other.affliction) && Kotlin.equals(this.momentum, other.momentum) && Kotlin.equals(this.modes, other.modes) && Kotlin.equals(this.condition, other.condition) && Kotlin.equals(this.recentlyConsumedPower, other.recentlyConsumedPower)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.health, other.health) && Kotlin.equals(this.damage, other.damage) && Kotlin.equals(this.fatigue, other.fatigue) && Kotlin.equals(this.power, other.power) && Kotlin.equals(this.affliction, other.affliction) && Kotlin.equals(this.trauma, other.trauma) && Kotlin.equals(this.momentum, other.momentum) && Kotlin.equals(this.modes, other.modes) && Kotlin.equals(this.condition, other.condition) && Kotlin.equals(this.recentlyConsumedPower, other.recentlyConsumedPower)))));
   };
   function CharaRepertoire(general, specialty, growth, soulbound, exceptional) {
     if (general === void 0) {
@@ -1561,23 +1560,23 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.getTier = function () {
     return this.cdata_4h55ob$_0.specialty.evaluate().tier;
   };
-  Character.prototype.getPower = function () {
-    return this.cdata_4h55ob$_0.state.power;
-  };
   Character.prototype.getHealth = function () {
     return this.cdata_4h55ob$_0.state.health;
-  };
-  Character.prototype.getBreakage = function () {
-    return this.cdata_4h55ob$_0.state.breakage;
   };
   Character.prototype.getDamage = function () {
     return this.cdata_4h55ob$_0.state.damage;
   };
+  Character.prototype.getFatigue = function () {
+    return this.cdata_4h55ob$_0.state.fatigue;
+  };
+  Character.prototype.getPower = function () {
+    return this.cdata_4h55ob$_0.state.power;
+  };
   Character.prototype.getAffliction = function () {
     return this.cdata_4h55ob$_0.state.affliction;
   };
-  Character.prototype.getFatigue = function () {
-    return this.cdata_4h55ob$_0.state.fatigue;
+  Character.prototype.getTrauma = function () {
+    return this.cdata_4h55ob$_0.state.trauma;
   };
   Character.prototype.getMomentum = function () {
     return this.cdata_4h55ob$_0.state.momentum;
@@ -1599,29 +1598,29 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.forceCondition_b0z1m5$ = function (cond) {
     return this.setCondition_etxpsk$(cond, true);
   };
-  Character.prototype.setPower_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.power = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$POWER_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.power;
-  };
   Character.prototype.setHealth_za3lpa$ = function (n) {
     this.cdata_4h55ob$_0.state.health = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$HEALTH_getInstance()).coerce_za3lpa$(n);
     return this.cdata_4h55ob$_0.state.health;
-  };
-  Character.prototype.setBreakage_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.breakage = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$BREAKAGE_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.breakage;
   };
   Character.prototype.setDamage_za3lpa$ = function (n) {
     this.cdata_4h55ob$_0.state.damage = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$DAMAGE_getInstance()).coerce_za3lpa$(n);
     return this.cdata_4h55ob$_0.state.damage;
   };
+  Character.prototype.setFatigue_za3lpa$ = function (n) {
+    this.cdata_4h55ob$_0.state.fatigue = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$FATIGUE_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_4h55ob$_0.state.fatigue;
+  };
+  Character.prototype.setPower_za3lpa$ = function (n) {
+    this.cdata_4h55ob$_0.state.power = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$POWER_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_4h55ob$_0.state.power;
+  };
   Character.prototype.setAffliction_za3lpa$ = function (n) {
     this.cdata_4h55ob$_0.state.affliction = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$AFFLICTION_getInstance()).coerce_za3lpa$(n);
     return this.cdata_4h55ob$_0.state.affliction;
   };
-  Character.prototype.setFatigue_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.fatigue = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$FATIGUE_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.fatigue;
+  Character.prototype.setTrauma_za3lpa$ = function (n) {
+    this.cdata_4h55ob$_0.state.trauma = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$TRAUMA_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_4h55ob$_0.state.trauma;
   };
   Character.prototype.setMomentum_za3lpa$ = function (n) {
     this.cdata_4h55ob$_0.state.momentum = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$MOMENTUM_getInstance()).coerce_za3lpa$(n);
@@ -1630,23 +1629,23 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.adjustBy_fe2609$ = function (param, n) {
     var tmp$;
     switch (param.name) {
-      case 'POWER':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.power + n | 0);
-        break;
       case 'HEALTH':
         tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.health + n | 0);
-        break;
-      case 'BREAKAGE':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.breakage + n | 0);
         break;
       case 'DAMAGE':
         tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.damage + n | 0);
         break;
+      case 'FATIGUE':
+        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.fatigue + n | 0);
+        break;
+      case 'POWER':
+        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.power + n | 0);
+        break;
       case 'AFFLICTION':
         tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.affliction + n | 0);
         break;
-      case 'FATIGUE':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.fatigue + n | 0);
+      case 'TRAUMA':
+        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.trauma + n | 0);
         break;
       case 'MOMENTUM':
         tmp$ = this.setMomentum_za3lpa$(this.cdata_4h55ob$_0.state.momentum + n | 0);
@@ -1671,23 +1670,23 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.getParam_nfoh2z$ = function (param) {
     var tmp$;
     switch (param.name) {
-      case 'POWER':
-        tmp$ = this.getPower();
-        break;
       case 'HEALTH':
         tmp$ = this.getHealth();
-        break;
-      case 'BREAKAGE':
-        tmp$ = this.getBreakage();
         break;
       case 'DAMAGE':
         tmp$ = this.getDamage();
         break;
+      case 'FATIGUE':
+        tmp$ = this.getFatigue();
+        break;
+      case 'POWER':
+        tmp$ = this.getPower();
+        break;
       case 'AFFLICTION':
         tmp$ = this.getAffliction();
         break;
-      case 'FATIGUE':
-        tmp$ = this.getFatigue();
+      case 'TRAUMA':
+        tmp$ = this.getTrauma();
         break;
       case 'MOMENTUM':
         tmp$ = this.getMomentum();
@@ -1703,23 +1702,23 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.setParam_fe2609$ = function (param, n) {
     var tmp$;
     switch (param.name) {
-      case 'POWER':
-        tmp$ = this.setPower_za3lpa$(n);
-        break;
       case 'HEALTH':
         tmp$ = this.setHealth_za3lpa$(n);
-        break;
-      case 'BREAKAGE':
-        tmp$ = this.setBreakage_za3lpa$(n);
         break;
       case 'DAMAGE':
         tmp$ = this.setDamage_za3lpa$(n);
         break;
+      case 'FATIGUE':
+        tmp$ = this.setFatigue_za3lpa$(n);
+        break;
+      case 'POWER':
+        tmp$ = this.setPower_za3lpa$(n);
+        break;
       case 'AFFLICTION':
         tmp$ = this.setAffliction_za3lpa$(n);
         break;
-      case 'FATIGUE':
-        tmp$ = this.setFatigue_za3lpa$(n);
+      case 'TRAUMA':
+        tmp$ = this.setTrauma_za3lpa$(n);
         break;
       case 'MOMENTUM':
         tmp$ = this.setMomentum_za3lpa$(n);
@@ -1772,50 +1771,6 @@ var wetfe = function (_, Kotlin) {
     this.getCoreHistory_wgquit$(param).add_b3s5im$(mod);
     this.valcache_lquuaz$_0.put_xwzc9p$(param, null);
     return this.evalCoreParam_wgquit$(param);
-  };
-  Character.prototype.fulminate = function () {
-    var brk = this.cdata_4h55ob$_0.state.breakage;
-    if (brk < 1)
-      return 0;
-    var ftg = 0;
-    for (var i = 0; i < brk; i++) {
-      if (Random.Default.nextInt_za3lpa$(4) < 1)
-        ftg = ftg + 1 | 0;
-    }
-    this.setBreakage_za3lpa$(0);
-    if (ftg < 1)
-      return 0;
-    var dmg = this.cdata_4h55ob$_0.state.damage;
-    if (dmg < 1) {
-      this.setCondition_etxpsk$(StateCondition$DEAD_getInstance());
-    }
-     else {
-      ftg = coerceAtMost(ftg, dmg);
-      var d2 = dmg - ftg | 0;
-      this.increment_fe2609$(StateParam$FATIGUE_getInstance(), ftg);
-      this.setDamage_za3lpa$(d2);
-      if (d2 < 1) {
-        this.setCondition_etxpsk$(StateCondition$COMATOSE_getInstance());
-      }
-    }
-    return ftg;
-  };
-  Character.prototype.gainPower_za3lpa$ = function (n) {
-    if (n < 0)
-      return 0;
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    var p1 = coerceAtMost(pwr + n | 0, this.cdata_4h55ob$_0.soulpool.evaluate());
-    return this.setPower_za3lpa$(p1) - pwr | 0;
-  };
-  Character.prototype.consumePower_za3lpa$ = function (n) {
-    if (n < 0)
-      return 0;
-    if (n > 0 && n < this.cdata_4h55ob$_0.state.power) {
-      this.cdata_4h55ob$_0.state.recentlyConsumedPower = true;
-    }
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    var p1 = coerceAtLeast(pwr - n | 0, 0);
-    return pwr - this.setPower_za3lpa$(p1) | 0;
   };
   Character.prototype.takeDamage_za3lpa$ = function (n) {
     if (n < 1)
@@ -1871,10 +1826,10 @@ var wetfe = function (_, Kotlin) {
     if (n < 1)
       return 0;
     var n1 = n;
-    var brk = this.cdata_4h55ob$_0.state.breakage;
-    if (brk > 0) {
-      var b1 = brk - n | 0;
-      this.setBreakage_za3lpa$(coerceAtLeast(b1, 0));
+    var afl = this.cdata_4h55ob$_0.state.affliction;
+    if (afl > 0) {
+      var b1 = afl - n | 0;
+      this.setAffliction_za3lpa$(coerceAtLeast(b1, 0));
       n1 = b1 >= 0 ? 0 : abs(b1);
     }
     if (n1 < 1)
@@ -1888,55 +1843,6 @@ var wetfe = function (_, Kotlin) {
       this.setCondition_etxpsk$(StateCondition$NORMAL_getInstance());
     }
     return n1;
-  };
-  Character.prototype.sufferBreak_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var brk = this.cdata_4h55ob$_0.state.breakage;
-    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
-    var b2 = brk + n | 0;
-    if (this.cdata_4h55ob$_0.state.health < 1) {
-      this.setBreakage_za3lpa$(b2);
-      this.fulminate();
-    }
-     else if (b2 > max) {
-      this.setBreakage_za3lpa$(max);
-      this.takeDamage_za3lpa$(b2 - max | 0);
-    }
-     else {
-      this.setBreakage_za3lpa$(b2);
-    }
-    return b2 - brk | 0;
-  };
-  Character.prototype.mendBreak_za3lpa$ = function (n) {
-    var brk = this.cdata_4h55ob$_0.state.breakage;
-    if (n < 1 || brk < 1)
-      return 0;
-    var b2 = coerceAtLeast(brk - n | 0, 0);
-    return brk - this.setBreakage_za3lpa$(b2) | 0;
-  };
-  Character.prototype.contractAffliction_za3lpa$ = function (n) {
-    var tmp$;
-    if (n < 1)
-      return 0;
-    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
-    var a2 = this.cdata_4h55ob$_0.state.affliction + n | 0;
-    if (a2 > max) {
-      this.setCondition_etxpsk$(StateCondition$UNCONSCIOUS_getInstance());
-      tmp$ = this.setAffliction_za3lpa$(max);
-    }
-     else {
-      tmp$ = this.setAffliction_za3lpa$(a2);
-    }
-    return tmp$;
-  };
-  Character.prototype.eradicateAffliction_za3lpa$ = function (n) {
-    var afl = this.cdata_4h55ob$_0.state.affliction;
-    if (n < 1 || afl < 1)
-      return 0;
-    var a1 = coerceAtLeast(afl - n | 0, 0);
-    this.setAffliction_za3lpa$(a1);
-    return afl - a1 | 0;
   };
   Character.prototype.accumulateFatigue_za3lpa$ = function (n) {
     if (n < 1)
@@ -1995,6 +1901,99 @@ var wetfe = function (_, Kotlin) {
       this.setCondition_etxpsk$(StateCondition$NORMAL_getInstance(), true);
     }
     return f2;
+  };
+  Character.prototype.gainPower_za3lpa$ = function (n) {
+    if (n < 0)
+      return 0;
+    var pwr = this.cdata_4h55ob$_0.state.power;
+    var p1 = coerceAtMost(pwr + n | 0, this.cdata_4h55ob$_0.soulpool.evaluate());
+    return this.setPower_za3lpa$(p1) - pwr | 0;
+  };
+  Character.prototype.consumePower_za3lpa$ = function (n) {
+    if (n < 0)
+      return 0;
+    if (n > 0 && n < this.cdata_4h55ob$_0.state.power) {
+      this.cdata_4h55ob$_0.state.recentlyConsumedPower = true;
+    }
+    var pwr = this.cdata_4h55ob$_0.state.power;
+    var p1 = coerceAtLeast(pwr - n | 0, 0);
+    return pwr - this.setPower_za3lpa$(p1) | 0;
+  };
+  Character.prototype.sustainAffliction_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var brk = this.cdata_4h55ob$_0.state.affliction;
+    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
+    var b2 = brk + n | 0;
+    if (this.cdata_4h55ob$_0.state.health < 1) {
+      this.setAffliction_za3lpa$(b2);
+      this.fulminate();
+    }
+     else if (b2 > max) {
+      this.setAffliction_za3lpa$(max);
+      this.takeDamage_za3lpa$(b2 - max | 0);
+    }
+     else {
+      this.setAffliction_za3lpa$(b2);
+    }
+    return b2 - brk | 0;
+  };
+  Character.prototype.cureAffliction_za3lpa$ = function (n) {
+    var afl = this.cdata_4h55ob$_0.state.affliction;
+    if (n < 1 || afl < 1)
+      return 0;
+    var b2 = coerceAtLeast(afl - n | 0, 0);
+    return afl - this.setAffliction_za3lpa$(b2) | 0;
+  };
+  Character.prototype.sufferTrauma_za3lpa$ = function (n) {
+    var tmp$;
+    if (n < 1)
+      return 0;
+    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
+    var t2 = this.cdata_4h55ob$_0.state.trauma + n | 0;
+    if (t2 > max) {
+      this.setCondition_etxpsk$(StateCondition$UNCONSCIOUS_getInstance());
+      tmp$ = this.setTrauma_za3lpa$(max);
+    }
+     else {
+      tmp$ = this.setTrauma_za3lpa$(t2);
+    }
+    return tmp$;
+  };
+  Character.prototype.alleviateTrauma_za3lpa$ = function (n) {
+    var trm = this.cdata_4h55ob$_0.state.trauma;
+    if (n < 1 || trm < 1)
+      return 0;
+    var a1 = coerceAtLeast(trm - n | 0, 0);
+    this.setTrauma_za3lpa$(a1);
+    return trm - a1 | 0;
+  };
+  Character.prototype.fulminate = function () {
+    var afl = this.cdata_4h55ob$_0.state.affliction;
+    if (afl < 1)
+      return 0;
+    var ftg = 0;
+    for (var i = 0; i < afl; i++) {
+      if (Random.Default.nextInt_za3lpa$(4) < 1)
+        ftg = ftg + 1 | 0;
+    }
+    this.setAffliction_za3lpa$(0);
+    if (ftg < 1)
+      return 0;
+    var dmg = this.cdata_4h55ob$_0.state.damage;
+    if (dmg < 1) {
+      this.setCondition_etxpsk$(StateCondition$DEAD_getInstance());
+    }
+     else {
+      ftg = coerceAtMost(ftg, dmg);
+      var d2 = dmg - ftg | 0;
+      this.increment_fe2609$(StateParam$FATIGUE_getInstance(), ftg);
+      this.setDamage_za3lpa$(d2);
+      if (d2 < 1) {
+        this.setCondition_etxpsk$(StateCondition$COMATOSE_getInstance());
+      }
+    }
+    return ftg;
   };
   Character.prototype.flowMomentum_za3lpa$ = function (n) {
     return n < 1 ? 0 : this.increment_fe2609$(StateParam$MOMENTUM_getInstance(), n);
@@ -2142,24 +2141,6 @@ var wetfe = function (_, Kotlin) {
       this.initiative_mk9t44$_0 = initiative;
     }
   });
-  CharacterParticipant.prototype.sufferAffliction_za3lpa$ = function (n) {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
-  CharacterParticipant.prototype.cureAffliction_za3lpa$ = function (n) {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
-  CharacterParticipant.prototype.getTrauma = function () {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
-  CharacterParticipant.prototype.setTrauma_za3lpa$ = function (n) {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
-  CharacterParticipant.prototype.sustainTrauma_za3lpa$ = function (n) {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
-  CharacterParticipant.prototype.relieveTrauma_za3lpa$ = function (n) {
-    throw new NotImplementedError_init('An operation is not implemented: ' + 'not implemented');
-  };
   CharacterParticipant.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'CharacterParticipant',
@@ -2351,23 +2332,23 @@ var wetfe = function (_, Kotlin) {
     get: StatMode$Companion_getInstance
   });
   package$chara.StatMode = StatMode;
-  Object.defineProperty(StateParam, 'POWER', {
-    get: StateParam$POWER_getInstance
-  });
   Object.defineProperty(StateParam, 'HEALTH', {
     get: StateParam$HEALTH_getInstance
-  });
-  Object.defineProperty(StateParam, 'BREAKAGE', {
-    get: StateParam$BREAKAGE_getInstance
   });
   Object.defineProperty(StateParam, 'DAMAGE', {
     get: StateParam$DAMAGE_getInstance
   });
+  Object.defineProperty(StateParam, 'FATIGUE', {
+    get: StateParam$FATIGUE_getInstance
+  });
+  Object.defineProperty(StateParam, 'POWER', {
+    get: StateParam$POWER_getInstance
+  });
   Object.defineProperty(StateParam, 'AFFLICTION', {
     get: StateParam$AFFLICTION_getInstance
   });
-  Object.defineProperty(StateParam, 'FATIGUE', {
-    get: StateParam$FATIGUE_getInstance
+  Object.defineProperty(StateParam, 'TRAUMA', {
+    get: StateParam$TRAUMA_getInstance
   });
   Object.defineProperty(StateParam, 'MOMENTUM', {
     get: StateParam$MOMENTUM_getInstance

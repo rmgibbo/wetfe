@@ -66,8 +66,8 @@ debuff, enfeeble
 defense roll
 : A d20 roll against the hardiness or mettle table that determines the magnitude of mitigation of incoming damage. Generally, all anatomical damage is mitigated with a defense roll governed by constitution; all psychological damage is mitigated with a defense roll governed by willpower; and the remaining damage types—infernal, celestial, and exotic—bypass defenses. Overrolls result in the minimum level of the defense table.
 
-deque (pronounced "deck")
-: A vertical column of chips. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
+deque
+: _Pronounced "deck"._ A vertical column of chips. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
 
 dexterity, DEX
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.

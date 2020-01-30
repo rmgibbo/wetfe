@@ -1,7 +1,7 @@
 # Glossary
 
 | Term | Definition | 
-|:--- |:--- |
+| :--- | :--- |
 | **ability** | Something a given character can do -- or a passive characteristic they may exhibit -- to affect combat, social, or environmental encounters. The four main types of abilities are: actions, feats, reactions, and traits. Actions are further delineated into techniques and spells. |
 | **ability list/sheet** | The list of abilities that are available to a given player character during encounters. Due to the extensible nature of feats, there are necessarily many available abilities that will not appear in this list. |
 | **ability point (AP)** | Awarded every even level to player characters. Used to acquire abilities from the ability tree. |

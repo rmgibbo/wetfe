@@ -1,7 +1,7 @@
 # Glossary
 
 ability
-: Something a given character can do -- or a passive characteristic they may exhibit -- to affect combat, social, or environmental encounters. The four main types of abilities are: actions, feats, reactions, and traits. Actions are further delineated into techniques and spells.
+: Something a given character can do -- or a passive characteristic they may exhibit -- to affect combat, social, or environmental encounters. The four types of abilities are: skills, feats, reactions, and traits.
 
 ability list/sheet
 : The list of abilities that are available to a given player character during encounters. Due to the extensible nature of feats, there are necessarily many available abilities that will not appear in this list.
@@ -10,16 +10,10 @@ ability point (AP)
 : Awarded every even level to player characters. Used to acquire abilities from the ability tree.
 
 ability tree, ATree
-: The set of abilities -- actions, reactions, and traits -- arranged by their requirements, that all player characters may acquire with ability points.
+: The set of abilities -- skills, reactions, and traits -- arranged by their requirements, that all player characters may acquire with ability points.
 
 above/below
 : Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a stack, relative to a different type of chip.
-
-action
-: An ability executed by beings in combat, social, or environmental encounters. Actions are either techniques or spells, and are resolved with a roll against a result table. (Feats are similar to actions, but are resolved in a different manner.)
-
-action roll
-: A d20 roll that determines the results ℜ of an action, based on the action’s result table. Overrolls (rolls that are higher than the actor’s score in the governing attribute) set ℜ to the minimum level of the table.
 
 affliction
 : Short-term deleterious effects, such as poisons, bleeding wounds, confusion or panic attacks. Affliction is only maintained during encounters, where it retards healing.
@@ -40,7 +34,7 @@ buff, enhance
 : To cause the enhancement of one or more core attributes.
 
 channelling, channel
-: The state of heightened focus a being must enter to resolve spells or techniques that require more power chips Ⓟ than are currently available. Once channelling, the caster or performer immediately ends their turn, though their action is not considered resolved yet. Immediately upon their next turn, they cease channelling, gain a number of power chips Ⓟ equal to their number of healthy soul chips Ⓢ, and resume the action they began on their previous turn.
+: The state of heightened focus a being must enter to resolve skills that require more power chips Ⓟ than are currently available. Once channelling, the caster or performer immediately ends their turn, though their skill is not considered resolved yet. Immediately upon their next turn, they cease channelling, gain a number of power chips Ⓟ equal to their number of healthy soul chips Ⓢ, and resume the skill they began on their previous turn.
 
 character
 : A being of some significance to an adventure or the game at large. Player characters (PCs) are controlled by the players, whereas non-player characters (NPCs) are generally controlled by the game master.
@@ -49,7 +43,7 @@ combatant
 : A being involved in a combat encounter.
 
 contingent effect
-: An additional effect of an action that occurs if and only if the opponent is unable to completely negate the damage the primary effect causes.
+: An additional effect of a skill that occurs if and only if the opponent is unable to completely negate the damage the primary effect causes.
 
 constitution, CON
 : The quality encompassing a being’s physical health, strength, endurance, and tolerance to alcohol and other bodily poisons.
@@ -72,6 +66,9 @@ debuff, enfeeble
 defense roll
 : A d20 roll against the hardiness or mettle table that determines the magnitude of mitigation of incoming damage. Generally, all anatomical damage is mitigated with a defense roll governed by constitution; all psychological damage is mitigated with a defense roll governed by willpower; and the remaining damage types—infernal, celestial, and exotic—bypass defenses. Overrolls result in the minimum level of the defense table.
 
+deque (pronounced "deck")
+: A vertical column of chips. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
+
 dexterity, DEX
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.
 
@@ -79,10 +76,10 @@ encounter
 : Any combat, social, or environmental event that challenges the wit, prowess, and the luck of an adventuring party.
 
 enfeeblement, enfeebled attribute
-: An effect that temporarily weakens one or more core attributes of a being. Any actions governed by an enfeebled attribute are penalized by rolling an additional d6 against the enfeeblement table, which is applied to the accompanying d20 result ℜ.
+: An effect that temporarily weakens one or more core attributes of a being. Any skills governed by an enfeebled attribute are penalized by rolling an additional d6 against the enfeeblement table, which is applied to the accompanying d20 result ℜ.
 
 enhancement, enhanced attribute
-: An effect that temporarily intensifies one or more core attributes of a being. Any actions governed by an enhanced attribute are augmented by rolling an additional d6 against the enhancement table, which is applied to the accompanying d20 result ℜ.
+: An effect that temporarily intensifies one or more core attributes of a being. Any skills governed by an enhanced attribute are augmented by rolling an additional d6 against the enhancement table, which is applied to the accompanying d20 result ℜ.
 
 experience, EXP
 : Acquired by the characters in an adventuring party after completing an encounter. Typical encounters award one, two, or three experience points. TODO: Describe the loosely-coupled exp/level system here.
@@ -130,7 +127,7 @@ overkill
 : A killing blow that would have otherwise staggered its target. Overkills grant the same morale-based healing as staggers, and the killer is hastened; and there may be other circumstantial ramifications, such as inspiring fear in the allies of the overkilled being.
 
 overroll
-: A d20 roll that is higher than the being’s score in their governing attribute. Typically, overrolls result in the minimum level of an action table, or reaction table; or they represent a marginal attempt at a feat.
+: A d20 roll that is higher than the being’s score in their governing attribute. Typically, overrolls result in the minimum level of a skill or reaction table; or they represent a marginal attempt at a feat.
 
 sound rest
 : A period of repose that is sufficient to rejuvenate an adventuring party. Generally, it restores all soul chips Ⓢ to each PC’s health stack.
@@ -148,13 +145,19 @@ power limit
 : The maximum number of power chips Ⓟ a being may accumulate. Generally, every being’s power limit is equal to the size of their soulpool.
 
 queue
-: The act of adding a soul chip Ⓢ to the bottom of a stack. (Soul chips always accumulate in this manner; i.e. they never stack.)
+: The act of adding a soul chip Ⓢ to the bottom of a deque. Soul chips always accumulate in this manner; i.e. they never stack.
 
 reaction
 : A type of ability, governed by dexterity or intelligence, that may be attempted any time its trigger occurs in an encounter.
 
 reaction roll
 : A d20 roll against the reaction table that determines the success of a reaction. Overrolls yield the minimum level of the table.
+
+skill
+: A practiced ability executed by beings in combat, social, or environmental encounters. Skills are resolved with a roll against a result table.
+
+skill roll
+: A d20 roll that determines the results ℜ of a skill, based on the skill’s result table. Overrolls (rolls that are higher than the actor’s score in the governing attribute) set ℜ to the minimum level of the table.
 
 soul, soulpool
 : A being’s overall lifeforce. Measured by a number of soul chips Ⓢ, where more chips represent a more formidable being with greater reserves of physical and mental energy. Generally, the size of a being’s soulpool directly sets its power limit.
@@ -168,14 +171,8 @@ soulbinding
 sound rest
 : A period of peace and relaxation sufficient to recuperate most of a being's mental and physical reserves. For example, a sound rest for a human typically involves eight hours of uninterrupted "good" sleep.
 
-spell
-: A mental action, cast by a being on their turn during an encounter. Some powerful spells require that they be channeled after they are cast in order to fully resolve their effects.
-
 stack
-: A vertical column of chips. The position of the different types of chips in a stack is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
-
-stack
-: The act of adding a chip to the top of a stack. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.
+: The act of adding a chip to the top of a deque. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.
 
 staggered, stagger
 : The state an NPC combatant enters upon suffering damage equal to or greater than its stagger threshold in a single turn. It is delayed, and suffers a +1 vulnerability to its anatomical and psychological damage adjustments. Additionally, all opponents that are aware of the staggering receive a morale boost in the form of 1 healing.
@@ -183,14 +180,11 @@ staggered, stagger
 stagger threshold, STh
 : A property of NPC combatants that sets how much damage they must suffer on a single turn to become staggered.
 
-technique
-: A physical action, performed by a being on their turn during an encounter.
-
 trait
-: A type of ability that grants a passive effect to a character. Traits are not rolled (as actions and reactions are), and typically modify other abilities -- or the general rules of the game -- for a character.
+: A type of ability that grants a passive effect to a character. Traits are not rolled (as skills and reactions are), and typically modify other abilities -- or the general rules of the game -- for a character.
 
 trauma
-: Long-term crippling effects, such as from grave injuries or overwhelmingly stressful events. Trauma prevents a character from enjoying the full recuperating effects of sound rests, and are typically difficult to cure.
+: Long-term crippling effects, such as from grave injuries or overwhelmingly stressful events. Trauma prevents a character from enjoying the full recuperating effects of sound rests, and are typically difficult to alleviate.
 
 trauma chip, Ⓣ
 : The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue stack, where each trauma chip prevents one soul chip from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.

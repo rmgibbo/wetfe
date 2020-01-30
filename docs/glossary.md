@@ -13,19 +13,19 @@ ability tree, ATree
 : The set of abilities -- skills, reactions, and traits -- arranged by their requirements, that all player characters may acquire with ability points.
 
 above/below
-: Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a stack, relative to a different type of chip.
+: Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a deque, relative to a different type of chip.
 
 affliction
 : Short-term deleterious effects, such as poisons, bleeding wounds, confusion or panic attacks. Affliction is only maintained during encounters, where it retards healing.
 
 affliction chip, Ⓐ
-: The unit and representation of affliction. They accumulate above soul chips Ⓢ on the damage stack, where each affliction chip dissipates after absorbing one point of healing. They are only maintained during encounters.
+: The unit and representation of affliction. They accumulate above soul chips Ⓢ on the damage deque, where each affliction chip dissipates after absorbing one point of healing. They are only maintained during encounters.
 
 being
 : A broad term used to identify creatures and constructs of various levels of sentience. Typically, one or more core attributes aptly characterize a being.
 
 below/above
-: Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a stack, relative to a different type of chip.
+: Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a deque, relative to a different type of chip.
 
 bloodfont
 : A type of font found on equipment that typically augments or grants physical abilities.
@@ -55,10 +55,10 @@ core natures
 : `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
 
 damage, dmg
-: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health stack to their damage stack. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in five types: anatomical, psychological, infernal, celestial, and exotic.
+: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in five types: anatomical, psychological, infernal, celestial, and exotic.
 
-damage stack
-: The stack of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this stack can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
+damage deque
+: The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
 
 debuff, enfeeble
 : To cause the enfeeblement of one or more core attributes.
@@ -87,32 +87,32 @@ experience, EXP
 fatigue, ftg
 : Represents the temporary loss of soul chips Ⓢ due to extreme exertion of physical and mental faculties. Accumulates during the stressful events that occur between peaceful periods of adventuring. Automatically restored after each sound rest.
 
-fatigue stack
-: The stack of soul chips Ⓢ and trauma chips Ⓣ that represents exhausted lifeforce and long-term maladies. The chips of this stack persist in between encounters, and require specific conditions to cure: the soul chips are generally restored by enjoying a sound rest; and the trauma chips must be explicitly cured by specialized means.
+fatigue deque
+: The deque of soul chips Ⓢ and trauma chips Ⓣ that represents exhausted lifeforce and long-term maladies. The chips of this deque persist in between encounters, and require specific conditions to cure: the soul chips are generally restored by enjoying a sound rest; and the trauma chips must be explicitly cured by specialized means.
 
 feat, Ғ
-: An action accomplished by winning a contest, or overcoming a challenge. Feats are meant to be a flexible and extensible mechanic in the game, that cover anything characters may try to accomplish in a given situation, including combat, social, and environmental encounters. There are four types of feats that may be utilized at any time: 1) Feats of Strength & Endurance, which are governed by constitution; 2) Feats of Skill & Precision, which are governed by dexterity; 3) Feats of Perception & Logic, which are governed by intelligence; and 4) Feats of Charisma & Courage, which are governed by willpower.
+: An action accomplished by winning a contest, or overcoming a challenge. Feats are meant to be a flexible and extensible mechanic in the game, that cover anything characters may try to accomplish in a given situation, including combat, social, and environmental encounters. There are four types of feats that may be utilized at any time: 1) feats of strength & endurance, which are governed by constitution; 2) feats of subtlety & finesse, which are governed by dexterity; 3) feats of perception & logic, which are governed by intelligence; and 4) feats of charisma & courage, which are governed by willpower.
 
-Feats of Strength & Endurance, Ғ:CON
+feats of strength & endurance, Ғ:CON
 : A character’s attempt to win a contest, or overcome a challenge using their strength and endurance. For example, a character may attempt to pin an opponent by grappling them. The character would roll a CON check, as would their opponent. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:CON challenge.]
 
-Feats of Skill & Precision, Ғ:DEX
+feats of subtlety & finesse, Ғ:DEX
 : A character’s attempt to win a contest, or overcome a challenge using their skill and precision. For example, a character may attempt to pickpocket another being. The character would roll a DEX check, while their opponent would roll an INT check to test their perception of the theft. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:DEX challenge.]
 
-Feats of Perception & Logic, Ғ:INT
+feats of perception & logic, Ғ:INT
 : A character’s attempt to win a contest, or overcome a challenge using their perception and logic. For example, a character may to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would roll a state check against a set challenge score. Overrolls result in ℜ = 0. The character wins the challenge if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:INT contest.]
 
-Feats of Charisma & Courage, Ғ:WIL
+feats of charisma & courage, Ғ:WIL
 : A character’s attempt to win a contest, or overcome a challenge using their charisma and courage. For example, a character may attempt to intimidate another being. The character would roll a WIL check, while their opponent would also roll a WIL check to test their mettle against the intimidation. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:WIL challenge.]
 
 font
 : Vessels of untapped energy that can be found on equipment. Powerful beings may use part of their soul to innervate a font, thereby tapping into its energy and harnessing its effects.
 
 healing, heal
-: The process of restoring damaged soul chips (Ⓢ in the damage stack) to the health stack. Healing affects the chips of the damage stack point-per-chip, from the top down, and according to their type. Affliction chips Ⓐ simply pop, whereas soul chips pop and queue into the health stack.
+: The process of restoring damaged soul chips (Ⓢ in the damage deque) to the health deque. Healing affects the chips of the damage deque point-per-chip, from the top down, and according to their type. Affliction chips Ⓐ simply pop, whereas soul chips pop and queue into the health deque.
 
-health stack
-: The stack of soul chips Ⓢ and power chips Ⓟ that represents healthy or empowered lifeforce. Generally, characters begin every encounter with all of their soul chips in this stack, and may temporarily accumulate one or more power chips above them.
+health deque
+: The deque of soul chips Ⓢ and power chips Ⓟ that represents healthy or empowered lifeforce. Generally, characters begin every encounter with all of their soul chips in this deque, and may temporarily accumulate one or more power chips above them.
 
 innervated
 : The state of a font that has been tapped by a being, using the energy of its soul.
@@ -130,7 +130,7 @@ overroll
 : A d20 roll that is higher than the being’s score in their governing attribute. Typically, overrolls result in the minimum level of a skill or reaction table; or they represent a marginal attempt at a feat.
 
 sound rest
-: A period of repose that is sufficient to rejuvenate an adventuring party. Generally, it restores all soul chips Ⓢ to each PC’s health stack.
+: A period of repose that is sufficient to rejuvenate an adventuring party. Generally, it restores all soul chips Ⓢ to each PC’s health deque.
 
 player character, PC
 : Any character controlled by a player, as opposed to the game master.
@@ -139,7 +139,7 @@ power, power field
 : The manifestation of a heightened soul, capable of absorbing incoming damage, as well as fueling abilities that require bursts of intense energy. This field is potent, but ephemeral. Power is only maintained momentarily during encounters, and once consumed in any amount from any source, it entirely dissipates at the end of the current turn. The magnitude of power is measured with power chips Ⓟ, and is limited by the empowered being’s power limit.
 
 power chip, Ⓟ
-: The unit and representation of power. They accumulate above soul chips Ⓢ on the health stack, where each power chip dissipates after absorbing one point of damage, and at the end of any turn in which any power chips were consumed. They are only maintained during encounters. A being may only accumulate as many power chips as their power limit.
+: The unit and representation of power. They accumulate above soul chips Ⓢ on the health deque, where each power chip dissipates after absorbing one point of damage, and at the end of any turn in which any power chips were consumed. They are only maintained during encounters. A being may only accumulate as many power chips as their power limit.
 
 power limit
 : The maximum number of power chips Ⓟ a being may accumulate. Generally, every being’s power limit is equal to the size of their soulpool.
@@ -163,10 +163,10 @@ soul, soulpool
 : A being’s overall lifeforce. Measured by a number of soul chips Ⓢ, where more chips represent a more formidable being with greater reserves of physical and mental energy. Generally, the size of a being’s soulpool directly sets its power limit.
 
 soul chip, Ⓢ
-: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three stacks (health, damage, fatigue), as well as any fonts they have innervated. For example, soul chips in the health stack represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue stack indicate a critical state of enervation.
+: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three deques (health, damage, fatigue), as well as any fonts they have innervated. For example, soul chips in the health deque represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue deque indicate a critical state of enervation.
 
 soulbinding
-: The process whereby a character innervates a font with their soul: they remove soul chips Ⓢ from their health stack and dedicate them to a bloodfont or a manafont found within their equipment. Once innervated, each font typically grants power to the character, who becomes thus specially bound to their equipment.
+: The process whereby a character innervates a font with their soul: they remove soul chips Ⓢ from their health deque and dedicate them to a bloodfont or a manafont found within their equipment. Once innervated, each font typically grants power to the character, who becomes thus specially bound to their equipment.
 
 sound rest
 : A period of peace and relaxation sufficient to recuperate most of a being's mental and physical reserves. For example, a sound rest for a human typically involves eight hours of uninterrupted "good" sleep.
@@ -187,7 +187,7 @@ trauma
 : Long-term crippling effects, such as from grave injuries or overwhelmingly stressful events. Trauma prevents a character from enjoying the full recuperating effects of sound rests, and are typically difficult to alleviate.
 
 trauma chip, Ⓣ
-: The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue stack, where each trauma chip prevents one soul chip from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
+: The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue deque, where each trauma chip prevents one soul chip from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
 
 willpower, WIL
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.

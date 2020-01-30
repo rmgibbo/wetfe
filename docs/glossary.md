@@ -51,8 +51,8 @@ constitution, CON
 core attribute
 : An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured (anthropomorphically) on a scale from 1 to 20, where 10 roughly indicates a capable adventurer.
 
-core attribute natures
-: 0: absent  1, 2: paltry  3, 4: rudimentary  5, 6: inferior  7, 8: unremarkable  9, 10: respectable  11, 12: considerable  13 ,14: formidable  15, 16: phenomenal  17, 18, 19: prodigious  20: miraculous
+core natures
+: `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
 
 damage, dmg
 : The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health stack to their damage stack. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in five types: anatomical, psychological, infernal, celestial, and exotic.
@@ -67,7 +67,7 @@ defense roll
 : A d20 roll against the hardiness or mettle table that determines the magnitude of mitigation of incoming damage. Generally, all anatomical damage is mitigated with a defense roll governed by constitution; all psychological damage is mitigated with a defense roll governed by willpower; and the remaining damage types—infernal, celestial, and exotic—bypass defenses. Overrolls result in the minimum level of the defense table.
 
 deque
-: _Pronounced "deck"._ A vertical column of chips. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
+: _Pronounced "deck."_ A vertical column of chips. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
 
 dexterity, DEX
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.

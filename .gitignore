@@ -37,3 +37,6 @@ mvnw.cmd
 
 ### Project-Specific ###
 src/main/resources/static/kotlin.js
+src/main/resources/static/wetfe.js
+src/main/resources/static/wetfe.meta.js
+src/main/resources/static/images/

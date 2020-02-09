@@ -1,4 +1,4 @@
-package wetfe.core.chara
+package wetfe.core.character
 //
 //class CharacterDocumentManager {
 //    private _documents: CharacterDocument[] = [];

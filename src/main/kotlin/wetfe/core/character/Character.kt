@@ -1,61 +1,10 @@
-package wetfe.core.chara
+package wetfe.core.character
 
+import wetfe.core.game.DataSource
+import wetfe.core.universe.Event
+import wetfe.core.universe.Physicality
 import kotlin.math.absoluteValue
 import kotlin.random.Random
-
-/**
- *  Modification
- *  ------------------------------------
- */
-data class Modification<T>(val value: T, val type: String, val notes: String = "", val timestamp: Long)
-
-/**
- *  ModHistory
- *  ------------------------------------
- */
-abstract class ModHistory<T> {
-    open val mods: MutableList<Modification<T>> = mutableListOf()
-
-    open fun add(mod: Modification<T>) {
-        mods.add(mod)
-    }
-
-    open fun history() : Iterator<Modification<T>> {
-        return mods.iterator()
-    }
-
-    abstract fun evaluate() : T
-}
-
-/**
- *  Evolution
- *  ------------------------------------
- */
-class Evolution<T> : ModHistory<T>() {
-    override fun evaluate() : T {
-        return mods.last().value
-    }
-}
-
-/**
- *  Summation
- *  ------------------------------------
- */
-class Summation : ModHistory<Int>() {
-    override fun evaluate() : Int {
-        var total = 0
-        for (mod: Modification<Int> in mods) {
-            total += mod.value
-        }
-        return total
-    }
-}
-
-/**
- *  CharaSpec
- *  -----------------------------------
- */
-data class CharaSpec(var tier: Int, var name: String, var custom_name: String = "")
 
 /**
  *  CoreParam
@@ -63,9 +12,9 @@ data class CharaSpec(var tier: Int, var name: String, var custom_name: String = 
  *  The core numerical parameters of a Character.
  */
 enum class CoreParam(val key: String) {
-    SOUL_POOL("SP"),
     LEVEL("LVL"),
     EXPERIENCE("EXP"),
+    SOULPOOL("SP"),
     CONSTITUTION("CON"),
     DEXTERITY("DEX"),
     INTELLIGENCE("INT"),
@@ -120,9 +69,9 @@ enum class QuadStat(val key: String) {
  *  The modes that affect the operation of a Character's core parameters.
  */
 enum class StatMode(val key: String) {
-    NATURAL("NATURAL"),
-    ENHANCED("ENHANCED"),
-    ENFEEBLED("ENFEEBLED");
+    NATURAL("="),
+    ENHANCED("+"),
+    ENFEEBLED("-");
 
     companion object {
         private val LOOKUP_MAP: Map<String, StatMode>
@@ -176,14 +125,29 @@ enum class StateParam(val key: String) {
  *  The priority-based conditions that affect Characters.
  */
 enum class StateCondition(val key: String, val priority: Int) {
-    NORMAL("NORMAL", 0),
-    BLITZING("BLITZING", 30),
-    TURTLING("TURTLING", 30),
-    CHANNELING("CHANNELING", 30),
-    STAGGERED("STAGGERED", 60),
-    UNCONSCIOUS("UNCONSCIOUS", 70),
-    COMATOSE("COMATOSE", 80),
-    DEAD("DEAD", 90);
+    NORMAL("=", 0),
+    BLITZING("!", 30),
+    TURTLING("@", 30),
+    CHANNELING("^", 30),
+    STAGGERED("$", 60),
+    UNCONSCIOUS("*", 70),
+    COMATOSE("~", 80),
+    DEAD("_", 90);
+
+    companion object {
+        private val lookupMap: Map<String, StateCondition>
+        init {
+            val initMap: MutableMap<String, StateCondition> = mutableMapOf()
+            for (condition in values()) {
+                initMap[condition.key] = condition
+            }
+            lookupMap = initMap.toMap()
+        }
+
+        fun lookup(key: String) : StateCondition? {
+            return lookupMap[key]
+        }
+    }
 }
 
 const val MAX_INT = 65535
@@ -209,9 +173,9 @@ object Attribute {
         companion object {
             fun of(param: CoreParam) : Limit {
                 return when (param) {
-                    CoreParam.SOUL_POOL -> POS_UNBOUNDED
                     CoreParam.LEVEL -> POS_UNBOUNDED
                     CoreParam.EXPERIENCE -> POS_UNBOUNDED
+                    CoreParam.SOULPOOL -> POS_UNBOUNDED
                     CoreParam.CONSTITUTION -> CORE
                     CoreParam.DEXTERITY -> CORE
                     CoreParam.INTELLIGENCE -> CORE
@@ -305,11 +269,19 @@ data class StatModeState(var conMode: StatMode = StatMode.NATURAL,
 }
 
 /**
+ *  CharaSpec
+ *  -----------------------------------
+ */
+data class CharaSpec(var tier: Int,
+                     var name: String,
+                     var customName: String = "")
+
+/**
  *  CharaState
  *  ------------------------------------
  *  Captures the momentary state of a Character during encounters.
  */
-data class CharaState(var health: Int = 5,
+data class CharaState(var health: Int = 0,
                       var damage: Int = 0,
                       var fatigue: Int = 0,
                       var power: Int = 0,
@@ -318,7 +290,7 @@ data class CharaState(var health: Int = 5,
                       var momentum: Int = 0,
                       var modes: StatModeState = StatModeState(),
                       var condition: StateCondition = StateCondition.NORMAL,
-                      var recentlyConsumedPower: Boolean = false)
+                      var tapped: Boolean = false)
 /**
  *  CharaRepertoire
  *  ------------------------------------
@@ -331,46 +303,37 @@ data class CharaRepertoire(val general: MutableList<String> = mutableListOf(),
                            val exceptional: MutableList<String> = mutableListOf())
 
 /**
- * Events are given by a "displacement 4-vector from origin", where the origin
- *   is the "Big Bang" = [0 0 0 0]. This simplifies to a 4-position in the
- *   appropriate spacetime manifold.
- *   I guess.
- *   This needs work.
- */
-data class Event(val x: Int = 0,
-                 val y: Int = 0,
-                 val z: Int = 0,
-                 val t: Int = 0)
-
-/**
  *  CharaData
  *  ------------------------------------
  *  The serializable data of a Character.
  *  Stored in a .chara.json file.
  */
 data class CharaData(val id: String = newId(),
+                     var source: DataSource = DataSource.PLAYER,
+                     var physicality: Physicality = Physicality.CONFLUENT,
                      var fullName: String = "Full Name",
                      var commonName: String = "Common Name",
                      var shortName: String = "Short Name",
                      var homeworld: String = "Homeworld",
                      var species: String = "Species",
                      var birthEvent: Event = Event(),
-                     var properMass: Number = 1,
-                     var properAge: Number = 1,
-                     var livingAge: Number = 1,
-                     var properHeight: Number = 1,
-                     var commonHeight: Number = 1,
-                     var commonCalendarAge: Number = 1,
+                     var properMass: Double = 1.0,
+                     var properAge: Double = 1.0,
+                     var livingAge: Double = 1.0,
+                     var properHeight: Double = 1.0,
+                     var commonHeight: Double = 1.0,
+                     var commonCalendarAge: Int = 1,
                      var titles: MutableList<String> = mutableListOf(),
                      var renown: MutableList<String> = mutableListOf(),
-                     var level: Evolution<Int> = Evolution(),
-                     var specialty: Evolution<CharaSpec> = Evolution(), // "class"
-                     var experience: Summation = Summation(),
-                     var soulpool: Summation = Summation(),
-                     var constitution: Summation = Summation(),
-                     var dexterity: Summation = Summation(),
-                     var intelligence: Summation = Summation(),
-                     var willpower: Summation = Summation(),
+                     var characteristics: MutableList<String> = mutableListOf(),
+                     var specialties: MutableList<CharaSpec> = mutableListOf(),
+                     var level: Int = 1,
+                     var experience: Int = 0,
+                     var soulpool: Int = 5,
+                     var constitution: Int = 10,
+                     var dexterity: Int = 10,
+                     var intelligence: Int = 10,
+                     var willpower: Int = 10,
                      var staggerThreshold: Int = 0,
                      var state: CharaState = CharaState(),
                      var repertoire: CharaRepertoire = CharaRepertoire(),
@@ -413,8 +376,8 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     fun getName() : String {
-        return if (!cdata.shortName.isNullOrBlank()) cdata.shortName else
-            if (!cdata.commonName.isNullOrBlank()) cdata.commonName else cdata.fullName
+        return if (cdata.shortName.isNotBlank()) cdata.shortName else
+            if (cdata.commonName.isNotBlank()) cdata.commonName else cdata.fullName
     }
 
     fun getFullName() : String {
@@ -429,11 +392,131 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.shortName
     }
 
-    fun getTier() : Int {
-        return cdata.specialty.evaluate().tier
+    fun getStaggerThreshold() : Int {
+        return cdata.staggerThreshold
     }
 
+    /*
+     *  Core Parameters
+     */
+
+    fun getSoulpool() : Int {
+        return cdata.soulpool
+    }
+
+    fun setSoulpool(n: Int) : Int {
+        cdata.soulpool = Attribute.Limit.of(CoreParam.SOULPOOL).coerce(n)
+        return cdata.soulpool
+    }
+
+    fun getLevel() : Int {
+        return cdata.level
+    }
+
+    fun setLevel(n: Int) : Int {
+        cdata.level = Attribute.Limit.of(CoreParam.LEVEL).coerce(n)
+        return cdata.level
+    }
+
+    fun getExperience() : Int {
+        return cdata.experience
+    }
+
+    fun setExperience(n: Int) : Int {
+        cdata.experience = Attribute.Limit.of(CoreParam.EXPERIENCE).coerce(n)
+        return cdata.experience
+    }
+
+    fun getConstitution() : Int {
+        return cdata.constitution
+    }
+
+    fun setConstitution(n: Int) : Int {
+        cdata.constitution = Attribute.Limit.of(CoreParam.CONSTITUTION).coerce(n)
+        return cdata.constitution
+    }
+
+    fun getDexterity() : Int {
+        return cdata.dexterity
+    }
+
+    fun setDexterity(n: Int) : Int {
+        cdata.dexterity = Attribute.Limit.of(CoreParam.DEXTERITY).coerce(n)
+        return cdata.dexterity
+    }
+
+    fun getIntelligence() : Int {
+        return cdata.intelligence
+    }
+
+    fun setIntelligence(n: Int) : Int {
+        cdata.intelligence = Attribute.Limit.of(CoreParam.INTELLIGENCE).coerce(n)
+        return cdata.intelligence
+    }
+
+    fun getWillpower() : Int {
+        return cdata.willpower
+    }
+
+    fun setWillpower(n: Int) : Int {
+        cdata.willpower = Attribute.Limit.of(CoreParam.WILLPOWER).coerce(n)
+        return cdata.willpower
+    }
+
+    fun getParam(param: CoreParam) : Int {
+        return when (param) {
+            CoreParam.LEVEL -> getLevel()
+            CoreParam.EXPERIENCE -> getExperience()
+            CoreParam.SOULPOOL -> getSoulpool()
+            CoreParam.CONSTITUTION -> getConstitution()
+            CoreParam.DEXTERITY -> getDexterity()
+            CoreParam.INTELLIGENCE -> getIntelligence()
+            CoreParam.WILLPOWER -> getWillpower()
+        }
+    }
+
+    fun setParam(param: CoreParam, n: Int) : Int {
+        return when (param) {
+            CoreParam.LEVEL -> setLevel(n)
+            CoreParam.EXPERIENCE -> setExperience(n)
+            CoreParam.SOULPOOL -> setSoulpool(n)
+            CoreParam.CONSTITUTION -> setConstitution(n)
+            CoreParam.DEXTERITY -> setDexterity(n)
+            CoreParam.INTELLIGENCE -> setIntelligence(n)
+            CoreParam.WILLPOWER -> setWillpower(n)
+        }
+    }
+
+    fun adjust(param: CoreParam, n: Int) : Int {
+        return when (param) {
+            CoreParam.LEVEL -> setLevel(getLevel() + n)
+            CoreParam.EXPERIENCE -> setExperience(getExperience() + n)
+            CoreParam.SOULPOOL -> setSoulpool(getSoulpool() + n)
+            CoreParam.CONSTITUTION -> setConstitution(getConstitution() + n)
+            CoreParam.DEXTERITY -> setDexterity(getDexterity() + n)
+            CoreParam.INTELLIGENCE -> setIntelligence(getIntelligence() + n)
+            CoreParam.WILLPOWER -> setWillpower(getWillpower() + n)
+        }
+    }
+
+    fun increment(param: CoreParam, n: Int = 1) : Int {
+        return adjust(param, n)
+    }
+
+    fun decrement(param: CoreParam, n: Int = 1) : Int {
+        return adjust(param, -n)
+    }
+
+    /*
+     *  State Parameters
+     */
+
     fun getHealth() : Int {
+        return cdata.state.health
+    }
+
+    fun setHealth(n: Int) : Int {
+        cdata.state.health = Attribute.Limit.of(StateParam.HEALTH).coerce(n)
         return cdata.state.health
     }
 
@@ -441,12 +524,39 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.state.damage
     }
 
+    fun setDamage(n: Int) : Int {
+        cdata.state.damage = Attribute.Limit.of(StateParam.DAMAGE).coerce(n)
+        return cdata.state.damage
+    }
+
     fun getFatigue() : Int {
+        return cdata.state.fatigue
+    }
+
+    fun setFatigue(n: Int) : Int {
+        cdata.state.fatigue = Attribute.Limit.of(StateParam.FATIGUE).coerce(n)
         return cdata.state.fatigue
     }
 
     fun getPower() : Int {
         return cdata.state.power
+    }
+
+    fun setPower(n: Int) : Int {
+        cdata.state.power = Attribute.Limit.of(StateParam.POWER).coerce(n)
+        return cdata.state.power
+    }
+
+    fun isTapped() : Boolean {
+        return cdata.state.tapped
+    }
+
+    fun tap() {
+        cdata.state.tapped = true
+    }
+
+    fun untap() {
+        cdata.state.tapped = false
     }
 
     fun getAffliction() : Int {
@@ -480,26 +590,6 @@ open class Character(charaData: CharaData = CharaData()) {
         return setCondition(cond, true)
     }
 
-    fun setHealth(n: Int) : Int {
-        cdata.state.health = Attribute.Limit.of(StateParam.HEALTH).coerce(n)
-        return cdata.state.health
-    }
-
-    fun setDamage(n: Int) : Int {
-        cdata.state.damage = Attribute.Limit.of(StateParam.DAMAGE).coerce(n)
-        return cdata.state.damage
-    }
-
-    fun setFatigue(n: Int) : Int {
-        cdata.state.fatigue = Attribute.Limit.of(StateParam.FATIGUE).coerce(n)
-        return cdata.state.fatigue
-    }
-
-    fun setPower(n: Int) : Int {
-        cdata.state.power = Attribute.Limit.of(StateParam.POWER).coerce(n)
-        return cdata.state.power
-    }
-
     fun setAffliction(n: Int) : Int {
         cdata.state.affliction = Attribute.Limit.of(StateParam.AFFLICTION).coerce(n)
         return cdata.state.affliction
@@ -515,34 +605,6 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.state.momentum
     }
 
-    fun adjustBy(param: StateParam, n: Int) : Int {
-        return when (param) {
-            StateParam.HEALTH -> setPower(cdata.state.health + n)
-            StateParam.DAMAGE -> setPower(cdata.state.damage + n)
-            StateParam.FATIGUE -> setPower(cdata.state.fatigue + n)
-            StateParam.POWER -> setPower(cdata.state.power + n)
-            StateParam.AFFLICTION -> setPower(cdata.state.affliction + n)
-            StateParam.TRAUMA -> setPower(cdata.state.trauma + n)
-            StateParam.MOMENTUM -> setMomentum(cdata.state.momentum + n)
-        }
-    }
-
-    fun increment(param: StateParam) : Int {
-        return adjustBy(param, 1)
-    }
-
-    fun decrement(param: StateParam) : Int {
-        return adjustBy(param, -1)
-    }
-
-    fun increment(param: StateParam, n: Int) : Int {
-        return adjustBy(param, n)
-    }
-
-    fun decrement(param: StateParam, n: Int) : Int {
-        return adjustBy(param, -n)
-    }
-
     fun getParam(param: StateParam) : Int {
         return when (param) {
             StateParam.HEALTH -> getHealth()
@@ -553,10 +615,6 @@ open class Character(charaData: CharaData = CharaData()) {
             StateParam.TRAUMA -> getTrauma()
             StateParam.MOMENTUM -> getMomentum()
         }
-    }
-
-    fun getParam(param: CoreParam) : Int {
-        return evalCoreParam(param)
     }
 
     fun setParam(param: StateParam, n: Int) : Int {
@@ -571,35 +629,28 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun evalCoreParam(param: CoreParam) : Int {
-        var v = valcache[param]
-        if (v === null) {
-            v = getCoreHistory(param).evaluate()
-            valcache[param] = v
-        }
-        return v
-    }
-
-    fun getCoreHistory(param: CoreParam) : ModHistory<Int> {
+    fun adjust(param: StateParam, n: Int) : Int {
         return when (param) {
-            CoreParam.SOUL_POOL -> cdata.soulpool
-            CoreParam.LEVEL -> cdata.level
-            CoreParam.EXPERIENCE -> cdata.experience
-            CoreParam.CONSTITUTION -> cdata.constitution
-            CoreParam.DEXTERITY -> cdata.dexterity
-            CoreParam.INTELLIGENCE -> cdata.intelligence
-            CoreParam.WILLPOWER -> cdata.willpower
+            StateParam.HEALTH -> setHealth(cdata.state.health + n)
+            StateParam.DAMAGE -> setDamage(cdata.state.damage + n)
+            StateParam.FATIGUE -> setFatigue(cdata.state.fatigue + n)
+            StateParam.POWER -> setPower(cdata.state.power + n)
+            StateParam.AFFLICTION -> setAffliction(cdata.state.affliction + n)
+            StateParam.TRAUMA -> setTrauma(cdata.state.trauma + n)
+            StateParam.MOMENTUM -> setMomentum(cdata.state.momentum + n)
         }
     }
 
-    fun addCoreMod(param: CoreParam, mod: Modification<Int>) : Int {
-        getCoreHistory(param).add(mod)
-        valcache[param] = null
-        return evalCoreParam(param)
+    fun increment(param: StateParam, n: Int = 1) : Int {
+        return adjust(param, n)
+    }
+
+    fun decrement(param: StateParam, n: Int = 1) : Int {
+        return adjust(param, -n)
     }
 
     /*
-     * Common Encounter Functions
+     *  Encounter State Transitions
      */
 
     /**
@@ -645,7 +696,7 @@ open class Character(charaData: CharaData = CharaData()) {
                 setCondition(StateCondition.DEAD)
             }
         } else {
-            cdata.state.recentlyConsumedPower = true
+            cdata.state.tapped = true
             setPower(n1.absoluteValue)
         }
         return cdata.state.damage - dmg
@@ -676,7 +727,7 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return quantity of fatigue effectively accumulated
+     * @return magnitude of fatigue effectively accumulated
      */
     fun accumulateFatigue(n: Int) : Int {
         if (n < 1) return 0
@@ -716,7 +767,7 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return quantity of fatigue effectively restored
+     * @return magnitude of fatigue effectively restored
      */
     fun restoreFatigue(n: Int) : Int {
         if (n < 1) return 0
@@ -742,7 +793,7 @@ open class Character(charaData: CharaData = CharaData()) {
     fun gainPower(n: Int) : Int {
         if (n < 0) return 0
         val pwr = cdata.state.power
-        val p1 = (pwr + n).coerceAtMost(cdata.soulpool.evaluate())
+        val p1 = (pwr + n).coerceAtMost(cdata.soulpool)
         return setPower(p1) - pwr
     }
 
@@ -752,7 +803,7 @@ open class Character(charaData: CharaData = CharaData()) {
     fun consumePower(n: Int) : Int {
         if (n < 0) return 0
         if (n > 0 && n < cdata.state.power) {
-            cdata.state.recentlyConsumedPower = true
+            cdata.state.tapped = true
         }
         val pwr = cdata.state.power
         val p1 = (pwr - n).coerceAtLeast(0)
@@ -765,7 +816,7 @@ open class Character(charaData: CharaData = CharaData()) {
     fun sustainAffliction(n: Int) : Int {
         if (n < 1) return 0
         val brk = cdata.state.affliction
-        val max = cdata.soulpool.evaluate()
+        val max = cdata.soulpool
         val b2 = brk + n
         if (cdata.state.health < 1) {
             setAffliction(b2)
@@ -794,7 +845,7 @@ open class Character(charaData: CharaData = CharaData()) {
      */
     fun sufferTrauma(n: Int) : Int {
         if (n < 1) return 0
-        val max = cdata.soulpool.evaluate()
+        val max = cdata.soulpool
         val t2 = cdata.state.trauma + n
         return if (t2 > max) {
             setCondition(StateCondition.UNCONSCIOUS)
@@ -844,17 +895,40 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return quantity of momentum effectively flowed
+     * @return magnitude of momentum effectively flowed
      */
     fun flowMomentum(n: Int) : Int {
         return if (n < 1) 0 else increment(StateParam.MOMENTUM, n)
     }
 
     /**
-     * @return quantity of momentum effectively ebbed
+     * @return magnitude of momentum effectively ebbed
      */
     fun ebbMomentum(n: Int) : Int {
         return if (n < 1) 0 else decrement(StateParam.MOMENTUM, n)
+    }
+
+    fun getConMode(): StatMode {
+        return cdata.state.modes.conMode
+    }
+
+    fun getDexMode(): StatMode {
+        return cdata.state.modes.dexMode
+    }
+
+    fun getIntMode(): StatMode {
+        return cdata.state.modes.intMode
+    }
+
+    fun getWilMode(): StatMode {
+        return cdata.state.modes.wilMode
+    }
+
+    /**
+     * @return the new mode of operation for the given core parameter
+     */
+    fun getMode(stat: QuadStat) : StatMode {
+        return cdata.state.modes.of(stat)
     }
 
     /**
@@ -893,7 +967,6 @@ open class Character(charaData: CharaData = CharaData()) {
     fun enfeebleMode(stat: QuadStat) : StatMode {
         return setMode(stat, StatMode.ENFEEBLED)
     }
-
 }
 
 /**

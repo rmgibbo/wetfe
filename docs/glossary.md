@@ -129,9 +129,6 @@ overkill
 overroll
 : A d20 roll that is higher than the being’s score in their governing attribute. Typically, overrolls result in the minimum level of a skill or reaction table; or they represent a marginal attempt at a feat.
 
-sound rest
-: A period of repose that is sufficient to rejuvenate an adventuring party. Generally, it restores all soul chips Ⓢ to each PC’s health deque.
-
 player character, PC
 : Any character controlled by a player, as opposed to the game master.
 
@@ -169,7 +166,7 @@ soulbinding
 : The process whereby a character innervates a font with their soul: they remove soul chips Ⓢ from their health deque and dedicate them to a bloodfont or a manafont found within their equipment. Once innervated, each font typically grants power to the character, who becomes thus specially bound to their equipment.
 
 sound rest
-: A period of peace and relaxation sufficient to recuperate most of a being's mental and physical reserves. For example, a sound rest for a human typically involves eight hours of uninterrupted "good" sleep.
+: A period of peace and relaxation sufficient to recuperate a being's mental and physical reserves. Generally, it restores all soul chips Ⓢ to the being's health deque. A sound rest for a human being typically involves eight hours of "good" sleep.
 
 stack
 : The act of adding a chip to the top of a deque. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.

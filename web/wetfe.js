@@ -3,29 +3,27 @@ if (typeof kotlin === 'undefined') {
 }
 var wetfe = function (_, Kotlin) {
   'use strict';
-  var Kind_CLASS = Kotlin.Kind.CLASS;
-  var last = Kotlin.kotlin.collections.last_2p1efm$;
   var toMap = Kotlin.kotlin.collections.toMap_abgq59$;
   var Kind_OBJECT = Kotlin.Kind.OBJECT;
   var Enum = Kotlin.kotlin.Enum;
+  var Kind_CLASS = Kotlin.Kind.CLASS;
   var throwISE = Kotlin.throwISE;
   var coerceAtLeast = Kotlin.kotlin.ranges.coerceAtLeast_dqglrj$;
   var coerceAtMost = Kotlin.kotlin.ranges.coerceAtMost_dqglrj$;
   var Random = Kotlin.kotlin.random.Random;
   var L1000 = Kotlin.Long.fromInt(1000);
   var L1000000 = Kotlin.Long.fromInt(1000000);
-  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var LinkedHashMap_init = Kotlin.kotlin.collections.LinkedHashMap_init_q3lmfv$;
+  var ArrayList_init = Kotlin.kotlin.collections.ArrayList_init_287e2$;
   var isBlank = Kotlin.kotlin.text.isBlank_gw00vp$;
   var abs = Kotlin.kotlin.math.abs_za3lpa$;
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
+  var Comparable = Kotlin.kotlin.Comparable;
+  var numberToInt = Kotlin.numberToInt;
   var IntRange = Kotlin.kotlin.ranges.IntRange;
   var substring = Kotlin.kotlin.text.substring_fc3b62$;
   var toString = Kotlin.toString;
-  Evolution.prototype = Object.create(ModHistory.prototype);
-  Evolution.prototype.constructor = Evolution;
-  Summation.prototype = Object.create(ModHistory.prototype);
-  Summation.prototype.constructor = Summation;
+  var sort = Kotlin.kotlin.collections.sort_pbinho$;
   CoreParam.prototype = Object.create(Enum.prototype);
   CoreParam.prototype.constructor = CoreParam;
   QuadStat.prototype = Object.create(Enum.prototype);
@@ -40,137 +38,18 @@ var wetfe = function (_, Kotlin) {
   Attribute$Limit.prototype.constructor = Attribute$Limit;
   Attribute$Nature.prototype = Object.create(Enum.prototype);
   Attribute$Nature.prototype.constructor = Attribute$Nature;
+  ParticipantStatus.prototype = Object.create(Enum.prototype);
+  ParticipantStatus.prototype.constructor = ParticipantStatus;
   CharacterParticipant.prototype = Object.create(Character.prototype);
   CharacterParticipant.prototype.constructor = CharacterParticipant;
   EncounterType.prototype = Object.create(Enum.prototype);
   EncounterType.prototype.constructor = EncounterType;
-  function Modification(value, type, notes, timestamp) {
-    if (notes === void 0)
-      notes = '';
-    this.value = value;
-    this.type = type;
-    this.notes = notes;
-    this.timestamp = timestamp;
-  }
-  Modification.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Modification',
-    interfaces: []
-  };
-  Modification.prototype.component1 = function () {
-    return this.value;
-  };
-  Modification.prototype.component2 = function () {
-    return this.type;
-  };
-  Modification.prototype.component3 = function () {
-    return this.notes;
-  };
-  Modification.prototype.component4 = function () {
-    return this.timestamp;
-  };
-  Modification.prototype.copy_62irug$ = function (value, type, notes, timestamp) {
-    return new Modification(value === void 0 ? this.value : value, type === void 0 ? this.type : type, notes === void 0 ? this.notes : notes, timestamp === void 0 ? this.timestamp : timestamp);
-  };
-  Modification.prototype.toString = function () {
-    return 'Modification(value=' + Kotlin.toString(this.value) + (', type=' + Kotlin.toString(this.type)) + (', notes=' + Kotlin.toString(this.notes)) + (', timestamp=' + Kotlin.toString(this.timestamp)) + ')';
-  };
-  Modification.prototype.hashCode = function () {
-    var result = 0;
-    result = result * 31 + Kotlin.hashCode(this.value) | 0;
-    result = result * 31 + Kotlin.hashCode(this.type) | 0;
-    result = result * 31 + Kotlin.hashCode(this.notes) | 0;
-    result = result * 31 + Kotlin.hashCode(this.timestamp) | 0;
-    return result;
-  };
-  Modification.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.value, other.value) && Kotlin.equals(this.type, other.type) && Kotlin.equals(this.notes, other.notes) && Kotlin.equals(this.timestamp, other.timestamp)))));
-  };
-  function ModHistory() {
-    this.mods_nkudyu$_0 = ArrayList_init();
-  }
-  Object.defineProperty(ModHistory.prototype, 'mods', {
-    get: function () {
-      return this.mods_nkudyu$_0;
-    }
-  });
-  ModHistory.prototype.add_b3s5im$ = function (mod) {
-    this.mods.add_11rb$(mod);
-  };
-  ModHistory.prototype.history = function () {
-    return this.mods.iterator();
-  };
-  ModHistory.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'ModHistory',
-    interfaces: []
-  };
-  function Evolution() {
-    ModHistory.call(this);
-  }
-  Evolution.prototype.evaluate = function () {
-    return last(this.mods).value;
-  };
-  Evolution.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Evolution',
-    interfaces: [ModHistory]
-  };
-  function Summation() {
-    ModHistory.call(this);
-  }
-  Summation.prototype.evaluate = function () {
-    var tmp$;
-    var total = 0;
-    tmp$ = this.mods.iterator();
-    while (tmp$.hasNext()) {
-      var mod = tmp$.next();
-      total = total + mod.value | 0;
-    }
-    return total;
-  };
-  Summation.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Summation',
-    interfaces: [ModHistory]
-  };
-  function CharaSpec(tier, name, custom_name) {
-    if (custom_name === void 0)
-      custom_name = '';
-    this.tier = tier;
-    this.name = name;
-    this.custom_name = custom_name;
-  }
-  CharaSpec.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'CharaSpec',
-    interfaces: []
-  };
-  CharaSpec.prototype.component1 = function () {
-    return this.tier;
-  };
-  CharaSpec.prototype.component2 = function () {
-    return this.name;
-  };
-  CharaSpec.prototype.component3 = function () {
-    return this.custom_name;
-  };
-  CharaSpec.prototype.copy_s4fhmi$ = function (tier, name, custom_name) {
-    return new CharaSpec(tier === void 0 ? this.tier : tier, name === void 0 ? this.name : name, custom_name === void 0 ? this.custom_name : custom_name);
-  };
-  CharaSpec.prototype.toString = function () {
-    return 'CharaSpec(tier=' + Kotlin.toString(this.tier) + (', name=' + Kotlin.toString(this.name)) + (', custom_name=' + Kotlin.toString(this.custom_name)) + ')';
-  };
-  CharaSpec.prototype.hashCode = function () {
-    var result = 0;
-    result = result * 31 + Kotlin.hashCode(this.tier) | 0;
-    result = result * 31 + Kotlin.hashCode(this.name) | 0;
-    result = result * 31 + Kotlin.hashCode(this.custom_name) | 0;
-    return result;
-  };
-  CharaSpec.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.tier, other.tier) && Kotlin.equals(this.name, other.name) && Kotlin.equals(this.custom_name, other.custom_name)))));
-  };
+  DataSource.prototype = Object.create(Enum.prototype);
+  DataSource.prototype.constructor = DataSource;
+  Physicality.prototype = Object.create(Enum.prototype);
+  Physicality.prototype.constructor = Physicality;
+  Vulnerability.prototype = Object.create(Enum.prototype);
+  Vulnerability.prototype.constructor = Vulnerability;
   function CoreParam(name, ordinal, key) {
     Enum.call(this);
     this.key = key;
@@ -180,19 +59,14 @@ var wetfe = function (_, Kotlin) {
   function CoreParam_initFields() {
     CoreParam_initFields = function () {
     };
-    CoreParam$SOUL_POOL_instance = new CoreParam('SOUL_POOL', 0, 'SP');
-    CoreParam$LEVEL_instance = new CoreParam('LEVEL', 1, 'LVL');
-    CoreParam$EXPERIENCE_instance = new CoreParam('EXPERIENCE', 2, 'EXP');
+    CoreParam$LEVEL_instance = new CoreParam('LEVEL', 0, 'LVL');
+    CoreParam$EXPERIENCE_instance = new CoreParam('EXPERIENCE', 1, 'EXP');
+    CoreParam$SOULPOOL_instance = new CoreParam('SOULPOOL', 2, 'SP');
     CoreParam$CONSTITUTION_instance = new CoreParam('CONSTITUTION', 3, 'CON');
     CoreParam$DEXTERITY_instance = new CoreParam('DEXTERITY', 4, 'DEX');
     CoreParam$INTELLIGENCE_instance = new CoreParam('INTELLIGENCE', 5, 'INT');
     CoreParam$WILLPOWER_instance = new CoreParam('WILLPOWER', 6, 'WIL');
     CoreParam$Companion_getInstance();
-  }
-  var CoreParam$SOUL_POOL_instance;
-  function CoreParam$SOUL_POOL_getInstance() {
-    CoreParam_initFields();
-    return CoreParam$SOUL_POOL_instance;
   }
   var CoreParam$LEVEL_instance;
   function CoreParam$LEVEL_getInstance() {
@@ -203,6 +77,11 @@ var wetfe = function (_, Kotlin) {
   function CoreParam$EXPERIENCE_getInstance() {
     CoreParam_initFields();
     return CoreParam$EXPERIENCE_instance;
+  }
+  var CoreParam$SOULPOOL_instance;
+  function CoreParam$SOULPOOL_getInstance() {
+    CoreParam_initFields();
+    return CoreParam$SOULPOOL_instance;
   }
   var CoreParam$CONSTITUTION_instance;
   function CoreParam$CONSTITUTION_getInstance() {
@@ -259,17 +138,17 @@ var wetfe = function (_, Kotlin) {
     interfaces: [Enum]
   };
   function CoreParam$values() {
-    return [CoreParam$SOUL_POOL_getInstance(), CoreParam$LEVEL_getInstance(), CoreParam$EXPERIENCE_getInstance(), CoreParam$CONSTITUTION_getInstance(), CoreParam$DEXTERITY_getInstance(), CoreParam$INTELLIGENCE_getInstance(), CoreParam$WILLPOWER_getInstance()];
+    return [CoreParam$LEVEL_getInstance(), CoreParam$EXPERIENCE_getInstance(), CoreParam$SOULPOOL_getInstance(), CoreParam$CONSTITUTION_getInstance(), CoreParam$DEXTERITY_getInstance(), CoreParam$INTELLIGENCE_getInstance(), CoreParam$WILLPOWER_getInstance()];
   }
   CoreParam.values = CoreParam$values;
   function CoreParam$valueOf(name) {
     switch (name) {
-      case 'SOUL_POOL':
-        return CoreParam$SOUL_POOL_getInstance();
       case 'LEVEL':
         return CoreParam$LEVEL_getInstance();
       case 'EXPERIENCE':
         return CoreParam$EXPERIENCE_getInstance();
+      case 'SOULPOOL':
+        return CoreParam$SOULPOOL_getInstance();
       case 'CONSTITUTION':
         return CoreParam$CONSTITUTION_getInstance();
       case 'DEXTERITY':
@@ -278,7 +157,7 @@ var wetfe = function (_, Kotlin) {
         return CoreParam$INTELLIGENCE_getInstance();
       case 'WILLPOWER':
         return CoreParam$WILLPOWER_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.CoreParam.' + name);
+      default:throwISE('No enum constant wetfe.core.character.CoreParam.' + name);
     }
   }
   CoreParam.valueOf_61zpoe$ = CoreParam$valueOf;
@@ -365,7 +244,7 @@ var wetfe = function (_, Kotlin) {
         return QuadStat$INTELLIGENCE_getInstance();
       case 'WILLPOWER':
         return QuadStat$WILLPOWER_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.QuadStat.' + name);
+      default:throwISE('No enum constant wetfe.core.character.QuadStat.' + name);
     }
   }
   QuadStat.valueOf_61zpoe$ = QuadStat$valueOf;
@@ -378,9 +257,9 @@ var wetfe = function (_, Kotlin) {
   function StatMode_initFields() {
     StatMode_initFields = function () {
     };
-    StatMode$NATURAL_instance = new StatMode('NATURAL', 0, 'NATURAL');
-    StatMode$ENHANCED_instance = new StatMode('ENHANCED', 1, 'ENHANCED');
-    StatMode$ENFEEBLED_instance = new StatMode('ENFEEBLED', 2, 'ENFEEBLED');
+    StatMode$NATURAL_instance = new StatMode('NATURAL', 0, '=');
+    StatMode$ENHANCED_instance = new StatMode('ENHANCED', 1, '+');
+    StatMode$ENFEEBLED_instance = new StatMode('ENFEEBLED', 2, '-');
     StatMode$Companion_getInstance();
   }
   var StatMode$NATURAL_instance;
@@ -444,7 +323,7 @@ var wetfe = function (_, Kotlin) {
         return StatMode$ENHANCED_getInstance();
       case 'ENFEEBLED':
         return StatMode$ENFEEBLED_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.StatMode.' + name);
+      default:throwISE('No enum constant wetfe.core.character.StatMode.' + name);
     }
   }
   StatMode.valueOf_61zpoe$ = StatMode$valueOf;
@@ -555,7 +434,7 @@ var wetfe = function (_, Kotlin) {
         return StateParam$TRAUMA_getInstance();
       case 'MOMENTUM':
         return StateParam$MOMENTUM_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.StateParam.' + name);
+      default:throwISE('No enum constant wetfe.core.character.StateParam.' + name);
     }
   }
   StateParam.valueOf_61zpoe$ = StateParam$valueOf;
@@ -569,14 +448,15 @@ var wetfe = function (_, Kotlin) {
   function StateCondition_initFields() {
     StateCondition_initFields = function () {
     };
-    StateCondition$NORMAL_instance = new StateCondition('NORMAL', 0, 'NORMAL', 0);
-    StateCondition$BLITZING_instance = new StateCondition('BLITZING', 1, 'BLITZING', 30);
-    StateCondition$TURTLING_instance = new StateCondition('TURTLING', 2, 'TURTLING', 30);
-    StateCondition$CHANNELING_instance = new StateCondition('CHANNELING', 3, 'CHANNELING', 30);
-    StateCondition$STAGGERED_instance = new StateCondition('STAGGERED', 4, 'STAGGERED', 60);
-    StateCondition$UNCONSCIOUS_instance = new StateCondition('UNCONSCIOUS', 5, 'UNCONSCIOUS', 70);
-    StateCondition$COMATOSE_instance = new StateCondition('COMATOSE', 6, 'COMATOSE', 80);
-    StateCondition$DEAD_instance = new StateCondition('DEAD', 7, 'DEAD', 90);
+    StateCondition$NORMAL_instance = new StateCondition('NORMAL', 0, '=', 0);
+    StateCondition$BLITZING_instance = new StateCondition('BLITZING', 1, '!', 30);
+    StateCondition$TURTLING_instance = new StateCondition('TURTLING', 2, '@', 30);
+    StateCondition$CHANNELING_instance = new StateCondition('CHANNELING', 3, '^', 30);
+    StateCondition$STAGGERED_instance = new StateCondition('STAGGERED', 4, '$', 60);
+    StateCondition$UNCONSCIOUS_instance = new StateCondition('UNCONSCIOUS', 5, '*', 70);
+    StateCondition$COMATOSE_instance = new StateCondition('COMATOSE', 6, '~', 80);
+    StateCondition$DEAD_instance = new StateCondition('DEAD', 7, '_', 90);
+    StateCondition$Companion_getInstance();
   }
   var StateCondition$NORMAL_instance;
   function StateCondition$NORMAL_getInstance() {
@@ -618,6 +498,35 @@ var wetfe = function (_, Kotlin) {
     StateCondition_initFields();
     return StateCondition$DEAD_instance;
   }
+  function StateCondition$Companion() {
+    StateCondition$Companion_instance = this;
+    this.lookupMap_0 = null;
+    var tmp$, tmp$_0;
+    var initMap = LinkedHashMap_init();
+    tmp$ = StateCondition$values();
+    for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+      var condition = tmp$[tmp$_0];
+      var key = condition.key;
+      initMap.put_xwzc9p$(key, condition);
+    }
+    this.lookupMap_0 = toMap(initMap);
+  }
+  StateCondition$Companion.prototype.lookup_61zpoe$ = function (key) {
+    return this.lookupMap_0.get_11rb$(key);
+  };
+  StateCondition$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var StateCondition$Companion_instance = null;
+  function StateCondition$Companion_getInstance() {
+    StateCondition_initFields();
+    if (StateCondition$Companion_instance === null) {
+      new StateCondition$Companion();
+    }
+    return StateCondition$Companion_instance;
+  }
   StateCondition.$metadata$ = {
     kind: Kind_CLASS,
     simpleName: 'StateCondition',
@@ -645,7 +554,7 @@ var wetfe = function (_, Kotlin) {
         return StateCondition$COMATOSE_getInstance();
       case 'DEAD':
         return StateCondition$DEAD_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.StateCondition.' + name);
+      default:throwISE('No enum constant wetfe.core.character.StateCondition.' + name);
     }
   }
   StateCondition.valueOf_61zpoe$ = StateCondition$valueOf;
@@ -702,16 +611,16 @@ var wetfe = function (_, Kotlin) {
   function Attribute$Limit$Companion() {
     Attribute$Limit$Companion_instance = this;
   }
-  Attribute$Limit$Companion.prototype.of_wgquit$ = function (param) {
+  Attribute$Limit$Companion.prototype.of_qosqn7$ = function (param) {
     var tmp$;
     switch (param.name) {
-      case 'SOUL_POOL':
-        tmp$ = Attribute$Limit$POS_UNBOUNDED_getInstance();
-        break;
       case 'LEVEL':
         tmp$ = Attribute$Limit$POS_UNBOUNDED_getInstance();
         break;
       case 'EXPERIENCE':
+        tmp$ = Attribute$Limit$POS_UNBOUNDED_getInstance();
+        break;
+      case 'SOULPOOL':
         tmp$ = Attribute$Limit$POS_UNBOUNDED_getInstance();
         break;
       case 'CONSTITUTION':
@@ -731,7 +640,7 @@ var wetfe = function (_, Kotlin) {
     }
     return tmp$;
   };
-  Attribute$Limit$Companion.prototype.of_nfoh2z$ = function (param) {
+  Attribute$Limit$Companion.prototype.of_alacmf$ = function (param) {
     var tmp$;
     switch (param.name) {
       case 'HEALTH':
@@ -794,7 +703,7 @@ var wetfe = function (_, Kotlin) {
         return Attribute$Limit$CORE_getInstance();
       case 'D20':
         return Attribute$Limit$D20_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.Attribute.Limit.' + name);
+      default:throwISE('No enum constant wetfe.core.character.Attribute.Limit.' + name);
     }
   }
   Attribute$Limit.valueOf_61zpoe$ = Attribute$Limit$valueOf;
@@ -983,7 +892,7 @@ var wetfe = function (_, Kotlin) {
         return Attribute$Nature$PRODIGIOUS_getInstance();
       case 'MIRACULOUS':
         return Attribute$Nature$MIRACULOUS_getInstance();
-      default:throwISE('No enum constant wetfe.core.chara.Attribute.Nature.' + name);
+      default:throwISE('No enum constant wetfe.core.character.Attribute.Nature.' + name);
     }
   }
   Attribute$Nature.valueOf_61zpoe$ = Attribute$Nature$valueOf;
@@ -1019,7 +928,7 @@ var wetfe = function (_, Kotlin) {
     this.intMode = intMode;
     this.wilMode = wilMode;
   }
-  StatModeState.prototype.of_828rjw$ = function (stat) {
+  StatModeState.prototype.of_f4ewii$ = function (stat) {
     var tmp$;
     switch (stat.name) {
       case 'CONSTITUTION':
@@ -1039,7 +948,7 @@ var wetfe = function (_, Kotlin) {
     }
     return tmp$;
   };
-  StatModeState.prototype.set_5ls9mw$ = function (stat, mode) {
+  StatModeState.prototype.set_sdu2kk$ = function (stat, mode) {
     var tmp$;
     switch (stat.name) {
       case 'CONSTITUTION':
@@ -1076,7 +985,7 @@ var wetfe = function (_, Kotlin) {
   StatModeState.prototype.component4 = function () {
     return this.wilMode;
   };
-  StatModeState.prototype.copy_g12pac$ = function (conMode, dexMode, intMode, wilMode) {
+  StatModeState.prototype.copy_bqrrb0$ = function (conMode, dexMode, intMode, wilMode) {
     return new StatModeState(conMode === void 0 ? this.conMode : conMode, dexMode === void 0 ? this.dexMode : dexMode, intMode === void 0 ? this.intMode : intMode, wilMode === void 0 ? this.wilMode : wilMode);
   };
   StatModeState.prototype.toString = function () {
@@ -1093,9 +1002,46 @@ var wetfe = function (_, Kotlin) {
   StatModeState.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.conMode, other.conMode) && Kotlin.equals(this.dexMode, other.dexMode) && Kotlin.equals(this.intMode, other.intMode) && Kotlin.equals(this.wilMode, other.wilMode)))));
   };
-  function CharaState(health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, recentlyConsumedPower) {
+  function CharaSpec(tier, name, customName) {
+    if (customName === void 0)
+      customName = '';
+    this.tier = tier;
+    this.name = name;
+    this.customName = customName;
+  }
+  CharaSpec.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CharaSpec',
+    interfaces: []
+  };
+  CharaSpec.prototype.component1 = function () {
+    return this.tier;
+  };
+  CharaSpec.prototype.component2 = function () {
+    return this.name;
+  };
+  CharaSpec.prototype.component3 = function () {
+    return this.customName;
+  };
+  CharaSpec.prototype.copy_s4fhmi$ = function (tier, name, customName) {
+    return new CharaSpec(tier === void 0 ? this.tier : tier, name === void 0 ? this.name : name, customName === void 0 ? this.customName : customName);
+  };
+  CharaSpec.prototype.toString = function () {
+    return 'CharaSpec(tier=' + Kotlin.toString(this.tier) + (', name=' + Kotlin.toString(this.name)) + (', customName=' + Kotlin.toString(this.customName)) + ')';
+  };
+  CharaSpec.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.tier) | 0;
+    result = result * 31 + Kotlin.hashCode(this.name) | 0;
+    result = result * 31 + Kotlin.hashCode(this.customName) | 0;
+    return result;
+  };
+  CharaSpec.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.tier, other.tier) && Kotlin.equals(this.name, other.name) && Kotlin.equals(this.customName, other.customName)))));
+  };
+  function CharaState(health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, tapped) {
     if (health === void 0)
-      health = 5;
+      health = 0;
     if (damage === void 0)
       damage = 0;
     if (fatigue === void 0)
@@ -1112,8 +1058,8 @@ var wetfe = function (_, Kotlin) {
       modes = new StatModeState();
     if (condition === void 0)
       condition = StateCondition$NORMAL_getInstance();
-    if (recentlyConsumedPower === void 0)
-      recentlyConsumedPower = false;
+    if (tapped === void 0)
+      tapped = false;
     this.health = health;
     this.damage = damage;
     this.fatigue = fatigue;
@@ -1123,7 +1069,7 @@ var wetfe = function (_, Kotlin) {
     this.momentum = momentum;
     this.modes = modes;
     this.condition = condition;
-    this.recentlyConsumedPower = recentlyConsumedPower;
+    this.tapped = tapped;
   }
   CharaState.$metadata$ = {
     kind: Kind_CLASS,
@@ -1158,13 +1104,13 @@ var wetfe = function (_, Kotlin) {
     return this.condition;
   };
   CharaState.prototype.component10 = function () {
-    return this.recentlyConsumedPower;
+    return this.tapped;
   };
-  CharaState.prototype.copy_t7ts57$ = function (health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, recentlyConsumedPower) {
-    return new CharaState(health === void 0 ? this.health : health, damage === void 0 ? this.damage : damage, fatigue === void 0 ? this.fatigue : fatigue, power === void 0 ? this.power : power, affliction === void 0 ? this.affliction : affliction, trauma === void 0 ? this.trauma : trauma, momentum === void 0 ? this.momentum : momentum, modes === void 0 ? this.modes : modes, condition === void 0 ? this.condition : condition, recentlyConsumedPower === void 0 ? this.recentlyConsumedPower : recentlyConsumedPower);
+  CharaState.prototype.copy_8kcr9h$ = function (health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, tapped) {
+    return new CharaState(health === void 0 ? this.health : health, damage === void 0 ? this.damage : damage, fatigue === void 0 ? this.fatigue : fatigue, power === void 0 ? this.power : power, affliction === void 0 ? this.affliction : affliction, trauma === void 0 ? this.trauma : trauma, momentum === void 0 ? this.momentum : momentum, modes === void 0 ? this.modes : modes, condition === void 0 ? this.condition : condition, tapped === void 0 ? this.tapped : tapped);
   };
   CharaState.prototype.toString = function () {
-    return 'CharaState(health=' + Kotlin.toString(this.health) + (', damage=' + Kotlin.toString(this.damage)) + (', fatigue=' + Kotlin.toString(this.fatigue)) + (', power=' + Kotlin.toString(this.power)) + (', affliction=' + Kotlin.toString(this.affliction)) + (', trauma=' + Kotlin.toString(this.trauma)) + (', momentum=' + Kotlin.toString(this.momentum)) + (', modes=' + Kotlin.toString(this.modes)) + (', condition=' + Kotlin.toString(this.condition)) + (', recentlyConsumedPower=' + Kotlin.toString(this.recentlyConsumedPower)) + ')';
+    return 'CharaState(health=' + Kotlin.toString(this.health) + (', damage=' + Kotlin.toString(this.damage)) + (', fatigue=' + Kotlin.toString(this.fatigue)) + (', power=' + Kotlin.toString(this.power)) + (', affliction=' + Kotlin.toString(this.affliction)) + (', trauma=' + Kotlin.toString(this.trauma)) + (', momentum=' + Kotlin.toString(this.momentum)) + (', modes=' + Kotlin.toString(this.modes)) + (', condition=' + Kotlin.toString(this.condition)) + (', tapped=' + Kotlin.toString(this.tapped)) + ')';
   };
   CharaState.prototype.hashCode = function () {
     var result = 0;
@@ -1177,11 +1123,11 @@ var wetfe = function (_, Kotlin) {
     result = result * 31 + Kotlin.hashCode(this.momentum) | 0;
     result = result * 31 + Kotlin.hashCode(this.modes) | 0;
     result = result * 31 + Kotlin.hashCode(this.condition) | 0;
-    result = result * 31 + Kotlin.hashCode(this.recentlyConsumedPower) | 0;
+    result = result * 31 + Kotlin.hashCode(this.tapped) | 0;
     return result;
   };
   CharaState.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.health, other.health) && Kotlin.equals(this.damage, other.damage) && Kotlin.equals(this.fatigue, other.fatigue) && Kotlin.equals(this.power, other.power) && Kotlin.equals(this.affliction, other.affliction) && Kotlin.equals(this.trauma, other.trauma) && Kotlin.equals(this.momentum, other.momentum) && Kotlin.equals(this.modes, other.modes) && Kotlin.equals(this.condition, other.condition) && Kotlin.equals(this.recentlyConsumedPower, other.recentlyConsumedPower)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.health, other.health) && Kotlin.equals(this.damage, other.damage) && Kotlin.equals(this.fatigue, other.fatigue) && Kotlin.equals(this.power, other.power) && Kotlin.equals(this.affliction, other.affliction) && Kotlin.equals(this.trauma, other.trauma) && Kotlin.equals(this.momentum, other.momentum) && Kotlin.equals(this.modes, other.modes) && Kotlin.equals(this.condition, other.condition) && Kotlin.equals(this.tapped, other.tapped)))));
   };
   function CharaRepertoire(general, specialty, growth, soulbound, exceptional) {
     if (general === void 0) {
@@ -1243,6 +1189,1462 @@ var wetfe = function (_, Kotlin) {
   CharaRepertoire.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.general, other.general) && Kotlin.equals(this.specialty, other.specialty) && Kotlin.equals(this.growth, other.growth) && Kotlin.equals(this.soulbound, other.soulbound) && Kotlin.equals(this.exceptional, other.exceptional)))));
   };
+  function CharaData(id, source, physicality, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
+    CharaData$Companion_getInstance();
+    if (id === void 0)
+      id = CharaData$Companion_getInstance().newId();
+    if (source === void 0)
+      source = DataSource$PLAYER_getInstance();
+    if (physicality === void 0)
+      physicality = Physicality$CONFLUENT_getInstance();
+    if (fullName === void 0)
+      fullName = 'Full Name';
+    if (commonName === void 0)
+      commonName = 'Common Name';
+    if (shortName === void 0)
+      shortName = 'Short Name';
+    if (homeworld === void 0)
+      homeworld = 'Homeworld';
+    if (species === void 0)
+      species = 'Species';
+    if (birthEvent === void 0)
+      birthEvent = new Event();
+    if (properMass === void 0)
+      properMass = 1.0;
+    if (properAge === void 0)
+      properAge = 1.0;
+    if (livingAge === void 0)
+      livingAge = 1.0;
+    if (properHeight === void 0)
+      properHeight = 1.0;
+    if (commonHeight === void 0)
+      commonHeight = 1.0;
+    if (commonCalendarAge === void 0)
+      commonCalendarAge = 1;
+    if (titles === void 0) {
+      titles = ArrayList_init();
+    }
+    if (renown === void 0) {
+      renown = ArrayList_init();
+    }
+    if (characteristics === void 0) {
+      characteristics = ArrayList_init();
+    }
+    if (specialties === void 0) {
+      specialties = ArrayList_init();
+    }
+    if (level === void 0)
+      level = 1;
+    if (experience === void 0)
+      experience = 0;
+    if (soulpool === void 0)
+      soulpool = 5;
+    if (constitution === void 0)
+      constitution = 10;
+    if (dexterity === void 0)
+      dexterity = 10;
+    if (intelligence === void 0)
+      intelligence = 10;
+    if (willpower === void 0)
+      willpower = 10;
+    if (staggerThreshold === void 0)
+      staggerThreshold = 0;
+    if (state === void 0)
+      state = new CharaState();
+    if (repertoire === void 0)
+      repertoire = new CharaRepertoire();
+    if (rollsheetLayout === void 0) {
+      rollsheetLayout = ArrayList_init();
+    }
+    this.id = id;
+    this.source = source;
+    this.physicality = physicality;
+    this.fullName = fullName;
+    this.commonName = commonName;
+    this.shortName = shortName;
+    this.homeworld = homeworld;
+    this.species = species;
+    this.birthEvent = birthEvent;
+    this.properMass = properMass;
+    this.properAge = properAge;
+    this.livingAge = livingAge;
+    this.properHeight = properHeight;
+    this.commonHeight = commonHeight;
+    this.commonCalendarAge = commonCalendarAge;
+    this.titles = titles;
+    this.renown = renown;
+    this.characteristics = characteristics;
+    this.specialties = specialties;
+    this.level = level;
+    this.experience = experience;
+    this.soulpool = soulpool;
+    this.constitution = constitution;
+    this.dexterity = dexterity;
+    this.intelligence = intelligence;
+    this.willpower = willpower;
+    this.staggerThreshold = staggerThreshold;
+    this.state = state;
+    this.repertoire = repertoire;
+    this.rollsheetLayout = rollsheetLayout;
+  }
+  function CharaData$Companion() {
+    CharaData$Companion_instance = this;
+  }
+  CharaData$Companion.prototype.newId = function () {
+    return 'NewCharacter-' + Random.Default.nextLong_3pjtqy$(L1000, L1000000).toString();
+  };
+  CharaData$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var CharaData$Companion_instance = null;
+  function CharaData$Companion_getInstance() {
+    if (CharaData$Companion_instance === null) {
+      new CharaData$Companion();
+    }
+    return CharaData$Companion_instance;
+  }
+  CharaData.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CharaData',
+    interfaces: []
+  };
+  CharaData.prototype.component1 = function () {
+    return this.id;
+  };
+  CharaData.prototype.component2 = function () {
+    return this.source;
+  };
+  CharaData.prototype.component3 = function () {
+    return this.physicality;
+  };
+  CharaData.prototype.component4 = function () {
+    return this.fullName;
+  };
+  CharaData.prototype.component5 = function () {
+    return this.commonName;
+  };
+  CharaData.prototype.component6 = function () {
+    return this.shortName;
+  };
+  CharaData.prototype.component7 = function () {
+    return this.homeworld;
+  };
+  CharaData.prototype.component8 = function () {
+    return this.species;
+  };
+  CharaData.prototype.component9 = function () {
+    return this.birthEvent;
+  };
+  CharaData.prototype.component10 = function () {
+    return this.properMass;
+  };
+  CharaData.prototype.component11 = function () {
+    return this.properAge;
+  };
+  CharaData.prototype.component12 = function () {
+    return this.livingAge;
+  };
+  CharaData.prototype.component13 = function () {
+    return this.properHeight;
+  };
+  CharaData.prototype.component14 = function () {
+    return this.commonHeight;
+  };
+  CharaData.prototype.component15 = function () {
+    return this.commonCalendarAge;
+  };
+  CharaData.prototype.component16 = function () {
+    return this.titles;
+  };
+  CharaData.prototype.component17 = function () {
+    return this.renown;
+  };
+  CharaData.prototype.component18 = function () {
+    return this.characteristics;
+  };
+  CharaData.prototype.component19 = function () {
+    return this.specialties;
+  };
+  CharaData.prototype.component20 = function () {
+    return this.level;
+  };
+  CharaData.prototype.component21 = function () {
+    return this.experience;
+  };
+  CharaData.prototype.component22 = function () {
+    return this.soulpool;
+  };
+  CharaData.prototype.component23 = function () {
+    return this.constitution;
+  };
+  CharaData.prototype.component24 = function () {
+    return this.dexterity;
+  };
+  CharaData.prototype.component25 = function () {
+    return this.intelligence;
+  };
+  CharaData.prototype.component26 = function () {
+    return this.willpower;
+  };
+  CharaData.prototype.component27 = function () {
+    return this.staggerThreshold;
+  };
+  CharaData.prototype.component28 = function () {
+    return this.state;
+  };
+  CharaData.prototype.component29 = function () {
+    return this.repertoire;
+  };
+  CharaData.prototype.component30 = function () {
+    return this.rollsheetLayout;
+  };
+  CharaData.prototype.copy_rw29mb$ = function (id, source, physicality, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
+    return new CharaData(id === void 0 ? this.id : id, source === void 0 ? this.source : source, physicality === void 0 ? this.physicality : physicality, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, characteristics === void 0 ? this.characteristics : characteristics, specialties === void 0 ? this.specialties : specialties, level === void 0 ? this.level : level, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, dexterity === void 0 ? this.dexterity : dexterity, intelligence === void 0 ? this.intelligence : intelligence, willpower === void 0 ? this.willpower : willpower, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
+  };
+  CharaData.prototype.toString = function () {
+    return 'CharaData(id=' + Kotlin.toString(this.id) + (', source=' + Kotlin.toString(this.source)) + (', physicality=' + Kotlin.toString(this.physicality)) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', characteristics=' + Kotlin.toString(this.characteristics)) + (', specialties=' + Kotlin.toString(this.specialties)) + (', level=' + Kotlin.toString(this.level)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
+  };
+  CharaData.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.id) | 0;
+    result = result * 31 + Kotlin.hashCode(this.source) | 0;
+    result = result * 31 + Kotlin.hashCode(this.physicality) | 0;
+    result = result * 31 + Kotlin.hashCode(this.fullName) | 0;
+    result = result * 31 + Kotlin.hashCode(this.commonName) | 0;
+    result = result * 31 + Kotlin.hashCode(this.shortName) | 0;
+    result = result * 31 + Kotlin.hashCode(this.homeworld) | 0;
+    result = result * 31 + Kotlin.hashCode(this.species) | 0;
+    result = result * 31 + Kotlin.hashCode(this.birthEvent) | 0;
+    result = result * 31 + Kotlin.hashCode(this.properMass) | 0;
+    result = result * 31 + Kotlin.hashCode(this.properAge) | 0;
+    result = result * 31 + Kotlin.hashCode(this.livingAge) | 0;
+    result = result * 31 + Kotlin.hashCode(this.properHeight) | 0;
+    result = result * 31 + Kotlin.hashCode(this.commonHeight) | 0;
+    result = result * 31 + Kotlin.hashCode(this.commonCalendarAge) | 0;
+    result = result * 31 + Kotlin.hashCode(this.titles) | 0;
+    result = result * 31 + Kotlin.hashCode(this.renown) | 0;
+    result = result * 31 + Kotlin.hashCode(this.characteristics) | 0;
+    result = result * 31 + Kotlin.hashCode(this.specialties) | 0;
+    result = result * 31 + Kotlin.hashCode(this.level) | 0;
+    result = result * 31 + Kotlin.hashCode(this.experience) | 0;
+    result = result * 31 + Kotlin.hashCode(this.soulpool) | 0;
+    result = result * 31 + Kotlin.hashCode(this.constitution) | 0;
+    result = result * 31 + Kotlin.hashCode(this.dexterity) | 0;
+    result = result * 31 + Kotlin.hashCode(this.intelligence) | 0;
+    result = result * 31 + Kotlin.hashCode(this.willpower) | 0;
+    result = result * 31 + Kotlin.hashCode(this.staggerThreshold) | 0;
+    result = result * 31 + Kotlin.hashCode(this.state) | 0;
+    result = result * 31 + Kotlin.hashCode(this.repertoire) | 0;
+    result = result * 31 + Kotlin.hashCode(this.rollsheetLayout) | 0;
+    return result;
+  };
+  CharaData.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.source, other.source) && Kotlin.equals(this.physicality, other.physicality) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.characteristics, other.characteristics) && Kotlin.equals(this.specialties, other.specialties) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
+  };
+  function Character(charaData) {
+    if (charaData === void 0)
+      charaData = new CharaData();
+    this.cdata_wnkotf$_0 = charaData;
+    this.valcache_est45l$_0 = LinkedHashMap_init();
+    var tmp$, tmp$_0;
+    tmp$ = CoreParam$values();
+    for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+      var param = tmp$[tmp$_0];
+      this.valcache_est45l$_0.put_xwzc9p$(param, null);
+    }
+  }
+  Character.prototype.getId = function () {
+    return this.cdata_wnkotf$_0.id;
+  };
+  Character.prototype.getName = function () {
+    return !isBlank(this.cdata_wnkotf$_0.shortName) ? this.cdata_wnkotf$_0.shortName : !isBlank(this.cdata_wnkotf$_0.commonName) ? this.cdata_wnkotf$_0.commonName : this.cdata_wnkotf$_0.fullName;
+  };
+  Character.prototype.getFullName = function () {
+    return this.cdata_wnkotf$_0.fullName;
+  };
+  Character.prototype.getCommonName = function () {
+    return this.cdata_wnkotf$_0.commonName;
+  };
+  Character.prototype.geShortName = function () {
+    return this.cdata_wnkotf$_0.shortName;
+  };
+  Character.prototype.getStaggerThreshold = function () {
+    return this.cdata_wnkotf$_0.staggerThreshold;
+  };
+  Character.prototype.getSoulpool = function () {
+    return this.cdata_wnkotf$_0.soulpool;
+  };
+  Character.prototype.setSoulpool_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.soulpool = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$SOULPOOL_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.soulpool;
+  };
+  Character.prototype.getLevel = function () {
+    return this.cdata_wnkotf$_0.level;
+  };
+  Character.prototype.setLevel_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.level = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$LEVEL_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.level;
+  };
+  Character.prototype.getExperience = function () {
+    return this.cdata_wnkotf$_0.experience;
+  };
+  Character.prototype.setExperience_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.experience = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$EXPERIENCE_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.experience;
+  };
+  Character.prototype.getConstitution = function () {
+    return this.cdata_wnkotf$_0.constitution;
+  };
+  Character.prototype.setConstitution_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.constitution = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$CONSTITUTION_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.constitution;
+  };
+  Character.prototype.getDexterity = function () {
+    return this.cdata_wnkotf$_0.dexterity;
+  };
+  Character.prototype.setDexterity_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.dexterity = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$DEXTERITY_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.dexterity;
+  };
+  Character.prototype.getIntelligence = function () {
+    return this.cdata_wnkotf$_0.intelligence;
+  };
+  Character.prototype.setIntelligence_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.intelligence = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$INTELLIGENCE_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.intelligence;
+  };
+  Character.prototype.getWillpower = function () {
+    return this.cdata_wnkotf$_0.willpower;
+  };
+  Character.prototype.setWillpower_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.willpower = Attribute$Limit$Companion_getInstance().of_qosqn7$(CoreParam$WILLPOWER_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.willpower;
+  };
+  Character.prototype.getParam_qosqn7$ = function (param) {
+    var tmp$;
+    switch (param.name) {
+      case 'LEVEL':
+        tmp$ = this.getLevel();
+        break;
+      case 'EXPERIENCE':
+        tmp$ = this.getExperience();
+        break;
+      case 'SOULPOOL':
+        tmp$ = this.getSoulpool();
+        break;
+      case 'CONSTITUTION':
+        tmp$ = this.getConstitution();
+        break;
+      case 'DEXTERITY':
+        tmp$ = this.getDexterity();
+        break;
+      case 'INTELLIGENCE':
+        tmp$ = this.getIntelligence();
+        break;
+      case 'WILLPOWER':
+        tmp$ = this.getWillpower();
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.setParam_n8b7wr$ = function (param, n) {
+    var tmp$;
+    switch (param.name) {
+      case 'LEVEL':
+        tmp$ = this.setLevel_za3lpa$(n);
+        break;
+      case 'EXPERIENCE':
+        tmp$ = this.setExperience_za3lpa$(n);
+        break;
+      case 'SOULPOOL':
+        tmp$ = this.setSoulpool_za3lpa$(n);
+        break;
+      case 'CONSTITUTION':
+        tmp$ = this.setConstitution_za3lpa$(n);
+        break;
+      case 'DEXTERITY':
+        tmp$ = this.setDexterity_za3lpa$(n);
+        break;
+      case 'INTELLIGENCE':
+        tmp$ = this.setIntelligence_za3lpa$(n);
+        break;
+      case 'WILLPOWER':
+        tmp$ = this.setWillpower_za3lpa$(n);
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.adjust_n8b7wr$ = function (param, n) {
+    var tmp$;
+    switch (param.name) {
+      case 'LEVEL':
+        tmp$ = this.setLevel_za3lpa$(this.getLevel() + n | 0);
+        break;
+      case 'EXPERIENCE':
+        tmp$ = this.setExperience_za3lpa$(this.getExperience() + n | 0);
+        break;
+      case 'SOULPOOL':
+        tmp$ = this.setSoulpool_za3lpa$(this.getSoulpool() + n | 0);
+        break;
+      case 'CONSTITUTION':
+        tmp$ = this.setConstitution_za3lpa$(this.getConstitution() + n | 0);
+        break;
+      case 'DEXTERITY':
+        tmp$ = this.setDexterity_za3lpa$(this.getDexterity() + n | 0);
+        break;
+      case 'INTELLIGENCE':
+        tmp$ = this.setIntelligence_za3lpa$(this.getIntelligence() + n | 0);
+        break;
+      case 'WILLPOWER':
+        tmp$ = this.setWillpower_za3lpa$(this.getWillpower() + n | 0);
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.increment_n8b7wr$ = function (param, n) {
+    if (n === void 0)
+      n = 1;
+    return this.adjust_n8b7wr$(param, n);
+  };
+  Character.prototype.decrement_n8b7wr$ = function (param, n) {
+    if (n === void 0)
+      n = 1;
+    return this.adjust_n8b7wr$(param, -n | 0);
+  };
+  Character.prototype.getHealth = function () {
+    return this.cdata_wnkotf$_0.state.health;
+  };
+  Character.prototype.setHealth_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.health = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$HEALTH_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.health;
+  };
+  Character.prototype.getDamage = function () {
+    return this.cdata_wnkotf$_0.state.damage;
+  };
+  Character.prototype.setDamage_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.damage = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$DAMAGE_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.damage;
+  };
+  Character.prototype.getFatigue = function () {
+    return this.cdata_wnkotf$_0.state.fatigue;
+  };
+  Character.prototype.setFatigue_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.fatigue = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$FATIGUE_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.fatigue;
+  };
+  Character.prototype.getPower = function () {
+    return this.cdata_wnkotf$_0.state.power;
+  };
+  Character.prototype.setPower_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.power = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$POWER_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.power;
+  };
+  Character.prototype.isTapped = function () {
+    return this.cdata_wnkotf$_0.state.tapped;
+  };
+  Character.prototype.tap = function () {
+    this.cdata_wnkotf$_0.state.tapped = true;
+  };
+  Character.prototype.untap = function () {
+    this.cdata_wnkotf$_0.state.tapped = false;
+  };
+  Character.prototype.getAffliction = function () {
+    return this.cdata_wnkotf$_0.state.affliction;
+  };
+  Character.prototype.getTrauma = function () {
+    return this.cdata_wnkotf$_0.state.trauma;
+  };
+  Character.prototype.getMomentum = function () {
+    return this.cdata_wnkotf$_0.state.momentum;
+  };
+  Character.prototype.getCondition = function () {
+    return this.cdata_wnkotf$_0.state.condition;
+  };
+  Character.prototype.setCondition_5crjny$ = function (cond, force) {
+    if (force === void 0)
+      force = false;
+    if (force || cond.priority >= this.cdata_wnkotf$_0.state.condition.priority) {
+      this.cdata_wnkotf$_0.state.condition = cond;
+    }
+    return this.cdata_wnkotf$_0.state.condition;
+  };
+  Character.prototype.applyCondition_jwjpbp$ = function (cond) {
+    return this.setCondition_5crjny$(cond, false);
+  };
+  Character.prototype.forceCondition_jwjpbp$ = function (cond) {
+    return this.setCondition_5crjny$(cond, true);
+  };
+  Character.prototype.setAffliction_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.affliction = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$AFFLICTION_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.affliction;
+  };
+  Character.prototype.setTrauma_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.trauma = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$TRAUMA_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.trauma;
+  };
+  Character.prototype.setMomentum_za3lpa$ = function (n) {
+    this.cdata_wnkotf$_0.state.momentum = Attribute$Limit$Companion_getInstance().of_alacmf$(StateParam$MOMENTUM_getInstance()).coerce_za3lpa$(n);
+    return this.cdata_wnkotf$_0.state.momentum;
+  };
+  Character.prototype.getParam_alacmf$ = function (param) {
+    var tmp$;
+    switch (param.name) {
+      case 'HEALTH':
+        tmp$ = this.getHealth();
+        break;
+      case 'DAMAGE':
+        tmp$ = this.getDamage();
+        break;
+      case 'FATIGUE':
+        tmp$ = this.getFatigue();
+        break;
+      case 'POWER':
+        tmp$ = this.getPower();
+        break;
+      case 'AFFLICTION':
+        tmp$ = this.getAffliction();
+        break;
+      case 'TRAUMA':
+        tmp$ = this.getTrauma();
+        break;
+      case 'MOMENTUM':
+        tmp$ = this.getMomentum();
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.setParam_hek9tz$ = function (param, n) {
+    var tmp$;
+    switch (param.name) {
+      case 'HEALTH':
+        tmp$ = this.setHealth_za3lpa$(n);
+        break;
+      case 'DAMAGE':
+        tmp$ = this.setDamage_za3lpa$(n);
+        break;
+      case 'FATIGUE':
+        tmp$ = this.setFatigue_za3lpa$(n);
+        break;
+      case 'POWER':
+        tmp$ = this.setPower_za3lpa$(n);
+        break;
+      case 'AFFLICTION':
+        tmp$ = this.setAffliction_za3lpa$(n);
+        break;
+      case 'TRAUMA':
+        tmp$ = this.setTrauma_za3lpa$(n);
+        break;
+      case 'MOMENTUM':
+        tmp$ = this.setMomentum_za3lpa$(n);
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.adjust_hek9tz$ = function (param, n) {
+    var tmp$;
+    switch (param.name) {
+      case 'HEALTH':
+        tmp$ = this.setHealth_za3lpa$(this.cdata_wnkotf$_0.state.health + n | 0);
+        break;
+      case 'DAMAGE':
+        tmp$ = this.setDamage_za3lpa$(this.cdata_wnkotf$_0.state.damage + n | 0);
+        break;
+      case 'FATIGUE':
+        tmp$ = this.setFatigue_za3lpa$(this.cdata_wnkotf$_0.state.fatigue + n | 0);
+        break;
+      case 'POWER':
+        tmp$ = this.setPower_za3lpa$(this.cdata_wnkotf$_0.state.power + n | 0);
+        break;
+      case 'AFFLICTION':
+        tmp$ = this.setAffliction_za3lpa$(this.cdata_wnkotf$_0.state.affliction + n | 0);
+        break;
+      case 'TRAUMA':
+        tmp$ = this.setTrauma_za3lpa$(this.cdata_wnkotf$_0.state.trauma + n | 0);
+        break;
+      case 'MOMENTUM':
+        tmp$ = this.setMomentum_za3lpa$(this.cdata_wnkotf$_0.state.momentum + n | 0);
+        break;
+      default:tmp$ = Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return tmp$;
+  };
+  Character.prototype.increment_hek9tz$ = function (param, n) {
+    if (n === void 0)
+      n = 1;
+    return this.adjust_hek9tz$(param, n);
+  };
+  Character.prototype.decrement_hek9tz$ = function (param, n) {
+    if (n === void 0)
+      n = 1;
+    return this.adjust_hek9tz$(param, -n | 0);
+  };
+  Character.prototype.takeDamage_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var pwr = this.cdata_wnkotf$_0.state.power;
+    var hel = this.cdata_wnkotf$_0.state.health;
+    var dmg = this.cdata_wnkotf$_0.state.damage;
+    var stg = this.cdata_wnkotf$_0.staggerThreshold;
+    var n1 = n - pwr | 0;
+    if (n1 > 0) {
+      if (pwr > 0) {
+        this.setPower_za3lpa$(0);
+      }
+      if (hel > 0) {
+        if (1 <= stg && stg <= n1) {
+          this.setCondition_5crjny$(StateCondition$STAGGERED_getInstance());
+        }
+        var n2 = coerceAtMost(n1, hel);
+        var h2 = hel - n2 | 0;
+        this.setHealth_za3lpa$(h2);
+        if (h2 > 0) {
+          this.increment_hek9tz$(StateParam$DAMAGE_getInstance(), n2);
+        }
+         else {
+          if (n2 > 1) {
+            this.increment_hek9tz$(StateParam$DAMAGE_getInstance(), n2 - 1 | 0);
+          }
+          this.increment_hek9tz$(StateParam$FATIGUE_getInstance());
+          this.setCondition_5crjny$(StateCondition$UNCONSCIOUS_getInstance());
+          this.fulminate();
+        }
+      }
+       else if (dmg > 0) {
+        var n2_0 = coerceAtMost(n1, dmg);
+        var d1 = dmg - n2_0 | 0;
+        this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), n2_0);
+        this.setDamage_za3lpa$(d1);
+        if (d1 <= 0) {
+          this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+        }
+      }
+       else {
+        this.setCondition_5crjny$(StateCondition$DEAD_getInstance());
+      }
+    }
+     else {
+      this.cdata_wnkotf$_0.state.tapped = true;
+      this.setPower_za3lpa$(abs(n1));
+    }
+    return this.cdata_wnkotf$_0.state.damage - dmg | 0;
+  };
+  Character.prototype.healDamage_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var n1 = n;
+    var afl = this.cdata_wnkotf$_0.state.affliction;
+    if (afl > 0) {
+      var b1 = afl - n | 0;
+      this.setAffliction_za3lpa$(coerceAtLeast(b1, 0));
+      n1 = b1 >= 0 ? 0 : abs(b1);
+    }
+    if (n1 < 1)
+      return 0;
+    var dmg = this.cdata_wnkotf$_0.state.damage;
+    n1 = coerceAtMost(n1, dmg);
+    var d1 = dmg - n1 | 0;
+    this.setDamage_za3lpa$(d1);
+    this.increment_hek9tz$(StateParam$HEALTH_getInstance(), n1);
+    if (this.cdata_wnkotf$_0.state.health > 0 && this.cdata_wnkotf$_0.state.condition === StateCondition$UNCONSCIOUS_getInstance()) {
+      this.setCondition_5crjny$(StateCondition$NORMAL_getInstance());
+    }
+    return n1;
+  };
+  Character.prototype.accumulateFatigue_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var f1 = n;
+    var pwr = this.cdata_wnkotf$_0.state.power;
+    if (pwr > 0) {
+      this.setPower_za3lpa$(0);
+      f1 = f1 - 1 | 0;
+    }
+    if (f1 < 1)
+      return 0;
+    var hel = this.cdata_wnkotf$_0.state.health;
+    if (hel > 0) {
+      var h1 = coerceAtMost(f1, hel);
+      var h2 = hel - h1 | 0;
+      this.setHealth_za3lpa$(h2);
+      this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), h1);
+      if (h2 === 0) {
+        this.fulminate();
+        this.setCondition_5crjny$(StateCondition$UNCONSCIOUS_getInstance());
+      }
+      f1 = f1 - h1 | 0;
+    }
+    if (f1 < 1)
+      return 0;
+    var dmg = this.cdata_wnkotf$_0.state.damage;
+    if (dmg > 0) {
+      f1 = coerceAtMost(f1, dmg);
+      var d1 = dmg - f1 | 0;
+      this.setDamage_za3lpa$(d1);
+      this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), f1);
+      if (d1 === 0) {
+        this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+      }
+    }
+     else {
+      this.setCondition_5crjny$(StateCondition$DEAD_getInstance());
+    }
+    return f1;
+  };
+  Character.prototype.restoreFatigue_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var ftg = this.cdata_wnkotf$_0.state.fatigue;
+    var afl = this.cdata_wnkotf$_0.state.affliction;
+    if (ftg < 1 || afl >= ftg)
+      return 0;
+    var hel = this.cdata_wnkotf$_0.state.health;
+    var cdn = this.cdata_wnkotf$_0.state.condition;
+    var f1 = ftg - afl | 0;
+    var f2 = coerceAtMost(f1, f1);
+    this.decrement_hek9tz$(StateParam$FATIGUE_getInstance(), f2);
+    this.increment_hek9tz$(StateParam$HEALTH_getInstance(), f2);
+    if (hel > 0 && (cdn === StateCondition$UNCONSCIOUS_getInstance() || cdn === StateCondition$COMATOSE_getInstance())) {
+      this.setCondition_5crjny$(StateCondition$NORMAL_getInstance(), true);
+    }
+    return f2;
+  };
+  Character.prototype.gainPower_za3lpa$ = function (n) {
+    if (n < 0)
+      return 0;
+    var pwr = this.cdata_wnkotf$_0.state.power;
+    var p1 = coerceAtMost(pwr + n | 0, this.cdata_wnkotf$_0.soulpool);
+    return this.setPower_za3lpa$(p1) - pwr | 0;
+  };
+  Character.prototype.consumePower_za3lpa$ = function (n) {
+    if (n < 0)
+      return 0;
+    if (n > 0 && n < this.cdata_wnkotf$_0.state.power) {
+      this.cdata_wnkotf$_0.state.tapped = true;
+    }
+    var pwr = this.cdata_wnkotf$_0.state.power;
+    var p1 = coerceAtLeast(pwr - n | 0, 0);
+    return pwr - this.setPower_za3lpa$(p1) | 0;
+  };
+  Character.prototype.sustainAffliction_za3lpa$ = function (n) {
+    if (n < 1)
+      return 0;
+    var brk = this.cdata_wnkotf$_0.state.affliction;
+    var max = this.cdata_wnkotf$_0.soulpool;
+    var b2 = brk + n | 0;
+    if (this.cdata_wnkotf$_0.state.health < 1) {
+      this.setAffliction_za3lpa$(b2);
+      this.fulminate();
+    }
+     else if (b2 > max) {
+      this.setAffliction_za3lpa$(max);
+      this.takeDamage_za3lpa$(b2 - max | 0);
+    }
+     else {
+      this.setAffliction_za3lpa$(b2);
+    }
+    return b2 - brk | 0;
+  };
+  Character.prototype.cureAffliction_za3lpa$ = function (n) {
+    var afl = this.cdata_wnkotf$_0.state.affliction;
+    if (n < 1 || afl < 1)
+      return 0;
+    var b2 = coerceAtLeast(afl - n | 0, 0);
+    return afl - this.setAffliction_za3lpa$(b2) | 0;
+  };
+  Character.prototype.sufferTrauma_za3lpa$ = function (n) {
+    var tmp$;
+    if (n < 1)
+      return 0;
+    var max = this.cdata_wnkotf$_0.soulpool;
+    var t2 = this.cdata_wnkotf$_0.state.trauma + n | 0;
+    if (t2 > max) {
+      this.setCondition_5crjny$(StateCondition$UNCONSCIOUS_getInstance());
+      tmp$ = this.setTrauma_za3lpa$(max);
+    }
+     else {
+      tmp$ = this.setTrauma_za3lpa$(t2);
+    }
+    return tmp$;
+  };
+  Character.prototype.alleviateTrauma_za3lpa$ = function (n) {
+    var trm = this.cdata_wnkotf$_0.state.trauma;
+    if (n < 1 || trm < 1)
+      return 0;
+    var a1 = coerceAtLeast(trm - n | 0, 0);
+    this.setTrauma_za3lpa$(a1);
+    return trm - a1 | 0;
+  };
+  Character.prototype.fulminate = function () {
+    var afl = this.cdata_wnkotf$_0.state.affliction;
+    if (afl < 1)
+      return 0;
+    var ftg = 0;
+    for (var i = 0; i < afl; i++) {
+      if (Random.Default.nextInt_za3lpa$(4) < 1)
+        ftg = ftg + 1 | 0;
+    }
+    this.setAffliction_za3lpa$(0);
+    if (ftg < 1)
+      return 0;
+    var dmg = this.cdata_wnkotf$_0.state.damage;
+    if (dmg < 1) {
+      this.setCondition_5crjny$(StateCondition$DEAD_getInstance());
+    }
+     else {
+      ftg = coerceAtMost(ftg, dmg);
+      var d2 = dmg - ftg | 0;
+      this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), ftg);
+      this.setDamage_za3lpa$(d2);
+      if (d2 < 1) {
+        this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+      }
+    }
+    return ftg;
+  };
+  Character.prototype.flowMomentum_za3lpa$ = function (n) {
+    return n < 1 ? 0 : this.increment_hek9tz$(StateParam$MOMENTUM_getInstance(), n);
+  };
+  Character.prototype.ebbMomentum_za3lpa$ = function (n) {
+    return n < 1 ? 0 : this.decrement_hek9tz$(StateParam$MOMENTUM_getInstance(), n);
+  };
+  Character.prototype.getConMode = function () {
+    return this.cdata_wnkotf$_0.state.modes.conMode;
+  };
+  Character.prototype.getDexMode = function () {
+    return this.cdata_wnkotf$_0.state.modes.dexMode;
+  };
+  Character.prototype.getIntMode = function () {
+    return this.cdata_wnkotf$_0.state.modes.intMode;
+  };
+  Character.prototype.getWilMode = function () {
+    return this.cdata_wnkotf$_0.state.modes.wilMode;
+  };
+  Character.prototype.getMode_f4ewii$ = function (stat) {
+    return this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
+  };
+  Character.prototype.setMode_j9df3p$ = function (stat, mode, force) {
+    if (force === void 0)
+      force = false;
+    var currentMode = this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
+    switch (mode.name) {
+      case 'NATURAL':
+        switch (currentMode.name) {
+          case 'NATURAL':
+            break;
+          case 'ENHANCED':
+            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            break;
+          case 'ENFEEBLED':
+            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            break;
+        }
+
+        break;
+      case 'ENHANCED':
+        switch (currentMode.name) {
+          case 'NATURAL':
+            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENHANCED_getInstance());
+            break;
+          case 'ENHANCED':
+            this.healDamage_za3lpa$(1);
+            break;
+          case 'ENFEEBLED':
+            if (force)
+              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENHANCED_getInstance());
+            else
+              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            break;
+          default:Kotlin.noWhenBranchMatched();
+            break;
+        }
+
+        break;
+      case 'ENFEEBLED':
+        switch (currentMode.name) {
+          case 'NATURAL':
+            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENFEEBLED_getInstance());
+            break;
+          case 'ENHANCED':
+            if (force)
+              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENFEEBLED_getInstance());
+            else
+              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            break;
+          case 'ENFEEBLED':
+            this.takeDamage_za3lpa$(1);
+            break;
+          default:Kotlin.noWhenBranchMatched();
+            break;
+        }
+
+        break;
+      default:Kotlin.noWhenBranchMatched();
+        break;
+    }
+    return this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
+  };
+  Character.prototype.normalizeMode_f4ewii$ = function (stat) {
+    return this.setMode_j9df3p$(stat, StatMode$NATURAL_getInstance());
+  };
+  Character.prototype.enhanceMode_f4ewii$ = function (stat) {
+    return this.setMode_j9df3p$(stat, StatMode$ENHANCED_getInstance());
+  };
+  Character.prototype.enfeebleMode_f4ewii$ = function (stat) {
+    return this.setMode_j9df3p$(stat, StatMode$ENFEEBLED_getInstance());
+  };
+  Character.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Character',
+    interfaces: []
+  };
+  function CharacterDocument(character, fileId, folderId) {
+    this.character = character;
+    this.fileId = fileId;
+    this.folderId = folderId;
+  }
+  CharacterDocument.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CharacterDocument',
+    interfaces: []
+  };
+  CharacterDocument.prototype.component1 = function () {
+    return this.character;
+  };
+  CharacterDocument.prototype.component2 = function () {
+    return this.fileId;
+  };
+  CharacterDocument.prototype.component3 = function () {
+    return this.folderId;
+  };
+  CharacterDocument.prototype.copy_pc1a4e$ = function (character, fileId, folderId) {
+    return new CharacterDocument(character === void 0 ? this.character : character, fileId === void 0 ? this.fileId : fileId, folderId === void 0 ? this.folderId : folderId);
+  };
+  CharacterDocument.prototype.toString = function () {
+    return 'CharacterDocument(character=' + Kotlin.toString(this.character) + (', fileId=' + Kotlin.toString(this.fileId)) + (', folderId=' + Kotlin.toString(this.folderId)) + ')';
+  };
+  CharacterDocument.prototype.hashCode = function () {
+    var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.character) | 0;
+    result = result * 31 + Kotlin.hashCode(this.fileId) | 0;
+    result = result * 31 + Kotlin.hashCode(this.folderId) | 0;
+    return result;
+  };
+  CharacterDocument.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.character, other.character) && Kotlin.equals(this.fileId, other.fileId) && Kotlin.equals(this.folderId, other.folderId)))));
+  };
+  function ParticipantStatus(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function ParticipantStatus_initFields() {
+    ParticipantStatus_initFields = function () {
+    };
+    ParticipantStatus$FRIEND_instance = new ParticipantStatus('FRIEND', 0);
+    ParticipantStatus$FOE_instance = new ParticipantStatus('FOE', 1);
+  }
+  var ParticipantStatus$FRIEND_instance;
+  function ParticipantStatus$FRIEND_getInstance() {
+    ParticipantStatus_initFields();
+    return ParticipantStatus$FRIEND_instance;
+  }
+  var ParticipantStatus$FOE_instance;
+  function ParticipantStatus$FOE_getInstance() {
+    ParticipantStatus_initFields();
+    return ParticipantStatus$FOE_instance;
+  }
+  ParticipantStatus.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'ParticipantStatus',
+    interfaces: [Enum]
+  };
+  function ParticipantStatus$values() {
+    return [ParticipantStatus$FRIEND_getInstance(), ParticipantStatus$FOE_getInstance()];
+  }
+  ParticipantStatus.values = ParticipantStatus$values;
+  function ParticipantStatus$valueOf(name) {
+    switch (name) {
+      case 'FRIEND':
+        return ParticipantStatus$FRIEND_getInstance();
+      case 'FOE':
+        return ParticipantStatus$FOE_getInstance();
+      default:throwISE('No enum constant wetfe.core.encounter.ParticipantStatus.' + name);
+    }
+  }
+  ParticipantStatus.valueOf_61zpoe$ = ParticipantStatus$valueOf;
+  function Participant() {
+  }
+  Participant.$metadata$ = {
+    kind: Kind_INTERFACE,
+    simpleName: 'Participant',
+    interfaces: [Comparable]
+  };
+  function CharacterParticipant(data) {
+    if (data === void 0)
+      data = new CharaData();
+    Character.call(this, data);
+    this.key_gyfqhu$_0 = '';
+    this.status_9mj45$_0 = ParticipantStatus$FRIEND_getInstance();
+    this.initiative_2wbsph$_0 = 0.0;
+  }
+  Object.defineProperty(CharacterParticipant.prototype, 'key', {
+    get: function () {
+      return this.key_gyfqhu$_0;
+    },
+    set: function (key) {
+      this.key_gyfqhu$_0 = key;
+    }
+  });
+  Object.defineProperty(CharacterParticipant.prototype, 'status', {
+    get: function () {
+      return this.status_9mj45$_0;
+    },
+    set: function (status) {
+      this.status_9mj45$_0 = status;
+    }
+  });
+  Object.defineProperty(CharacterParticipant.prototype, 'initiative', {
+    get: function () {
+      return this.initiative_2wbsph$_0;
+    },
+    set: function (initiative) {
+      this.initiative_2wbsph$_0 = initiative;
+    }
+  });
+  CharacterParticipant.prototype.getStateParam_alacmf$ = function (param) {
+    return this.getParam_alacmf$(param);
+  };
+  CharacterParticipant.prototype.setStateParam_hek9tz$ = function (param, n) {
+    return this.setParam_hek9tz$(param, n);
+  };
+  CharacterParticipant.prototype.adjustStateParam_hek9tz$ = function (param, n) {
+    return this.adjust_hek9tz$(param, n);
+  };
+  CharacterParticipant.prototype.incrementStateParam_alacmf$ = function (param) {
+    return this.increment_hek9tz$(param);
+  };
+  CharacterParticipant.prototype.decrementStateParam_alacmf$ = function (param) {
+    return this.decrement_hek9tz$(param);
+  };
+  CharacterParticipant.prototype.getCoreParam_qosqn7$ = function (param) {
+    return this.getParam_qosqn7$(param);
+  };
+  CharacterParticipant.prototype.setCoreParam_n8b7wr$ = function (param, n) {
+    return this.setParam_n8b7wr$(param, n);
+  };
+  CharacterParticipant.prototype.adjustCoreParam_n8b7wr$ = function (param, n) {
+    return this.adjust_n8b7wr$(param, n);
+  };
+  CharacterParticipant.prototype.incrementCoreParam_qosqn7$ = function (param) {
+    return this.increment_n8b7wr$(param);
+  };
+  CharacterParticipant.prototype.decrementCoreParam_qosqn7$ = function (param) {
+    return this.decrement_n8b7wr$(param);
+  };
+  CharacterParticipant.prototype.compareTo_11rb$ = function (other) {
+    return numberToInt(other.initiative) - numberToInt(this.initiative) | 0;
+  };
+  CharacterParticipant.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'CharacterParticipant',
+    interfaces: [Participant, Character]
+  };
+  function EncounterType(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function EncounterType_initFields() {
+    EncounterType_initFields = function () {
+    };
+    EncounterType$COMBAT_instance = new EncounterType('COMBAT', 0);
+    EncounterType$SOCIAL_instance = new EncounterType('SOCIAL', 1);
+    EncounterType$ENVIRONMENTAL_instance = new EncounterType('ENVIRONMENTAL', 2);
+  }
+  var EncounterType$COMBAT_instance;
+  function EncounterType$COMBAT_getInstance() {
+    EncounterType_initFields();
+    return EncounterType$COMBAT_instance;
+  }
+  var EncounterType$SOCIAL_instance;
+  function EncounterType$SOCIAL_getInstance() {
+    EncounterType_initFields();
+    return EncounterType$SOCIAL_instance;
+  }
+  var EncounterType$ENVIRONMENTAL_instance;
+  function EncounterType$ENVIRONMENTAL_getInstance() {
+    EncounterType_initFields();
+    return EncounterType$ENVIRONMENTAL_instance;
+  }
+  EncounterType.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'EncounterType',
+    interfaces: [Enum]
+  };
+  function EncounterType$values() {
+    return [EncounterType$COMBAT_getInstance(), EncounterType$SOCIAL_getInstance(), EncounterType$ENVIRONMENTAL_getInstance()];
+  }
+  EncounterType.values = EncounterType$values;
+  function EncounterType$valueOf(name) {
+    switch (name) {
+      case 'COMBAT':
+        return EncounterType$COMBAT_getInstance();
+      case 'SOCIAL':
+        return EncounterType$SOCIAL_getInstance();
+      case 'ENVIRONMENTAL':
+        return EncounterType$ENVIRONMENTAL_getInstance();
+      default:throwISE('No enum constant wetfe.core.encounter.EncounterType.' + name);
+    }
+  }
+  EncounterType.valueOf_61zpoe$ = EncounterType$valueOf;
+  function Encounter(type) {
+    this.type = type;
+    this.round = 0;
+    this.keymap = LinkedHashMap_init();
+    this.participants = LinkedHashMap_init();
+    this.participantOrder = [];
+    this.activeParticipantIndex_224cm1$_0 = 0;
+    this.targetParticipantIndex_v11q5q$_0 = 0;
+  }
+  Object.defineProperty(Encounter.prototype, 'activeParticipantIndex', {
+    get: function () {
+      return this.activeParticipantIndex_224cm1$_0;
+    },
+    set: function (i) {
+      this.activeParticipantIndex_224cm1$_0 = this.coerceIndex_0(i);
+    }
+  });
+  Object.defineProperty(Encounter.prototype, 'targetParticipantIndex', {
+    get: function () {
+      return this.targetParticipantIndex_v11q5q$_0;
+    },
+    set: function (i) {
+      this.targetParticipantIndex_v11q5q$_0 = this.coerceIndex_0(i);
+    }
+  });
+  Encounter.prototype.generateKey_0 = function (p) {
+    var name = p.getName();
+    var key = isBlank(name) ? 'Unk' : substring(name, new IntRange(0, coerceAtMost(3, name.length)));
+    var i = this.keymap.get_11rb$(key);
+    if (i == null) {
+      var $receiver = this.keymap;
+      var key_0 = key;
+      $receiver.put_xwzc9p$(key_0, 1);
+    }
+     else {
+      var $receiver_0 = this.keymap;
+      var key_1 = key;
+      var value = (i = i + 1 | 0, i);
+      $receiver_0.put_xwzc9p$(key_1, value);
+      key = substring(key, new IntRange(0, i > 9 ? 1 : 2)) + toString(i);
+    }
+    return key;
+  };
+  Encounter.prototype.coerceIndex_0 = function (i) {
+    return this.participantOrder.length === 0 || i < 0 ? 0 : i >= this.participantOrder.length ? this.participantOrder.length - 1 | 0 : i;
+  };
+  Encounter.prototype.indexIsValid_0 = function (i) {
+    return i >= 0 && i < this.participantOrder.length;
+  };
+  Encounter.prototype.getParticipant_61zpoe$ = function (key) {
+    return this.participants.get_11rb$(key);
+  };
+  Encounter.prototype.getActiveParticipant = function () {
+    return this.indexIsValid_0(this.activeParticipantIndex) ? this.participantOrder[this.activeParticipantIndex] : null;
+  };
+  Encounter.prototype.getTargetParticipant = function () {
+    return this.indexIsValid_0(this.targetParticipantIndex) ? this.participantOrder[this.targetParticipantIndex] : null;
+  };
+  Encounter.prototype.targetNext = function () {
+    this.activeParticipantIndex = this.activeParticipantIndex + 1 | 0;
+    return this;
+  };
+  Encounter.prototype.activateNext = function () {
+    this.targetParticipantIndex = this.targetParticipantIndex + 1 | 0;
+    return this;
+  };
+  Encounter.prototype.addParticipant_qgd5te$ = function (p) {
+    var pkey = this.generateKey_0(p);
+    p.key = pkey;
+    this.participants.put_xwzc9p$(pkey, p);
+    this.participantOrder[this.participantOrder.length] = p;
+    return this;
+  };
+  Encounter.prototype.startNewRound = function () {
+    var tmp$, tmp$_0;
+    this.activeParticipantIndex = 0;
+    if (!(this.participantOrder.length === 0)) {
+      tmp$ = this.participantOrder;
+      for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
+        var p = tmp$[tmp$_0];
+        var x = p.getMomentum();
+        var min = 50.0;
+        if (x > 0) {
+          min += 50.0 * (x / (x + 2 | 0) | 0);
+        }
+         else if (x < 0) {
+          x = abs(x);
+          min -= 50.0 * (x / (x + 2 | 0) | 0);
+        }
+        p.initiative = Random.Default.nextDouble_lu1900$(min, 100.0);
+        p.setMomentum_za3lpa$(0);
+      }
+      sort(this.participantOrder);
+      this.round = this.round + 1 | 0;
+    }
+    return this;
+  };
+  Encounter.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Encounter',
+    interfaces: []
+  };
+  function DataSource(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function DataSource_initFields() {
+    DataSource_initFields = function () {
+    };
+    DataSource$PLAYER_instance = new DataSource('PLAYER', 0);
+    DataSource$OFFICIAL_instance = new DataSource('OFFICIAL', 1);
+    DataSource$PUBLISHED_instance = new DataSource('PUBLISHED', 2);
+    DataSource$HOMEBREW_instance = new DataSource('HOMEBREW', 3);
+  }
+  var DataSource$PLAYER_instance;
+  function DataSource$PLAYER_getInstance() {
+    DataSource_initFields();
+    return DataSource$PLAYER_instance;
+  }
+  var DataSource$OFFICIAL_instance;
+  function DataSource$OFFICIAL_getInstance() {
+    DataSource_initFields();
+    return DataSource$OFFICIAL_instance;
+  }
+  var DataSource$PUBLISHED_instance;
+  function DataSource$PUBLISHED_getInstance() {
+    DataSource_initFields();
+    return DataSource$PUBLISHED_instance;
+  }
+  var DataSource$HOMEBREW_instance;
+  function DataSource$HOMEBREW_getInstance() {
+    DataSource_initFields();
+    return DataSource$HOMEBREW_instance;
+  }
+  DataSource.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'DataSource',
+    interfaces: [Enum]
+  };
+  function DataSource$values() {
+    return [DataSource$PLAYER_getInstance(), DataSource$OFFICIAL_getInstance(), DataSource$PUBLISHED_getInstance(), DataSource$HOMEBREW_getInstance()];
+  }
+  DataSource.values = DataSource$values;
+  function DataSource$valueOf(name) {
+    switch (name) {
+      case 'PLAYER':
+        return DataSource$PLAYER_getInstance();
+      case 'OFFICIAL':
+        return DataSource$OFFICIAL_getInstance();
+      case 'PUBLISHED':
+        return DataSource$PUBLISHED_getInstance();
+      case 'HOMEBREW':
+        return DataSource$HOMEBREW_getInstance();
+      default:throwISE('No enum constant wetfe.core.game.DataSource.' + name);
+    }
+  }
+  DataSource.valueOf_61zpoe$ = DataSource$valueOf;
+  function Physicality(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function Physicality_initFields() {
+    Physicality_initFields = function () {
+    };
+    Physicality$CONFLUENT_instance = new Physicality('CONFLUENT', 0);
+    Physicality$INFERNAL_instance = new Physicality('INFERNAL', 1);
+    Physicality$CELESTIAL_instance = new Physicality('CELESTIAL', 2);
+    Physicality$EXOTIC_instance = new Physicality('EXOTIC', 3);
+  }
+  var Physicality$CONFLUENT_instance;
+  function Physicality$CONFLUENT_getInstance() {
+    Physicality_initFields();
+    return Physicality$CONFLUENT_instance;
+  }
+  var Physicality$INFERNAL_instance;
+  function Physicality$INFERNAL_getInstance() {
+    Physicality_initFields();
+    return Physicality$INFERNAL_instance;
+  }
+  var Physicality$CELESTIAL_instance;
+  function Physicality$CELESTIAL_getInstance() {
+    Physicality_initFields();
+    return Physicality$CELESTIAL_instance;
+  }
+  var Physicality$EXOTIC_instance;
+  function Physicality$EXOTIC_getInstance() {
+    Physicality_initFields();
+    return Physicality$EXOTIC_instance;
+  }
+  Physicality.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Physicality',
+    interfaces: [Enum]
+  };
+  function Physicality$values() {
+    return [Physicality$CONFLUENT_getInstance(), Physicality$INFERNAL_getInstance(), Physicality$CELESTIAL_getInstance(), Physicality$EXOTIC_getInstance()];
+  }
+  Physicality.values = Physicality$values;
+  function Physicality$valueOf(name) {
+    switch (name) {
+      case 'CONFLUENT':
+        return Physicality$CONFLUENT_getInstance();
+      case 'INFERNAL':
+        return Physicality$INFERNAL_getInstance();
+      case 'CELESTIAL':
+        return Physicality$CELESTIAL_getInstance();
+      case 'EXOTIC':
+        return Physicality$EXOTIC_getInstance();
+      default:throwISE('No enum constant wetfe.core.universe.Physicality.' + name);
+    }
+  }
+  Physicality.valueOf_61zpoe$ = Physicality$valueOf;
+  function Vulnerability(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function Vulnerability_initFields() {
+    Vulnerability_initFields = function () {
+    };
+    Vulnerability$NEGATIVE_instance = new Vulnerability('NEGATIVE', 0);
+    Vulnerability$POSITIVE_instance = new Vulnerability('POSITIVE', 1);
+    Vulnerability$INVERSE_instance = new Vulnerability('INVERSE', 2);
+    Vulnerability$HYPER_instance = new Vulnerability('HYPER', 3);
+  }
+  var Vulnerability$NEGATIVE_instance;
+  function Vulnerability$NEGATIVE_getInstance() {
+    Vulnerability_initFields();
+    return Vulnerability$NEGATIVE_instance;
+  }
+  var Vulnerability$POSITIVE_instance;
+  function Vulnerability$POSITIVE_getInstance() {
+    Vulnerability_initFields();
+    return Vulnerability$POSITIVE_instance;
+  }
+  var Vulnerability$INVERSE_instance;
+  function Vulnerability$INVERSE_getInstance() {
+    Vulnerability_initFields();
+    return Vulnerability$INVERSE_instance;
+  }
+  var Vulnerability$HYPER_instance;
+  function Vulnerability$HYPER_getInstance() {
+    Vulnerability_initFields();
+    return Vulnerability$HYPER_instance;
+  }
+  Vulnerability.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'Vulnerability',
+    interfaces: [Enum]
+  };
+  function Vulnerability$values() {
+    return [Vulnerability$NEGATIVE_getInstance(), Vulnerability$POSITIVE_getInstance(), Vulnerability$INVERSE_getInstance(), Vulnerability$HYPER_getInstance()];
+  }
+  Vulnerability.values = Vulnerability$values;
+  function Vulnerability$valueOf(name) {
+    switch (name) {
+      case 'NEGATIVE':
+        return Vulnerability$NEGATIVE_getInstance();
+      case 'POSITIVE':
+        return Vulnerability$POSITIVE_getInstance();
+      case 'INVERSE':
+        return Vulnerability$INVERSE_getInstance();
+      case 'HYPER':
+        return Vulnerability$HYPER_getInstance();
+      default:throwISE('No enum constant wetfe.core.universe.Vulnerability.' + name);
+    }
+  }
+  Vulnerability.valueOf_61zpoe$ = Vulnerability$valueOf;
+  function Physics() {
+    Physics_instance = this;
+  }
+  Physics.prototype.vulnerabilityOf_c8hzt0$ = function (causativeSystem, affectedSystem) {
+    var tmp$;
+    switch (causativeSystem.name) {
+      case 'INFERNAL':
+        switch (affectedSystem.name) {
+          case 'INFERNAL':
+            tmp$ = Vulnerability$INVERSE_getInstance();
+            break;
+          case 'CELESTIAL':
+            tmp$ = Vulnerability$HYPER_getInstance();
+            break;
+          default:tmp$ = Vulnerability$POSITIVE_getInstance();
+            break;
+        }
+
+        break;
+      case 'CELESTIAL':
+        switch (affectedSystem.name) {
+          case 'CELESTIAL':
+            tmp$ = Vulnerability$INVERSE_getInstance();
+            break;
+          case 'INFERNAL':
+            tmp$ = Vulnerability$HYPER_getInstance();
+            break;
+          default:tmp$ = Vulnerability$POSITIVE_getInstance();
+            break;
+        }
+
+        break;
+      case 'EXOTIC':
+        switch (affectedSystem.name) {
+          case 'EXOTIC':
+            tmp$ = Vulnerability$HYPER_getInstance();
+            break;
+          case 'INFERNAL':
+            tmp$ = Vulnerability$NEGATIVE_getInstance();
+            break;
+          case 'CELESTIAL':
+            tmp$ = Vulnerability$NEGATIVE_getInstance();
+            break;
+          default:tmp$ = Vulnerability$POSITIVE_getInstance();
+            break;
+        }
+
+        break;
+      default:tmp$ = Vulnerability$POSITIVE_getInstance();
+        break;
+    }
+    return tmp$;
+  };
+  Physics.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Physics',
+    interfaces: []
+  };
+  var Physics_instance = null;
+  function Physics_getInstance() {
+    if (Physics_instance === null) {
+      new Physics();
+    }
+    return Physics_instance;
+  }
   function Event(x, y, z, t) {
     if (x === void 0)
       x = 0;
@@ -1291,1001 +2693,14 @@ var wetfe = function (_, Kotlin) {
   Event.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.x, other.x) && Kotlin.equals(this.y, other.y) && Kotlin.equals(this.z, other.z) && Kotlin.equals(this.t, other.t)))));
   };
-  function CharaData(id, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, level, specialty, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
-    CharaData$Companion_getInstance();
-    if (id === void 0)
-      id = CharaData$Companion_getInstance().newId();
-    if (fullName === void 0)
-      fullName = 'Full Name';
-    if (commonName === void 0)
-      commonName = 'Common Name';
-    if (shortName === void 0)
-      shortName = 'Short Name';
-    if (homeworld === void 0)
-      homeworld = 'Homeworld';
-    if (species === void 0)
-      species = 'Species';
-    if (birthEvent === void 0)
-      birthEvent = new Event();
-    if (properMass === void 0)
-      properMass = 1;
-    if (properAge === void 0)
-      properAge = 1;
-    if (livingAge === void 0)
-      livingAge = 1;
-    if (properHeight === void 0)
-      properHeight = 1;
-    if (commonHeight === void 0)
-      commonHeight = 1;
-    if (commonCalendarAge === void 0)
-      commonCalendarAge = 1;
-    if (titles === void 0) {
-      titles = ArrayList_init();
-    }
-    if (renown === void 0) {
-      renown = ArrayList_init();
-    }
-    if (level === void 0)
-      level = new Evolution();
-    if (specialty === void 0)
-      specialty = new Evolution();
-    if (experience === void 0)
-      experience = new Summation();
-    if (soulpool === void 0)
-      soulpool = new Summation();
-    if (constitution === void 0)
-      constitution = new Summation();
-    if (dexterity === void 0)
-      dexterity = new Summation();
-    if (intelligence === void 0)
-      intelligence = new Summation();
-    if (willpower === void 0)
-      willpower = new Summation();
-    if (staggerThreshold === void 0)
-      staggerThreshold = 0;
-    if (state === void 0)
-      state = new CharaState();
-    if (repertoire === void 0)
-      repertoire = new CharaRepertoire();
-    if (rollsheetLayout === void 0) {
-      rollsheetLayout = ArrayList_init();
-    }
-    this.id = id;
-    this.fullName = fullName;
-    this.commonName = commonName;
-    this.shortName = shortName;
-    this.homeworld = homeworld;
-    this.species = species;
-    this.birthEvent = birthEvent;
-    this.properMass = properMass;
-    this.properAge = properAge;
-    this.livingAge = livingAge;
-    this.properHeight = properHeight;
-    this.commonHeight = commonHeight;
-    this.commonCalendarAge = commonCalendarAge;
-    this.titles = titles;
-    this.renown = renown;
-    this.level = level;
-    this.specialty = specialty;
-    this.experience = experience;
-    this.soulpool = soulpool;
-    this.constitution = constitution;
-    this.dexterity = dexterity;
-    this.intelligence = intelligence;
-    this.willpower = willpower;
-    this.staggerThreshold = staggerThreshold;
-    this.state = state;
-    this.repertoire = repertoire;
-    this.rollsheetLayout = rollsheetLayout;
-  }
-  function CharaData$Companion() {
-    CharaData$Companion_instance = this;
-  }
-  CharaData$Companion.prototype.newId = function () {
-    return 'NewCharacter-' + Random.Default.nextLong_3pjtqy$(L1000, L1000000).toString();
-  };
-  CharaData$Companion.$metadata$ = {
-    kind: Kind_OBJECT,
-    simpleName: 'Companion',
-    interfaces: []
-  };
-  var CharaData$Companion_instance = null;
-  function CharaData$Companion_getInstance() {
-    if (CharaData$Companion_instance === null) {
-      new CharaData$Companion();
-    }
-    return CharaData$Companion_instance;
-  }
-  CharaData.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'CharaData',
-    interfaces: []
-  };
-  CharaData.prototype.component1 = function () {
-    return this.id;
-  };
-  CharaData.prototype.component2 = function () {
-    return this.fullName;
-  };
-  CharaData.prototype.component3 = function () {
-    return this.commonName;
-  };
-  CharaData.prototype.component4 = function () {
-    return this.shortName;
-  };
-  CharaData.prototype.component5 = function () {
-    return this.homeworld;
-  };
-  CharaData.prototype.component6 = function () {
-    return this.species;
-  };
-  CharaData.prototype.component7 = function () {
-    return this.birthEvent;
-  };
-  CharaData.prototype.component8 = function () {
-    return this.properMass;
-  };
-  CharaData.prototype.component9 = function () {
-    return this.properAge;
-  };
-  CharaData.prototype.component10 = function () {
-    return this.livingAge;
-  };
-  CharaData.prototype.component11 = function () {
-    return this.properHeight;
-  };
-  CharaData.prototype.component12 = function () {
-    return this.commonHeight;
-  };
-  CharaData.prototype.component13 = function () {
-    return this.commonCalendarAge;
-  };
-  CharaData.prototype.component14 = function () {
-    return this.titles;
-  };
-  CharaData.prototype.component15 = function () {
-    return this.renown;
-  };
-  CharaData.prototype.component16 = function () {
-    return this.level;
-  };
-  CharaData.prototype.component17 = function () {
-    return this.specialty;
-  };
-  CharaData.prototype.component18 = function () {
-    return this.experience;
-  };
-  CharaData.prototype.component19 = function () {
-    return this.soulpool;
-  };
-  CharaData.prototype.component20 = function () {
-    return this.constitution;
-  };
-  CharaData.prototype.component21 = function () {
-    return this.dexterity;
-  };
-  CharaData.prototype.component22 = function () {
-    return this.intelligence;
-  };
-  CharaData.prototype.component23 = function () {
-    return this.willpower;
-  };
-  CharaData.prototype.component24 = function () {
-    return this.staggerThreshold;
-  };
-  CharaData.prototype.component25 = function () {
-    return this.state;
-  };
-  CharaData.prototype.component26 = function () {
-    return this.repertoire;
-  };
-  CharaData.prototype.component27 = function () {
-    return this.rollsheetLayout;
-  };
-  CharaData.prototype.copy_qq6sls$ = function (id, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, level, specialty, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
-    return new CharaData(id === void 0 ? this.id : id, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, level === void 0 ? this.level : level, specialty === void 0 ? this.specialty : specialty, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, dexterity === void 0 ? this.dexterity : dexterity, intelligence === void 0 ? this.intelligence : intelligence, willpower === void 0 ? this.willpower : willpower, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
-  };
-  CharaData.prototype.toString = function () {
-    return 'CharaData(id=' + Kotlin.toString(this.id) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', level=' + Kotlin.toString(this.level)) + (', specialty=' + Kotlin.toString(this.specialty)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
-  };
-  CharaData.prototype.hashCode = function () {
-    var result = 0;
-    result = result * 31 + Kotlin.hashCode(this.id) | 0;
-    result = result * 31 + Kotlin.hashCode(this.fullName) | 0;
-    result = result * 31 + Kotlin.hashCode(this.commonName) | 0;
-    result = result * 31 + Kotlin.hashCode(this.shortName) | 0;
-    result = result * 31 + Kotlin.hashCode(this.homeworld) | 0;
-    result = result * 31 + Kotlin.hashCode(this.species) | 0;
-    result = result * 31 + Kotlin.hashCode(this.birthEvent) | 0;
-    result = result * 31 + Kotlin.hashCode(this.properMass) | 0;
-    result = result * 31 + Kotlin.hashCode(this.properAge) | 0;
-    result = result * 31 + Kotlin.hashCode(this.livingAge) | 0;
-    result = result * 31 + Kotlin.hashCode(this.properHeight) | 0;
-    result = result * 31 + Kotlin.hashCode(this.commonHeight) | 0;
-    result = result * 31 + Kotlin.hashCode(this.commonCalendarAge) | 0;
-    result = result * 31 + Kotlin.hashCode(this.titles) | 0;
-    result = result * 31 + Kotlin.hashCode(this.renown) | 0;
-    result = result * 31 + Kotlin.hashCode(this.level) | 0;
-    result = result * 31 + Kotlin.hashCode(this.specialty) | 0;
-    result = result * 31 + Kotlin.hashCode(this.experience) | 0;
-    result = result * 31 + Kotlin.hashCode(this.soulpool) | 0;
-    result = result * 31 + Kotlin.hashCode(this.constitution) | 0;
-    result = result * 31 + Kotlin.hashCode(this.dexterity) | 0;
-    result = result * 31 + Kotlin.hashCode(this.intelligence) | 0;
-    result = result * 31 + Kotlin.hashCode(this.willpower) | 0;
-    result = result * 31 + Kotlin.hashCode(this.staggerThreshold) | 0;
-    result = result * 31 + Kotlin.hashCode(this.state) | 0;
-    result = result * 31 + Kotlin.hashCode(this.repertoire) | 0;
-    result = result * 31 + Kotlin.hashCode(this.rollsheetLayout) | 0;
-    return result;
-  };
-  CharaData.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.specialty, other.specialty) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
-  };
-  function Character(charaData) {
-    if (charaData === void 0)
-      charaData = new CharaData();
-    this.cdata_4h55ob$_0 = charaData;
-    this.valcache_lquuaz$_0 = LinkedHashMap_init();
-    var tmp$, tmp$_0;
-    tmp$ = CoreParam$values();
-    for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
-      var param = tmp$[tmp$_0];
-      this.valcache_lquuaz$_0.put_xwzc9p$(param, null);
-    }
-  }
-  Character.prototype.getId = function () {
-    return this.cdata_4h55ob$_0.id;
-  };
-  Character.prototype.getName = function () {
-    var tmp$;
-    var $receiver = this.cdata_4h55ob$_0.shortName;
-    if (!($receiver == null || isBlank($receiver)))
-      tmp$ = this.cdata_4h55ob$_0.shortName;
-    else {
-      var $receiver_0 = this.cdata_4h55ob$_0.commonName;
-      tmp$ = !($receiver_0 == null || isBlank($receiver_0)) ? this.cdata_4h55ob$_0.commonName : this.cdata_4h55ob$_0.fullName;
-    }
-    return tmp$;
-  };
-  Character.prototype.getFullName = function () {
-    return this.cdata_4h55ob$_0.fullName;
-  };
-  Character.prototype.getCommonName = function () {
-    return this.cdata_4h55ob$_0.commonName;
-  };
-  Character.prototype.geShortName = function () {
-    return this.cdata_4h55ob$_0.shortName;
-  };
-  Character.prototype.getTier = function () {
-    return this.cdata_4h55ob$_0.specialty.evaluate().tier;
-  };
-  Character.prototype.getHealth = function () {
-    return this.cdata_4h55ob$_0.state.health;
-  };
-  Character.prototype.getDamage = function () {
-    return this.cdata_4h55ob$_0.state.damage;
-  };
-  Character.prototype.getFatigue = function () {
-    return this.cdata_4h55ob$_0.state.fatigue;
-  };
-  Character.prototype.getPower = function () {
-    return this.cdata_4h55ob$_0.state.power;
-  };
-  Character.prototype.getAffliction = function () {
-    return this.cdata_4h55ob$_0.state.affliction;
-  };
-  Character.prototype.getTrauma = function () {
-    return this.cdata_4h55ob$_0.state.trauma;
-  };
-  Character.prototype.getMomentum = function () {
-    return this.cdata_4h55ob$_0.state.momentum;
-  };
-  Character.prototype.getCondition = function () {
-    return this.cdata_4h55ob$_0.state.condition;
-  };
-  Character.prototype.setCondition_etxpsk$ = function (cond, force) {
-    if (force === void 0)
-      force = false;
-    if (force || cond.priority >= this.cdata_4h55ob$_0.state.condition.priority) {
-      this.cdata_4h55ob$_0.state.condition = cond;
-    }
-    return this.cdata_4h55ob$_0.state.condition;
-  };
-  Character.prototype.applyCondition_b0z1m5$ = function (cond) {
-    return this.setCondition_etxpsk$(cond, false);
-  };
-  Character.prototype.forceCondition_b0z1m5$ = function (cond) {
-    return this.setCondition_etxpsk$(cond, true);
-  };
-  Character.prototype.setHealth_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.health = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$HEALTH_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.health;
-  };
-  Character.prototype.setDamage_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.damage = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$DAMAGE_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.damage;
-  };
-  Character.prototype.setFatigue_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.fatigue = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$FATIGUE_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.fatigue;
-  };
-  Character.prototype.setPower_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.power = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$POWER_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.power;
-  };
-  Character.prototype.setAffliction_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.affliction = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$AFFLICTION_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.affliction;
-  };
-  Character.prototype.setTrauma_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.trauma = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$TRAUMA_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.trauma;
-  };
-  Character.prototype.setMomentum_za3lpa$ = function (n) {
-    this.cdata_4h55ob$_0.state.momentum = Attribute$Limit$Companion_getInstance().of_nfoh2z$(StateParam$MOMENTUM_getInstance()).coerce_za3lpa$(n);
-    return this.cdata_4h55ob$_0.state.momentum;
-  };
-  Character.prototype.adjustBy_fe2609$ = function (param, n) {
-    var tmp$;
-    switch (param.name) {
-      case 'HEALTH':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.health + n | 0);
-        break;
-      case 'DAMAGE':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.damage + n | 0);
-        break;
-      case 'FATIGUE':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.fatigue + n | 0);
-        break;
-      case 'POWER':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.power + n | 0);
-        break;
-      case 'AFFLICTION':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.affliction + n | 0);
-        break;
-      case 'TRAUMA':
-        tmp$ = this.setPower_za3lpa$(this.cdata_4h55ob$_0.state.trauma + n | 0);
-        break;
-      case 'MOMENTUM':
-        tmp$ = this.setMomentum_za3lpa$(this.cdata_4h55ob$_0.state.momentum + n | 0);
-        break;
-      default:tmp$ = Kotlin.noWhenBranchMatched();
-        break;
-    }
-    return tmp$;
-  };
-  Character.prototype.increment_nfoh2z$ = function (param) {
-    return this.adjustBy_fe2609$(param, 1);
-  };
-  Character.prototype.decrement_nfoh2z$ = function (param) {
-    return this.adjustBy_fe2609$(param, -1);
-  };
-  Character.prototype.increment_fe2609$ = function (param, n) {
-    return this.adjustBy_fe2609$(param, n);
-  };
-  Character.prototype.decrement_fe2609$ = function (param, n) {
-    return this.adjustBy_fe2609$(param, -n | 0);
-  };
-  Character.prototype.getParam_nfoh2z$ = function (param) {
-    var tmp$;
-    switch (param.name) {
-      case 'HEALTH':
-        tmp$ = this.getHealth();
-        break;
-      case 'DAMAGE':
-        tmp$ = this.getDamage();
-        break;
-      case 'FATIGUE':
-        tmp$ = this.getFatigue();
-        break;
-      case 'POWER':
-        tmp$ = this.getPower();
-        break;
-      case 'AFFLICTION':
-        tmp$ = this.getAffliction();
-        break;
-      case 'TRAUMA':
-        tmp$ = this.getTrauma();
-        break;
-      case 'MOMENTUM':
-        tmp$ = this.getMomentum();
-        break;
-      default:tmp$ = Kotlin.noWhenBranchMatched();
-        break;
-    }
-    return tmp$;
-  };
-  Character.prototype.getParam_wgquit$ = function (param) {
-    return this.evalCoreParam_wgquit$(param);
-  };
-  Character.prototype.setParam_fe2609$ = function (param, n) {
-    var tmp$;
-    switch (param.name) {
-      case 'HEALTH':
-        tmp$ = this.setHealth_za3lpa$(n);
-        break;
-      case 'DAMAGE':
-        tmp$ = this.setDamage_za3lpa$(n);
-        break;
-      case 'FATIGUE':
-        tmp$ = this.setFatigue_za3lpa$(n);
-        break;
-      case 'POWER':
-        tmp$ = this.setPower_za3lpa$(n);
-        break;
-      case 'AFFLICTION':
-        tmp$ = this.setAffliction_za3lpa$(n);
-        break;
-      case 'TRAUMA':
-        tmp$ = this.setTrauma_za3lpa$(n);
-        break;
-      case 'MOMENTUM':
-        tmp$ = this.setMomentum_za3lpa$(n);
-        break;
-      default:tmp$ = Kotlin.noWhenBranchMatched();
-        break;
-    }
-    return tmp$;
-  };
-  Character.prototype.evalCoreParam_wgquit$ = function (param) {
-    var v = this.valcache_lquuaz$_0.get_11rb$(param);
-    if (v === null) {
-      v = this.getCoreHistory_wgquit$(param).evaluate();
-      var $receiver = this.valcache_lquuaz$_0;
-      var value = v;
-      $receiver.put_xwzc9p$(param, value);
-    }
-    return v;
-  };
-  Character.prototype.getCoreHistory_wgquit$ = function (param) {
-    var tmp$;
-    switch (param.name) {
-      case 'SOUL_POOL':
-        tmp$ = this.cdata_4h55ob$_0.soulpool;
-        break;
-      case 'LEVEL':
-        tmp$ = this.cdata_4h55ob$_0.level;
-        break;
-      case 'EXPERIENCE':
-        tmp$ = this.cdata_4h55ob$_0.experience;
-        break;
-      case 'CONSTITUTION':
-        tmp$ = this.cdata_4h55ob$_0.constitution;
-        break;
-      case 'DEXTERITY':
-        tmp$ = this.cdata_4h55ob$_0.dexterity;
-        break;
-      case 'INTELLIGENCE':
-        tmp$ = this.cdata_4h55ob$_0.intelligence;
-        break;
-      case 'WILLPOWER':
-        tmp$ = this.cdata_4h55ob$_0.willpower;
-        break;
-      default:tmp$ = Kotlin.noWhenBranchMatched();
-        break;
-    }
-    return tmp$;
-  };
-  Character.prototype.addCoreMod_jyeaw2$ = function (param, mod) {
-    this.getCoreHistory_wgquit$(param).add_b3s5im$(mod);
-    this.valcache_lquuaz$_0.put_xwzc9p$(param, null);
-    return this.evalCoreParam_wgquit$(param);
-  };
-  Character.prototype.takeDamage_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    var hel = this.cdata_4h55ob$_0.state.health;
-    var dmg = this.cdata_4h55ob$_0.state.damage;
-    var stg = this.cdata_4h55ob$_0.staggerThreshold;
-    var n1 = n - pwr | 0;
-    if (n1 > 0) {
-      if (pwr > 0) {
-        this.setPower_za3lpa$(0);
-      }
-      if (hel > 0) {
-        if (1 <= stg && stg <= n1) {
-          this.setCondition_etxpsk$(StateCondition$STAGGERED_getInstance());
-        }
-        var n2 = coerceAtMost(n1, hel);
-        var h2 = hel - n2 | 0;
-        this.setHealth_za3lpa$(h2);
-        if (h2 > 0) {
-          this.increment_fe2609$(StateParam$DAMAGE_getInstance(), n2);
-        }
-         else {
-          if (n2 > 1) {
-            this.increment_fe2609$(StateParam$DAMAGE_getInstance(), n2 - 1 | 0);
-          }
-          this.increment_nfoh2z$(StateParam$FATIGUE_getInstance());
-          this.setCondition_etxpsk$(StateCondition$UNCONSCIOUS_getInstance());
-          this.fulminate();
-        }
-      }
-       else if (dmg > 0) {
-        var n2_0 = coerceAtMost(n1, dmg);
-        var d1 = dmg - n2_0 | 0;
-        this.increment_fe2609$(StateParam$FATIGUE_getInstance(), n2_0);
-        this.setDamage_za3lpa$(d1);
-        if (d1 <= 0) {
-          this.setCondition_etxpsk$(StateCondition$COMATOSE_getInstance());
-        }
-      }
-       else {
-        this.setCondition_etxpsk$(StateCondition$DEAD_getInstance());
-      }
-    }
-     else {
-      this.cdata_4h55ob$_0.state.recentlyConsumedPower = true;
-      this.setPower_za3lpa$(abs(n1));
-    }
-    return this.cdata_4h55ob$_0.state.damage - dmg | 0;
-  };
-  Character.prototype.healDamage_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var n1 = n;
-    var afl = this.cdata_4h55ob$_0.state.affliction;
-    if (afl > 0) {
-      var b1 = afl - n | 0;
-      this.setAffliction_za3lpa$(coerceAtLeast(b1, 0));
-      n1 = b1 >= 0 ? 0 : abs(b1);
-    }
-    if (n1 < 1)
-      return 0;
-    var dmg = this.cdata_4h55ob$_0.state.damage;
-    n1 = coerceAtMost(n1, dmg);
-    var d1 = dmg - n1 | 0;
-    this.setDamage_za3lpa$(d1);
-    this.increment_fe2609$(StateParam$HEALTH_getInstance(), n1);
-    if (this.cdata_4h55ob$_0.state.health > 0 && this.cdata_4h55ob$_0.state.condition === StateCondition$UNCONSCIOUS_getInstance()) {
-      this.setCondition_etxpsk$(StateCondition$NORMAL_getInstance());
-    }
-    return n1;
-  };
-  Character.prototype.accumulateFatigue_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var f1 = n;
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    if (pwr > 0) {
-      this.setPower_za3lpa$(0);
-      f1 = f1 - 1 | 0;
-    }
-    if (f1 < 1)
-      return 0;
-    var hel = this.cdata_4h55ob$_0.state.health;
-    if (hel > 0) {
-      var h1 = coerceAtMost(f1, hel);
-      var h2 = hel - h1 | 0;
-      this.setHealth_za3lpa$(h2);
-      this.increment_fe2609$(StateParam$FATIGUE_getInstance(), h1);
-      if (h2 === 0) {
-        this.fulminate();
-        this.setCondition_etxpsk$(StateCondition$UNCONSCIOUS_getInstance());
-      }
-      f1 = f1 - h1 | 0;
-    }
-    if (f1 < 1)
-      return 0;
-    var dmg = this.cdata_4h55ob$_0.state.damage;
-    if (dmg > 0) {
-      f1 = coerceAtMost(f1, dmg);
-      var d1 = dmg - f1 | 0;
-      this.setDamage_za3lpa$(d1);
-      this.increment_fe2609$(StateParam$FATIGUE_getInstance(), f1);
-      if (d1 === 0) {
-        this.setCondition_etxpsk$(StateCondition$COMATOSE_getInstance());
-      }
-    }
-     else {
-      this.setCondition_etxpsk$(StateCondition$DEAD_getInstance());
-    }
-    return f1;
-  };
-  Character.prototype.restoreFatigue_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var ftg = this.cdata_4h55ob$_0.state.fatigue;
-    var afl = this.cdata_4h55ob$_0.state.affliction;
-    if (ftg < 1 || afl >= ftg)
-      return 0;
-    var hel = this.cdata_4h55ob$_0.state.health;
-    var cdn = this.cdata_4h55ob$_0.state.condition;
-    var f1 = ftg - afl | 0;
-    var f2 = coerceAtMost(f1, f1);
-    this.decrement_fe2609$(StateParam$FATIGUE_getInstance(), f2);
-    this.increment_fe2609$(StateParam$HEALTH_getInstance(), f2);
-    if (hel > 0 && (cdn === StateCondition$UNCONSCIOUS_getInstance() || cdn === StateCondition$COMATOSE_getInstance())) {
-      this.setCondition_etxpsk$(StateCondition$NORMAL_getInstance(), true);
-    }
-    return f2;
-  };
-  Character.prototype.gainPower_za3lpa$ = function (n) {
-    if (n < 0)
-      return 0;
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    var p1 = coerceAtMost(pwr + n | 0, this.cdata_4h55ob$_0.soulpool.evaluate());
-    return this.setPower_za3lpa$(p1) - pwr | 0;
-  };
-  Character.prototype.consumePower_za3lpa$ = function (n) {
-    if (n < 0)
-      return 0;
-    if (n > 0 && n < this.cdata_4h55ob$_0.state.power) {
-      this.cdata_4h55ob$_0.state.recentlyConsumedPower = true;
-    }
-    var pwr = this.cdata_4h55ob$_0.state.power;
-    var p1 = coerceAtLeast(pwr - n | 0, 0);
-    return pwr - this.setPower_za3lpa$(p1) | 0;
-  };
-  Character.prototype.sustainAffliction_za3lpa$ = function (n) {
-    if (n < 1)
-      return 0;
-    var brk = this.cdata_4h55ob$_0.state.affliction;
-    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
-    var b2 = brk + n | 0;
-    if (this.cdata_4h55ob$_0.state.health < 1) {
-      this.setAffliction_za3lpa$(b2);
-      this.fulminate();
-    }
-     else if (b2 > max) {
-      this.setAffliction_za3lpa$(max);
-      this.takeDamage_za3lpa$(b2 - max | 0);
-    }
-     else {
-      this.setAffliction_za3lpa$(b2);
-    }
-    return b2 - brk | 0;
-  };
-  Character.prototype.cureAffliction_za3lpa$ = function (n) {
-    var afl = this.cdata_4h55ob$_0.state.affliction;
-    if (n < 1 || afl < 1)
-      return 0;
-    var b2 = coerceAtLeast(afl - n | 0, 0);
-    return afl - this.setAffliction_za3lpa$(b2) | 0;
-  };
-  Character.prototype.sufferTrauma_za3lpa$ = function (n) {
-    var tmp$;
-    if (n < 1)
-      return 0;
-    var max = this.cdata_4h55ob$_0.soulpool.evaluate();
-    var t2 = this.cdata_4h55ob$_0.state.trauma + n | 0;
-    if (t2 > max) {
-      this.setCondition_etxpsk$(StateCondition$UNCONSCIOUS_getInstance());
-      tmp$ = this.setTrauma_za3lpa$(max);
-    }
-     else {
-      tmp$ = this.setTrauma_za3lpa$(t2);
-    }
-    return tmp$;
-  };
-  Character.prototype.alleviateTrauma_za3lpa$ = function (n) {
-    var trm = this.cdata_4h55ob$_0.state.trauma;
-    if (n < 1 || trm < 1)
-      return 0;
-    var a1 = coerceAtLeast(trm - n | 0, 0);
-    this.setTrauma_za3lpa$(a1);
-    return trm - a1 | 0;
-  };
-  Character.prototype.fulminate = function () {
-    var afl = this.cdata_4h55ob$_0.state.affliction;
-    if (afl < 1)
-      return 0;
-    var ftg = 0;
-    for (var i = 0; i < afl; i++) {
-      if (Random.Default.nextInt_za3lpa$(4) < 1)
-        ftg = ftg + 1 | 0;
-    }
-    this.setAffliction_za3lpa$(0);
-    if (ftg < 1)
-      return 0;
-    var dmg = this.cdata_4h55ob$_0.state.damage;
-    if (dmg < 1) {
-      this.setCondition_etxpsk$(StateCondition$DEAD_getInstance());
-    }
-     else {
-      ftg = coerceAtMost(ftg, dmg);
-      var d2 = dmg - ftg | 0;
-      this.increment_fe2609$(StateParam$FATIGUE_getInstance(), ftg);
-      this.setDamage_za3lpa$(d2);
-      if (d2 < 1) {
-        this.setCondition_etxpsk$(StateCondition$COMATOSE_getInstance());
-      }
-    }
-    return ftg;
-  };
-  Character.prototype.flowMomentum_za3lpa$ = function (n) {
-    return n < 1 ? 0 : this.increment_fe2609$(StateParam$MOMENTUM_getInstance(), n);
-  };
-  Character.prototype.ebbMomentum_za3lpa$ = function (n) {
-    return n < 1 ? 0 : this.decrement_fe2609$(StateParam$MOMENTUM_getInstance(), n);
-  };
-  Character.prototype.setMode_e5l05r$ = function (stat, mode, force) {
-    if (force === void 0)
-      force = false;
-    var currentMode = this.cdata_4h55ob$_0.state.modes.of_828rjw$(stat);
-    switch (mode.name) {
-      case 'NATURAL':
-        switch (currentMode.name) {
-          case 'NATURAL':
-            break;
-          case 'ENHANCED':
-            this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$NATURAL_getInstance());
-            break;
-          case 'ENFEEBLED':
-            this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$NATURAL_getInstance());
-            break;
-        }
-
-        break;
-      case 'ENHANCED':
-        switch (currentMode.name) {
-          case 'NATURAL':
-            this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$ENHANCED_getInstance());
-            break;
-          case 'ENHANCED':
-            this.healDamage_za3lpa$(1);
-            break;
-          case 'ENFEEBLED':
-            if (force)
-              this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$ENHANCED_getInstance());
-            else
-              this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$NATURAL_getInstance());
-            break;
-          default:Kotlin.noWhenBranchMatched();
-            break;
-        }
-
-        break;
-      case 'ENFEEBLED':
-        switch (currentMode.name) {
-          case 'NATURAL':
-            this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$ENFEEBLED_getInstance());
-            break;
-          case 'ENHANCED':
-            if (force)
-              this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$ENFEEBLED_getInstance());
-            else
-              this.cdata_4h55ob$_0.state.modes.set_5ls9mw$(stat, StatMode$NATURAL_getInstance());
-            break;
-          case 'ENFEEBLED':
-            this.takeDamage_za3lpa$(1);
-            break;
-          default:Kotlin.noWhenBranchMatched();
-            break;
-        }
-
-        break;
-      default:Kotlin.noWhenBranchMatched();
-        break;
-    }
-    return this.cdata_4h55ob$_0.state.modes.of_828rjw$(stat);
-  };
-  Character.prototype.normalizeMode_828rjw$ = function (stat) {
-    return this.setMode_e5l05r$(stat, StatMode$NATURAL_getInstance());
-  };
-  Character.prototype.enhanceMode_828rjw$ = function (stat) {
-    return this.setMode_e5l05r$(stat, StatMode$ENHANCED_getInstance());
-  };
-  Character.prototype.enfeebleMode_828rjw$ = function (stat) {
-    return this.setMode_e5l05r$(stat, StatMode$ENFEEBLED_getInstance());
-  };
-  Character.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Character',
-    interfaces: []
-  };
-  function CharacterDocument(character, fileId, folderId) {
-    this.character = character;
-    this.fileId = fileId;
-    this.folderId = folderId;
-  }
-  CharacterDocument.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'CharacterDocument',
-    interfaces: []
-  };
-  CharacterDocument.prototype.component1 = function () {
-    return this.character;
-  };
-  CharacterDocument.prototype.component2 = function () {
-    return this.fileId;
-  };
-  CharacterDocument.prototype.component3 = function () {
-    return this.folderId;
-  };
-  CharacterDocument.prototype.copy_79b9ek$ = function (character, fileId, folderId) {
-    return new CharacterDocument(character === void 0 ? this.character : character, fileId === void 0 ? this.fileId : fileId, folderId === void 0 ? this.folderId : folderId);
-  };
-  CharacterDocument.prototype.toString = function () {
-    return 'CharacterDocument(character=' + Kotlin.toString(this.character) + (', fileId=' + Kotlin.toString(this.fileId)) + (', folderId=' + Kotlin.toString(this.folderId)) + ')';
-  };
-  CharacterDocument.prototype.hashCode = function () {
-    var result = 0;
-    result = result * 31 + Kotlin.hashCode(this.character) | 0;
-    result = result * 31 + Kotlin.hashCode(this.fileId) | 0;
-    result = result * 31 + Kotlin.hashCode(this.folderId) | 0;
-    return result;
-  };
-  CharacterDocument.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.character, other.character) && Kotlin.equals(this.fileId, other.fileId) && Kotlin.equals(this.folderId, other.folderId)))));
-  };
-  function Participant() {
-  }
-  Participant.$metadata$ = {
-    kind: Kind_INTERFACE,
-    simpleName: 'Participant',
-    interfaces: []
-  };
-  function CharacterParticipant(data) {
-    if (data === void 0)
-      data = new CharaData();
-    Character.call(this, data);
-    this.key_v3wbr9$_0 = '';
-    this.initiative_mk9t44$_0 = 0.0;
-  }
-  Object.defineProperty(CharacterParticipant.prototype, 'key', {
-    get: function () {
-      return this.key_v3wbr9$_0;
-    },
-    set: function (key) {
-      this.key_v3wbr9$_0 = key;
-    }
-  });
-  Object.defineProperty(CharacterParticipant.prototype, 'initiative', {
-    get: function () {
-      return this.initiative_mk9t44$_0;
-    },
-    set: function (initiative) {
-      this.initiative_mk9t44$_0 = initiative;
-    }
-  });
-  CharacterParticipant.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'CharacterParticipant',
-    interfaces: [Participant, Character]
-  };
-  function EncounterType(name, ordinal, key) {
-    Enum.call(this);
-    this.key = key;
-    this.name$ = name;
-    this.ordinal$ = ordinal;
-  }
-  function EncounterType_initFields() {
-    EncounterType_initFields = function () {
-    };
-    EncounterType$COMBAT_instance = new EncounterType('COMBAT', 0, 'COMBAT');
-    EncounterType$SOCIAL_instance = new EncounterType('SOCIAL', 1, 'SOCIAL');
-    EncounterType$ENVIRONMENTAL_instance = new EncounterType('ENVIRONMENTAL', 2, 'ENVIRONMENTAL');
-  }
-  var EncounterType$COMBAT_instance;
-  function EncounterType$COMBAT_getInstance() {
-    EncounterType_initFields();
-    return EncounterType$COMBAT_instance;
-  }
-  var EncounterType$SOCIAL_instance;
-  function EncounterType$SOCIAL_getInstance() {
-    EncounterType_initFields();
-    return EncounterType$SOCIAL_instance;
-  }
-  var EncounterType$ENVIRONMENTAL_instance;
-  function EncounterType$ENVIRONMENTAL_getInstance() {
-    EncounterType_initFields();
-    return EncounterType$ENVIRONMENTAL_instance;
-  }
-  EncounterType.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'EncounterType',
-    interfaces: [Enum]
-  };
-  function EncounterType$values() {
-    return [EncounterType$COMBAT_getInstance(), EncounterType$SOCIAL_getInstance(), EncounterType$ENVIRONMENTAL_getInstance()];
-  }
-  EncounterType.values = EncounterType$values;
-  function EncounterType$valueOf(name) {
-    switch (name) {
-      case 'COMBAT':
-        return EncounterType$COMBAT_getInstance();
-      case 'SOCIAL':
-        return EncounterType$SOCIAL_getInstance();
-      case 'ENVIRONMENTAL':
-        return EncounterType$ENVIRONMENTAL_getInstance();
-      default:throwISE('No enum constant wetfe.core.enc.EncounterType.' + name);
-    }
-  }
-  EncounterType.valueOf_61zpoe$ = EncounterType$valueOf;
-  function Encounter(type) {
-    this.type = type;
-    this.round = 0;
-    this.keymap = LinkedHashMap_init();
-    this.participants = LinkedHashMap_init();
-    this.participantOrder = ArrayList_init();
-    this.activeParticipantIndex_a0hjcw$_0 = 0;
-    this.targetParticipantIndex_w1p52j$_0 = 0;
-  }
-  Object.defineProperty(Encounter.prototype, 'activeParticipantIndex', {
-    get: function () {
-      return this.activeParticipantIndex_a0hjcw$_0;
-    },
-    set: function (i) {
-      this.activeParticipantIndex_a0hjcw$_0 = this.coerceIndex_0(i);
-    }
-  });
-  Object.defineProperty(Encounter.prototype, 'targetParticipantIndex', {
-    get: function () {
-      return this.targetParticipantIndex_w1p52j$_0;
-    },
-    set: function (i) {
-      this.targetParticipantIndex_w1p52j$_0 = this.coerceIndex_0(i);
-    }
-  });
-  Encounter.prototype.generateKey_utb49l$ = function (p) {
-    var name = p.getName();
-    var key = name == null || isBlank(name) ? 'Unk' : substring(name, new IntRange(0, coerceAtMost(3, name.length)));
-    var i = this.keymap.get_11rb$(key);
-    if (i == null) {
-      var $receiver = this.keymap;
-      var key_0 = key;
-      $receiver.put_xwzc9p$(key_0, 1);
-    }
-     else {
-      var $receiver_0 = this.keymap;
-      var key_1 = key;
-      var value = (i = i + 1 | 0, i);
-      $receiver_0.put_xwzc9p$(key_1, value);
-      key = substring(key, new IntRange(0, i > 9 ? 1 : 2)) + toString(i);
-    }
-    return key;
-  };
-  Encounter.prototype.coerceIndex_0 = function (i) {
-    return this.participantOrder.isEmpty() || i < 0 ? 0 : i >= this.participantOrder.size ? this.participantOrder.size - 1 | 0 : i;
-  };
-  Encounter.prototype.indexIsValid_0 = function (i) {
-    return i >= 0 && i < this.participantOrder.size;
-  };
-  Encounter.prototype.getActiveParticipant = function () {
-    return this.indexIsValid_0(this.activeParticipantIndex) ? this.participantOrder.get_za3lpa$(this.activeParticipantIndex) : null;
-  };
-  Encounter.prototype.getTargetParticipant = function () {
-    return this.indexIsValid_0(this.targetParticipantIndex) ? this.participantOrder.get_za3lpa$(this.targetParticipantIndex) : null;
-  };
-  Encounter.prototype.targetNext = function () {
-    this.activeParticipantIndex = this.activeParticipantIndex + 1 | 0;
-    return this;
-  };
-  Encounter.prototype.activateNext = function () {
-    this.targetParticipantIndex = this.targetParticipantIndex + 1 | 0;
-    return this;
-  };
-  Encounter.prototype.addParticipant_utb49l$ = function (p) {
-    var pkey = this.generateKey_utb49l$(p);
-    p.key = pkey;
-    this.participants.put_xwzc9p$(pkey, p);
-    this.participantOrder.add_11rb$(p);
-    return this;
-  };
-  Encounter.$metadata$ = {
-    kind: Kind_CLASS,
-    simpleName: 'Encounter',
-    interfaces: []
-  };
-  var package$wetfe = _.wetfe || (_.wetfe = {});
-  var package$core = package$wetfe.core || (package$wetfe.core = {});
-  var package$chara = package$core.chara || (package$core.chara = {});
-  package$chara.Modification = Modification;
-  package$chara.ModHistory = ModHistory;
-  package$chara.Evolution = Evolution;
-  package$chara.Summation = Summation;
-  package$chara.CharaSpec = CharaSpec;
-  Object.defineProperty(CoreParam, 'SOUL_POOL', {
-    get: CoreParam$SOUL_POOL_getInstance
-  });
   Object.defineProperty(CoreParam, 'LEVEL', {
     get: CoreParam$LEVEL_getInstance
   });
   Object.defineProperty(CoreParam, 'EXPERIENCE', {
     get: CoreParam$EXPERIENCE_getInstance
+  });
+  Object.defineProperty(CoreParam, 'SOULPOOL', {
+    get: CoreParam$SOULPOOL_getInstance
   });
   Object.defineProperty(CoreParam, 'CONSTITUTION', {
     get: CoreParam$CONSTITUTION_getInstance
@@ -2302,7 +2717,10 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(CoreParam, 'Companion', {
     get: CoreParam$Companion_getInstance
   });
-  package$chara.CoreParam = CoreParam;
+  var package$wetfe = _.wetfe || (_.wetfe = {});
+  var package$core = package$wetfe.core || (package$wetfe.core = {});
+  var package$character = package$core.character || (package$core.character = {});
+  package$character.CoreParam = CoreParam;
   Object.defineProperty(QuadStat, 'CONSTITUTION', {
     get: QuadStat$CONSTITUTION_getInstance
   });
@@ -2318,7 +2736,7 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(QuadStat, 'Companion', {
     get: QuadStat$Companion_getInstance
   });
-  package$chara.QuadStat = QuadStat;
+  package$character.QuadStat = QuadStat;
   Object.defineProperty(StatMode, 'NATURAL', {
     get: StatMode$NATURAL_getInstance
   });
@@ -2331,7 +2749,7 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(StatMode, 'Companion', {
     get: StatMode$Companion_getInstance
   });
-  package$chara.StatMode = StatMode;
+  package$character.StatMode = StatMode;
   Object.defineProperty(StateParam, 'HEALTH', {
     get: StateParam$HEALTH_getInstance
   });
@@ -2356,7 +2774,7 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(StateParam, 'Companion', {
     get: StateParam$Companion_getInstance
   });
-  package$chara.StateParam = StateParam;
+  package$character.StateParam = StateParam;
   Object.defineProperty(StateCondition, 'NORMAL', {
     get: StateCondition$NORMAL_getInstance
   });
@@ -2381,13 +2799,16 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(StateCondition, 'DEAD', {
     get: StateCondition$DEAD_getInstance
   });
-  package$chara.StateCondition = StateCondition;
-  Object.defineProperty(package$chara, 'MAX_INT', {
+  Object.defineProperty(StateCondition, 'Companion', {
+    get: StateCondition$Companion_getInstance
+  });
+  package$character.StateCondition = StateCondition;
+  Object.defineProperty(package$character, 'MAX_INT', {
     get: function () {
       return MAX_INT;
     }
   });
-  Object.defineProperty(package$chara, 'MIN_INT', {
+  Object.defineProperty(package$character, 'MIN_INT', {
     get: function () {
       return MIN_INT;
     }
@@ -2451,22 +2872,29 @@ var wetfe = function (_, Kotlin) {
     get: Attribute$Nature$Companion_getInstance
   });
   Attribute.prototype.Nature = Attribute$Nature;
-  Object.defineProperty(package$chara, 'Attribute', {
+  Object.defineProperty(package$character, 'Attribute', {
     get: Attribute_getInstance
   });
-  package$chara.StatModeState = StatModeState;
-  package$chara.CharaState = CharaState;
-  package$chara.CharaRepertoire = CharaRepertoire;
-  package$chara.Event = Event;
+  package$character.StatModeState = StatModeState;
+  package$character.CharaSpec = CharaSpec;
+  package$character.CharaState = CharaState;
+  package$character.CharaRepertoire = CharaRepertoire;
   Object.defineProperty(CharaData, 'Companion', {
     get: CharaData$Companion_getInstance
   });
-  package$chara.CharaData = CharaData;
-  package$chara.Character = Character;
-  package$chara.CharacterDocument = CharacterDocument;
-  var package$enc = package$core.enc || (package$core.enc = {});
-  package$enc.Participant = Participant;
-  package$enc.CharacterParticipant = CharacterParticipant;
+  package$character.CharaData = CharaData;
+  package$character.Character = Character;
+  package$character.CharacterDocument = CharacterDocument;
+  Object.defineProperty(ParticipantStatus, 'FRIEND', {
+    get: ParticipantStatus$FRIEND_getInstance
+  });
+  Object.defineProperty(ParticipantStatus, 'FOE', {
+    get: ParticipantStatus$FOE_getInstance
+  });
+  var package$encounter = package$core.encounter || (package$core.encounter = {});
+  package$encounter.ParticipantStatus = ParticipantStatus;
+  package$encounter.Participant = Participant;
+  package$encounter.CharacterParticipant = CharacterParticipant;
   Object.defineProperty(EncounterType, 'COMBAT', {
     get: EncounterType$COMBAT_getInstance
   });
@@ -2476,8 +2904,53 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(EncounterType, 'ENVIRONMENTAL', {
     get: EncounterType$ENVIRONMENTAL_getInstance
   });
-  package$enc.EncounterType = EncounterType;
-  package$enc.Encounter = Encounter;
+  package$encounter.EncounterType = EncounterType;
+  package$encounter.Encounter = Encounter;
+  Object.defineProperty(DataSource, 'PLAYER', {
+    get: DataSource$PLAYER_getInstance
+  });
+  Object.defineProperty(DataSource, 'OFFICIAL', {
+    get: DataSource$OFFICIAL_getInstance
+  });
+  Object.defineProperty(DataSource, 'PUBLISHED', {
+    get: DataSource$PUBLISHED_getInstance
+  });
+  Object.defineProperty(DataSource, 'HOMEBREW', {
+    get: DataSource$HOMEBREW_getInstance
+  });
+  var package$game = package$core.game || (package$core.game = {});
+  package$game.DataSource = DataSource;
+  Object.defineProperty(Physicality, 'CONFLUENT', {
+    get: Physicality$CONFLUENT_getInstance
+  });
+  Object.defineProperty(Physicality, 'INFERNAL', {
+    get: Physicality$INFERNAL_getInstance
+  });
+  Object.defineProperty(Physicality, 'CELESTIAL', {
+    get: Physicality$CELESTIAL_getInstance
+  });
+  Object.defineProperty(Physicality, 'EXOTIC', {
+    get: Physicality$EXOTIC_getInstance
+  });
+  var package$universe = package$core.universe || (package$core.universe = {});
+  package$universe.Physicality = Physicality;
+  Object.defineProperty(Vulnerability, 'NEGATIVE', {
+    get: Vulnerability$NEGATIVE_getInstance
+  });
+  Object.defineProperty(Vulnerability, 'POSITIVE', {
+    get: Vulnerability$POSITIVE_getInstance
+  });
+  Object.defineProperty(Vulnerability, 'INVERSE', {
+    get: Vulnerability$INVERSE_getInstance
+  });
+  Object.defineProperty(Vulnerability, 'HYPER', {
+    get: Vulnerability$HYPER_getInstance
+  });
+  package$universe.Vulnerability = Vulnerability;
+  Object.defineProperty(package$universe, 'Physics', {
+    get: Physics_getInstance
+  });
+  package$universe.Event = Event;
   MAX_INT = 65535;
   MIN_INT = -65535;
   Kotlin.defineModule('wetfe', _);

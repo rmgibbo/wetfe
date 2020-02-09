@@ -1,12 +1,21 @@
-package wetfe.core.enc
+package wetfe.core.encounter
 
-import wetfe.core.chara.*
+import wetfe.core.character.*
+import kotlin.math.absoluteValue
+import kotlin.random.Random
 
-interface Participant {
+enum class ParticipantStatus {
+    FRIEND,
+    FOE;
+}
+
+interface Participant : Comparable<Participant> {
     var key: String // unique key of this participant within an encounter
+    var status: ParticipantStatus
     var initiative: Double // initiative for the round, calculated from momentum
     ////
     fun getName() : String
+    fun getStaggerThreshold() : Int
     ////
     fun getHealth() : Int
     fun setHealth(n: Int) : Int
@@ -25,6 +34,10 @@ interface Participant {
     fun setPower(n: Int) : Int
     fun gainPower(n: Int) : Int
     fun consumePower(n: Int) : Int
+    ////
+    fun isTapped() : Boolean
+    fun tap()
+    fun untap()
     ////
     fun getAffliction() : Int
     fun setAffliction(n: Int) : Int
@@ -47,17 +60,23 @@ interface Participant {
     fun applyCondition(cond: StateCondition) : StateCondition
     fun forceCondition(cond: StateCondition) : StateCondition
     ////
-    fun getParam(param: StateParam) : Int
-    fun setParam(param: StateParam, n: Int) : Int
-    fun adjustBy(param: StateParam, n: Int) : Int
-    fun increment(param: StateParam) : Int
-    fun decrement(param: StateParam) : Int
+    fun getStateParam(param: StateParam) : Int
+    fun setStateParam(param: StateParam, n: Int) : Int
+    fun adjustStateParam(param: StateParam, n: Int) : Int
+    fun incrementStateParam(param: StateParam) : Int
+    fun decrementStateParam(param: StateParam) : Int
     ////
-    fun getParam(param: CoreParam) : Int
-    fun evalCoreParam(param: CoreParam) : Int
-    fun getCoreHistory(param: CoreParam) : ModHistory<Int>
-    fun addCoreMod(param: CoreParam, mod: Modification<Int>) : Int
+    fun getCoreParam(param: CoreParam) : Int
+    fun setCoreParam(param: CoreParam, n: Int) : Int
+    fun adjustCoreParam(param: CoreParam, n: Int) : Int
+    fun incrementCoreParam(param: CoreParam) : Int
+    fun decrementCoreParam(param: CoreParam) : Int
     ////
+    fun getConMode() : StatMode
+    fun getDexMode() : StatMode
+    fun getIntMode() : StatMode
+    fun getWilMode() : StatMode
+    fun getMode(stat: QuadStat) : StatMode
     fun setMode(stat: QuadStat, mode: StatMode, force: Boolean) : StatMode
     fun normalizeMode(stat: QuadStat) : StatMode
     fun enhanceMode(stat: QuadStat) : StatMode
@@ -66,7 +85,52 @@ interface Participant {
 
 class CharacterParticipant(data: CharaData = CharaData()) : Character(data), Participant {
     override var key: String = ""
+    override var status: ParticipantStatus = ParticipantStatus.FRIEND
     override var initiative: Double = 0.00
+
+    override fun getStateParam(param: StateParam): Int {
+        return getParam(param)
+    }
+
+    override fun setStateParam(param: StateParam, n: Int): Int {
+        return setParam(param, n)
+    }
+
+    override fun adjustStateParam(param: StateParam, n: Int): Int {
+        return adjust(param, n)
+    }
+
+    override fun incrementStateParam(param: StateParam): Int {
+        return increment(param)
+    }
+
+    override fun decrementStateParam(param: StateParam): Int {
+        return decrement(param)
+    }
+
+    override fun getCoreParam(param: CoreParam): Int {
+        return getParam(param)
+    }
+
+    override fun setCoreParam(param: CoreParam, n: Int): Int {
+        return setParam(param, n)
+    }
+
+    override fun adjustCoreParam(param: CoreParam, n: Int): Int {
+        return adjust(param, n)
+    }
+
+    override fun incrementCoreParam(param: CoreParam): Int {
+        return increment(param)
+    }
+
+    override fun decrementCoreParam(param: CoreParam): Int {
+        return decrement(param)
+    }
+
+    override fun compareTo(other: Participant): Int {
+        return other.initiative.toInt() - this.initiative.toInt()
+    }
 }
 
 //class MonsterParticipant : Monster(), Participant {
@@ -87,23 +151,22 @@ class CharacterParticipant(data: CharaData = CharaData()) : Character(data), Par
 //
 //}
 //
-//class ConfluxMonsterParticipant : MonsterParticipant {
+//class ConfluentMonsterParticipant : MonsterParticipant {
 //
 //}
 //
 
-enum class EncounterType(val key: String) {
-    COMBAT("COMBAT"),
-    SOCIAL("SOCIAL"),
-    ENVIRONMENTAL("ENVIRONMENTAL");
+enum class EncounterType {
+    COMBAT,
+    SOCIAL,
+    ENVIRONMENTAL
 }
 
-class Encounter(type: EncounterType) {
-    val type: EncounterType = type
+class Encounter(val type: EncounterType) {
     var round: Int = 0
     val keymap: MutableMap<String, Int> = mutableMapOf()
     val participants: MutableMap<String, Participant> = mutableMapOf()
-    val participantOrder: ArrayList<Participant> = arrayListOf()
+    val participantOrder: Array<Participant> = arrayOf()
     var activeParticipantIndex: Int = 0
         set(i) {
             field = coerceIndex(i)
@@ -113,9 +176,9 @@ class Encounter(type: EncounterType) {
             field = coerceIndex(i)
         }
 
-    fun generateKey(p: Participant) : String {
+    private fun generateKey(p: Participant) : String {
         val name = p.getName()
-        var key = if (name.isNullOrBlank()) "Unk" else
+        var key = if (name.isBlank()) "Unk" else
             name.substring(0..3.coerceAtMost(name.length))
         var i = keymap[key]
         if (i == null) {
@@ -134,6 +197,10 @@ class Encounter(type: EncounterType) {
 
     private fun indexIsValid(i: Int) : Boolean {
         return i >= 0 && i < participantOrder.size
+    }
+
+    fun getParticipant(key: String) : Participant? {
+        return participants[key]
     }
 
     fun getActiveParticipant() : Participant? {
@@ -162,7 +229,28 @@ class Encounter(type: EncounterType) {
         val pkey = generateKey(p)
         p.key = pkey
         participants[pkey] = p
-        participantOrder.add(p)
+        participantOrder[participantOrder.size] = p
+        return this
+    }
+
+    fun startNewRound() : Encounter {
+        activeParticipantIndex = 0
+        if (participantOrder.isNotEmpty()) {
+            for (p in participantOrder) {
+                var x = p.getMomentum()
+                var min = 50.0
+                if (x > 0) {
+                    min += 50.0 * (x / (x + 2))
+                } else if (x < 0) {
+                    x = x.absoluteValue
+                    min -= 50.0 * (x / (x + 2))
+                }
+                p.initiative = Random.nextDouble(min, 100.0)
+                p.setMomentum(0)
+            }
+            participantOrder.sort()
+            ++round
+        }
         return this
     }
 }

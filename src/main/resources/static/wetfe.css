@@ -5,8 +5,8 @@
     --wil-color: #38761d;
     --soul-color: blueviolet;
     --power-color: gold;
-    --break-color: crimson;
-    --affliction-color: limegreen;
+    --affliction-color: crimson;
+    --trauma-color: limegreen;
 }
 .we-navbar {
     box-shadow: 0 1px 8px black;
@@ -27,13 +27,13 @@
     color: black;
     text-shadow: 0 0 10px var(--power-color);
 }
-.we-text-break {
-    color: black;
-    text-shadow: 0 0 10px var(--break-color);
-}
 .we-text-affliction {
     color: black;
     text-shadow: 0 0 10px var(--affliction-color);
+}
+.we-text-trauma {
+    color: black;
+    text-shadow: 0 0 10px var(--trauma-color);
 }
 .we-text-stagger {
     color: indianred;
@@ -45,10 +45,10 @@
 .we-text-power-light {
     color: #ffe599;
 }
-.we-text-break-light {
+.we-text-affliction-light {
     color: #ea9999;
 }
-.we-text-affliction-light {
+.we-text-trauma-light {
     color: #b6d7a8;
 }
 .we-text-stagger-light {
@@ -121,16 +121,16 @@
     background-color: var(--power-color);
     box-shadow: 0 2px 4px black;
 }
-.we-break-chip {
-    color: white;
-    text-shadow: 0 1px 2px black;
-    background-color: var(--break-color);
-    box-shadow: 0 2px 4px black;
-}
 .we-affliction-chip {
     color: white;
     text-shadow: 0 1px 2px black;
     background-color: var(--affliction-color);
+    box-shadow: 0 2px 4px black;
+}
+.we-trauma-chip {
+    color: white;
+    text-shadow: 0 1px 2px black;
+    background-color: var(--trauma-color);
     box-shadow: 0 2px 4px black;
 }
 .border-danger {
@@ -184,14 +184,14 @@
       -webkit-text-stroke-color: black; */
 }
 .btn.we-state-change[data-state-target="BRK"] {
-    color: var(--break-color);
-    text-shadow: 0 0 1px black;
-    border: 2px solid var(--break-color);
-    border-radius: 4px;
-}
-.btn.we-state-change[data-state-target="AFL"] {
     color: var(--affliction-color);
     text-shadow: 0 0 1px black;
     border: 2px solid var(--affliction-color);
+    border-radius: 4px;
+}
+.btn.we-state-change[data-state-target="AFL"] {
+    color: var(--trauma-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--trauma-color);
     border-radius: 4px;
 }

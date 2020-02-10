@@ -6,10 +6,10 @@ ability
 ability list/sheet
 : The list of abilities that are available to a given player character during encounters. Due to the extensible nature of feats, there are necessarily many available abilities that will not appear in this list.
 
-ability point (AP)
+ability point, AP
 : Awarded every even level to player characters. Used to acquire abilities from the ability tree.
 
-ability tree, ATree
+ability tree
 : The set of abilities -- skills, reactions, and traits -- arranged by their requirements, that all player characters may acquire with ability points.
 
 above/below
@@ -57,7 +57,7 @@ core natures
 damage, dmg
 : The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in five types: anatomical, psychological, infernal, celestial, and exotic.
 
-damage deque
+damage deque, Damage[]
 : The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
 
 debuff, enfeeble
@@ -87,23 +87,23 @@ experience, EXP
 fatigue, ftg
 : Represents the temporary loss of soul chips Ⓢ due to extreme exertion of physical and mental faculties. Accumulates during the stressful events that occur between peaceful periods of adventuring. Automatically restored after each sound rest.
 
-fatigue deque
+fatigue deque, Fatigue[]
 : The deque of soul chips Ⓢ and trauma chips Ⓣ that represents exhausted lifeforce and long-term maladies. The chips of this deque persist in between encounters, and require specific conditions to cure: the soul chips are generally restored by enjoying a sound rest; and the trauma chips must be explicitly cured by specialized means.
 
 feat, Ғ
 : An action accomplished by winning a contest, or overcoming a challenge. Feats are meant to be a flexible and extensible mechanic in the game, that cover anything characters may try to accomplish in a given situation, including combat, social, and environmental encounters. There are four types of feats that may be utilized at any time: 1) feats of strength & endurance, which are governed by constitution; 2) feats of subtlety & finesse, which are governed by dexterity; 3) feats of perception & logic, which are governed by intelligence; and 4) feats of charisma & courage, which are governed by willpower.
 
 feats of strength & endurance, Ғ:CON
-: A character’s attempt to win a contest, or overcome a challenge using their strength and endurance. For example, a character may attempt to pin an opponent by grappling them. The character would roll a CON check, as would their opponent. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:CON challenge.]
+: A character’s attempt to win a contest, or overcome a challenge using their strength and endurance. For example, a character may attempt to pin an opponent by grappling them. The character would roll a CON check, as would their opponent. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an Ғ:CON challenge.]
 
 feats of subtlety & finesse, Ғ:DEX
-: A character’s attempt to win a contest, or overcome a challenge using their skill and precision. For example, a character may attempt to pickpocket another being. The character would roll a DEX check, while their opponent would roll an INT check to test their perception of the theft. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:DEX challenge.]
+: A character’s attempt to win a contest, or overcome a challenge using their subtlety and finesse. For example, a character may attempt to pickpocket another being. The character would roll a DEX check, while their opponent would roll an INT check to test their perception of the theft. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an Ғ:DEX challenge.]
 
 feats of perception & logic, Ғ:INT
-: A character’s attempt to win a contest, or overcome a challenge using their perception and logic. For example, a character may to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would roll a state check against a set challenge score. Overrolls result in ℜ = 0. The character wins the challenge if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:INT contest.]
+: A character’s attempt to win a contest, or overcome a challenge using their perception and logic. For example, a character may to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would roll a state check against a set challenge score. Overrolls result in ℜ = 0. The character wins the challenge if and only if their result is higher than their opponent’s. [TODO: Give one example of an Ғ:INT contest.]
 
 feats of charisma & courage, Ғ:WIL
-: A character’s attempt to win a contest, or overcome a challenge using their charisma and courage. For example, a character may attempt to intimidate another being. The character would roll a WIL check, while their opponent would also roll a WIL check to test their mettle against the intimidation. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an F:WIL challenge.]
+: A character’s attempt to win a contest, or overcome a challenge using their charisma and courage. For example, a character may attempt to intimidate another being. The character would roll a WIL check, while their opponent would also roll a WIL check to test their mettle against the intimidation. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an Ғ:WIL challenge.]
 
 font
 : Vessels of untapped energy that can be found on equipment. Powerful beings may use part of their soul to innervate a font, thereby tapping into its energy and harnessing its effects.
@@ -111,11 +111,11 @@ font
 healing, heal
 : The process of restoring damaged soul chips (Ⓢ in the damage deque) to the health deque. Healing affects the chips of the damage deque point-per-chip, from the top down, and according to their type. Affliction chips Ⓐ simply pop, whereas soul chips pop and queue into the health deque.
 
-health deque
+health deque, Health[]
 : The deque of soul chips Ⓢ and power chips Ⓟ that represents healthy or empowered lifeforce. Generally, characters begin every encounter with all of their soul chips in this deque, and may temporarily accumulate one or more power chips above them.
 
-innervated
-: The state of a font that has been tapped by a being, using the energy of its soul.
+_innervate_
+: When a being uses the energy of their soul to unlock the power of a font, thereby binding with it.
 
 intelligence, INT
 : The quality encompassing a being’s mental agility, perception, insight, logic, and detailed memory.
@@ -141,7 +141,7 @@ power chip, Ⓟ
 power limit
 : The maximum number of power chips Ⓟ a being may accumulate. Generally, every being’s power limit is equal to the size of their soulpool.
 
-queue
+_queue_
 : The act of adding a soul chip Ⓢ to the bottom of a deque. Soul chips always accumulate in this manner; i.e. they never stack.
 
 reaction
@@ -168,10 +168,10 @@ soulbinding
 sound rest
 : A period of peace and relaxation sufficient to recuperate a being's mental and physical reserves. Generally, it restores all soul chips Ⓢ to the being's health deque. A sound rest for a human being typically involves eight hours of "good" sleep.
 
-stack
+_stack_
 : The act of adding a chip to the top of a deque. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.
 
-staggered, stagger
+staggered, _stagger_
 : The state an NPC combatant enters upon suffering damage equal to or greater than its stagger threshold in a single turn. It is delayed, and suffers a +1 vulnerability to its anatomical and psychological damage adjustments. Additionally, all opponents that are aware of the staggering receive a morale boost in the form of 1 healing.
 
 stagger threshold, STh

@@ -317,14 +317,14 @@ class Encounter(val type: EncounterType) {
          *  The "initiative roll" base constant.
          *  Must be in the range [0.000, 49.999].
          *  Higher values make haste and delay effects more pronounced,
-         *    while reducing the size of initiative overlap between
-         *    different parities of momentum.
+         *    while reducing the possiblity of initiative overlap between
+         *    (neg., zero, pos.) cases of momentum.
          */
         private val irollBase = 35.000.coerceIn(0.000, 49.999)
         
         /**
-         *  The "initiative roll" adjustment growth constant.
-         *  Must be in the range [0.001, *).
+         *  The "initiative roll" adjustment growth factor.
+         *  Must be in the range [0.001, inf).
          *  Lower values make haste and delay effects more pronounced,
          *    while concentrating their effects in smaller ranges of momentum (near zero).
          */

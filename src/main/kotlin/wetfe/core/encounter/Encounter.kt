@@ -312,28 +312,32 @@ class Encounter(val type: EncounterType) {
         return this
     }
 
+    companion object {
+        /*
+         *  The "initiative roll" base constant.
+         *  Must be in the range [0.000, 49.999].
+         *  Higher values make haste and delay effects more pronounced.
+         */
+        val irollFactor = 35.000.coerceIn(0.000, 49.999)
+        fun irollAdjustment(p: Int): Double {
+            return irollFactor * p / 
+                    if (p < 0) p - 2.236 else p + 2.236
+        }
+        val irollMin = irollFactor
+        val irollMax = 100.000 - irollFactor
+    }
+    
     fun startNewRound(): Encounter {
         activeParticipantIndex = 0
         if (participantOrder.isNotEmpty()) {
-            for (p in participantOrder) {
-                val x = p.getMomentum()
-                var min = 35.0
-                var max = 65.0
-                if (x > 0) {
-                    val c = 35.0 * (x / (x + 2.236))
-                    min += c
-                    max += c
-                } else if (x < 0) {
-                    val c = 35.0 * (x / (x - 2.236))
-                    min -= c
-                    max -= c
-                }
-                p.initiative = Random.nextDouble(min, max)
-                p.setMomentum(0)
+            for (participant in participantOrder) {
+                participant.initiative = Random.nextDouble(irollMin, irollMax) + 
+                        irollAdjustment(participant.getMomentum())
+                participant.setMomentum(0)
             }
             participantOrder.sort()
-            ++round
         }
+        ++round
         return this
     }
 }

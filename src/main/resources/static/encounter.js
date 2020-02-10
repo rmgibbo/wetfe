@@ -11,6 +11,7 @@ let unselected_hidden = true;
 const CORE = wetfe.wetfe.core;
 const QuadStat = CORE.character.QuadStat;
 const CoreParam = CORE.character.CoreParam;
+const StatMode = CORE.character.StatMode;
 const CharaData = CORE.character.CharaData;
 const Encounter = CORE.encounter.Encounter;
 const EncounterType = CORE.encounter.EncounterType;
@@ -31,9 +32,15 @@ const condition_map = {
     'DEAD': { icon: 'fa-skull', tooltip: '_ Dead' }
 };
 
-function rand(min, max) {
-    return Math.random() * (max - min) + min;
-}
+const mode_map = {
+    '+': StatMode.ENHANCED,
+    '-': StatMode.ENFEEBLED,
+    '=': StatMode.NATURAL
+};
+
+// function rand(min, max) {
+//     return Math.random() * (max - min) + min;
+// }
 
 function clone(obj) {
     return JSON.parse(JSON.stringify(obj));
@@ -66,13 +73,13 @@ function setTpi(i) {
 function addPlayerParticipant(pmk) {
     let cdata = data.playermap[pmk];
     if (cdata) {
-        const participant = new CharacterParticipant(cdata);
+        const participant = new CharacterParticipant(clone(cdata));
         encounter.addParticipant_qgd5te$(participant);
         $('.we-player-dditem[data-playermap-key="' + pmk + '"]').addClass('d-none');
     }
 }
 
-function addBeingState(bmk) {
+function addBeingParticipant(bmk) {
     const cdata = data.beingmap[bmk];
     if (cdata) {
         const participant = new CharacterParticipant(clone(cdata));
@@ -80,7 +87,7 @@ function addBeingState(bmk) {
     }
 }
 
-function addPlayerParticipants(element) {
+function addSelectedPlayerToParticipants(element) {
     if (!data || !data.playermap) return;
     let pmk = (typeof element === 'string') ? element :
         element.getAttribute('data-playermap-key');
@@ -94,32 +101,18 @@ function addPlayerParticipants(element) {
     drawParticipantsTable();
 }
 
-function addBeingParticipant(element) {
+function addSelectedBeingToParticipants(element) {
     if (!data || !data.beingmap) return;
     const bmk = (typeof element === 'string') ? element : element.getAttribute('data-beingmap-key');
-    addBeingState(bmk);
+    addBeingParticipant(bmk);
     drawParticipantsTable();
 }
 
 function removeParticipant(element) {
     const $prow = $(element).parents('tr');
     const pkey = $prow.attr('data-pkey');
-    const max = encounter.participantOrder.length;
-    for (let i = 0; i < max; ++i) {
-        let participant = encounter.participantOrder[i];
-        if (participant.key === pkey) {
-            if (participant.status === ParticipantStatus.FRIEND) {
-                $('.we-player-dditem[data-playermap-key="' + participant.getId() + '"]').removeClass('d-none');
-            }
-            if (encounter.activeParticipantIndex === (max - 1)) {
-                encounter.activeParticipantIndex--;
-            }
-            encounter.targetParticipantIndex = encounter.activeParticipantIndex;
-            encounter.participantOrder.splice(i, 1);
-            drawParticipantsTable();
-            break;
-        }
-    }
+    encounter.removeParticipant_61zpoe$(pkey);
+    drawParticipantsTable();
 }
 
 function toggleUnselectedParticipants() {
@@ -242,27 +235,53 @@ function restoreFatigue($prow, participant, qty) {
     drawParticipantState($prow, participant);
 }
 
-function modifyCoreAttribute($prow, participant, mod, qstat) {
-    if (mod === '+') {
-        participant.enhanceMode_f4ewii$(qstat);
-    } else if (mod === '-') {
-        participant.enfeebleMode_f4ewii$(qstat);
-    } else if (mod === '=') {
-        participant.normalizeMode_f4ewii$(qstat);
-    } else {
-        console.log('[EncScript] ERROR: Unable to modify core attribute by mod "' + mod + '"');
+function modifyConMode($prow, participant, modeKey) {
+    if (modeKey !== '+' && modeKey !== '-' && modeKey !== '=') {
+        console.log('[encounter.js] ERROR: Unable to modify CON. Expected modeKey to be a StatMode key (string), but got: ' + modeKey);
         return;
     }
+    const newModeKey = participant.applyModeKey_qz9155$(modeKey, participant.getConMode().key, false);
+    participant.setConMode_s34jb6$(mode_map[newModeKey]);
     drawParticipantState($prow, participant);
 }
 
-function flowMomentum($prow, participant, qty) {
-    participant.flowMomentum_za3lpa$(qty);
+function modifyDexMode($prow, participant, modeKey) {
+    if (modeKey !== '+' && modeKey !== '-' && modeKey !== '=') {
+        console.log('[encounter.js] ERROR: Unable to modify DEX. Expected modeKey to be a StatMode key (string), but got: ' + modeKey);
+        return;
+    }
+    const newModeKey = participant.applyModeKey_qz9155$(modeKey, participant.getDexMode().key, false);
+    participant.setDexMode_s34jb6$(mode_map[newModeKey]);
     drawParticipantState($prow, participant);
 }
 
-function ebbMomentum($prow, participant, qty) {
-    participant.ebbMomentum_za3lpa$(qty);
+function modifyIntMode($prow, participant, modeKey) {
+    if (modeKey !== '+' && modeKey !== '-' && modeKey !== '=') {
+        console.log('[encounter.js] ERROR: Unable to modify INT. Expected modeKey to be a StatMode key (string), but got: ' + modeKey);
+        return;
+    }
+    const newModeKey = participant.applyModeKey_qz9155$(modeKey, participant.getIntMode().key, false);
+    participant.setIntMode_s34jb6$(mode_map[newModeKey]);
+    drawParticipantState($prow, participant);
+}
+
+function modifyWilMode($prow, participant, modeKey) {
+    if (modeKey !== '+' && modeKey !== '-' && modeKey !== '=') {
+        console.log('[encounter.js] ERROR: Unable to modify WIL. Expected modeKey to be a StatMode key (string), but got: ' + modeKey);
+        return;
+    }
+    const newModeKey = participant.applyModeKey_qz9155$(modeKey, participant.getWilMode().key, false);
+    participant.setWilMode_s34jb6$(mode_map[newModeKey]);
+    drawParticipantState($prow, participant);
+}
+
+function increaseMomentum($prow, participant, qty) {
+    participant.increaseMomentum_za3lpa$(qty);
+    drawParticipantState($prow, participant);
+}
+
+function decreaseMomentum($prow, participant, qty) {
+    participant.decreaseMomentum_za3lpa$(qty);
     drawParticipantState($prow, participant);
 }
 
@@ -276,11 +295,11 @@ function modifyParticipant(qty, param) {
     if (participant) {
         updated = true;
         switch (param) {
-            case "flow":
-                flowMomentum($prow, participant, qty);
+            case "haste":
+                increaseMomentum($prow, participant, qty);
                 break;
-            case "ebb":
-                ebbMomentum($prow, participant, qty);
+            case "delay":
+                decreaseMomentum($prow, participant, qty);
                 break;
             case "power":
                 gainPower($prow, participant, qty);
@@ -313,10 +332,16 @@ function modifyParticipant(qty, param) {
                 restoreFatigue($prow, participant, qty);
                 break;
             case "con":
+                modifyConMode($prow, participant, qty);
+                break;
             case "dex":
+                modifyDexMode($prow, participant, qty);
+                break;
             case "int":
+                modifyIntMode($prow, participant, qty);
+                break;
             case "wil":
-                modifyCoreAttribute($prow, participant, qty, param);
+                modifyWilMode($prow, participant, qty);
                 break;
             case "blitzing":
                 addPartCondition($prow, participant, StateCondition.BLITZING);
@@ -334,7 +359,7 @@ function modifyParticipant(qty, param) {
     }
 
     if (!updated) {
-        console.log('[EncScript::modifyParticipant] WARN: Failed to modify participant-key "' + pkey + '" with "' + qty + ' ' + param + '". Participant=\n'+JSON.stringify(participant)+'\n----\npartmap keys=\n'+JSON.stringify(Object.keys(encounter.participants)));
+        console.log('[encounter::modifyParticipant] WARN: Failed to modify participant-key "' + pkey + '" with "' + qty + ' ' + param + '". Participant=\n'+JSON.stringify(participant)+'\n----\npartmap keys=\n'+JSON.stringify(Object.keys(encounter.participants)));
     }
 }
 
@@ -368,15 +393,13 @@ function populateBeingDropdown() {
 
 function updateTurnButton() {
     const $active = $('.we-active-prow');
-    let btn_html = 'ERR';
+    let btn_html = 'Begin Round 1';
     if (encounter.round > 0 && $active.length > 0) {
         // const pkey = $active.attr('data-pkey');
         btn_html = 'End ' + encounter.getActiveParticipant().getName() + '\'s Turn';
         if (encounter.activeParticipantIndex === (encounter.participantOrder.length - 1)) {
             btn_html += '&nbsp;&nbsp;(Begin Round ' + (encounter.round + 1) + ')';
         }
-    } else {
-        btn_html = 'Begin Round 1';
     }
     $('#next-turn-btn').children('span').html(btn_html);
 }
@@ -400,10 +423,6 @@ function drawParticipantToolbar() {
     }
 }
 
-function getModeKey(participant, qstat) {
-    return participant.getMode_f4ewii$(qstat).key;
-}
-
 function getCoreVal(participant, param) {
     return participant.getCoreParam_qosqn7$(param);
 }
@@ -416,10 +435,10 @@ function drawCoreAttributes($prow, participant) {
         .attr('data-attr-state', participant.getDexMode().key)
         .html(getCoreVal(participant, CoreParam.DEXTERITY));
     $prow.find('.we-prow-int')
-        .attr('data-attr-state', participant.getIntMode())
+        .attr('data-attr-state', participant.getIntMode().key)
         .html(getCoreVal(participant, CoreParam.INTELLIGENCE));
     $prow.find('.we-prow-wil')
-        .attr('data-attr-state', participant.getWilMode())
+        .attr('data-attr-state', participant.getWilMode().key)
         .html(getCoreVal(participant, CoreParam.WILLPOWER));
 }
 
@@ -448,7 +467,7 @@ function drawParticipantsTable() {
             .attr('title', participant.initiative.toFixed(2))
             .html(i + 1);
         $prow.find('.we-prow-momentum').html(participant.getMomentum());
-        $prow.find('.we-prow-name').html(participant.getName());
+        $prow.find('.we-prow-key').html(participant.key);
         $prow.find('.we-prow-power').html(participant.getPower());
         $prow.find('.we-prow-health').html(participant.getHealth());
         $prow.find('.we-prow-affliction').html(participant.getAffliction());
@@ -468,18 +487,16 @@ function drawParticipantsTable() {
 }
 
 function onNameSearch(e) {
-    $('#name-search-add-btn').html('NO!');
+    $('#name-search-add-btn').html('TODO: Implement this! :P');
 }
 
 function createCharaData(entity) {
     const cd = new CharaData();
-    entity.property;
     Object.getOwnPropertyNames(entity).forEach(function(p) {
         if (cd.hasOwnProperty(p)) {
             cd[p] = entity[p];
         }
     });
-
     return cd;
 }
 
@@ -524,7 +541,7 @@ function onDataFilesChanged(event) {
         for (let i = 0; i < n; ++i) {
             let f = files[i];
             reader.readAsText(f);
-            console.log("file #" + i + ": " + f.name);
+            console.log(`Reading file #${i} ${f.name}`);
             label.push(f.name);
         }
         $label.html(label.join(' &bull; '));
@@ -544,7 +561,7 @@ function selectParticipant(element) {
 
 function activateNextParticipant() {
     if (!Array.isArray(encounter.participantOrder) || encounter.participantOrder.length < 1) {
-        console.log('WTF happened to the participant order list?')
+        console.log('WTF happened to the participant order list?');
         return;
     }
 
@@ -560,11 +577,13 @@ function activateNextParticipant() {
         }
     }
 
-    encounter.activeParticipantIndex++;
-    if (encounter.activeParticipantIndex >= encounter.participantOrder.length || encounter.round === 0) {
+    if (encounter.round === 0 ||
+        encounter.activeParticipantIndex === (encounter.participantOrder.length - 1)) {
         encounter.startNewRound();
+    } else {
+        ++encounter.activeParticipantIndex;
     }
-    if (encounter.activeParticipantIndex < 0) encounter.activeParticipantIndex = 0;
+
     encounter.targetParticipantIndex = encounter.activeParticipantIndex;
 
     // START-OF-TURN BOOKKEEPING
@@ -574,8 +593,8 @@ function activateNextParticipant() {
         participant.forceCondition_jwjpbp$(StateCondition.NORMAL);
     }
     if (participant.getCondition() === StateCondition.CHANNELING) {
-        participant.forceCondition_jwjpbp$(StateCondition.NORMAL);
         participant.gainPower_za3lpa$(participant.health);
+        participant.forceCondition_jwjpbp$(StateCondition.NORMAL);
     }
 
     drawParticipantsTable();
@@ -608,33 +627,41 @@ function onClickKeyModBtn(element) {
 
 const keymodmap = {
     // Momentum
-    "m": "flow",
-    "M": "ebb",
+    "m": "haste",
+    "M": "haste",
+    "y": "delay",
+    "Y": "delay",
 
     /* Chips & Deques */
     // Health[]
     "p": "power",
-    "P": "consumption",
-    "c": "consumption",
+    "P": "power",
+    "s": "suppression",
+    "S": "suppression",
     // Damage[]
     "a": "affliction",
-    "A": "cure",
+    "A": "affliction",
     "u": "cure",
+    "U": "cure",
     "d": "damage",
+    "D": "damage",
     "h": "healing",
+    "H": "healing",
     // Fatigue[]
     "t": "trauma",
-    "T": "alleviation",
+    "T": "trauma",
     "v": "alleviation",
+    "V": "alleviation",
     "f": "fatigue",
-    "F": "restoration",
+    "F": "fatigue",
     "r": "restoration",
+    "R": "restoration",
 
     // Core Attributes
-    "D": "dex",
-    "C": "con",
-    "I": "int",
-    "W": "wil",
+    "DEX": "dex",
+    "CON": "con",
+    "INT": "int",
+    "WIL": "wil",
 
     // Conditions
     "!": "blitzing",
@@ -652,7 +679,7 @@ function resetModCache() {
 }
 
 function onKeyup(event) {
-    //console.log('Received KEY_UP event: "'+event.key+'" (altKey='+event.altKey+', shiftKey='+event.shiftKey+', ctrlKey='+event.ctrlKey+')');
+    // console.log('Received KEY_UP event: "'+event.key+'" (altKey='+event.altKey+', shiftKey='+event.shiftKey+', ctrlKey='+event.ctrlKey+')');
     event.preventDefault();
     const k = event.key;
     let updated = true;
@@ -684,46 +711,77 @@ function onKeyup(event) {
         case "9":
             if (modcache.submitted || (typeof modcache.qty !== 'number')) {
                 resetModCache();
+            } else {
+                modcache.qty *= 10;
             }
-            modcache.qty *= 10;
             modcache.qty += parseInt(k, 10);
             break;
-        case "p":
-        case "P":
-        case "c":
-        case "b":
-        case "B":
-        case "k":
-        case "K":
-        case "d":
-        case "h":
-        case "a":
-        case "A":
-        case "e":
-        case "f":
-        case "F":
-        case "r":
-        case "m":
-        case "M":
+        case "c": // CON
+        case "C": // CON
+        case "d": // DEX
+        case "D": // DEX
+        case "i": // INT
+        case "I": // INT
+        case "w": // WIL
+        case "W": // WIL
+        case "m": // momentum (haste)
+        case "M": // momentum (haste)
+        case "y": // momentum (delay)
+        case "Y": // momentum (delay)
+        case "p": // power (gain)
+        case "P": // power (gain)
+        case "s": // power (suppress)
+        case "S": // power (suppress)
+        case "a": // affliction (sustain)
+        case "A": // affliction (sustain)
+        case "u": // affliction (cure)
+        case "U": // affliction (cure)
+     // case "d": // damage (take)
+     // case "D": // damage (take)
+        case "h": // damage (heal)
+        case "H": // damage (heal)
+        case "t": // trauma (suffer)
+        case "T": // trauma (suffer)
+        case "v": // trauma (alleviate)
+        case "V": // trauma (alleviate)
+        case "f": // fatigue (accumulate)
+        case "F": // fatigue (accumulate)
+        case "r": // fatigue (restore)
+        case "R": // fatigue (restore)
             if (modcache.submitted) {
                 resetModCache();
             }
             if (typeof modcache.qty !== 'number') {
-                resetModCache();
+                let key = k;
+                switch (k) {
+                    case "c":
+                    case "C":
+                        key = "CON";
+                        break;
+                    case "d":
+                    case "D":
+                        key = "DEX";
+                        break;
+                    case "i":
+                    case "I":
+                        key = "INT";
+                        break;
+                    case "w":
+                    case "W":
+                        key = "WIL";
+                        break;
+                    default:
+                }
+                if (key !== k) {
+                    modcache.param = keymodmap[key];
+                    modifyParticipant(modcache.qty, modcache.param);
+                    modcache.submitted = true;
+                } else {
+                    resetModCache();
+                }
                 break;
             }
             if (modcache.qty < 1) modcache.qty = 1;
-            modcache.param = keymodmap[k];
-            modifyParticipant(modcache.qty, modcache.param);
-            modcache.submitted = true;
-            break;
-        case "C":
-        case "D":
-        case "I":
-        case "W":
-            if (modcache.submitted || (typeof modcache.qty === 'number')) {
-                modcache.qty = 'normalize';
-            }
             modcache.param = keymodmap[k];
             modifyParticipant(modcache.qty, modcache.param);
             modcache.submitted = true;
@@ -738,10 +796,17 @@ function onKeyup(event) {
             resetModCache();
             modcache.qty = "-";
             break;
+        case "`":
+        case "~":
+        case "\\":
+        case "Delete":
+            resetModCache();
+            modcache.qty = "=";
+            break;
         case "!":
         case "@":
         case "^":
-            modcache.qty = 'condition';
+            modcache.qty = '';
             modcache.param = keymodmap[k];
             modifyParticipant(modcache.qty, modcache.param);
             modcache.submitted = true;

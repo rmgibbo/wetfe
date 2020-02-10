@@ -20,10 +20,13 @@ var wetfe = function (_, Kotlin) {
   var Kind_INTERFACE = Kotlin.Kind.INTERFACE;
   var Comparable = Kotlin.kotlin.Comparable;
   var numberToInt = Kotlin.numberToInt;
-  var IntRange = Kotlin.kotlin.ranges.IntRange;
-  var substring = Kotlin.kotlin.text.substring_fc3b62$;
   var toString = Kotlin.toString;
+  var first = Kotlin.kotlin.text.first_gw00vp$;
+  var toBoxedChar = Kotlin.toBoxedChar;
+  var last = Kotlin.kotlin.text.last_gw00vp$;
+  var equals = Kotlin.equals;
   var sort = Kotlin.kotlin.collections.sort_pbinho$;
+  var copyToArray = Kotlin.kotlin.collections.copyToArray;
   CoreParam.prototype = Object.create(Enum.prototype);
   CoreParam.prototype.constructor = CoreParam;
   QuadStat.prototype = Object.create(Enum.prototype);
@@ -928,7 +931,7 @@ var wetfe = function (_, Kotlin) {
     this.intMode = intMode;
     this.wilMode = wilMode;
   }
-  StatModeState.prototype.of_f4ewii$ = function (stat) {
+  StatModeState.prototype.get_f4ewii$ = function (stat) {
     var tmp$;
     switch (stat.name) {
       case 'CONSTITUTION':
@@ -1469,6 +1472,15 @@ var wetfe = function (_, Kotlin) {
   };
   Character.prototype.geShortName = function () {
     return this.cdata_wnkotf$_0.shortName;
+  };
+  Character.prototype.getSource = function () {
+    return this.cdata_wnkotf$_0.source;
+  };
+  Character.prototype.isPlayerSource = function () {
+    return this.cdata_wnkotf$_0.source === DataSource$PLAYER_getInstance();
+  };
+  Character.prototype.isOfficialSource = function () {
+    return this.cdata_wnkotf$_0.source === DataSource$OFFICIAL_getInstance();
   };
   Character.prototype.getStaggerThreshold = function () {
     return this.cdata_wnkotf$_0.staggerThreshold;
@@ -2014,11 +2026,17 @@ var wetfe = function (_, Kotlin) {
     }
     return ftg;
   };
-  Character.prototype.flowMomentum_za3lpa$ = function (n) {
+  Character.prototype.increaseMomentum_za3lpa$ = function (n) {
     return n < 1 ? 0 : this.increment_hek9tz$(StateParam$MOMENTUM_getInstance(), n);
   };
-  Character.prototype.ebbMomentum_za3lpa$ = function (n) {
+  Character.prototype.decreaseMomentum_za3lpa$ = function (n) {
     return n < 1 ? 0 : this.decrement_hek9tz$(StateParam$MOMENTUM_getInstance(), n);
+  };
+  Character.prototype.hasten = function () {
+    return this.increaseMomentum_za3lpa$(1);
+  };
+  Character.prototype.delay = function () {
+    return this.decreaseMomentum_za3lpa$(1);
   };
   Character.prototype.getConMode = function () {
     return this.cdata_wnkotf$_0.state.modes.conMode;
@@ -2032,42 +2050,22 @@ var wetfe = function (_, Kotlin) {
   Character.prototype.getWilMode = function () {
     return this.cdata_wnkotf$_0.state.modes.wilMode;
   };
-  Character.prototype.getMode_f4ewii$ = function (stat) {
-    return this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
-  };
-  Character.prototype.setMode_j9df3p$ = function (stat, mode, force) {
-    if (force === void 0)
-      force = false;
-    var currentMode = this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
+  Character.prototype.applyMode_p8xhwo$_0 = function (mode, currentMode, force) {
+    var tmp$;
     switch (mode.name) {
-      case 'NATURAL':
-        switch (currentMode.name) {
-          case 'NATURAL':
-            break;
-          case 'ENHANCED':
-            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
-            break;
-          case 'ENFEEBLED':
-            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
-            break;
-        }
-
-        break;
       case 'ENHANCED':
         switch (currentMode.name) {
           case 'NATURAL':
-            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENHANCED_getInstance());
+            tmp$ = StatMode$ENHANCED_getInstance();
             break;
           case 'ENHANCED':
             this.healDamage_za3lpa$(1);
+            tmp$ = StatMode$ENHANCED_getInstance();
             break;
           case 'ENFEEBLED':
-            if (force)
-              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENHANCED_getInstance());
-            else
-              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            tmp$ = force ? StatMode$ENHANCED_getInstance() : StatMode$NATURAL_getInstance();
             break;
-          default:Kotlin.noWhenBranchMatched();
+          default:tmp$ = Kotlin.noWhenBranchMatched();
             break;
         }
 
@@ -2075,26 +2073,45 @@ var wetfe = function (_, Kotlin) {
       case 'ENFEEBLED':
         switch (currentMode.name) {
           case 'NATURAL':
-            this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENFEEBLED_getInstance());
+            tmp$ = StatMode$ENFEEBLED_getInstance();
             break;
           case 'ENHANCED':
-            if (force)
-              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$ENFEEBLED_getInstance());
-            else
-              this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, StatMode$NATURAL_getInstance());
+            tmp$ = force ? StatMode$ENFEEBLED_getInstance() : StatMode$NATURAL_getInstance();
             break;
           case 'ENFEEBLED':
             this.takeDamage_za3lpa$(1);
+            tmp$ = StatMode$ENFEEBLED_getInstance();
             break;
-          default:Kotlin.noWhenBranchMatched();
+          default:tmp$ = Kotlin.noWhenBranchMatched();
             break;
         }
 
         break;
-      default:Kotlin.noWhenBranchMatched();
+      default:tmp$ = StatMode$NATURAL_getInstance();
         break;
     }
-    return this.cdata_wnkotf$_0.state.modes.of_f4ewii$(stat);
+    return tmp$;
+  };
+  Character.prototype.setConMode_s34jb6$ = function (mode) {
+    this.cdata_wnkotf$_0.state.modes.conMode = mode;
+  };
+  Character.prototype.setDexMode_s34jb6$ = function (mode) {
+    this.cdata_wnkotf$_0.state.modes.dexMode = mode;
+  };
+  Character.prototype.setIntMode_s34jb6$ = function (mode) {
+    this.cdata_wnkotf$_0.state.modes.intMode = mode;
+  };
+  Character.prototype.setWilMode_s34jb6$ = function (mode) {
+    this.cdata_wnkotf$_0.state.modes.wilMode = mode;
+  };
+  Character.prototype.getMode_f4ewii$ = function (stat) {
+    return this.cdata_wnkotf$_0.state.modes.get_f4ewii$(stat);
+  };
+  Character.prototype.setMode_j9df3p$ = function (stat, mode, force) {
+    if (force === void 0)
+      force = false;
+    this.cdata_wnkotf$_0.state.modes.set_sdu2kk$(stat, this.applyMode_p8xhwo$_0(mode, this.cdata_wnkotf$_0.state.modes.get_f4ewii$(stat), force));
+    return this.cdata_wnkotf$_0.state.modes.get_f4ewii$(stat);
   };
   Character.prototype.normalizeMode_f4ewii$ = function (stat) {
     return this.setMode_j9df3p$(stat, StatMode$NATURAL_getInstance());
@@ -2224,6 +2241,23 @@ var wetfe = function (_, Kotlin) {
       this.initiative_2wbsph$_0 = initiative;
     }
   });
+  CharacterParticipant.prototype.initalize_61zpoe$ = function (key) {
+    this.key = key;
+    this.setHealth_za3lpa$(this.getSoulpool());
+    this.setDamage_za3lpa$(0);
+    this.setFatigue_za3lpa$(0);
+    this.setPower_za3lpa$(0);
+    this.setAffliction_za3lpa$(0);
+    this.setTrauma_za3lpa$(0);
+    this.setMomentum_za3lpa$(0);
+    this.setCondition_5crjny$(StateCondition$NORMAL_getInstance());
+    this.setConMode_s34jb6$(StatMode$NATURAL_getInstance());
+    this.setDexMode_s34jb6$(StatMode$NATURAL_getInstance());
+    this.setIntMode_s34jb6$(StatMode$NATURAL_getInstance());
+    this.setWilMode_s34jb6$(StatMode$NATURAL_getInstance());
+    this.untap();
+    return this;
+  };
   CharacterParticipant.prototype.getStateParam_alacmf$ = function (param) {
     return this.getParam_alacmf$(param);
   };
@@ -2256,6 +2290,48 @@ var wetfe = function (_, Kotlin) {
   };
   CharacterParticipant.prototype.compareTo_11rb$ = function (other) {
     return numberToInt(other.initiative) - numberToInt(this.initiative) | 0;
+  };
+  CharacterParticipant.prototype.applyModeKey_qz9155$ = function (mode, currentMode, force) {
+    var tmp$;
+    switch (mode) {
+      case '+':
+        switch (currentMode) {
+          case '=':
+            tmp$ = '+';
+            break;
+          case '+':
+            this.healDamage_za3lpa$(1);
+            tmp$ = '+';
+            break;
+          case '-':
+            tmp$ = force ? '+' : '=';
+            break;
+          default:tmp$ = '=';
+            break;
+        }
+
+        break;
+      case '-':
+        switch (currentMode) {
+          case '=':
+            tmp$ = '-';
+            break;
+          case '+':
+            tmp$ = force ? '-' : '=';
+            break;
+          case '-':
+            this.takeDamage_za3lpa$(1);
+            tmp$ = '-';
+            break;
+          default:tmp$ = '=';
+            break;
+        }
+
+        break;
+      default:tmp$ = '=';
+        break;
+    }
+    return tmp$;
   };
   CharacterParticipant.$metadata$ = {
     kind: Kind_CLASS,
@@ -2313,7 +2389,7 @@ var wetfe = function (_, Kotlin) {
   function Encounter(type) {
     this.type = type;
     this.round = 0;
-    this.keymap = LinkedHashMap_init();
+    this.nameMap = LinkedHashMap_init();
     this.participants = LinkedHashMap_init();
     this.participantOrder = [];
     this.activeParticipantIndex_224cm1$_0 = 0;
@@ -2335,23 +2411,24 @@ var wetfe = function (_, Kotlin) {
       this.targetParticipantIndex_v11q5q$_0 = this.coerceIndex_0(i);
     }
   });
-  Encounter.prototype.generateKey_0 = function (p) {
-    var name = p.getName();
-    var key = isBlank(name) ? 'Unk' : substring(name, new IntRange(0, coerceAtMost(3, name.length)));
-    var i = this.keymap.get_11rb$(key);
-    if (i == null) {
-      var $receiver = this.keymap;
-      var key_0 = key;
-      $receiver.put_xwzc9p$(key_0, 1);
+  Encounter.prototype.generateKey_0 = function (name, i, b) {
+    var tmp$;
+    if (b) {
+      var endIndex = coerceAtMost(3, name.length);
+      tmp$ = name.substring(0, endIndex) + toString(i > 1 ? i : '');
     }
-     else {
-      var $receiver_0 = this.keymap;
-      var key_1 = key;
-      var value = (i = i + 1 | 0, i);
-      $receiver_0.put_xwzc9p$(key_1, value);
-      key = substring(key, new IntRange(0, i > 9 ? 1 : 2)) + toString(i);
-    }
-    return key;
+     else
+      tmp$ = '' + String.fromCharCode(toBoxedChar(first(name))) + String.fromCharCode(toBoxedChar(last(name))) + toString(i);
+    return tmp$;
+  };
+  Encounter.prototype.generateKey_1 = function (p) {
+    var tmp$;
+    var name = isBlank(p.getName()) ? 'Unknown' : p.getName();
+    var i = (tmp$ = this.nameMap.get_11rb$(name)) != null ? tmp$ : 0;
+    var $receiver = this.nameMap;
+    var value = (i = i + 1 | 0, i);
+    $receiver.put_xwzc9p$(name, value);
+    return this.generateKey_0(name, i, p.isPlayerSource());
   };
   Encounter.prototype.coerceIndex_0 = function (i) {
     return this.participantOrder.length === 0 || i < 0 ? 0 : i >= this.participantOrder.length ? this.participantOrder.length - 1 | 0 : i;
@@ -2368,19 +2445,40 @@ var wetfe = function (_, Kotlin) {
   Encounter.prototype.getTargetParticipant = function () {
     return this.indexIsValid_0(this.targetParticipantIndex) ? this.participantOrder[this.targetParticipantIndex] : null;
   };
+  Encounter.prototype.addParticipant_qgd5te$ = function (p) {
+    var pkey = this.generateKey_1(p);
+    p.initalize_61zpoe$(pkey);
+    this.participants.put_xwzc9p$(pkey, p);
+    this.participantOrder[this.participantOrder.length] = p;
+    return this;
+  };
+  Encounter.prototype.removeParticipant_61zpoe$ = function (pkey) {
+    var participant = this.participants.get_11rb$(pkey);
+    if (participant != null) {
+      this.participants.remove_11rb$(pkey);
+      var $receiver = this.participantOrder;
+      var destination = ArrayList_init();
+      var tmp$;
+      for (tmp$ = 0; tmp$ !== $receiver.length; ++tmp$) {
+        var element = $receiver[tmp$];
+        if (!equals(element.key, participant.key))
+          destination.add_11rb$(element);
+      }
+      var pList = destination;
+      this.participantOrder = copyToArray(pList);
+      if (this.activeParticipantIndex === (this.participantOrder.length - 1 | 0)) {
+        this.activeParticipantIndex = this.activeParticipantIndex - 1 | 0;
+      }
+      this.targetParticipantIndex = this.activeParticipantIndex;
+    }
+    return this;
+  };
   Encounter.prototype.targetNext = function () {
     this.activeParticipantIndex = this.activeParticipantIndex + 1 | 0;
     return this;
   };
   Encounter.prototype.activateNext = function () {
     this.targetParticipantIndex = this.targetParticipantIndex + 1 | 0;
-    return this;
-  };
-  Encounter.prototype.addParticipant_qgd5te$ = function (p) {
-    var pkey = this.generateKey_0(p);
-    p.key = pkey;
-    this.participants.put_xwzc9p$(pkey, p);
-    this.participantOrder[this.participantOrder.length] = p;
     return this;
   };
   Encounter.prototype.startNewRound = function () {

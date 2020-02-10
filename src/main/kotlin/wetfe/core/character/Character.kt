@@ -22,6 +22,7 @@ enum class CoreParam(val key: String) {
 
     companion object {
         private val lookupMap: Map<String, CoreParam>
+
         init {
             val initMap: MutableMap<String, CoreParam> = mutableMapOf()
             for (param in values()) {
@@ -30,7 +31,7 @@ enum class CoreParam(val key: String) {
             lookupMap = initMap.toMap()
         }
 
-        fun lookup(key: String) : CoreParam? {
+        fun lookup(key: String): CoreParam? {
             return lookupMap[key]
         }
     }
@@ -49,6 +50,7 @@ enum class QuadStat(val key: String) {
 
     companion object {
         private val lookupMap: Map<String, QuadStat>
+
         init {
             val initMap: MutableMap<String, QuadStat> = mutableMapOf()
             for (stat in values()) {
@@ -57,7 +59,7 @@ enum class QuadStat(val key: String) {
             lookupMap = initMap.toMap()
         }
 
-        fun lookup(key: String) : QuadStat? {
+        fun lookup(key: String): QuadStat? {
             return lookupMap[key]
         }
     }
@@ -75,6 +77,7 @@ enum class StatMode(val key: String) {
 
     companion object {
         private val LOOKUP_MAP: Map<String, StatMode>
+
         init {
             val initMap: MutableMap<String, StatMode> = mutableMapOf()
             for (mode in values()) {
@@ -83,7 +86,7 @@ enum class StatMode(val key: String) {
             LOOKUP_MAP = initMap.toMap()
         }
 
-        fun lookup(key: String) : StatMode? {
+        fun lookup(key: String): StatMode? {
             return LOOKUP_MAP[key]
         }
     }
@@ -105,6 +108,7 @@ enum class StateParam(val key: String) {
 
     companion object {
         private val lookupMap: Map<String, StateParam>
+
         init {
             val initMap: MutableMap<String, StateParam> = mutableMapOf()
             for (param in values()) {
@@ -113,7 +117,7 @@ enum class StateParam(val key: String) {
             lookupMap = initMap.toMap()
         }
 
-        fun lookup(key: String) : StateParam? {
+        fun lookup(key: String): StateParam? {
             return lookupMap[key]
         }
     }
@@ -136,6 +140,7 @@ enum class StateCondition(val key: String, val priority: Int) {
 
     companion object {
         private val lookupMap: Map<String, StateCondition>
+
         init {
             val initMap: MutableMap<String, StateCondition> = mutableMapOf()
             for (condition in values()) {
@@ -144,7 +149,7 @@ enum class StateCondition(val key: String, val priority: Int) {
             lookupMap = initMap.toMap()
         }
 
-        fun lookup(key: String) : StateCondition? {
+        fun lookup(key: String): StateCondition? {
             return lookupMap[key]
         }
     }
@@ -166,12 +171,12 @@ object Attribute {
         CORE(0, 20),
         D20(1, 20);
 
-        fun coerce(n: Int) : Int {
+        fun coerce(n: Int): Int {
             return n.coerceAtLeast(min).coerceAtMost(max)
         }
 
         companion object {
-            fun of(param: CoreParam) : Limit {
+            fun of(param: CoreParam): Limit {
                 return when (param) {
                     CoreParam.LEVEL -> POS_UNBOUNDED
                     CoreParam.EXPERIENCE -> POS_UNBOUNDED
@@ -183,7 +188,7 @@ object Attribute {
                 }
             }
 
-            fun of(param: StateParam) : Limit {
+            fun of(param: StateParam): Limit {
                 return when (param) {
                     StateParam.HEALTH -> CHIP
                     StateParam.DAMAGE -> CHIP
@@ -212,7 +217,7 @@ object Attribute {
         MIRACULOUS("Miraculous"); // 20
 
         companion object {
-            fun of(n: Int) : Nature {
+            fun of(n: Int): Nature {
                 return when (n) {
                     0 -> ABSENT
                     1, 2 -> PALTRY
@@ -231,11 +236,11 @@ object Attribute {
         }
     }
 
-    fun hasNature(n: Int) : Boolean {
+    fun hasNature(n: Int): Boolean {
         return n in 0..20
     }
 
-    fun hasLimit(key: String) : Boolean {
+    fun hasLimit(key: String): Boolean {
         return StateParam.lookup(key) != null || CoreParam.lookup(key) != null
     }
 }
@@ -249,7 +254,7 @@ data class StatModeState(var conMode: StatMode = StatMode.NATURAL,
                          var dexMode: StatMode = StatMode.NATURAL,
                          var intMode: StatMode = StatMode.NATURAL,
                          var wilMode: StatMode = StatMode.NATURAL) {
-    fun of(stat: QuadStat) : StatMode {
+    fun get(stat: QuadStat): StatMode {
         return when (stat) {
             QuadStat.CONSTITUTION -> conMode
             QuadStat.DEXTERITY -> dexMode
@@ -291,6 +296,7 @@ data class CharaState(var health: Int = 0,
                       var modes: StatModeState = StatModeState(),
                       var condition: StateCondition = StateCondition.NORMAL,
                       var tapped: Boolean = false)
+
 /**
  *  CharaRepertoire
  *  ------------------------------------
@@ -340,7 +346,7 @@ data class CharaData(val id: String = newId(),
                      var rollsheetLayout: MutableList<String> = mutableListOf()) {
 
     companion object {
-        fun newId() : String {
+        fun newId(): String {
             return "NewCharacter-" + Random.nextLong(1000, 1000000).toString()
         }
 
@@ -365,34 +371,47 @@ open class Character(charaData: CharaData = CharaData()) {
     private val cdata: CharaData = charaData
 
     private val valcache: MutableMap<CoreParam, Int?> = mutableMapOf()
+
     init {
         for (param in CoreParam.values()) {
             valcache[param] = null
         }
     }
 
-    fun getId() : String {
+    fun getId(): String {
         return cdata.id
     }
 
-    fun getName() : String {
+    fun getName(): String {
         return if (cdata.shortName.isNotBlank()) cdata.shortName else
             if (cdata.commonName.isNotBlank()) cdata.commonName else cdata.fullName
     }
 
-    fun getFullName() : String {
+    fun getFullName(): String {
         return cdata.fullName
     }
 
-    fun getCommonName() : String {
+    fun getCommonName(): String {
         return cdata.commonName
     }
 
-    fun geShortName() : String {
+    fun geShortName(): String {
         return cdata.shortName
     }
 
-    fun getStaggerThreshold() : Int {
+    fun getSource(): DataSource {
+        return cdata.source
+    }
+
+    fun isPlayerSource(): Boolean {
+        return cdata.source == DataSource.PLAYER
+    }
+
+    fun isOfficialSource(): Boolean {
+        return cdata.source == DataSource.OFFICIAL
+    }
+
+    fun getStaggerThreshold(): Int {
         return cdata.staggerThreshold
     }
 
@@ -400,70 +419,70 @@ open class Character(charaData: CharaData = CharaData()) {
      *  Core Parameters
      */
 
-    fun getSoulpool() : Int {
+    fun getSoulpool(): Int {
         return cdata.soulpool
     }
 
-    fun setSoulpool(n: Int) : Int {
+    fun setSoulpool(n: Int): Int {
         cdata.soulpool = Attribute.Limit.of(CoreParam.SOULPOOL).coerce(n)
         return cdata.soulpool
     }
 
-    fun getLevel() : Int {
+    fun getLevel(): Int {
         return cdata.level
     }
 
-    fun setLevel(n: Int) : Int {
+    fun setLevel(n: Int): Int {
         cdata.level = Attribute.Limit.of(CoreParam.LEVEL).coerce(n)
         return cdata.level
     }
 
-    fun getExperience() : Int {
+    fun getExperience(): Int {
         return cdata.experience
     }
 
-    fun setExperience(n: Int) : Int {
+    fun setExperience(n: Int): Int {
         cdata.experience = Attribute.Limit.of(CoreParam.EXPERIENCE).coerce(n)
         return cdata.experience
     }
 
-    fun getConstitution() : Int {
+    fun getConstitution(): Int {
         return cdata.constitution
     }
 
-    fun setConstitution(n: Int) : Int {
+    fun setConstitution(n: Int): Int {
         cdata.constitution = Attribute.Limit.of(CoreParam.CONSTITUTION).coerce(n)
         return cdata.constitution
     }
 
-    fun getDexterity() : Int {
+    fun getDexterity(): Int {
         return cdata.dexterity
     }
 
-    fun setDexterity(n: Int) : Int {
+    fun setDexterity(n: Int): Int {
         cdata.dexterity = Attribute.Limit.of(CoreParam.DEXTERITY).coerce(n)
         return cdata.dexterity
     }
 
-    fun getIntelligence() : Int {
+    fun getIntelligence(): Int {
         return cdata.intelligence
     }
 
-    fun setIntelligence(n: Int) : Int {
+    fun setIntelligence(n: Int): Int {
         cdata.intelligence = Attribute.Limit.of(CoreParam.INTELLIGENCE).coerce(n)
         return cdata.intelligence
     }
 
-    fun getWillpower() : Int {
+    fun getWillpower(): Int {
         return cdata.willpower
     }
 
-    fun setWillpower(n: Int) : Int {
+    fun setWillpower(n: Int): Int {
         cdata.willpower = Attribute.Limit.of(CoreParam.WILLPOWER).coerce(n)
         return cdata.willpower
     }
 
-    fun getParam(param: CoreParam) : Int {
+    fun getParam(param: CoreParam): Int {
         return when (param) {
             CoreParam.LEVEL -> getLevel()
             CoreParam.EXPERIENCE -> getExperience()
@@ -475,7 +494,7 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun setParam(param: CoreParam, n: Int) : Int {
+    fun setParam(param: CoreParam, n: Int): Int {
         return when (param) {
             CoreParam.LEVEL -> setLevel(n)
             CoreParam.EXPERIENCE -> setExperience(n)
@@ -487,7 +506,7 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun adjust(param: CoreParam, n: Int) : Int {
+    fun adjust(param: CoreParam, n: Int): Int {
         return when (param) {
             CoreParam.LEVEL -> setLevel(getLevel() + n)
             CoreParam.EXPERIENCE -> setExperience(getExperience() + n)
@@ -499,11 +518,11 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun increment(param: CoreParam, n: Int = 1) : Int {
+    fun increment(param: CoreParam, n: Int = 1): Int {
         return adjust(param, n)
     }
 
-    fun decrement(param: CoreParam, n: Int = 1) : Int {
+    fun decrement(param: CoreParam, n: Int = 1): Int {
         return adjust(param, -n)
     }
 
@@ -511,43 +530,43 @@ open class Character(charaData: CharaData = CharaData()) {
      *  State Parameters
      */
 
-    fun getHealth() : Int {
+    fun getHealth(): Int {
         return cdata.state.health
     }
 
-    fun setHealth(n: Int) : Int {
+    fun setHealth(n: Int): Int {
         cdata.state.health = Attribute.Limit.of(StateParam.HEALTH).coerce(n)
         return cdata.state.health
     }
 
-    fun getDamage() : Int {
+    fun getDamage(): Int {
         return cdata.state.damage
     }
 
-    fun setDamage(n: Int) : Int {
+    fun setDamage(n: Int): Int {
         cdata.state.damage = Attribute.Limit.of(StateParam.DAMAGE).coerce(n)
         return cdata.state.damage
     }
 
-    fun getFatigue() : Int {
+    fun getFatigue(): Int {
         return cdata.state.fatigue
     }
 
-    fun setFatigue(n: Int) : Int {
+    fun setFatigue(n: Int): Int {
         cdata.state.fatigue = Attribute.Limit.of(StateParam.FATIGUE).coerce(n)
         return cdata.state.fatigue
     }
 
-    fun getPower() : Int {
+    fun getPower(): Int {
         return cdata.state.power
     }
 
-    fun setPower(n: Int) : Int {
+    fun setPower(n: Int): Int {
         cdata.state.power = Attribute.Limit.of(StateParam.POWER).coerce(n)
         return cdata.state.power
     }
 
-    fun isTapped() : Boolean {
+    fun isTapped(): Boolean {
         return cdata.state.tapped
     }
 
@@ -559,53 +578,53 @@ open class Character(charaData: CharaData = CharaData()) {
         cdata.state.tapped = false
     }
 
-    fun getAffliction() : Int {
+    fun getAffliction(): Int {
         return cdata.state.affliction
     }
 
-    fun getTrauma() : Int {
+    fun getTrauma(): Int {
         return cdata.state.trauma
     }
 
-    fun getMomentum() : Int {
+    fun getMomentum(): Int {
         return cdata.state.momentum
     }
 
-    fun getCondition() : StateCondition {
+    fun getCondition(): StateCondition {
         return cdata.state.condition
     }
 
-    fun setCondition(cond: StateCondition, force: Boolean = false) : StateCondition {
+    fun setCondition(cond: StateCondition, force: Boolean = false): StateCondition {
         if (force || cond.priority >= cdata.state.condition.priority) {
             cdata.state.condition = cond
         }
         return cdata.state.condition
     }
 
-    fun applyCondition(cond: StateCondition) : StateCondition {
+    fun applyCondition(cond: StateCondition): StateCondition {
         return setCondition(cond, false)
     }
 
-    fun forceCondition(cond: StateCondition) : StateCondition {
+    fun forceCondition(cond: StateCondition): StateCondition {
         return setCondition(cond, true)
     }
 
-    fun setAffliction(n: Int) : Int {
+    fun setAffliction(n: Int): Int {
         cdata.state.affliction = Attribute.Limit.of(StateParam.AFFLICTION).coerce(n)
         return cdata.state.affliction
     }
 
-    fun setTrauma(n: Int) : Int {
+    fun setTrauma(n: Int): Int {
         cdata.state.trauma = Attribute.Limit.of(StateParam.TRAUMA).coerce(n)
         return cdata.state.trauma
     }
 
-    fun setMomentum(n: Int) : Int {
+    fun setMomentum(n: Int): Int {
         cdata.state.momentum = Attribute.Limit.of(StateParam.MOMENTUM).coerce(n)
         return cdata.state.momentum
     }
 
-    fun getParam(param: StateParam) : Int {
+    fun getParam(param: StateParam): Int {
         return when (param) {
             StateParam.HEALTH -> getHealth()
             StateParam.DAMAGE -> getDamage()
@@ -617,7 +636,7 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun setParam(param: StateParam, n: Int) : Int {
+    fun setParam(param: StateParam, n: Int): Int {
         return when (param) {
             StateParam.HEALTH -> setHealth(n)
             StateParam.DAMAGE -> setDamage(n)
@@ -629,7 +648,7 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun adjust(param: StateParam, n: Int) : Int {
+    fun adjust(param: StateParam, n: Int): Int {
         return when (param) {
             StateParam.HEALTH -> setHealth(cdata.state.health + n)
             StateParam.DAMAGE -> setDamage(cdata.state.damage + n)
@@ -641,11 +660,11 @@ open class Character(charaData: CharaData = CharaData()) {
         }
     }
 
-    fun increment(param: StateParam, n: Int = 1) : Int {
+    fun increment(param: StateParam, n: Int = 1): Int {
         return adjust(param, n)
     }
 
-    fun decrement(param: StateParam, n: Int = 1) : Int {
+    fun decrement(param: StateParam, n: Int = 1): Int {
         return adjust(param, -n)
     }
 
@@ -656,7 +675,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of damage effectively taken
      */
-    fun takeDamage(n: Int) : Int {
+    fun takeDamage(n: Int): Int {
         if (n < 1) return 0
         val pwr = cdata.state.power
         val hel = cdata.state.health
@@ -705,7 +724,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of damage effectively healed
      */
-    fun healDamage(n: Int) : Int {
+    fun healDamage(n: Int): Int {
         if (n < 1) return 0
         var n1 = n
         val afl = cdata.state.affliction
@@ -729,7 +748,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of fatigue effectively accumulated
      */
-    fun accumulateFatigue(n: Int) : Int {
+    fun accumulateFatigue(n: Int): Int {
         if (n < 1) return 0
         var f1 = n
         val pwr = cdata.state.power
@@ -769,7 +788,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of fatigue effectively restored
      */
-    fun restoreFatigue(n: Int) : Int {
+    fun restoreFatigue(n: Int): Int {
         if (n < 1) return 0
         val ftg = cdata.state.fatigue
         val afl = cdata.state.affliction
@@ -790,7 +809,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of power effectively gained
      */
-    fun gainPower(n: Int) : Int {
+    fun gainPower(n: Int): Int {
         if (n < 0) return 0
         val pwr = cdata.state.power
         val p1 = (pwr + n).coerceAtMost(cdata.soulpool)
@@ -800,7 +819,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of power effectively consumed
      */
-    fun consumePower(n: Int) : Int {
+    fun consumePower(n: Int): Int {
         if (n < 0) return 0
         if (n > 0 && n < cdata.state.power) {
             cdata.state.tapped = true
@@ -813,7 +832,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of affliction effectively sustained
      */
-    fun sustainAffliction(n: Int) : Int {
+    fun sustainAffliction(n: Int): Int {
         if (n < 1) return 0
         val brk = cdata.state.affliction
         val max = cdata.soulpool
@@ -833,7 +852,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of affliction effectively cured
      */
-    fun cureAffliction(n: Int) : Int {
+    fun cureAffliction(n: Int): Int {
         val afl = cdata.state.affliction
         if (n < 1 || afl < 1) return 0
         val b2 = (afl - n).coerceAtLeast(0)
@@ -843,7 +862,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of trauma effectively suffered
      */
-    fun sufferTrauma(n: Int) : Int {
+    fun sufferTrauma(n: Int): Int {
         if (n < 1) return 0
         val max = cdata.soulpool
         val t2 = cdata.state.trauma + n
@@ -858,7 +877,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of trauma effectively alleviated
      */
-    fun alleviateTrauma(n: Int) : Int {
+    fun alleviateTrauma(n: Int): Int {
         val trm = cdata.state.trauma
         if (n < 1 || trm < 1) return 0
         val a1 = (trm - n).coerceAtLeast(0)
@@ -869,7 +888,7 @@ open class Character(charaData: CharaData = CharaData()) {
     /**
      * @return magnitude of fatigue accumulated as a result of the fulmination
      */
-    fun fulminate() : Int {
+    fun fulminate(): Int {
         val afl = cdata.state.affliction
         if (afl < 1) return 0
         var ftg = 0
@@ -895,17 +914,25 @@ open class Character(charaData: CharaData = CharaData()) {
     }
 
     /**
-     * @return magnitude of momentum effectively flowed
+     * @return magnitude of momentum effectively increased
      */
-    fun flowMomentum(n: Int) : Int {
+    fun increaseMomentum(n: Int): Int {
         return if (n < 1) 0 else increment(StateParam.MOMENTUM, n)
     }
 
     /**
-     * @return magnitude of momentum effectively ebbed
+     * @return magnitude of momentum effectively decreased
      */
-    fun ebbMomentum(n: Int) : Int {
+    fun decreaseMomentum(n: Int): Int {
         return if (n < 1) 0 else decrement(StateParam.MOMENTUM, n)
+    }
+
+    fun hasten(): Int {
+        return increaseMomentum(1)
+    }
+
+    fun delay(): Int {
+        return decreaseMomentum(1)
     }
 
     fun getConMode(): StatMode {
@@ -924,47 +951,84 @@ open class Character(charaData: CharaData = CharaData()) {
         return cdata.state.modes.wilMode
     }
 
-    /**
-     * @return the new mode of operation for the given core parameter
-     */
-    fun getMode(stat: QuadStat) : StatMode {
-        return cdata.state.modes.of(stat)
-    }
-
-    /**
-     * @return the new mode of operation for the given core parameter
-     */
-    fun setMode(stat: QuadStat, mode: StatMode, force: Boolean = false) : StatMode {
-        val currentMode = cdata.state.modes.of(stat)
-        when (mode) {
-            StatMode.NATURAL -> when (currentMode) {
-                StatMode.NATURAL -> Unit
-                StatMode.ENHANCED -> cdata.state.modes.set(stat, StatMode.NATURAL)
-                StatMode.ENFEEBLED -> cdata.state.modes.set(stat, StatMode.NATURAL)
-            }
+    private fun applyMode(mode: StatMode, currentMode: StatMode, force: Boolean): StatMode {
+        return when (mode) {
             StatMode.ENHANCED -> when (currentMode) {
-                StatMode.NATURAL -> cdata.state.modes.set(stat, StatMode.ENHANCED)
-                StatMode.ENHANCED -> healDamage(1)
-                StatMode.ENFEEBLED -> if (force) cdata.state.modes.set(stat, StatMode.ENHANCED) else cdata.state.modes.set(stat, StatMode.NATURAL)
+                StatMode.NATURAL -> StatMode.ENHANCED
+                StatMode.ENHANCED -> {
+                    healDamage(1)
+                    StatMode.ENHANCED
+                }
+                StatMode.ENFEEBLED -> if (force) StatMode.ENHANCED else StatMode.NATURAL
             }
             StatMode.ENFEEBLED -> when (currentMode) {
-                StatMode.NATURAL -> cdata.state.modes.set(stat, StatMode.ENFEEBLED)
-                StatMode.ENHANCED -> if (force) cdata.state.modes.set(stat, StatMode.ENFEEBLED) else cdata.state.modes.set(stat, StatMode.NATURAL)
-                StatMode.ENFEEBLED -> takeDamage(1)
+                StatMode.NATURAL -> StatMode.ENFEEBLED
+                StatMode.ENHANCED -> if (force) StatMode.ENFEEBLED else StatMode.NATURAL
+                StatMode.ENFEEBLED -> {
+                    takeDamage(1)
+                    StatMode.ENFEEBLED
+                }
             }
+            else -> StatMode.NATURAL
         }
-        return cdata.state.modes.of(stat)
     }
 
-    fun normalizeMode(stat: QuadStat) : StatMode {
+    /**
+     *  Workaround for Kotlin-to-Javascript transpilation bugs.
+     *  Note that this directly sets the new mode, without any side-effects.
+     */
+    fun setConMode(mode: StatMode) {
+        cdata.state.modes.conMode = mode
+    }
+
+    /**
+     *  Workaround for Kotlin-to-Javascript transpilation bugs.
+     *  Note that this directly sets the new mode, without any side-effects.
+     */
+    fun setDexMode(mode: StatMode) {
+        cdata.state.modes.dexMode = mode
+    }
+
+    /**
+     *  Workaround for Kotlin-to-Javascript transpilation bugs.
+     *  Note that this directly sets the new mode, without any side-effects.
+     */
+    fun setIntMode(mode: StatMode) {
+        cdata.state.modes.intMode = mode
+    }
+
+    /**
+     *  Workaround for Kotlin-to-Javascript transpilation bugs.
+     *  Note that this directly sets the new mode, without any side-effects.
+     */
+    fun setWilMode(mode: StatMode) {
+        cdata.state.modes.wilMode = mode
+    }
+
+    /**
+     * @return the new mode of operation for the given core parameter
+     */
+    fun getMode(stat: QuadStat): StatMode {
+        return cdata.state.modes.get(stat)
+    }
+
+    /**
+     * @return the new mode of operation for the given core parameter
+     */
+    fun setMode(stat: QuadStat, mode: StatMode, force: Boolean = false): StatMode {
+        cdata.state.modes.set(stat, applyMode(mode,cdata.state.modes.get(stat), force))
+        return cdata.state.modes.get(stat)
+    }
+
+    fun normalizeMode(stat: QuadStat): StatMode {
         return setMode(stat, StatMode.NATURAL)
     }
 
-    fun enhanceMode(stat: QuadStat) : StatMode {
+    fun enhanceMode(stat: QuadStat): StatMode {
         return setMode(stat, StatMode.ENHANCED)
     }
 
-    fun enfeebleMode(stat: QuadStat) : StatMode {
+    fun enfeebleMode(stat: QuadStat): StatMode {
         return setMode(stat, StatMode.ENFEEBLED)
     }
 }

@@ -71,7 +71,7 @@
                         </button>
                         <div class="dropdown-menu we-player-ddmenu">
                             <button class="dropdown-item" type="button" data-playermap-key="*"
-                                    onclick="addPlayerParticipants(this)">
+                                    onclick="addSelectedPlayerToParticipants(this)">
                                 <span>ADD ALL</span>
                             </button>
                         </div>
@@ -154,7 +154,7 @@
                 <th scope="col" class="text-center" data-toggle="tooltip" title="Round Order">#</th>
                 <th scope="col" class="text-center" data-toggle="tooltip" title="Momentum">M</th>
                 <th scope="col" class="text-center" data-toggle="tooltip" title="Condition">C</th>
-                <th scope="col" class="text-left" data-toggle="tooltip" title="Short Name">Name</th>
+                <th scope="col" class="text-left" data-toggle="tooltip" title="Participant Key">Key</th>
                 <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
                     title="<h6>Health Deque</h6><span class='we-text-power-light'>power chips</span><br><span class='we-text-soul-light'>soul chips</span>">
                     <span class="we-text-soul-light">[H]</span></th>
@@ -199,11 +199,11 @@
 
 <!-- CLONE: PLAYER DROPDOWN -->
 <button class="dropdown-item we-player-dditem we-clone-element d-none" type="button"
-        onclick="addPlayerParticipants(this)"></button>
+        onclick="addSelectedPlayerToParticipants(this)"></button>
 
 <!-- CLONE: BEING DROPDOWN -->
 <button class="dropdown-item we-being-dditem we-clone-element d-none" type="button"
-        onclick="addBeingParticipant(this)"></button>
+        onclick="addSelectedBeingToParticipants(this)"></button>
 
 <!-- CLONE: PARTICIPANT TOOLBAR BUTTON -->
 <button class="btn btn-sm we-pbtn we-clone-element mr-1 d-none" type="button" onclick="selectParticipant(this)">
@@ -218,7 +218,7 @@
         <td class="we-prow-momentum text-center align-middle text-monospace" data-pstate-key="momentum"></td>
         <td class="we-prow-condition text-center align-middle" data-pstate-key="condition">
             <h4><i class="we-prow-condition-i fas" data-toggle="tooltip"></i></h4></td>
-        <td class="we-prow-name text-left align-middle" data-pstate-key="name"></td>
+        <td class="we-prow-key text-left align-middle" data-pstate-key="key"></td>
         <td class="text-center align-middle text-monospace">
             <span class="we-prow-power we-text-power" data-pstate-key="power"></span><br>
             <span class="we-prow-health we-text-soul" data-pstate-key="health"></span></td>

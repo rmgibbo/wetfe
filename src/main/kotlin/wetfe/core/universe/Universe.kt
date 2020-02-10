@@ -15,7 +15,7 @@ enum class Vulnerability {
 }
 
 object Physics {
-    fun vulnerabilityOf(causativeSystem: Physicality, affectedSystem: Physicality) : Vulnerability {
+    fun vulnerabilityOf(causativeSystem: Physicality, affectedSystem: Physicality): Vulnerability {
         return when (causativeSystem) {
             Physicality.INFERNAL -> when (affectedSystem) {
                 Physicality.INFERNAL -> Vulnerability.INVERSE

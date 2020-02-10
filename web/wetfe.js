@@ -2489,15 +2489,19 @@ var wetfe = function (_, Kotlin) {
       for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
         var p = tmp$[tmp$_0];
         var x = p.getMomentum();
-        var min = 50.0;
+        var min = 35.0;
+        var max = 65.0;
         if (x > 0) {
-          min += 50.0 * (x / (x + 2 | 0) | 0);
+          var c = 35.0 * (x / (x + 2.236));
+          min += c;
+          max += c;
         }
          else if (x < 0) {
-          x = abs(x);
-          min -= 50.0 * (x / (x + 2 | 0) | 0);
+          var c_0 = 35.0 * (x / (x - 2.236));
+          min -= c_0;
+          max -= c_0;
         }
-        p.initiative = Random.Default.nextDouble_lu1900$(min, 100.0);
+        p.initiative = Random.Default.nextDouble_lu1900$(min, max);
         p.setMomentum_za3lpa$(0);
       }
       sort(this.participantOrder);

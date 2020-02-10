@@ -316,15 +316,19 @@ class Encounter(val type: EncounterType) {
         activeParticipantIndex = 0
         if (participantOrder.isNotEmpty()) {
             for (p in participantOrder) {
-                var x = p.getMomentum()
-                var min = 50.0
+                val x = p.getMomentum()
+                var min = 35.0
+                var max = 65.0
                 if (x > 0) {
-                    min += 50.0 * (x / (x + 2))
+                    val c = 35.0 * (x / (x + 2.236))
+                    min += c
+                    max += c
                 } else if (x < 0) {
-                    x = x.absoluteValue
-                    min -= 50.0 * (x / (x + 2))
+                    val c = 35.0 * (x / (x - 2.236))
+                    min -= c
+                    max -= c
                 }
-                p.initiative = Random.nextDouble(min, 100.0)
+                p.initiative = Random.nextDouble(min, max)
                 p.setMomentum(0)
             }
             participantOrder.sort()

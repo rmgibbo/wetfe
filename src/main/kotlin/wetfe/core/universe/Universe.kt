@@ -20,17 +20,17 @@ object Physics {
             Physicality.INFERNAL -> when (affectedSystem) {
                 Physicality.INFERNAL -> Vulnerability.INVERSE
                 Physicality.CELESTIAL -> Vulnerability.HYPER
+                Physicality.EXOTIC -> Vulnerability.NEGATIVE
                 else -> Vulnerability.POSITIVE
             }
             Physicality.CELESTIAL -> when (affectedSystem) {
                 Physicality.CELESTIAL -> Vulnerability.INVERSE
                 Physicality.INFERNAL -> Vulnerability.HYPER
+                Physicality.EXOTIC -> Vulnerability.NEGATIVE
                 else -> Vulnerability.POSITIVE
             }
             Physicality.EXOTIC -> when (affectedSystem) {
                 Physicality.EXOTIC -> Vulnerability.HYPER
-                Physicality.INFERNAL -> Vulnerability.NEGATIVE
-                Physicality.CELESTIAL -> Vulnerability.NEGATIVE
                 else -> Vulnerability.POSITIVE
             }
             else -> Vulnerability.POSITIVE

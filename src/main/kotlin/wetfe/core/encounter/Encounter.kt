@@ -313,18 +313,30 @@ class Encounter(val type: EncounterType) {
     }
 
     companion object {
-        /*
+        /**
          *  The "initiative roll" base constant.
          *  Must be in the range [0.000, 49.999].
-         *  Higher values make haste and delay effects more pronounced.
+         *  Higher values make haste and delay effects more pronounced,
+         *    while reducing the size of initiative overlap between
+         *    different parities of momentum.
          */
-        val irollFactor = 35.000.coerceIn(0.000, 49.999)
+        private val irollBase = 35.000.coerceIn(0.000, 49.999)
+        
+        /**
+         *  The "initiative roll" adjustment growth constant.
+         *  Must be in the range [0.001, *).
+         *  Lower values make haste and delay effects more pronounced,
+         *    while concentrating their effects in smaller ranges of momentum (near zero).
+         */
+        private val irollFactor = 2.236.coerceAtLeast(0.001)
+        
         fun irollAdjustment(p: Int): Double {
-            return irollFactor * p / 
-                    if (p < 0) p - 2.236 else p + 2.236
+            return irollBase * p / 
+                    if (p < 0) p - irollFactor else p + irollFactor
         }
-        val irollMin = irollFactor
-        val irollMax = 100.000 - irollFactor
+        
+        val irollMin = irollBase
+        val irollMax = 100.000 - irollBase
     }
     
     fun startNewRound(): Encounter {

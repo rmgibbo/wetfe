@@ -48,6 +48,14 @@
     #### Specialization
       - Advance _**each**_ of your achetypes to its next tier
 - ### Level 12 (Legendary)
-  - Choose _**ONE**_ option:
-    #### Specialization
-      - Advance _**each**_ of your achetypes to its next tier
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier
+- ### Level 16
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier
+- ### Level 20 (Mythical)
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier
+- ### Level 24
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier
+- ### Level 28 (Godlike)
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier
+- ### Level 32
+  - **Specialization**: Advance _**each**_ of your achetypes to its next tier

@@ -30,10 +30,10 @@ below/above
 bloodfont
 : A type of font found on equipment that typically augments or grants physical abilities.
 
-buff, enhance
+buff, _enhance_
 : To cause the enhancement of one or more core attributes.
 
-channelling, channel
+channelling, _channel_
 : The state of heightened focus a being must enter to resolve skills that require more power chips Ⓟ than are currently available. Once channelling, the caster or performer immediately ends their turn, though their skill is not considered resolved yet. Immediately upon their next turn, they cease channelling, gain a number of power chips Ⓟ equal to their number of healthy soul chips Ⓢ, and resume the skill they began on their previous turn.
 
 character
@@ -41,6 +41,9 @@ character
 
 combatant
 : A being involved in a combat encounter.
+
+condition, ℂ
+: TODO. NORMAL("=", 0), BLITZING("!", 30), TURTLING("@", 30), CHANNELING("^", 30), STAGGERED("$", 60), UNCONSCIOUS("*", 70), COMATOSE("~", 80), DEAD("_", 90)
 
 contingent effect
 : An additional effect of a skill that occurs if and only if the opponent is unable to completely negate the damage the primary effect causes.
@@ -60,7 +63,7 @@ damage, dmg
 damage deque, Damage[]
 : The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
 
-debuff, enfeeble
+debuff, _enfeeble_
 : To cause the enfeeblement of one or more core attributes.
 
 defense roll
@@ -108,7 +111,7 @@ feats of charisma & courage, Ғ:WIL
 font
 : Vessels of untapped energy that can be found on equipment. Powerful beings may use part of their soul to innervate a font, thereby tapping into its energy and harnessing its effects.
 
-healing, heal
+healing, _heal_
 : The process of restoring damaged soul chips (Ⓢ in the damage deque) to the health deque. Healing affects the chips of the damage deque point-per-chip, from the top down, and according to their type. Affliction chips Ⓐ simply pop, whereas soul chips pop and queue into the health deque.
 
 health deque, Health[]
@@ -122,6 +125,9 @@ intelligence, INT
 
 manafont
 : A type of font found on some equipment that typically augments or grants mental abilities.
+
+momentum, 𝓂
+: TODO. Integer. (-, 0, +). Haste, delay. Round order.
 
 overkill
 : A killing blow that would have otherwise staggered its target. Overkills grant the same morale-based healing as staggers, and the killer is hastened; and there may be other circumstantial ramifications, such as inspiring fear in the allies of the overkilled being.
@@ -174,7 +180,7 @@ _stack_
 staggered, _stagger_
 : The state an NPC combatant enters upon suffering damage equal to or greater than its stagger threshold in a single turn. It is delayed, and suffers a +1 vulnerability to its anatomical and psychological damage adjustments. Additionally, all opponents that are aware of the staggering receive a morale boost in the form of 1 healing.
 
-stagger threshold, STh
+stagger threshold, Ḡ
 : A property of NPC combatants that sets how much damage they must suffer on a single turn to become staggered.
 
 trait

@@ -25,6 +25,8 @@ var wetfe = function (_, Kotlin) {
   var toBoxedChar = Kotlin.toBoxedChar;
   var last = Kotlin.kotlin.text.last_gw00vp$;
   var equals = Kotlin.equals;
+  var coerceIn = Kotlin.kotlin.ranges.coerceIn_nig4hr$;
+  var coerceAtLeast_0 = Kotlin.kotlin.ranges.coerceAtLeast_38ydlf$;
   var sort = Kotlin.kotlin.collections.sort_pbinho$;
   var copyToArray = Kotlin.kotlin.collections.copyToArray;
   CoreParam.prototype = Object.create(Enum.prototype);
@@ -2387,6 +2389,7 @@ var wetfe = function (_, Kotlin) {
   }
   EncounterType.valueOf_61zpoe$ = EncounterType$valueOf;
   function Encounter(type) {
+    Encounter$Companion_getInstance();
     this.type = type;
     this.round = 0;
     this.nameMap = LinkedHashMap_init();
@@ -2481,32 +2484,41 @@ var wetfe = function (_, Kotlin) {
     this.targetParticipantIndex = this.targetParticipantIndex + 1 | 0;
     return this;
   };
+  function Encounter$Companion() {
+    Encounter$Companion_instance = this;
+    this.irollBase_0 = coerceIn(35.0, 0.0, 49.999);
+    this.irollFactor_0 = coerceAtLeast_0(2.236, 0.001);
+    this.irollMin = this.irollBase_0;
+    this.irollMax = 100.0 - this.irollBase_0;
+  }
+  Encounter$Companion.prototype.irollAdjustment_za3lpa$ = function (p) {
+    return this.irollBase_0 * p / (p < 0 ? p - this.irollFactor_0 : p + this.irollFactor_0);
+  };
+  Encounter$Companion.$metadata$ = {
+    kind: Kind_OBJECT,
+    simpleName: 'Companion',
+    interfaces: []
+  };
+  var Encounter$Companion_instance = null;
+  function Encounter$Companion_getInstance() {
+    if (Encounter$Companion_instance === null) {
+      new Encounter$Companion();
+    }
+    return Encounter$Companion_instance;
+  }
   Encounter.prototype.startNewRound = function () {
     var tmp$, tmp$_0;
     this.activeParticipantIndex = 0;
     if (!(this.participantOrder.length === 0)) {
       tmp$ = this.participantOrder;
       for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
-        var p = tmp$[tmp$_0];
-        var x = p.getMomentum();
-        var min = 35.0;
-        var max = 65.0;
-        if (x > 0) {
-          var c = 35.0 * (x / (x + 2.236));
-          min += c;
-          max += c;
-        }
-         else if (x < 0) {
-          var c_0 = 35.0 * (x / (x - 2.236));
-          min -= c_0;
-          max -= c_0;
-        }
-        p.initiative = Random.Default.nextDouble_lu1900$(min, max);
-        p.setMomentum_za3lpa$(0);
+        var participant = tmp$[tmp$_0];
+        participant.initiative = Random.Default.nextDouble_lu1900$(Encounter$Companion_getInstance().irollMin, Encounter$Companion_getInstance().irollMax) + Encounter$Companion_getInstance().irollAdjustment_za3lpa$(participant.getMomentum());
+        participant.setMomentum_za3lpa$(0);
       }
       sort(this.participantOrder);
-      this.round = this.round + 1 | 0;
     }
+    this.round = this.round + 1 | 0;
     return this;
   };
   Encounter.$metadata$ = {
@@ -2696,6 +2708,9 @@ var wetfe = function (_, Kotlin) {
           case 'CELESTIAL':
             tmp$ = Vulnerability$HYPER_getInstance();
             break;
+          case 'EXOTIC':
+            tmp$ = Vulnerability$NEGATIVE_getInstance();
+            break;
           default:tmp$ = Vulnerability$POSITIVE_getInstance();
             break;
         }
@@ -2709,26 +2724,19 @@ var wetfe = function (_, Kotlin) {
           case 'INFERNAL':
             tmp$ = Vulnerability$HYPER_getInstance();
             break;
+          case 'EXOTIC':
+            tmp$ = Vulnerability$NEGATIVE_getInstance();
+            break;
           default:tmp$ = Vulnerability$POSITIVE_getInstance();
             break;
         }
 
         break;
       case 'EXOTIC':
-        switch (affectedSystem.name) {
-          case 'EXOTIC':
-            tmp$ = Vulnerability$HYPER_getInstance();
-            break;
-          case 'INFERNAL':
-            tmp$ = Vulnerability$NEGATIVE_getInstance();
-            break;
-          case 'CELESTIAL':
-            tmp$ = Vulnerability$NEGATIVE_getInstance();
-            break;
-          default:tmp$ = Vulnerability$POSITIVE_getInstance();
-            break;
-        }
-
+        if (equals(affectedSystem, Physicality$EXOTIC_getInstance()))
+          tmp$ = Vulnerability$HYPER_getInstance();
+        else
+          tmp$ = Vulnerability$POSITIVE_getInstance();
         break;
       default:tmp$ = Vulnerability$POSITIVE_getInstance();
         break;
@@ -3007,6 +3015,9 @@ var wetfe = function (_, Kotlin) {
     get: EncounterType$ENVIRONMENTAL_getInstance
   });
   package$encounter.EncounterType = EncounterType;
+  Object.defineProperty(Encounter, 'Companion', {
+    get: Encounter$Companion_getInstance
+  });
   package$encounter.Encounter = Encounter;
   Object.defineProperty(DataSource, 'PLAYER', {
     get: DataSource$PLAYER_getInstance

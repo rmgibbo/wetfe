@@ -317,7 +317,7 @@ class Encounter(val type: EncounterType) {
          *  The "initiative roll" base constant.
          *  Must be in the range [0.000, 49.999].
          *  Higher values make haste and delay effects more pronounced,
-         *    while reducing the possiblity of initiative overlap between
+         *    while reducing the possibility of initiative overlap between
          *    (-, 0, +) cases of momentum.
          */
         private val irollBase = 35.000.coerceIn(0.000, 49.999)
@@ -331,8 +331,7 @@ class Encounter(val type: EncounterType) {
         private val irollFactor = 2.236.coerceAtLeast(0.001)
         
         fun irollAdjustment(p: Int): Double {
-            return irollBase * p / 
-                    if (p < 0) p - irollFactor else p + irollFactor
+            return irollBase * p / if (p < 0) p - irollFactor else p + irollFactor
         }
         
         val irollMin = irollBase
@@ -343,7 +342,7 @@ class Encounter(val type: EncounterType) {
         activeParticipantIndex = 0
         if (participantOrder.isNotEmpty()) {
             for (participant in participantOrder) {
-                participant.initiative = Random.nextDouble(irollMin, irollMax) + 
+                participant.initiative = Random.nextDouble(irollMin, irollMax) +
                         irollAdjustment(participant.getMomentum())
                 participant.setMomentum(0)
             }

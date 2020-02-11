@@ -500,49 +500,48 @@ function createCharaData(entity) {
     return cd;
 }
 
-function onFileLoad(event) {
-    const json = JSON.parse(event.target.result);
-    if (!json) return;
-    const entities = Array.isArray(json) ? json : [json];
-    for (let i = 0; i < entities.length; ++i) {
-        let entity = entities[i];
-        if (!entity || !entity.id) continue;
-        let datamap = (entity.source === 'PLAYER') ? data.playermap : data.beingmap;
-        if (!datamap[entity.id]) {
-            console.log(`Loading character data for [${entity.id}]`);
-            datamap[entity.id] = createCharaData(entity);
-        }
-    }
-}
-
-function onFileLoadEnd(event) {
-    console.log(`Finished loading all data files.`);
-    populatePlayerDropdown();
-    populateBeingDropdown();
-    $('#num-loaded-players').html(data.playermap ? Object.keys(data.playermap).length : 'ERR');
-    $('#num-loaded-beings').html(data.beingmap ? Object.keys(data.beingmap).length : 'ERR');
-    $('#data-serialization-text').val(JSON.stringify(data));
-}
-
-function onDataFilesChanged(event) {
+function onDataFilesSelected(event) {
     const files = event.target.files; // FileList object
     const n = files.length;
     if (n > 0) {
         if (!data) {
             data = {playermap: {}, beingmap: {}};
         }
-
+        let i = 0;
         const reader = new FileReader();
-        reader.onload = onFileLoad;
-        reader.onloadend = onFileLoadEnd;
+        reader.onload = function(event) {
+            console.log(`Reading file #${i + 1} ${files[i].name}`);
+            const json = JSON.parse(event.target.result);
+            if (!json) return;
+            const entities = Array.isArray(json) ? json : [json];
+            for (let k = 0; k < entities.length; ++k) {
+                let entity = entities[k];
+                if (!entity || !entity.id) continue;
+                let datamap = (entity.source.name$ === 'PLAYER') ? data.playermap : data.beingmap;
+                if (!datamap[entity.id]) {
+                    console.log(`\tLoading character data for [${entity.id}]`);
+                    datamap[entity.id] = createCharaData(entity);
+                }
+            }
+            if (++i < n) reader.readAsText(files[i]);
+        };
+        reader.onloadend = function(event) {
+            if (i === n) {
+                console.log(`Finished loading all data files.`);
+                populatePlayerDropdown();
+                populateBeingDropdown();
+                $('#num-loaded-players').html(data.playermap ? Object.keys(data.playermap).length : 'ERR');
+                $('#num-loaded-beings').html(data.beingmap ? Object.keys(data.beingmap).length : 'ERR');
+                $('#data-serialization-text').val(JSON.stringify(data));
+            }
+        };
+        reader.readAsText(files[i]);
 
         const $label = $('#load-data-input-label');
-        const label = $label.html().split(' &bull; ');
-        for (let i = 0; i < n; ++i) {
-            let f = files[i];
-            reader.readAsText(f);
-            console.log(`Reading file #${i} ${f.name}`);
-            label.push(f.name);
+        let label = $label.html().split(' &bull; ');
+        if (label.length === 1) label = [];
+        for (let j = 0; j < n; ++j) {
+            label.push(files[j].name);
         }
         $label.html(label.join(' &bull; '));
     }
@@ -845,5 +844,5 @@ $(function () {
     resetModCache();
     $('[data-toggle="tooltip"]').tooltip();
     $('#key-mod-listener-input').keyup(onKeyup);
-    $('#load-data-input').change(onDataFilesChanged);
+    $('#load-data-input').change(onDataFilesSelected);
 });

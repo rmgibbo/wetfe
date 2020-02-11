@@ -1,9 +1,9 @@
 # WETFE
 "What Ever The Fuck Ever"  
 "What Ever The Fun Ever"  
-Copyright © 2020 Ryan Gibbons
+[wetfe.com](https://wetfe.com "WETFE Web App")  
   
-  
+Copyright © 2020 Ryan Gibbons  
   
 _The software comprising this GitHub repository is licensed under_  
 _the GNU Affero General Public License as published by_  

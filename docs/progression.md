@@ -27,7 +27,7 @@
 - Every _**even**_ level thereafter, gain +1 to any core attribute
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
-- ### Level 0 (Adventurous)
+- ### Level 0
   - Base core attribute value = 10
   - Base soulpool = 4
   - Base ability points = 0
@@ -35,7 +35,7 @@
     #### Path
       - Follow a Tier I archetype
       - Follow the Tier I anti-archetype. Gain +1 ability point
-- ### Level 4 (Heroic)
+- ### Level 4
   - Choose _**ONE**_ option:
     #### Path
       - Follow an additional Tier I archetype
@@ -49,15 +49,15 @@
       - Follow _**two**_ additional Tier I archetypes
     #### Specialization
       - Advance _**each**_ of your achetypes to its next tier
-- ### Level 12 (Legendary)
+- ### Level 12
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier
 - ### Level 16
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier
-- ### Level 20 (Mythical)
+- ### Level 20
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier
 - ### Level 24
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier
-- ### Level 28 (Godlike)
+- ### Level 28
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier
 - ### Level 32
   - **Specialization**: Advance _**each**_ of your achetypes to its next tier

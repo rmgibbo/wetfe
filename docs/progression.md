@@ -2,6 +2,8 @@
 - Typcially, characters start with no levels or experience.
 - TODO: Level
 - TODO: Experience
+- TODO: Ability Point (AP)
+- TODO: Ability Tree
 - TODO: Tier
 - TODO: Path
 - TODO: Specialization
@@ -17,8 +19,8 @@
 9. `INT, WIL`
 10. `WIL, WIL`
 11. `---, ---` (Tier I anti-archetype)
-11. `CON, DEX, INT, WIL` (Tier II)
-12. `---, ---, ---, ---` (Tier II anti-achetype)
+12. `CON, DEX, INT, WIL` (Tier II "Druid" archetype)
+13. `---, ---, ---, ---` (Tier II "Ego-Druid" anti-achetype)
 # Details
 - Every _**even**_ level, gain +1 to any core attribute
 - Every _**odd**_ level, gain +1 ability point
@@ -34,20 +36,18 @@
 - ### Level 4 (Heroic)
   - Choose _**ONE**_ option:
     #### Path
-      - Follow a Tier I archetype
+      - Follow an additional Tier I archetype
       - Follow the Tier II "Druid" archetype
-      - Follow the Tier II "Ego-Druid" anti-archetype
+      - Commit to the Tier II "Ego-Druid" anti-archetype. You may never specialize, nor follow any other paths
     #### Specialization
       - Advance _**each**_ of your achetypes to its next tier
 - ### Level 8
   - Choose _**ONE**_ option:
     #### Path
-      - Follow _**two**_ Tier I archetypes
+      - Follow _**two**_ additional Tier I archetypes
     #### Specialization
       - Advance _**each**_ of your achetypes to its next tier
 - ### Level 12 (Legendary)
   - Choose _**ONE**_ option:
-    #### Path
-      - Follow the path of the "Ego-Druid" anti-archetype
     #### Specialization
       - Advance _**each**_ of your achetypes to its next tier

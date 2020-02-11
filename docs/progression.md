@@ -28,7 +28,7 @@
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
 - ### Level 0
-  - Base core attribute value = 10
+  - Base core attribute value = 8
   - Base soulpool = 4
   - Base ability points = 0
   - Choose _**ONE**_ option:

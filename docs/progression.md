@@ -22,10 +22,12 @@
 12. `CON, DEX, INT, WIL` (Tier II "Druid" archetype)
 13. `---, ---, ---, ---` (Tier II "Ego-Druid" anti-achetype)
 # Details
-- Every _**even**_ level, gain +1 to any core attribute
-- Every _**odd**_ level, gain +1 ability point
-- Every _**four**_ levels, gain +1 soulpool
-- ### Level 0 (Character Creation)
+- Create character
+- Begin at level 0
+- Every _**even**_ level thereafter, gain +1 to any core attribute
+- Every _**odd**_ level thereafter, gain +1 ability point
+- Every _**four**_ levels thereafter, gain +1 soulpool
+- ### Level 0 (Adventurous)
   - Base core attribute value = 10
   - Base soulpool = 4
   - Base ability points = 0

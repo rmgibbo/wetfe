@@ -47,25 +47,25 @@
   - Base soulpool = 4
   - Base ability points = 0
   - Choose _**ONE**_ option:
-    - Follow a T<sub>0</sub> archetype
-    - Follow a T<sub>0</sub> anti-archetype
+    - Follow an archetype path
+    - Follow an anti-archetype path
 -  ### Level 4
   - Choose _**ONE**_ option:
-    - Follow an additional T<sub>0</sub> archetype
-    - Abandon your path and follow a T<sub>1</sub> anti-archetype
-    - Advance your path to its next tier
+    - Follow an additional archetype path
+    - Abandon your path and follow an anti-archetype path, starting at T<sub>1</sub>
+    - Advance along your path to its next tier
 -  ### Level 8
   - Choose _**ONE**_ option:
     - Follow _**two**_ additional T<sub>0</sub> archetypes
-    - Abandon _**all**_ of your paths and follow a T<sub>2</sub> anti-archetype
-    - Advance _**all**_ of your paths to their next tier
+    - Abandon _**all**_ of your paths and follow an anti-archetype path, starting at T<sub>2</sub>
+    - Advance along _**all**_ of your paths to their next tiers
 -  ### Level 12
-  - Advance _**all**_ of your paths to their next tier
+  - Advance along _**all**_ of your paths to their next tiers
 -  ### Level 16
-  - Advance _**all**_ of your paths to their next tier
+  - Advance along _**all**_ of your paths to their next tiers
 -  ### Level 20
-  - Advance _**all**_ of your paths to their next tier if they are eligible
+  - Advance along _**all**_ of your paths to their next tiers, if they are eligible
 -  ### Level 24
-  - Advance _**all**_ of your paths to their next tier if they are eligible
+  - Advance along _**all**_ of your paths to their next tiers, if they are eligible
 -  ### Level 28
 -  ### Level 32

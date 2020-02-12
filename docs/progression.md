@@ -19,57 +19,58 @@
 - Specialization
     - The process of reaching higher Tiers of an archetype
     - Lower Tiers typically require increasing experience along a path, until mastery is achieved. Then, to reach higher Tiers, a character must accomplish worthy feats, and even contribute seminal advancements to their path
+  
 ### Archetypes
-1. `CON, CON` &bull; Brawler &rarr; Berserker &rarr; Reaver
+1. `CON, CON` &bull; Brawler &rarr; Juggernaut &rarr; Titan
 2. `CON, DEX` &bull; Contender &rarr; Champion &rarr; Paragon
-3. `CON, INT` &bull; Sorcerer &rarr; Golemmancer &rarr; Hellmaw
-4. `CON, WIL` &bull; Guardian &rarr; Phaseguard &rarr; Titan
-5. `DEX, DEX` &bull; Martial Artist &rarr; Weaponmaster &rarr; Kensai
-6. `DEX, INT` &bull; Saboteur &rarr; Ninja &rarr; Timeslicer
-7. `DEX, WIL` &bull; Monk &rarr; Ascendant &rarr; Prime Soul
+3. `CON, INT` &bull; Sorcerer &rarr; Eldritch Knight &rarr; Chthonic Soul
+4. `CON, WIL` &bull; Warden &rarr; Enforcer &rarr; Phaseguard
+5. `DEX, DEX` &bull; Martial Artist &rarr; Kensai &rarr; Reaver
+6. `DEX, INT` &bull; Rogue &rarr; Ninja &rarr; Timeslicer
+7. `DEX, WIL` &bull; Monk &rarr; Ascendant &rarr; Consonant Soul
 8. `INT, INT` &bull; Scholar &rarr; Wizard &rarr; Cosmic Sage
-9. `INT, WIL` &bull; Summoner &rarr; Animist &rarr; Chthonic
+9. `INT, WIL` &bull; Summoner &rarr; Golemmancer &rarr; Animist
 10. `WIL, WIL` &bull; Controller &rarr; Enchanter &rarr; Archon
+  
 ### Anti-Archetypes
 1. `---, ---` &bull; Universalist &rarr; Druid &rarr; Archdruid 
 2. `---, ---` &bull;  Individualist &rarr; Solipsist &rarr; Recursive Soul
+  
 # Details
 - Create character
 - Begin at level 0
 - Every _**even**_ level thereafter, gain +1 to any core attribute
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
-- ### Level 0
+  ### Level 0
   - Base core attribute value = 8
   - Base soulpool = 4
   - Base ability points = 0
   - Choose _**ONE**_ option:
     #### Path
-      - Follow a Tier 0 archetype
-      - Follow the Tier 1 anti-archetype. Gain +1 ability point
-- ### Level 4
+      - Follow a T<sub>0</sub> archetype
+      - Follow a T<sub>0</sub> anti-archetype
+  ### Level 4
   - Choose _**ONE**_ option:
     #### Path
-      - Follow an additional Tier 0 archetype
-      - Follow the Tier 2 "Druid" archetype
-      - Commit to the Tier 2 "Ego-Druid" anti-archetype. You may never specialize, nor follow any other paths
+      - Follow an additional T<sub>0</sub> archetype
+      - Abandon all archetypes and follow a T<sub>1</sub> anti-archetype
     #### Specialization
-      - Advance _**each**_ of your archetypes to its next tier
-- ### Level 8
+      - Advance your T<sub>0</sub> anti-/archetypes to its next tier
+  ### Level 8
   - Choose _**ONE**_ option:
     #### Path
-      - Follow _**two**_ additional Tier 0 archetypes
+      - Follow _**two**_ additional T<sub>0</sub> archetypes
+      - Abandon all archetypes and follow a T<sub>2</sub> anti-archetype
     #### Specialization
-      - Advance _**each**_ of your archetypes to its next tier
-- ### Level 12
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
-- ### Level 16
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
-- ### Level 20
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
-- ### Level 24
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
-- ### Level 28
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
-- ### Level 32
-  - **Specialization**: Advance _**each**_ of your archetypes to its next tier
+      - Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub> anti-/archetypes to its next tier
+  ### Level 12
+  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub> anti-/archetypes to its next tier
+  ### Level 16
+  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
+  ### Level 20
+  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
+  ### Level 24
+  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
+  ### Level 28
+  ### Level 32

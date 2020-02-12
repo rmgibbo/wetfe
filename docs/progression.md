@@ -5,15 +5,15 @@
 - TODO: Ability Point (AP)
 - TODO: Ability Tree
 - Path
-  - Ten of the twelve paths start by choosing to embrace one of the archetypes
-    - May only be chosen at levels 0, 4, and 8
-    - Always start at Tier 0
-    - Through experience and special accomplishments, characters may specialize in their archetypes to unlock higher Tiers
-  - The remaining two paths start by choosing to embrace the anti-archetype
-    - May only be chosen at level 0, 4, or 8
-    - Must be the character's sole path. Any existing paths must be entirely abandoned upon choosing to follow the anti-archetype
-    - Starts at Tier 0, 1, or 2 if chosen at level 0, 4, or 8, respectively
-    - Through experience and special accomplishments, characters may specialize in the anti-archetypes to unlock higher Tiers
+  - Ten of the twelve paths start by embracing one of the archetypes
+    - May only begin upon attaining level 0, 4, or 8
+    - Always start at T<sub>0</sub>
+    - Through experience and special accomplishments, characters may advance along their paths to unlock higher tiers
+  - The remaining two paths start by embracing one of the anti-archetypes
+    - May only begin upon attaining level 0, 4, or 8
+    - Must be the character's sole path. All existing paths must be entirely abandoned prior to embracing an anti-archetype
+    - Starts at Tier T<sub>0</sub>, T<sub>1</sub>, or T<sub>2</sub> if begun when level 0, 4, or 8, respectively
+    - Through experience and special accomplishments, characters may advance along their paths to unlock higher tiers
 - Tier
     - Represents the degree of mastery and accomplishment along a chosen path
 - Specialization

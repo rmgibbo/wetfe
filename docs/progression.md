@@ -42,30 +42,39 @@
 - Every _**even**_ level thereafter, gain +1 to any core attribute
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
--  ### Level 0
+  
+### Level 0
   - Base core attribute value = 8
   - Base soulpool = 4
   - Base ability points = 0
   - Choose _**ONE**_ option:
     - Follow an archetype path
     - Follow an anti-archetype path
--  ### Level 4
+  
+### Level 4
   - Choose _**ONE**_ option:
     - Follow an additional archetype path
     - Abandon your path and follow an anti-archetype path, starting at T<sub>1</sub>
     - Advance along your path to its next tier
--  ### Level 8
+  
+### Level 8
   - Choose _**ONE**_ option:
-    - Follow _**two**_ additional T<sub>0</sub> archetypes
+    - Follow _**two**_ additional archetype paths
     - Abandon _**all**_ of your paths and follow an anti-archetype path, starting at T<sub>2</sub>
     - Advance along _**all**_ of your paths to their next tiers
--  ### Level 12
+  
+### Level 12
   - Advance along _**all**_ of your paths to their next tiers
--  ### Level 16
+  
+### Level 16
   - Advance along _**all**_ of your paths to their next tiers
--  ### Level 20
+  
+### Level 20
   - Advance along _**all**_ of your paths to their next tiers, if they are eligible
--  ### Level 24
+  
+### Level 24
   - Advance along _**all**_ of your paths to their next tiers, if they are eligible
--  ### Level 28
--  ### Level 32
+  
+### Level 28
+  
+### Level 32

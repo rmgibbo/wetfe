@@ -42,35 +42,30 @@
 - Every _**even**_ level thereafter, gain +1 to any core attribute
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
-  ### Level 0
+-  ### Level 0
   - Base core attribute value = 8
   - Base soulpool = 4
   - Base ability points = 0
   - Choose _**ONE**_ option:
-    #### Path
-      - Follow a T<sub>0</sub> archetype
-      - Follow a T<sub>0</sub> anti-archetype
-  ### Level 4
+    - Follow a T<sub>0</sub> archetype
+    - Follow a T<sub>0</sub> anti-archetype
+-  ### Level 4
   - Choose _**ONE**_ option:
-    #### Path
-      - Follow an additional T<sub>0</sub> archetype
-      - Abandon all archetypes and follow a T<sub>1</sub> anti-archetype
-    #### Specialization
-      - Advance your T<sub>0</sub> anti-/archetypes to its next tier
-  ### Level 8
+    - Follow an additional T<sub>0</sub> archetype
+    - Abandon your path and follow a T<sub>1</sub> anti-archetype
+    - Advance your path to its next tier
+-  ### Level 8
   - Choose _**ONE**_ option:
-    #### Path
-      - Follow _**two**_ additional T<sub>0</sub> archetypes
-      - Abandon all archetypes and follow a T<sub>2</sub> anti-archetype
-    #### Specialization
-      - Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub> anti-/archetypes to its next tier
-  ### Level 12
-  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub> anti-/archetypes to its next tier
-  ### Level 16
-  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
-  ### Level 20
-  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
-  ### Level 24
-  - **Specialization**: Advance _**each**_ of your T<sub>0</sub>/T<sub>1</sub>/T<sub>2</sub>/T<sub>3</sub> archetypes to its next tier
-  ### Level 28
-  ### Level 32
+    - Follow _**two**_ additional T<sub>0</sub> archetypes
+    - Abandon _**all**_ of your paths and follow a T<sub>2</sub> anti-archetype
+    - Advance _**all**_ of your paths to their next tier
+-  ### Level 12
+  - Advance _**all**_ of your paths to their next tier
+-  ### Level 16
+  - Advance _**all**_ of your paths to their next tier
+-  ### Level 20
+  - Advance _**all**_ of your paths to their next tier if they are eligible
+-  ### Level 24
+  - Advance _**all**_ of your paths to their next tier if they are eligible
+-  ### Level 28
+-  ### Level 32

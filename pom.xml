@@ -194,6 +194,7 @@
                                     <directory>target/classes/static</directory>
                                     <filtering>false</filtering>
                                     <includes>
+                                        <include>**/*.md</include>
                                         <include>**/*.js</include>
                                         <include>**/*.css</include>
                                         <include>**/*.html</include>

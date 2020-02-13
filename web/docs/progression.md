@@ -23,18 +23,18 @@
 ### Archetypes
 1. `CON, CON` &bull; Brawler &rarr; Juggernaut &rarr; Titan
 2. `CON, DEX` &bull; Contender &rarr; Champion &rarr; Paragon
-3. `CON, INT` &bull; Sorcerer &rarr; Eldritch Knight &rarr; Chthonic Soul
+3. `CON, INT` &bull; Shaman &rarr; Eldritch Knight &rarr; Chthonic Soul
 4. `CON, WIL` &bull; Warden &rarr; Enforcer &rarr; Phaseguard
-5. `DEX, DEX` &bull; Martial Artist &rarr; Kensai &rarr; Reaver
+5. `DEX, DEX` &bull; Technician &rarr; Karmasmith &rarr; Entropic Hand
 6. `DEX, INT` &bull; Rogue &rarr; Ninja &rarr; Timeslicer
-7. `DEX, WIL` &bull; Monk &rarr; Ascendant &rarr; Consonant Soul
+7. `DEX, WIL` &bull; Monk &rarr; Obzen &rarr; Consonant Soul
 8. `INT, INT` &bull; Scholar &rarr; Wizard &rarr; Cosmic Sage
-9. `INT, WIL` &bull; Summoner &rarr; Golemmancer &rarr; Animist
+9. `INT, WIL` &bull; Prophet &rarr; Oracle &rarr; Chronomancer
 10. `WIL, WIL` &bull; Controller &rarr; Enchanter &rarr; Archon
   
 ### Anti-Archetypes
-1. `---, ---` &bull; Universalist &rarr; Druid &rarr; Archdruid 
-2. `---, ---` &bull;  Individualist &rarr; Solipsist &rarr; Recursive Soul
+1. `---, ---` &bull; Animist &rarr; Druid &rarr; Archdruid 
+2. `---, ---` &bull; Nihilist &rarr; Ubermensch &rarr; Recursive Soul
   
 # Details
 - Create character

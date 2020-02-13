@@ -29,12 +29,12 @@
 6. `DEX, INT` &bull; Rogue &rarr; Ninja &rarr; Timeslicer
 7. `DEX, WIL` &bull; Monk &rarr; Obzen &rarr; Consonant Soul
 8. `INT, INT` &bull; Scholar &rarr; Wizard &rarr; Cosmic Sage
-9. `INT, WIL` &bull; Prophet &rarr; Oracle &rarr; Chronomancer
+9. `INT, WIL` &bull; Geomancer &rarr; Druid &rarr; Chronomancer
 10. `WIL, WIL` &bull; Controller &rarr; Enchanter &rarr; Archon
   
 ### Anti-Archetypes
-1. `---, ---` &bull; Animist &rarr; Druid &rarr; Archdruid 
-2. `---, ---` &bull; Nihilist &rarr; Ubermensch &rarr; Recursive Soul
+1. `---, ---` &bull; Ranger &rarr; Aura &rarr; Saoshyant
+2. `---, ---` &bull; Solipsist &rarr; Powermonger &rarr; Recursive Soul
   
 # Details
 - Create character

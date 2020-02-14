@@ -2,7 +2,7 @@ package wetfe.core.character
 
 import wetfe.core.game.DataSource
 import wetfe.core.universe.Event
-import wetfe.core.universe.Physicality
+import wetfe.core.universe.Realm
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
@@ -316,7 +316,7 @@ data class CharaRepertoire(val general: MutableList<String> = mutableListOf(),
  */
 data class CharaData(val id: String = newId(),
                      var source: DataSource = DataSource.PLAYER,
-                     var physicality: Physicality = Physicality.CONFLUENT,
+                     var realm: Realm = Realm.CONFLUENT,
                      var fullName: String = "Full Name",
                      var commonName: String = "Common Name",
                      var shortName: String = "Short Name",

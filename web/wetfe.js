@@ -51,8 +51,8 @@ var wetfe = function (_, Kotlin) {
   EncounterType.prototype.constructor = EncounterType;
   DataSource.prototype = Object.create(Enum.prototype);
   DataSource.prototype.constructor = DataSource;
-  Physicality.prototype = Object.create(Enum.prototype);
-  Physicality.prototype.constructor = Physicality;
+  Realm.prototype = Object.create(Enum.prototype);
+  Realm.prototype.constructor = Realm;
   Vulnerability.prototype = Object.create(Enum.prototype);
   Vulnerability.prototype.constructor = Vulnerability;
   function CoreParam(name, ordinal, key) {
@@ -1194,14 +1194,14 @@ var wetfe = function (_, Kotlin) {
   CharaRepertoire.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.general, other.general) && Kotlin.equals(this.specialty, other.specialty) && Kotlin.equals(this.growth, other.growth) && Kotlin.equals(this.soulbound, other.soulbound) && Kotlin.equals(this.exceptional, other.exceptional)))));
   };
-  function CharaData(id, source, physicality, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
+  function CharaData(id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
     CharaData$Companion_getInstance();
     if (id === void 0)
       id = CharaData$Companion_getInstance().newId();
     if (source === void 0)
       source = DataSource$PLAYER_getInstance();
-    if (physicality === void 0)
-      physicality = Physicality$CONFLUENT_getInstance();
+    if (realm === void 0)
+      realm = Realm$CONFLUENT_getInstance();
     if (fullName === void 0)
       fullName = 'Full Name';
     if (commonName === void 0)
@@ -1263,7 +1263,7 @@ var wetfe = function (_, Kotlin) {
     }
     this.id = id;
     this.source = source;
-    this.physicality = physicality;
+    this.realm = realm;
     this.fullName = fullName;
     this.commonName = commonName;
     this.shortName = shortName;
@@ -1322,7 +1322,7 @@ var wetfe = function (_, Kotlin) {
     return this.source;
   };
   CharaData.prototype.component3 = function () {
-    return this.physicality;
+    return this.realm;
   };
   CharaData.prototype.component4 = function () {
     return this.fullName;
@@ -1405,17 +1405,17 @@ var wetfe = function (_, Kotlin) {
   CharaData.prototype.component30 = function () {
     return this.rollsheetLayout;
   };
-  CharaData.prototype.copy_rw29mb$ = function (id, source, physicality, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
-    return new CharaData(id === void 0 ? this.id : id, source === void 0 ? this.source : source, physicality === void 0 ? this.physicality : physicality, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, characteristics === void 0 ? this.characteristics : characteristics, specialties === void 0 ? this.specialties : specialties, level === void 0 ? this.level : level, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, dexterity === void 0 ? this.dexterity : dexterity, intelligence === void 0 ? this.intelligence : intelligence, willpower === void 0 ? this.willpower : willpower, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
+  CharaData.prototype.copy_u1r339$ = function (id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
+    return new CharaData(id === void 0 ? this.id : id, source === void 0 ? this.source : source, realm === void 0 ? this.realm : realm, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, characteristics === void 0 ? this.characteristics : characteristics, specialties === void 0 ? this.specialties : specialties, level === void 0 ? this.level : level, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, dexterity === void 0 ? this.dexterity : dexterity, intelligence === void 0 ? this.intelligence : intelligence, willpower === void 0 ? this.willpower : willpower, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
   };
   CharaData.prototype.toString = function () {
-    return 'CharaData(id=' + Kotlin.toString(this.id) + (', source=' + Kotlin.toString(this.source)) + (', physicality=' + Kotlin.toString(this.physicality)) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', characteristics=' + Kotlin.toString(this.characteristics)) + (', specialties=' + Kotlin.toString(this.specialties)) + (', level=' + Kotlin.toString(this.level)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
+    return 'CharaData(id=' + Kotlin.toString(this.id) + (', source=' + Kotlin.toString(this.source)) + (', realm=' + Kotlin.toString(this.realm)) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', characteristics=' + Kotlin.toString(this.characteristics)) + (', specialties=' + Kotlin.toString(this.specialties)) + (', level=' + Kotlin.toString(this.level)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
   };
   CharaData.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.id) | 0;
     result = result * 31 + Kotlin.hashCode(this.source) | 0;
-    result = result * 31 + Kotlin.hashCode(this.physicality) | 0;
+    result = result * 31 + Kotlin.hashCode(this.realm) | 0;
     result = result * 31 + Kotlin.hashCode(this.fullName) | 0;
     result = result * 31 + Kotlin.hashCode(this.commonName) | 0;
     result = result * 31 + Kotlin.hashCode(this.shortName) | 0;
@@ -1446,7 +1446,7 @@ var wetfe = function (_, Kotlin) {
     return result;
   };
   CharaData.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.source, other.source) && Kotlin.equals(this.physicality, other.physicality) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.characteristics, other.characteristics) && Kotlin.equals(this.specialties, other.specialties) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.source, other.source) && Kotlin.equals(this.realm, other.realm) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.characteristics, other.characteristics) && Kotlin.equals(this.specialties, other.specialties) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
   };
   function Character(charaData) {
     if (charaData === void 0)
@@ -2582,62 +2582,62 @@ var wetfe = function (_, Kotlin) {
     }
   }
   DataSource.valueOf_61zpoe$ = DataSource$valueOf;
-  function Physicality(name, ordinal) {
+  function Realm(name, ordinal) {
     Enum.call(this);
     this.name$ = name;
     this.ordinal$ = ordinal;
   }
-  function Physicality_initFields() {
-    Physicality_initFields = function () {
+  function Realm_initFields() {
+    Realm_initFields = function () {
     };
-    Physicality$CONFLUENT_instance = new Physicality('CONFLUENT', 0);
-    Physicality$INFERNAL_instance = new Physicality('INFERNAL', 1);
-    Physicality$CELESTIAL_instance = new Physicality('CELESTIAL', 2);
-    Physicality$EXOTIC_instance = new Physicality('EXOTIC', 3);
+    Realm$CONFLUENT_instance = new Realm('CONFLUENT', 0);
+    Realm$INFERNAL_instance = new Realm('INFERNAL', 1);
+    Realm$CELESTIAL_instance = new Realm('CELESTIAL', 2);
+    Realm$EXOTIC_instance = new Realm('EXOTIC', 3);
   }
-  var Physicality$CONFLUENT_instance;
-  function Physicality$CONFLUENT_getInstance() {
-    Physicality_initFields();
-    return Physicality$CONFLUENT_instance;
+  var Realm$CONFLUENT_instance;
+  function Realm$CONFLUENT_getInstance() {
+    Realm_initFields();
+    return Realm$CONFLUENT_instance;
   }
-  var Physicality$INFERNAL_instance;
-  function Physicality$INFERNAL_getInstance() {
-    Physicality_initFields();
-    return Physicality$INFERNAL_instance;
+  var Realm$INFERNAL_instance;
+  function Realm$INFERNAL_getInstance() {
+    Realm_initFields();
+    return Realm$INFERNAL_instance;
   }
-  var Physicality$CELESTIAL_instance;
-  function Physicality$CELESTIAL_getInstance() {
-    Physicality_initFields();
-    return Physicality$CELESTIAL_instance;
+  var Realm$CELESTIAL_instance;
+  function Realm$CELESTIAL_getInstance() {
+    Realm_initFields();
+    return Realm$CELESTIAL_instance;
   }
-  var Physicality$EXOTIC_instance;
-  function Physicality$EXOTIC_getInstance() {
-    Physicality_initFields();
-    return Physicality$EXOTIC_instance;
+  var Realm$EXOTIC_instance;
+  function Realm$EXOTIC_getInstance() {
+    Realm_initFields();
+    return Realm$EXOTIC_instance;
   }
-  Physicality.$metadata$ = {
+  Realm.$metadata$ = {
     kind: Kind_CLASS,
-    simpleName: 'Physicality',
+    simpleName: 'Realm',
     interfaces: [Enum]
   };
-  function Physicality$values() {
-    return [Physicality$CONFLUENT_getInstance(), Physicality$INFERNAL_getInstance(), Physicality$CELESTIAL_getInstance(), Physicality$EXOTIC_getInstance()];
+  function Realm$values() {
+    return [Realm$CONFLUENT_getInstance(), Realm$INFERNAL_getInstance(), Realm$CELESTIAL_getInstance(), Realm$EXOTIC_getInstance()];
   }
-  Physicality.values = Physicality$values;
-  function Physicality$valueOf(name) {
+  Realm.values = Realm$values;
+  function Realm$valueOf(name) {
     switch (name) {
       case 'CONFLUENT':
-        return Physicality$CONFLUENT_getInstance();
+        return Realm$CONFLUENT_getInstance();
       case 'INFERNAL':
-        return Physicality$INFERNAL_getInstance();
+        return Realm$INFERNAL_getInstance();
       case 'CELESTIAL':
-        return Physicality$CELESTIAL_getInstance();
+        return Realm$CELESTIAL_getInstance();
       case 'EXOTIC':
-        return Physicality$EXOTIC_getInstance();
-      default:throwISE('No enum constant wetfe.core.universe.Physicality.' + name);
+        return Realm$EXOTIC_getInstance();
+      default:throwISE('No enum constant wetfe.core.universe.Realm.' + name);
     }
   }
-  Physicality.valueOf_61zpoe$ = Physicality$valueOf;
+  Realm.valueOf_61zpoe$ = Realm$valueOf;
   function Vulnerability(name, ordinal) {
     Enum.call(this);
     this.name$ = name;
@@ -2697,7 +2697,7 @@ var wetfe = function (_, Kotlin) {
   function Physics() {
     Physics_instance = this;
   }
-  Physics.prototype.vulnerabilityOf_c8hzt0$ = function (causativeSystem, affectedSystem) {
+  Physics.prototype.vulnerabilityOf_um58h8$ = function (causativeSystem, affectedSystem) {
     var tmp$;
     switch (causativeSystem.name) {
       case 'INFERNAL':
@@ -2733,7 +2733,7 @@ var wetfe = function (_, Kotlin) {
 
         break;
       case 'EXOTIC':
-        if (equals(affectedSystem, Physicality$EXOTIC_getInstance()))
+        if (equals(affectedSystem, Realm$EXOTIC_getInstance()))
           tmp$ = Vulnerability$HYPER_getInstance();
         else
           tmp$ = Vulnerability$POSITIVE_getInstance();
@@ -3033,20 +3033,20 @@ var wetfe = function (_, Kotlin) {
   });
   var package$game = package$core.game || (package$core.game = {});
   package$game.DataSource = DataSource;
-  Object.defineProperty(Physicality, 'CONFLUENT', {
-    get: Physicality$CONFLUENT_getInstance
+  Object.defineProperty(Realm, 'CONFLUENT', {
+    get: Realm$CONFLUENT_getInstance
   });
-  Object.defineProperty(Physicality, 'INFERNAL', {
-    get: Physicality$INFERNAL_getInstance
+  Object.defineProperty(Realm, 'INFERNAL', {
+    get: Realm$INFERNAL_getInstance
   });
-  Object.defineProperty(Physicality, 'CELESTIAL', {
-    get: Physicality$CELESTIAL_getInstance
+  Object.defineProperty(Realm, 'CELESTIAL', {
+    get: Realm$CELESTIAL_getInstance
   });
-  Object.defineProperty(Physicality, 'EXOTIC', {
-    get: Physicality$EXOTIC_getInstance
+  Object.defineProperty(Realm, 'EXOTIC', {
+    get: Realm$EXOTIC_getInstance
   });
   var package$universe = package$core.universe || (package$core.universe = {});
-  package$universe.Physicality = Physicality;
+  package$universe.Realm = Realm;
   Object.defineProperty(Vulnerability, 'NEGATIVE', {
     get: Vulnerability$NEGATIVE_getInstance
   });

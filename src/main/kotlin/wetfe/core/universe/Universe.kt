@@ -1,6 +1,6 @@
 package wetfe.core.universe
 
-enum class Physicality {
+enum class Realm {
     CONFLUENT,
     INFERNAL,
     CELESTIAL,
@@ -15,22 +15,22 @@ enum class Vulnerability {
 }
 
 object Physics {
-    fun vulnerabilityOf(causativeSystem: Physicality, affectedSystem: Physicality): Vulnerability {
+    fun vulnerabilityOf(causativeSystem: Realm, affectedSystem: Realm): Vulnerability {
         return when (causativeSystem) {
-            Physicality.INFERNAL -> when (affectedSystem) {
-                Physicality.INFERNAL -> Vulnerability.INVERSE
-                Physicality.CELESTIAL -> Vulnerability.HYPER
-                Physicality.EXOTIC -> Vulnerability.NEGATIVE
+            Realm.INFERNAL -> when (affectedSystem) {
+                Realm.INFERNAL -> Vulnerability.INVERSE
+                Realm.CELESTIAL -> Vulnerability.HYPER
+                Realm.EXOTIC -> Vulnerability.NEGATIVE
                 else -> Vulnerability.POSITIVE
             }
-            Physicality.CELESTIAL -> when (affectedSystem) {
-                Physicality.CELESTIAL -> Vulnerability.INVERSE
-                Physicality.INFERNAL -> Vulnerability.HYPER
-                Physicality.EXOTIC -> Vulnerability.NEGATIVE
+            Realm.CELESTIAL -> when (affectedSystem) {
+                Realm.CELESTIAL -> Vulnerability.INVERSE
+                Realm.INFERNAL -> Vulnerability.HYPER
+                Realm.EXOTIC -> Vulnerability.NEGATIVE
                 else -> Vulnerability.POSITIVE
             }
-            Physicality.EXOTIC -> when (affectedSystem) {
-                Physicality.EXOTIC -> Vulnerability.HYPER
+            Realm.EXOTIC -> when (affectedSystem) {
+                Realm.EXOTIC -> Vulnerability.HYPER
                 else -> Vulnerability.POSITIVE
             }
             else -> Vulnerability.POSITIVE

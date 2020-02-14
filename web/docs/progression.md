@@ -18,10 +18,10 @@
     - Represents the degree of mastery a character has attained along a given path
     - Higher tiers also represent the enduring impacts a character has made while following a given path
   
-
-### Archetype Table
+### Archetypes
+  
 | Core Dev | T<sub>0</sub> | T<sub>1</sub> | T<sub>2</sub> | T<sub>3</sub> | T<sub>4</sub> |
-|:---:|:---:|:---:|:---:|:---:|:---:|
+| ------ |:------:|:------:|:------:|:------:|:------:|
 | `CON, CON` | Brawler | " | Juggernaut | " | Titan |
 | `CON, DEX` | Contender | " | Champion | " | Paragon |
 | `CON, INT` | Shaman | " | Eldritch Knight | " | Chthonic Soul |
@@ -33,12 +33,13 @@
 | `INT, WIL` | Geomancer | " | Druid | " | Archdruid |
 | `WIL, WIL` | Enchanter | " | Commander | " | Archon |
   
-### Anti-Archetype Table
+### Anti-Archetypes
+  
 | Core Dev | T<sub>0</sub> | T<sub>1</sub> | T<sub>2</sub> | T<sub>3</sub> | T<sub>4</sub> |
-|:---:|:---:|:---:|:---:|:---:|:---:|
+| --- |:------:|:------:|:------:|:------:|:------:|
 | `---, ---` | Ranger | " | Aura | " | Saoshyant |
 | `---, ---` | Sorcerer | " | Dragon | " | Recursive Soul |
-
+  
 ### Paths
 1. Brawler &rarr; Juggernaut &rarr; Titan &rarr; ?
 2. Contender &rarr; Champion &rarr; Paragon &rarr; ?

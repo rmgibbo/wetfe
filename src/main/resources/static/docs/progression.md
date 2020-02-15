@@ -11,8 +11,8 @@
     - Always start at T<sub>0</sub>
   - The remaining two paths begin by embracing one of the anti-archetypes
     - May only begin upon attaining level 0, 4, or 8
-    - Must be the character's sole path. All existing paths must be entirely abandoned prior to embracing an anti-archetype
-    - Starts at T<sub>0</sub>, T<sub>1</sub>, or T<sub>2</sub> if begun when level 0, 4, or 8, respectively
+    - Must be the character's sole path. All existing paths must be abandoned prior to embracing an anti-archetype
+    - Starts at T<sub>0</sub>, even when begun at level 4 or 8
   - Through experience and special accomplishments, characters may advance along their paths to unlock higher tiers
 - Tier
     - Represents the degree of mastery a character has attained along a given path
@@ -36,23 +36,23 @@
 ### Anti-Archetypes
   
 | Core Dev | T<sub>0</sub> | T<sub>1</sub> | T<sub>2</sub> | T<sub>3</sub> | T<sub>4</sub> |
-| --- |:------:|:------:|:------:|:------:|:------:|
+| ------ |:------:|:------:|:------:|:------:|:------:|
 | `---, ---` | Ranger | " | Aura | " | Saoshyant |
 | `---, ---` | Sorcerer | " | Dragon | " | Recursive Soul |
   
 ### Paths
-1. Brawler &rarr; Juggernaut &rarr; Titan &rarr; ?
-2. Contender &rarr; Champion &rarr; Paragon &rarr; ?
-3. Shaman &rarr; Eldritch Knight &rarr; Chthonic Soul &rarr; ?
-4. Warden &rarr; Phaseguard &rarr; Neutralizer &rarr; ?
-5. Kineticist &rarr; Dynamancer &rarr; Herald of Entropy &rarr; ?
-6. Rogue &rarr; Ninja &rarr; Timeslicer &rarr; ?
-7. Monk &rarr; Grandmaster &rarr; Consonant Soul &rarr; ?
-8. Scholar &rarr; Wizard &rarr; Cosmic Sage &rarr; ?
-9. Geomancer &rarr; Druid &rarr; Archdruid &rarr; ?
-10. Enchanter &rarr; Commander &rarr; Archon &rarr; ?
-11. _Ranger &rarr; Aura &rarr; Saoshyant &rarr; ?_
-12. _Sorcerer &rarr; Dragon &rarr; Recursive Soul &rarr; ?_
+1. `CON, CON` &bull; Brawler &rarr; Juggernaut &rarr; Titan &rarr; ?
+2. `CON, DEX` &bull; Contender &rarr; Champion &rarr; Paragon &rarr; ?
+3. `CON, INT` &bull; Shaman &rarr; Eldritch Knight &rarr; Chthonic Soul &rarr; ?
+4. `CON, WIL` &bull; Warden &rarr; Phaseguard &rarr; Neutralizer &rarr; ?
+5. `DEX, DEX` &bull; Kineticist &rarr; Dynamancer &rarr; Herald of Entropy &rarr; ?
+6. `DEX, INT` &bull; Rogue &rarr; Ninja &rarr; Timeslicer &rarr; ?
+7. `DEX, WIL` &bull; Monk &rarr; Grandmaster &rarr; Consonant Soul &rarr; ?
+8. `INT, INT` &bull; Scholar &rarr; Wizard &rarr; Cosmic Sage &rarr; ?
+9. `INT, WIL` &bull; Geomancer &rarr; Druid &rarr; Archdruid &rarr; ?
+10. `WIL, WIL` &bull; Enchanter &rarr; Commander &rarr; Archon &rarr; ?
+11. _`---, ---` &bull; Ranger &rarr; Aura &rarr; Saoshyant &rarr; ?_
+12. _`---, ---` &bull; Sorcerer &rarr; Dragon &rarr; Recursive Soul &rarr; ?_
   
 # Details
 - Create character
@@ -72,13 +72,13 @@
 ### Level 4
   - Choose _**ONE**_ option:
     - Follow an additional archetype path
-    - Abandon your path and follow an anti-archetype path, starting at T<sub>1</sub>
+    - Abandon your path and follow an anti-archetype path, starting at T<sub>0</sub>
     - Advance along your path to its next tier
   
 ### Level 8
   - Choose _**ONE**_ option:
     - Follow _**two**_ additional archetype paths
-    - Abandon _**all**_ of your paths and follow an anti-archetype path, starting at T<sub>2</sub>
+    - Abandon _**all**_ of your paths and follow an anti-archetype path, starting at T<sub>0</sub>
     - Advance along _**all**_ of your paths to their next tiers
   
 ### Level 12
@@ -98,3 +98,5 @@
   
 ### Level 32
   - No auto-advancement; complete special objectives to continue along your paths
+  
+Copyright © 2020 Ryan Gibbons

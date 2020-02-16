@@ -1,81 +1,109 @@
 # Axioms of Reality
   
-### Principle of the Existential Thing
+### [1] Principle of the Existential Thing
   
-- Every self-consistent existential proposition implies that a Thing exists, or that it does not exist.  
-- Every extant Thing is an implication of a self-consistent existential proposition.
+- Every existential proposition of a logically self-consistent thing `Thing` implies that `Thing` exists, or that `Thing` does not exist.  
+- Every extant `Thing` is an implication of an existential proposition.
   
-### Principle of Unbiased Reality
+### [2] Principle of Self-Instantiation
   
-- Every self-consistent proposition is (somewhere) true _**and**_ (somewhere) false.  
-- Reality is the combinatorial space of the implications of all self-consistent propositions.
+- Existential propositions, such as this, exist.
   
-# Cases
+### [3] Principle of Unbiased Implications
   
-In each case below, let us begin at some arbitrary place in Reality. That is, let us being by considering the implications of the self-consistent existential proposition of some Thing T<sub>j</sub>. At each such place in Reality, either no other Thing exists, or an arbitrary number of other Things exist. For the sake of simplicity, we can imagine we're in the former case, though the results are completely general.
+- Every self-consistent proposition is (somewhere) true _**and**_ (somewhere) false.
+- Every other proposition is (everywhere) false.
   
-### T<sub>j</sub> exists &rarr;
+### [4] Definition of Reality
   
-1. Reality contains the existence of T<sub>j</sub>
-2. Reality contains the nonexistence of T<sub>j</sub>
+- Reality is the space of all propositions, and their implications in accordance with [3].
   
-### T<sub>j</sub> exists and T<sub>k</sub> exists &rarr;
+# Exposition
   
-1. Reality contains the existence of T<sub>j</sub>
-    1. Reality contains the existence of T<sub>k</sub>
-    2. Reality contains the nonexistence of T<sub>k</sub>
-2. Reality contains the nonexistence of T<sub>j</sub>
-    1. Reality contains the existence of T<sub>k</sub>
-    2. Reality contains the nonexistence of T<sub>k</sub>
+- Let the string `Thing` mean any logically self-consistent thing, where "thing" is taken as broadly as possible.
   
-### T<sub>j</sub> exists and T<sub>k</sub> exists and T<sub>jk</sub> exists and T<sub>0</sub> exists &rarr;
+Here, `Thing` encompasses "Platonic" concepts such as the number one, or a Euclidean circle; and "physical" concepts such as a proton, or a cat; and "meta-physical" concepts, such as aesthetics, or economics... as long as such things are logically self-consistent.
   
-1. Reality contains the existence of T<sub>j</sub>
-    1. Reality contains the existence of T<sub>k</sub>
-        1. Reality contains the existence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-        2. Reality contains the nonexistence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-    2. Reality contains the nonexistence of T<sub>k</sub>
-        1. Reality contains the existence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-        2. Reality contains the nonexistence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-2. Reality contains the nonexistence of T<sub>j</sub>
-    1. Reality contains the existence of T<sub>k</sub>
-        1. Reality contains the existence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-        2. Reality contains the nonexistence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-    2. Reality contains the nonexistence of T<sub>k</sub>
-        1. Reality contains the existence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
-        2. Reality contains the nonexistence of T<sub>jk</sub>
-            1. Reality contains the existence of T<sub>0</sub>
-            2. Reality contains the nonexistence of T<sub>0</sub>
+For example, the non-trivial factorization of a prime number is not a `Thing`, because it does not make sense in its own terms.
+Therefore, _"The non-trivial factorization of the number five exists."_ is an inconsistent existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is everywhere false.
+  
+A general method of determining the "logical self-consistency" of some thing _a priori_ is, in principle, unobtainable.
+  
+- Let the string template __T<sub>s</sub>__ mean any given instance of a `Thing`, where "__<sub>s</sub>__" is any string that helps identify the instance.
+ 
+
+In each case below, we begin by considering the implications of the existential proposition of some `Thing` __T<sub>j</sub>__, within some arbitrary subspace of Reality. 
+Here, either no other thing exists, or an arbitrary number of other things exist. 
+For the sake of simplicity, we can imagine we're in the former case, but this is not a necessary assumption.
+  
+- Let the string `universe` mean some such subspace of Reality.
+  
+- Let the string __∃(T)__ indicate the existential proposition of some `Thing` __T__.
+  
+_TODO: {~~_
+  
+### ∃(T<sub>j</sub>) &rarr;
+  
+1. Reality contains the existence of __T<sub>j</sub>__
+2. Reality contains the nonexistence of __T<sub>j</sub>__
+  
+### ∃(T<sub>j</sub>) ∧ ∃(T<sub>k</sub>) &rarr;
+  
+1. Reality contains the existence of __T<sub>j</sub>__
+    1. Reality contains the existence of __T<sub>k</sub>__
+    2. Reality contains the nonexistence of __T<sub>k</sub>__
+2. Reality contains the nonexistence of __T<sub>j</sub>__
+    1. Reality contains the existence of __T<sub>k</sub>__
+    2. Reality contains the nonexistence of __T<sub>k</sub>__
+  
+### ∃(T<sub>j</sub>) ∧ ∃(T<sub>k</sub>) ∧ ∃(T<sub>jk</sub>) ∧ ∃(T<sub>0</sub>) &rarr;
+  
+1. Reality contains the existence of __T<sub>j</sub>__
+    1. Reality contains the existence of __T<sub>k</sub>__
+        1. Reality contains the existence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+        2. Reality contains the nonexistence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+    2. Reality contains the nonexistence of __T<sub>k</sub>__
+        1. Reality contains the existence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+        2. Reality contains the nonexistence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+2. Reality contains the nonexistence of __T<sub>j</sub>__
+    1. Reality contains the existence of __T<sub>k</sub>__
+        1. Reality contains the existence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+        2. Reality contains the nonexistence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+    2. Reality contains the nonexistence of __T<sub>k</sub>__
+        1. Reality contains the existence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
+        2. Reality contains the nonexistence of __T<sub>jk</sub>__
+            1. Reality contains the existence of __T<sub>0</sub>__
+            2. Reality contains the nonexistence of __T<sub>0</sub>__
   
 - Here, we've considered four existential propositions, and can see the structure of Reality that they, together, imply.  
 - The subspace of Reality corresponding to 1.1.1.1. contains (at least) four extant Things.
 - Note that the 1.1.1.1. subspace is exactly one sixteenth of the total combinatorial space implied by the four propositions, but it is also the _densest_, in the sense that it contains more extant Things than any of the other fifteen subspaces.  
-- The natures of T<sub>j</sub>, T<sub>k</sub>, T<sub>jk</sub>, and T<sub>0</sub> set constraints on where our arbitrary starting place may appear in the greater structure of Reality.  
-- As an example, we may take T<sub>j</sub> and T<sub>k</sub> to be points within some geometry, T<sub>jk</sub> to be some relationship between them (e.g. "non-identical"), and T<sub>0</sub> to be the number one.
-- TODO
+- As an example, we may take __T<sub>j</sub>__ and __T<sub>k</sub>__ to be points within some geometry, __T<sub>jk</sub>__ to be some relationship between them (e.g. "non-identical"), and __T<sub>0</sub>__ to be the number one.
+  
+_TODO: ~~}_
   
 ### TODO
   
 # Consequences
   
-- No Thing is absolutely fundamental, nor absolutely emergent.
-- Every Thing is relatively fundamental, and relatively emergent.
-- Reality is a "multiverse" -- an infinite bifurcating affine tree of existential implications.
-- Every logically possible Thing exists. TODO!
+- No `Thing` is absolutely fundamental, nor absolutely emergent.
+- Every `Thing` is relatively fundamental, and relatively emergent.
+- Reality is a "multiverse" -- an infinitely divisible space of propositions and their implications.
+- Every logically possible `Thing` exists. _TODO ^_
 - Platonic reality, physical reality, psychological reality, etc., are all perspectives on the underlying Reality, which implies all of them.
   
 Copyright © 2020 Ryan Gibbons

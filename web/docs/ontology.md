@@ -3,13 +3,14 @@
 ### [1] Principle of the Existential Thing
   
 - Let `Thing` mean any logically self-consistent _thing_, where _thing_ is taken as broadly as possible.
-- An existential proposition of a _thing_ __g__ implies, comprehensively, that __g__ exists in the case that it (the proposition) is true, and that __g__ does not exist in the case that it (the proposition) is false.
+- An existential proposition of a _thing_ __*g*__ implies, comprehensively, that __*g*__ exists in the case that it (the proposition) is true, and that __*g*__ does not exist in the case that it (the proposition) is false.
+- The existential proposition of a `Thing` is a `Thing`.
   
 ### [2] Principle of Auto-Instantiation
   
-- This existential proposition is a `Thing`, which exists.
+- This existential proposition exists.
 - Every extant `Thing` __T__ instantiates an existential proposition for each extant `Thing`, _for each extant `Thing`_.
-- These auto-instantiated propositions are of the form _"There exists a relationship of type **T<sub>j</sub>** between **T** and **T<sub>i</sub>**"_, where the indexed __Ts__ range over the entire set of extant `Things` (including __T__ itself). 
+- These auto-instantiated propositions are of the form _"There exists a relationship of type **T<sub>j</sub>** between **T** and **T<sub>i</sub>**."_, where the indexed __Ts__ range over the entire set of extant `Things` (including __T__ itself). 
   
 ### [3] Principle of Unbiased Implications
   
@@ -21,9 +22,9 @@
   
 # Exposition
   
-- Let the string `Thing` mean any logically self-consistent thing, where "thing" is taken as broadly as possible.
+- Let `Thing` mean any logically self-consistent _thing_, where _thing_ is taken as broadly as possible.
   
-Here, `Thing` encompasses "Platonic" concepts such as the number one, or a Euclidean circle; and "physical" concepts such as a proton, or a cat; and "meta-physical" concepts, such as aesthetics, or economics... as long as such things are logically self-consistent.
+Here, `Thing` encompasses "Platonic" concepts such as the number one, or a Euclidean circle; and "physical" concepts such as a proton, or a cat; and "meta-physical" concepts, such as aesthetics, or economics... as long as such _things_ are logically self-consistent.
   
 For example, the non-trivial factorization of a prime number is not a `Thing`, because it does not make sense in its own terms.
 Therefore, _"The non-trivial factorization of the number five exists."_ is an inconsistent existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is everywhere false.
@@ -59,7 +60,7 @@ _TODO: {~~_
         1. Reality contains the existence of __T<sub>k</sub>__
         2. Reality contains the nonexistence of __T<sub>k</sub>__
   
-- Here, we've considered three existential propositions, and can see the structure of Reality that they, together, imply.  
+- Here, we've considered three existential propositions, and can see part of the structure of Reality that they, together, imply.  
 - The subspace of Reality corresponding to 1.1.1. contains (at least) three extant Things.
 - Note that the 1.1.1. subspace is exactly one eighth of the total combinatorial space implied by the three propositions, but it is also the _densest_, in the sense that it contains more extant Things than any of the other seven subspaces.  
 - As an example, we may take __T<sub>i</sub>__ and __T<sub>j</sub>__ to be points within some geometry, and __T<sub>k</sub>__ to be the number one.

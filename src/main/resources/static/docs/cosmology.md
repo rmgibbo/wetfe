@@ -48,7 +48,7 @@ From its final cosmic progenitor, known to some as the Exotic Realm, or the Quee
 ## Confluent Realm
 Thus formed, the child cosmos is imbued with the ingredients necessary to exhibit a wealth of emergent physics and phenomena. And so they did emerge: particles, gravity, chemistry, biology; and eventually social consciousness, which gradually became aware of these phenomena, and then of the universe itself, and then even of its progenitors...
   
-# ~NOTES~
+# ~ NOTES
   
 ## Going Pure
   

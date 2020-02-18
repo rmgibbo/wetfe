@@ -7,7 +7,7 @@ _thing_
 _**g<sub>s</sub>**_  
 : An instance of some _thing_, where "__<sub>s</sub>__" is any string that helps identify the instance.
   
-logical self-consistence  
+logically self-consistent
 : A property that every _thing_ either has, or does not have. This is not a decidable property, in general, with extant Human theory.
   
 `Thing`  
@@ -24,7 +24,7 @@ existence
 : Reality contains a _thing_ iff it exists.
   
 existential proposition, `EXP`  
-: Any proposition of a _thing_ _**g**_ that comprehensively implies that _**g**_ exists when it is true, and that _**g**_ does not exist when it is false.
+: Any proposition of a _thing_ _**g<sub>s</sub>**_ that comprehensively implies that _**g<sub>s</sub>**_ exists when it is true, and that _**g<sub>s</sub>**_ does not exist when it is false.
   
 ∃(_**g<sub>s</sub>**_  )  
 : The existential proposition of some _thing **g<sub>s</sub>**_  .
@@ -39,7 +39,6 @@ existential proposition, `EXP`
   
 ### [1] Principle of the Existential Thing
   
-- Every _thing_ that exists by implication of a true existential proposition is a `Thing`.
 - The existential proposition of a `Thing` is a `Thing`.
   
 ### [2] Principle of Auto-Instantiation
@@ -78,17 +77,37 @@ By [2] or [4], we know that the _thing_ ∃(∃(∃(...))) exists.
   
 Let's call this infinitely recursive existential proposition _**g<sub>0</sub>**_, and note that ∃(∃(∃(...))) = _**g<sub>0</sub>**_ = ∃(_**g<sub>0</sub>**_).
   
-Now, because _**g<sub>0</sub>**_ exists, ∃(_**g<sub>0</sub>**_) is somewhere true, and therefore by [3], ∃(_**g<sub>0</sub>**_) = _**g<sub>0</sub>**_ is a `Thing`.
+Now by [3], because _**g<sub>0</sub>**_ exists, ∃(_**g<sub>0</sub>**_) is somewhere true, and therefore ∃(_**g<sub>0</sub>**_) = _**g<sub>0</sub>**_ is a `Thing`.
   
 We should now call it ∃(∃(∃(...))) = __T<sub>0</sub>__ = ∃(__T<sub>0</sub>__).
   
+### The Primicorn
+  
+Let _**g<sub>Primicorn</sub>**_ mean the non-trivial factorization of a prime number.
+  
+Now, we may consider the `EXP` ∃(_**g<sub>Primcorn</sub>**_), which says _"The non-trivial factorization of a prime number exists."_
+  
+Note that by [2], ∃(_**g<sub>Primicorn</sub>**_) exists.
+  
+In an effort to instantiate the primicorn itself, we may also put forth the `EXP` ∃(∃(_**g<sub>Primcorn</sub>**_)), which says "The existential proposition of the non-trivial factorization of a prime number exists."
+  
+By [2], this second proposition also exists.
+  
+So by [3], ∃(∃(_**g<sub>Primicorn</sub>**_)) is a `Thing` because it is somewhere true.
+
+But, unlike in the case of __T<sub>0</sub>__, this does not then imply that ∃(_**g<sub>Primicorn</sub>**_) is a `Thing`, since it is a distinct _thing_ from ∃(∃(_**g<sub>Primicorn</sub>**_)).
+  
+### The Solipsist
+  
+_TODO_
+  
 ### Reality Is Not a `Thing`
-Reality is not logically self-consistent since it contains contradictory states (existence and nonexistence) of every `Thing` in it.  (Equivalently, it contains contradictory truth assignments for every logically self-consistent existential proposition.)
+Reality is not logically self-consistent since it contains contradictory truth assignments for every logically self-consistent existential proposition.
   
 Therefore, Reality is not a `Thing`; ∃(_**g<sub>Reality</sub>**_) is everywhere false; and it does not contain itself. And, sensationally, Reality does not exist. Of course, it does in a primal sense, but not in the sense used here, which would require that Reality contains itself.
   
-(This is perhaps a good time to point out that this "axiomatization of Reality" makes no attempt to explain _why_ or _how_ Reality does exist. Nor, even, how the crux of it works -- how the "logically self-consistent" property is crucially applied to the subset of _things_, to produce what we here call `Things`. Perhaps one day we will know, but for now the thrill of discovery and pursuit of explanation must suffice.)
- 
+(This is perhaps a good time to point out that this "axiomatization of Reality" makes no attempt to explain _why_ or _how_ Reality does exist. Nor, even, how the crux of it works -- how the "logically self-consistent" property is crucially applied to the subset of _things_, to produce what we here call `Things`. Perhaps one day we will know, but for now the thrill of discovery and pursuit of explanation shall suffice!)
+
   
 _TODO: {_
   

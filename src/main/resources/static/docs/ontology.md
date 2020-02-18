@@ -1,7 +1,7 @@
 # Terms
   
 _concept_  
-: Anything eligible for existence, in the broadest sense. Zero-dimensional points, second-order logic systems, biological evolution, a God that can/not move its own creation, non-trivial factorizations of prime numbers, etc., are all _concepts_.  
+: Anything eligible for existence, in the broadest sense. Zero-dimensional points, second-order logic systems, biological evolution, a God that can/not move its own creation, non-trivial factorizations of prime numbers, the phrase _"xa;lk3@ j94p jf00*0;-+j2y4jd fje]"_, etc., are all _concepts_.  
 : _TODO: More formally, this may be defined as all permutations of the characters of the alphabet of some suitably universal language._
   
 _**c<sub>s</sub>**_  

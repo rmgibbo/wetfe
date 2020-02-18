@@ -23,23 +23,21 @@
 # Exposition
   
 - Let `Thing` mean any logically self-consistent _thing_, where _thing_ is taken as broadly as possible.
+- Let __T<sub>s</sub>__ mean some instance of a `Thing`, where "__<sub>s</sub>__" is any string that helps identify the instance.
+- Let ∃(_**g**_) indicate the existential proposition of some _thing **g**_.
+- Let ∃(__T<sub>s</sub>__) indicate the existential proposition of some `Thing` __T<sub>s</sub>__.
+- Let `Universe` mean some subspace of Reality, which contains some (likely uncountably infinite) number of propositions and `Things`. 
   
 Here, `Thing` encompasses "Platonic" concepts such as the number one, or a Euclidean circle; and "physical" concepts such as a proton, or a cat; and "meta-physical" concepts, such as aesthetics, or economics... as long as such _things_ are logically self-consistent.
   
-For example, the non-trivial factorization of a prime number is not a `Thing`, because it does not make sense in its own terms.
+For example, the non-trivial factorization of a prime number is not a `Thing`, because it is contradictory in its own terms.
 Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is everywhere false.
   
 A general method of determining the "logical self-consistency" of some thing _a priori_ is, in principle, unobtainable.
   
-- Let __T<sub>s</sub>__ mean some instance of a `Thing`, where "__<sub>s</sub>__" is any string that helps identify the instance.
+In each case below, we begin by considering the implications of the existential proposition of some `Thing` __T<sub>i</sub>__, within some `Universe`.
+(For the sake of simplicity, we can imagine we're in an empty subspace of Reality, but this is not a necessary assumption.)
   
-In each case below, we begin by considering the implications of the existential proposition of some `Thing` __T<sub>i</sub>__, within some arbitrary subspace of Reality. 
-Here, either no other _thing_ exists, or an arbitrary (likely uncountably infinite) number of other _things_ exist. 
-For the sake of simplicity, we can imagine we're in the former case, but this is not a necessary assumption.
-  
-- Let `universe` mean some such subspace of Reality.
-- Let ∃(_**g**_) indicate the existential proposition of some _thing **g**_.
-- Let ∃(__T__) indicate the existential proposition of some `Thing` __T__.
   
 _TODO: {~~_
   

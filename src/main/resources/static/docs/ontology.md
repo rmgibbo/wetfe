@@ -18,9 +18,6 @@ __T<sub>s</sub>__
   
 existence  
 : A _concept_ exists iff its existential proposition is a `Thing`.
-
-Reality  
-: The exclusive container of every extant _concept_.
   
 existential proposition, `EXP`  
 : The proposition of a _concept_ _**c<sub>s</sub>**_ that comprehensively implies that _**c<sub>s</sub>**_ exists when it is true, and that _**c<sub>s</sub>**_ does not exist when it is false.
@@ -30,9 +27,12 @@ existential proposition, `EXP`
   
 ∃(__T<sub>s</sub>__)  
 : The existential proposition of some `Thing` __T<sub>s</sub>__.
+
+Reality  
+: The exclusive container of every extant _concept_.
   
 `Realm`  
-: Some partition of Reality, which contains zero or more (likely uncountably infinite) number of existential propositions and `Things`.
+: Some partition of Reality, which contains zero or more (likely uncountably infinite) number of extant _concepts_.
   
 # Axioms of Reality
   
@@ -59,16 +59,20 @@ existential proposition, `EXP`
   
 Reality is not logically self-consistent since it contains contradictory truth assignments for every logically self-consistent existential proposition.
   
-Therefore, Reality is not a `Thing`; ∃(_**c<sub>Reality</sub>**_) is exclusively false; and it does not contain itself. And, sensationally, Reality does not exist. Of course, it does in a primal sense, but not in the sense used here, which would require that Reality contains itself.
+Therefore, by definition, Reality is not a `Thing`.
   
-Thus, this "axiomatization of Reality" makes no attempt to explain _why_ or _how_ Reality does exist. Nor, even, how the crux of it works -- how the "logically self-consistent" property is crucially applied to the subset of _concepts_, to produce what we here call `Things`. Perhaps one day we will know, but for now the thrill of discovery and pursuit of explanation shall suffice!
+Reality is also not an existential proposition.
   
-### `Thing`
+Therefore by [1], sensationally, Reality does not exist. Of course, it does exist in a primal sense, but not by the definition used here, which would require that Reality contains itself (as an extant _concept_).
   
-`Thing` encompasses "Platonic" _concepts_ such as the number one, or a Euclidean circle; and "physical" _concepts_ such as a photon, or a cat; and "meta-physical" _concepts_, such as aesthetics, or economics... as long as such _concepts_ are logically self-consistent.
+Accordingly, this "axiomatization of Reality" makes no attempt to explain _why_ or _how_ Reality does exist. Nor, even, how the crux of it works -- how the "logically self-consistent" property is crucially applied to the subset of _concepts_, to produce what we here call `Things`. Perhaps one day we will know, but for now the thrill of discovery and pursuit of explanation shall suffice!
+  
+### Things
+  
+The (strict) subset of _concepts_, or `Things`, encompasses "Platonic" _concepts_ such as the number one, or a Euclidean circle; and "physical" _concepts_ such as a photon, or a cat; and "meta-physical" _concepts_, such as aesthetics, or economics... as long as such _concepts_ are logically self-consistent.
   
 For example, the non-trivial factorization of a prime number is not a `Thing`, because it is contradictory in its own terms.
-Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is everywhere false.
+Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is exclusively false.
   
 A general method of determining the "logical self-consistency" of some thing _a priori_ is unknown.
   
@@ -88,6 +92,8 @@ Let's call this infinitely recursive existential proposition _**c<sub>0</sub>**_
 Now by [3], because _**c<sub>0</sub>**_ exists, ∃(_**c<sub>0</sub>**_) is somewhere true, and therefore ∃(_**c<sub>0</sub>**_) = _**c<sub>0</sub>**_ is a `Thing`.
   
 We should now call it ∃(∃(∃(...))) = __T<sub>0</sub>__ = ∃(__T<sub>0</sub>__).
+  
+We should also note that this infinite expansion of existential propositions is common to every one of them, though only __T<sub>0</sub>__ is completely self-similar.
   
 ### The Primicorn
   

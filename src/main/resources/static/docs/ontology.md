@@ -38,8 +38,18 @@ A general method of determining the "logical self-consistency" of some thing _a 
 In each case below, we begin by considering the implications of the existential proposition of some `Thing` __T<sub>i</sub>__, within some `Universe`.
 (For the sake of simplicity, we can imagine we're in an empty subspace of Reality, but this is not a necessary assumption.)
   
+_TODO: {_
   
-_TODO: {~~_
+### __T<sub>0</sub>__
+From [1] we have _"This existential propostion exists."_
+  
+(We may note that this is equivalent to _"An existential proposition of itself exists."_)
+  
+Thus, we know that the _thing_ ∃(∃(∃(...))) exists, because Reality contains all propositions. Let's call this infinitely recursive existential proposition _**e0**_, and note that ∃(∃(∃(...))) = _**e0**_ = ∃(_**e0**_).
+  
+Now by [3], because _**e0**_ exists, ∃(_**e0**_) is somewhere true, and therefore ∃(_**e0**_) = _**e0**_ is a `Thing`.
+  
+We should now call it ∃(∃(∃(...))) = __T<sub>0</sub>__ = ∃(__T<sub>0</sub>__).
   
 ### ∃(T<sub>i</sub>) ∧ ∃(T<sub>j</sub>) &rarr;
   
@@ -68,7 +78,7 @@ _TODO: {~~_
 3. 
 
   
-_TODO: ~~}_
+_TODO: }_
   
 ### TODO
   

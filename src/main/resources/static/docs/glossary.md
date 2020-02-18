@@ -5,19 +5,19 @@ ability
 : Something a given character can do -- or a passive characteristic they may exhibit -- to affect combat, social, or environmental encounters. The four types of abilities are: skills, feats, reactions, and traits.
 
 ability list/sheet
-: The list of abilities that are available to a given player character during encounters. Due to the extensible nature of feats, there are necessarily many available abilities that will not appear in this list.
+: A list of abilities that are available to a given player character during encounters. Due to the extensible nature of feats, such lists can never be exhaustive.
 
 ability point, AP
-: Awarded every even level to player characters. Used to acquire abilities from the ability tree.
+: Awarded every odd level to player characters. Used to acquire abilities from the ability tree.
 
 ability tree
-: The set of abilities -- skills, reactions, and traits -- arranged by their requirements, that all player characters may acquire with ability points.
+: A set of skills, reactions, and traits, arranged by their requirements, that every player character may acquire with ability points.
 
 above/below
 : Refers to the placement of chips (Ⓢ, Ⓟ, Ⓐ, or Ⓣ) in a deque, relative to a different type of chip.
 
 affliction
-: Short-term deleterious effects, such as poisons, bleeding wounds, confusion or panic attacks. Affliction is only maintained during encounters, where it retards healing.
+: Short-term deleterious effects, such as poisons, bleeding wounds, panic attacks, or confusion. Affliction is only maintained during encounters, where it retards healing.
 
 affliction chip, Ⓐ
 : The unit and representation of affliction. They accumulate above soul chips Ⓢ on the damage deque, where each affliction chip dissipates after absorbing one point of healing. They are only maintained during encounters.
@@ -53,7 +53,7 @@ constitution, CON
 : The quality encompassing a being’s physical health, strength, endurance, and tolerance to alcohol and other bodily poisons.
 
 core attribute
-: An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured (anthropomorphically) on a scale from 1 to 20, where 10 roughly indicates a capable adventurer.
+: An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured on scales from 1 to 20, where 10 (on the common scale) roughly corresponds to a forte of a capable adventurer.
 
 core natures
 : `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
@@ -77,7 +77,7 @@ dexterity, DEX
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.
 
 encounter
-: Any combat, social, or environmental event that challenges the wit, prowess, and the luck of an adventuring party.
+: Any combat, social, or environmental event that challenges the wit, prowess, and luck of an adventuring party.
 
 enfeeblement, enfeebled attribute
 : An effect that temporarily weakens one or more core attributes of a being. Any skills governed by an enfeebled attribute are penalized by rolling an additional d6 against the enfeeblement table, which is applied to the accompanying d20 result ℜ.
@@ -188,14 +188,13 @@ trait
 : A type of ability that grants a passive effect to a character. Traits are not rolled (as skills and reactions are), and typically modify other abilities -- or the general rules of the game -- for a character.
 
 trauma
-: Long-term crippling effects, such as from grave injuries or overwhelmingly stressful events. Trauma prevents a character from enjoying the full recuperating effects of sound rests, and are typically difficult to alleviate.
+: Long-term crippling effects, such as from grave injuries or overwhelmingly stressful events. Trauma prevents a character from enjoying the recuperating effects of sound rests, and are typically difficult to alleviate.
 
 trauma chip, Ⓣ
-: The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue deque, where each trauma chip prevents one soul chip from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
+: The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue deque, where each trauma chip prevents _all_ fatigue from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
 
 willpower, WIL
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.
-  
   
   
 Copyright © 2020 Ryan Gibbons

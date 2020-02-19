@@ -54,7 +54,7 @@ Reality
   
 # Exposition
   
-### Reality Is Not a `Thing`
+### Reality Is Not A Thing
   
 Reality is not logically self-consistent since it contains contradictory truth assignments for every logically self-consistent existential proposition.
   
@@ -90,7 +90,7 @@ Now by [3], because _**c<sub>0</sub>**_ exists, ∃(_**c<sub>0</sub>**_) is some
   
 We should now call it ∃(∃(∃(...))) = __T<sub>0</sub>__ = ∃(__T<sub>0</sub>__).
   
-We should also note that this infinite expansion of existential propositions is common to all of them, though only __T<sub>0</sub>__ is completely self-similar.
+We should also note that this infinite expansion of existential propositions is common to all `EXPs`, though only ∃(__T<sub>0</sub>__) is completely self-similar.
   
 ### The Primicorn
   
@@ -122,7 +122,7 @@ We cannot. We cannot, whether or not we had a friend strongly advocating for the
   
 All the axioms tell us is:  
 - __If__ the proposed concept of a Primicorn is "logically self-consistent," then our friend has discovered a `Thing`, and we can be sure that it exists in some subspaces of Reality.  
-- __Otherwise__, our friend _does not_ have a logical concept in mind, but instead the existential proposition of an arbitrary permutation of symbols, which _does_ exists, and is exclusively false.
+- __Otherwise__, our friend _does not_ have a logical concept in mind, but instead the existential proposition of an arbitrary permutation of symbols, which does exist, but is exclusively false.
   
 The fundamental issue is, of course, that we have no method of determining what concepts are "logically self-consistent" a priori. And then, even if we were so equipped, we have no method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories) and experimentation shall avail us.  
   

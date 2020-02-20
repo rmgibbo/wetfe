@@ -51,17 +51,17 @@ Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Real
   
 ### Things vs Concepts
   
-All _concepts_ are, in the literal sense, `Things`. Why make the distinction, then? For two reasons.
+All _concepts_ are, in the literal sense, `Things`. Still, the distinction is useful for two reasons.
   
 First, _concepts_ appeal to the Human (-like) perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves, when we form an existential proposition of them.
+Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of the _meaning_ of the symbols.
   
-So, what does it mean, for symbols to _have meaning_?
+So, what does it mean, for symbols to "have meaning"?
   
-First of all, it is important to note that whatever these _meanings_ that _concepts_ may have are, they are nothing mystical, and nothing anthropomorphic. They are simply `Things` in reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the perspective of the _concept_ as discovered.
+First of all, it is important to note that whatever these "meanings" that _concepts_ may have are, they are nothing mystical, and nothing anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the perspective of the _concept_ as proposed.
   
 Meaningful _concepts_ then, are rich subspaces of related `Things`. (These relationships themselves are, of course, also `Things`.)
   
@@ -70,7 +70,9 @@ On the other hand, if some _concept_ we have in mind is not very meaningful, the
 Thus, _concepts_ encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities, such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of "meaningfulness metric," related to how highly connected they are to other `Things`.
   
 For example, the _concept_ of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms.
-Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition of a _concept_ that exists like any other `Thing`, but almost certainly as a mere permutation of symbols in a sparsely-connected corner of Reality.
+Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition of a _concept_ that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
+  
+(I suspect that even "sparsely-connected" `Things` are related to an uncountable infinity of other `Things`. The theory of infinite cardinals/ordinals should be necessary, at least, to begin explaining the "connectedness" of `Things` within Reality.)
   
 ### Recursion
   
@@ -96,19 +98,28 @@ Then by [3], ∃(_**c<sub>Primicorn</sub>**_) is true, at least somewhere in Rea
   
 Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it seems, for two reasons.
   
-First, by [2], Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned. 
+First, by [2], Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned.
   
-Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that the _meaning_ of _"a Primicorn"_ exists.
+Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that the _meaning_ of _**c<sub>Primicorn</sub>**_ exists.
   
-It implies that (somewhere, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. And, in this case at least, likely not much else.
+It implies that (somewhere in Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. And, in this case at least, likely not much else.
   
-...
+### The Primicorn, Again
   
 _TODO: Refactor {_
+  {{The friend advocating for the Primicorn, and our inability to prove, or decide, a prior whether it's a meaningful concept is still relevant here.}}
 
-The fundamental issue is, of course, that we have no method of determining what concepts are "logically self-consistent" a priori. And then, even if we were so equipped, we have no method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories) and experimentation shall avail us.  
+The fundamental issue is, of course, that we have no method of determining how "meaningful" _concepts_ are a priori. And then, even if we were so equipped, we have no method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories), critique, and experimentation shall avail us.  
   
 _TODO: }_
+  
+### Time
+  
+{{Here be the dragons!}}
+
+### A Perspective
+  
+{{First-person: construct some "toy" subspace of Reality from the principles.}}
   
 # Consequences
   

@@ -61,7 +61,7 @@ What we're really after is the existence of the _meaning_ of the symbols.
   
 So, what does it mean, for symbols to "have meaning"?
   
-First of all, it is important to note that whatever these "meanings" that _concepts_ may have are, they are nothing mystical, and nothing anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the perspective of the _concept_ as proposed.
+First of all, it is important to note that whatever these "meanings" that _concepts_ may have are, they are nothing mystical, and nothing anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the the _concept_ as proposed.
   
 Meaningful _concepts_ then, are rich subspaces of related `Things`. (These relationships themselves are, of course, also `Things`.)
   

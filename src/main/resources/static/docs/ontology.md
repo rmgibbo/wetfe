@@ -47,7 +47,7 @@ existential proposition, `EXP`
   
 The relationship that Reality has with itself is unclear. We could take Reality to _not_ be a `Thing`, and "exist" in some sense other than our working definition. Or, we could take Reality to be a `Thing` that is like a subset is to itself, or to be a `Thing` that is within Reality like any other `Thing`; and in any case we would be consistent with the axioms given here.
   
-Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Reality does exist. Instead, it attempts to provide a framework for explaining how the Human mind (and any other `Thing` possessing similar consciousness) has gained a foothold in Reality, whence it may start exploring its environment more efficiently than by kicking stones.
+Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Reality does exist. Instead, it attempts to provide a framework for explaining how the human mind (and any other `Thing` possessing similar consciousness) has gained a foothold in Reality, whence it may start exploring its environment more efficiently than by kicking stones.
   
 ### Things vs Concepts
   
@@ -102,7 +102,7 @@ First, by [2], Primicorns either do not exist at all, or they do (somewhere) and
   
 Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that the _meaning_ of _**c<sub>Primicorn</sub>**_ exists.
   
-It implies that (somewhere in Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. And, in this case at least, likely not much else.
+It implies that (somewhere within Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. And at least in this case, it's likely unconnected to many other _concepts_.
   
 ### The Primicorn, Again
   

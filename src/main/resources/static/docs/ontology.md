@@ -45,15 +45,15 @@ existential proposition, `EXP`
   
 ### Reality, The Thing?
   
-The relationship that Reality has with itself is unclear. We could take Reality to _not_ be a `Thing`, or to be a `Thing` that is like a subset is to itself, or to be a `Thing` that is within Reality like any other `Thing`; and in any case we would be consistent with the axioms given here.
+The relationship that Reality has with itself is unclear. We could take Reality to _not_ be a `Thing`, and "exist" in some sense other than our working definition. Or, we could take Reality to be a `Thing` that is like a subset is to itself, or to be a `Thing` that is within Reality like any other `Thing`; and in any case we would be consistent with the axioms given here.
   
 Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Reality does exist. Instead, it attempts to provide a framework for explaining how the Human mind (and any other `Thing` possessing similar consciousness) has gained a foothold in Reality, whence it may start exploring its environment more efficiently than by kicking stones.
   
 ### Things vs Concepts
   
-All _concepts_ are, in the literal sense, `Things`. Still, the distinction is useful for two reasons.
+All _concepts_ are, in the literal sense, `Things`. Still, the distinction between the two is useful for two reasons.
   
-First, _concepts_ appeal to the Human (-like) perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
+First, _concepts_ appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
   
 Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
   

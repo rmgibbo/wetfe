@@ -43,29 +43,34 @@ existential proposition, `EXP`
   
 # Exposition
   
-### Reality, The Thing
+### Reality, The Thing?
   
 The relationship that Reality has with itself is unclear. We could take Reality to _not_ be a `Thing`, or to be a `Thing` that is like a subset is to itself, or to be a `Thing` that is within Reality like any other `Thing`; and in any case we would be consistent with the axioms given here.
   
-Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Reality does exist. Instead, it attempts to provide a framework for explaining how the Human mind (and any other `Thing` possessing similar consciousness) has gained a foothold in Reality, whence it may start exploring its environment.
+Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Reality does exist. Instead, it attempts to provide a framework for explaining how the Human mind (and any other `Thing` possessing similar consciousness) has gained a foothold in Reality, whence it may start exploring its environment more efficiently than by kicking stones.
   
 ### Things vs Concepts
   
-...
+All _concepts_ are, in the literal sense, `Things`. Why make the distinction, then? For two reasons.
   
-_TODO: Rewrite {_
+First, _concepts_ appeal to the Human (-like) perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-The strict subset of _concepts_ that are `Things` encompasses "Platonic" _concepts_ such as the number one, or a Euclidean circle; and "physical" _concepts_ such as a photon, or a cat; and "meta-physical" _concepts_, such as aesthetics, or economics... as long as such _concepts_ are logically self-consistent.
+Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves, when we form an existential proposition of them.
   
-For example, the non-trivial factorization of a prime number is not a `Thing`, because it is contradictory in its own terms.
-Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition __that exists in Reality__, but is not a `Thing`, implicates no `Thing`, and is exclusively false.
+What we're really after is the existence of the _meaning_ of the symbols.
   
-A general method of determining the "logical self-consistency" of some thing _a priori_ is unknown.
+So, what does it mean, for symbols to _have meaning_?
   
-In each case below, we begin by considering the implications of the existential proposition of some _concept_, within some `Realm`.
-(For the sake of simplicity, we can imagine we're in an empty subspace of Reality, but this is not a necessary assumption.)
+First of all, it is important to note that whatever these _meanings_ that _concepts_ may have are, they are nothing mystical, and nothing anthropomorphic. They are simply `Things` in reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the perspective of the _concept_ as discovered.
   
-_TODO: }_
+Meaningful _concepts_ then, are rich subspaces of related `Things`. (These relationships themselves are, of course, also `Things`.)
+  
+On the other hand, if some _concept_ we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` that reference it.
+  
+Thus, _concepts_ encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities, such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of "meaningfulness metric," related to how highly connected they are to other `Things`.
+  
+For example, the _concept_ of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms.
+Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition of a _concept_ that exists like any other `Thing`, but almost certainly as a mere permutation of symbols in a sparsely-connected corner of Reality.
   
 ### Recursion
   
@@ -81,7 +86,7 @@ We might note that Reality seems to brook the concepts of "recursion", "equality
   
 ### The Primicorn
   
-Let _**c<sub>Primicorn</sub>**_ mean the non-trivial factorization of a prime number.
+Let _**c<sub>Primicorn</sub>**_ mean _"the non-trivial factorization of a prime number"_.
   
 Now, we may consider the `EXP` ∃(_**c<sub>Primicorn</sub>**_), which says _"The non-trivial factorization of a prime number exists."_
   
@@ -93,21 +98,14 @@ Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it 
   
 First, by [2], Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned. 
   
-Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that the _concept_ of a Primicorn exists.
+Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that the _meaning_ of _"a Primicorn"_ exists.
   
-It implies that (somewhere, for instance _here_) the string _"The non-trivial factorization of a prime number"_ exists.
+It implies that (somewhere in Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. And, in this case at least, likely not much else.
+  
 ...
+  
+_TODO: Refactor {_
 
-_TODO: Rewrite {_
-  
-How can we be sure that Primicorns, in fact, do not exist?
-  
-We cannot. We cannot, whether or not we had a friend strongly advocating for their existence.
-  
-All the axioms tell us is:  
-- __If__ the proposed concept of a Primicorn is "logically self-consistent," then our friend has discovered a `Thing`, and we can be sure that it exists in some subspaces of Reality.  
-- __Otherwise__, our friend _does not_ have a logical concept in mind, but instead the existential proposition of an arbitrary permutation of symbols, which does exist, but is exclusively false.
-  
 The fundamental issue is, of course, that we have no method of determining what concepts are "logically self-consistent" a priori. And then, even if we were so equipped, we have no method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories) and experimentation shall avail us.  
   
 _TODO: }_
@@ -116,11 +114,10 @@ _TODO: }_
   
 - No `Thing` is absolutely fundamental, nor absolutely emergent.
 - Every `Thing` is relatively fundamental, and relatively emergent.
-- Reality is a "multiverse" -- an infinite space of extant logical concepts, partitionable into subspaces called `Realms`.
-- Reality does not contain itself.
+- Reality is a "multiverse" -- an infinite space of `Things`, partitionable into subspaces called `Realms`.
 - Every `Thing` exists, in some `Realms`.
 - Every `Thing` does not exist, in some `Realms`.
-- Platonic reality, physical reality, psychological reality, etc., are all perspectives on an underlying Reality, which implies all of them.
+- The Platonic world, physical world, psychological world, etc., are all perspectives on an underlying Reality, which implies all of them.
   
   
 Copyright © 2020 Ryan Gibbons

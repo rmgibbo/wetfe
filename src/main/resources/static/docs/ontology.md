@@ -53,7 +53,7 @@ All _concepts_ are, in the literal sense, `Things`. Still, the distinction betwe
   
 First, _concepts_ appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have the presumed meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
+Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
@@ -140,11 +140,11 @@ Instead, the existential proposition is one of our footholds in Reality, which w
   
 Given all this, we may then ask what is special about existential propositions, when even if we do employ them as cornerstones of our theories, Reality itself seems to ignore their meaning altogether?
   
-Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between symbols and minds and an infinity of other `Things`.
+Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between the symbols and the minds and an infinity of other `Things`.
   
 When we form an existential proposition of some concept, we are _not_ querying Reality as we may use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
-This seems fair, considering that we are melting stones that every other life form we know about has only tripped over, unseen.
+This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
   
 ### Time
   

@@ -126,7 +126,7 @@ Crucially, the former class of problems is ubiquitous (at least for human minds)
   
 Let's summon the Primicorn yet again, and suppose our friend is still fervently advocating for its veracity. This time, they bring a pencil to the proverbial table.
   
-"Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP, but which hinges on the existence of a Primicorn. We, of course, are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
+"Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP -- but it hinges on the existence of a Primicorn. We, of course, are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
   
 We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but its _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
   

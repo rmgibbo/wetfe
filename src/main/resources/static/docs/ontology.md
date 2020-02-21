@@ -95,9 +95,9 @@ Then by [3], ∃(_**c<sub>Primicorn</sub>**_) is true, at least somewhere in Rea
   
 Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it seems, for two reasons.
   
-First, by [2], Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned.
+First, Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned.
   
-Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that a _meaning_ of _**c<sub>Primicorn</sub>**_ exists.
+Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that a particular meaning of _**c<sub>Primicorn</sub>**_ exists.
   
 It implies that (somewhere within Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. In this case, it's likely sparsely connected to other `Things`.
   

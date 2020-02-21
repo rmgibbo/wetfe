@@ -128,11 +128,11 @@ Let's summon the Primicorn yet again, and suppose our friend is still fervently 
   
 We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but it's _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
   
-How can this be? How can we both wrap the exactly same symbols in an existential proposition, and get different answers back, so to speak?
+How can this be? How can we both wrap exactly the same symbols in an existential proposition, and get different answers back, so to speak?
   
 First a pedantic note, using the metaphor: we _do_ both get the same answer. The answer to _every_ existential question is "Yes, somewhere! And no, somewhere!", which means "Yes, those symbols exist somewhere; and no, they don't exist somewhere, too."
   
-But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over, or walk up to and kick, if we're brave enough. And after we do -- assuming we survive the ordeal -- we get a shock, and start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
+But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over -- or walk up to and kick, if we're brave enough. And after we do -- assuming we survive the ordeal -- we get a shock, and start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
   
 In the case of the (not-)Primicorn, the theory precedes the kick (which is the normal order, for humans). But the question remains: did Reality somehow misinterpret the symbols when our friend invoked them, versus when we did, so that they were somehow granted access to the opposite meaning than intended? Emphatically: no, Reality does not "interpret" our symbols, nor our meanings.
   
@@ -142,7 +142,7 @@ Given all this, we may then ask what is special about existential propositions, 
   
 Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between the symbols and the minds and an infinity of other `Things`.
   
-When we form an existential proposition of some concept, we are _not_ querying Reality as we may use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
+When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
 This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
   

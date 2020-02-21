@@ -107,11 +107,7 @@ It implies that (somewhere within Reality, for instance _here_) the string _"the
   
 Perhaps we have a friend who insists that Primicorns exist.
   
-"I have a Primicorn in mind right now, and it makes complete sense!" they might say.
-
-We may even take them at their word and assume that they do have a convincing concept in mind.
-
-How can we be sure that Primicorns, in fact, do not exist?
+"I have a Primicorn in mind right now, and it makes complete sense!" they might say. We may even take them at their word and assume that they do have a convincing concept in mind. How can we be sure that Primicorns, in fact, do not exist?
 
 We cannot. We cannot, whether or not we had a friend strongly advocating for their existence.
 
@@ -148,7 +144,7 @@ Given all this, we may then ask what is special about existential propositions, 
   
 Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between symbols and minds and an infinity of other `Things`.
   
-When we form an existential proposition of some concept, we are _not_ querying Reality as we may use our native language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` than anything else -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
+When we form an existential proposition of some concept, we are _not_ querying Reality as we may use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
 This seems fair, considering that we are melting stones that every other life form we know about has only tripped over, unseen.
   

@@ -7,7 +7,6 @@
 ### [2] Principle of Instantiation
   
 - Every `Thing` is the implication of an existential proposition.
-- The _meaning_ of existential propositions, as defined, exists.
   
 ### [3] Principle of Non-Exclusive Implication
   

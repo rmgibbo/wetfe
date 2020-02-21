@@ -81,7 +81,7 @@ Let's call this infinitely recursive existential proposition __T<sub>0</sub>__, 
   
 This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [2] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(__T<sub>0</sub>__) is completely self-similar.
   
-We might note that Reality seems to brook the concepts of "recursion", "equality", and "infinity"; and we may wonder how highly-connected each of these `Things` are...
+We might note that Reality seems to brook the concepts of "recursion", "equality", and "infinity"; and we may wonder how highly-connected each of these `Things` is...
   
 ### The Primicorn
   

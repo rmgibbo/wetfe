@@ -2,17 +2,15 @@
   
 ### [1] Principle of the Existential Thing
   
-- Everything that exists, such as this string, is a `Thing`.
+- Every `Thing`, such as this sentence, exists.
+  
+### [2] Principle of Instantiation
+  
 - Every `Thing` is the implication of an existential proposition.
-- Existential propositions are `Things`.
-  
-### [2] Principle of Pre-Instantiation
-  
-- Every `Thing` exists.
   
 ### [3] Principle of Non-Exclusive Implication
   
-- Every proposition that is a `Thing` is true _**and**_ false.
+- Every proposition is true _**and**_ false.
   
 ### [4] Definition of Reality
   

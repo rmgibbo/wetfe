@@ -126,7 +126,7 @@ Let's summon the Primicorn yet again, and suppose our friend is still fervently 
   
 "Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP -- but it hinges on the existence of a Primicorn. We, of course, are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
   
-We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but its _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
+We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but it's _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
   
 How can this be? How can we both wrap the exactly same symbols in an existential proposition, and get different answers back, so to speak?
   

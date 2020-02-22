@@ -9,6 +9,9 @@
     --affliction-color: crimson;
     --trauma-color: limegreen;
 }
+.wetfe-brand-icon {
+    background-image: url("images/galaxy-icon.webp");
+}
 .we-navbar {
     box-shadow: 0 1px 8px black;
 }

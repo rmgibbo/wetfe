@@ -1,6 +1,6 @@
 ---
 ---
-
+$section-headings-color: #571599;
 @import "{{ site.theme }}";
 .page-header {
   color: $header-heading-color;
@@ -8,16 +8,17 @@
   background-color: #343a40;
   background-image: url("../../web/images/cosmos.jpg");
   background-repeat: no-repeat;
+  background-size: cover;
 
   @include large {
-    padding: 5rem 6rem;
+    padding: 2rem 4rem;
   }
 
   @include medium {
-    padding: 3rem 4rem;
+    padding: 1rem 2rem;
   }
 
   @include small {
-    padding: 2rem 1rem;
+    padding: 0.5rem 1rem;
   }
 }

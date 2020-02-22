@@ -2,17 +2,15 @@
   
 ### [1] Principle of the Existential Thing
   
-- Everything that exists, such as this string, is a `Thing`.
+- Every `Thing`, such as this sentence, exists.
+  
+### [2] Principle of Instantiation
+  
 - Every `Thing` is the implication of an existential proposition.
-- Existential propositions are `Things`.
-  
-### [2] Principle of Pre-Instantiation
-  
-- Every `Thing` exists.
   
 ### [3] Principle of Non-Exclusive Implication
   
-- Every proposition that is a `Thing` is true _**and**_ false.
+- Every proposition is true _**and**_ false.
   
 ### [4] Definition of Reality
   
@@ -55,13 +53,13 @@ All _concepts_ are, in the literal sense, `Things`. Still, the distinction betwe
   
 First, _concepts_ appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, _concepts_ are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have the presumed meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
+Second, _concepts_ are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all _concepts_ are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
 So, what does it mean, for symbols to "have meaning"?
   
-First of all, it is important to note that whatever these "meanings" that _concepts_ may have are, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` that compose the the _concept_ as proposed.
+First of all, it is important to note that whatever these "meanings" that _concepts_ may have are, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` part of the _concept_ as proposed.
   
 Meaningful _concepts_ then, are rich subspaces of related `Things`; where the relations, or "connections," themselves are also `Things`.
   
@@ -81,9 +79,9 @@ By [1], ∃(∃(∃(...))) exists.
   
 Let's call this infinitely recursive existential proposition __T<sub>0</sub>__, and note that ∃(∃(∃(...))) = __T<sub>0</sub>__ = ∃(__T<sub>0</sub>__).
   
-This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [1] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(__T<sub>0</sub>__) is completely self-similar.
+This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [2] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(__T<sub>0</sub>__) is completely self-similar.
   
-We might note that Reality seems to brook the concepts of "recursion", "equality", and "infinity"; and we may wonder how highly-connection those `Things` are...
+We might note that Reality seems to brook the concepts of "recursion", "equality", and "infinity"; and we may wonder how highly-connected each of these `Things` is...
   
 ### The Primicorn
   
@@ -97,9 +95,9 @@ Then by [3], ∃(_**c<sub>Primicorn</sub>**_) is true, at least somewhere in Rea
   
 Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it seems, for two reasons.
   
-First, by [2], Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned.
+First, Primicorns either do not exist at all, or they do (somewhere) and -- like all `Things` -- are _discovered_, not summoned.
   
-Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that a _meaning_ of _**c<sub>Primicorn</sub>**_ exists.
+Second, the fact that ∃(_**c<sub>Primicorn</sub>**_) is true does _not_ imply that a particular meaning of _**c<sub>Primicorn</sub>**_ exists.
   
 It implies that (somewhere within Reality, for instance _here_) the string _"the non-trivial factorization of a prime number"_ exists. In this case, it's likely sparsely connected to other `Things`.
   
@@ -107,11 +105,7 @@ It implies that (somewhere within Reality, for instance _here_) the string _"the
   
 Perhaps we have a friend who insists that Primicorns exist.
   
-"I have a Primicorn in mind right now, and it makes complete sense!" they might say.
-
-We may even take them at their word and assume that they do have a convincing concept in mind.
-
-How can we be sure that Primicorns, in fact, do not exist?
+"I have a Primicorn in mind right now, and it makes complete sense!" they might say. We may even take them at their word and assume that they do have a convincing concept in mind. How can we be sure that Primicorns, in fact, do not exist?
 
 We cannot. We cannot, whether or not we had a friend strongly advocating for their existence.
 
@@ -130,15 +124,15 @@ Crucially, the former class of problems is ubiquitous (at least for human minds)
   
 Let's summon the Primicorn yet again, and suppose our friend is still fervently advocating for its veracity. This time, they bring a pencil to the proverbial table.
   
-"Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP, but which hinges on the existence of a Primicorn. We, of course, are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
+"Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP -- but it hinges on the existence of a Primicorn. We, of course, are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
   
-We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but its _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
+We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but it's _used_ incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
   
-How can this be? How can we both wrap the exactly same symbols in an existential proposition, and get different answers back, so to speak?
+How can this be? How can we both wrap exactly the same symbols in an existential proposition, and get different answers back, so to speak?
   
 First a pedantic note, using the metaphor: we _do_ both get the same answer. The answer to _every_ existential question is "Yes, somewhere! And no, somewhere!", which means "Yes, those symbols exist somewhere; and no, they don't exist somewhere, too."
   
-But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over, or walk up to and kick, if we're brave enough. And after we do -- assuming we survive the ordeal -- we get a shock, and start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
+But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over -- or walk up to and kick, if we're brave enough. And after we do -- assuming we survive the ordeal -- we get a shock, and start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
   
 In the case of the (not-)Primicorn, the theory precedes the kick (which is the normal order, for humans). But the question remains: did Reality somehow misinterpret the symbols when our friend invoked them, versus when we did, so that they were somehow granted access to the opposite meaning than intended? Emphatically: no, Reality does not "interpret" our symbols, nor our meanings.
   
@@ -146,19 +140,11 @@ Instead, the existential proposition is one of our footholds in Reality, which w
   
 Given all this, we may then ask what is special about existential propositions, when even if we do employ them as cornerstones of our theories, Reality itself seems to ignore their meaning altogether?
   
-Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between symbols and minds and an infinity of other `Things`.
+Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between the symbols and the minds and an infinity of other `Things`.
   
-When we form an existential proposition of some concept, we are _not_ querying Reality as we may use our native language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` than anything else -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
+When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
-This seems fair, considering that we are melting stones that every other life form we know about has only tripped over, unseen.
-  
-### Time
-  
-{{Here be the dragons!}}
-
-### Free Will
-  
-{{Oh, and here too!}}
+This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
   
 # Summary
   

@@ -146,14 +146,6 @@ When we form an existential proposition of some concept, we are _not_ querying R
   
 This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
   
-### Time
-  
-{{Here be the dragons!}}
-
-### Free Will
-  
-{{Oh, and here too!}}
-  
 # Summary
   
 - Every `Thing` exists, from every illogical thought we've had, to every tree we've climbed.

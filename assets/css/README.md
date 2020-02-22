@@ -1,0 +1,1 @@
+This is used to customize the Sass Jekyll theme provided by GitHub Pages.

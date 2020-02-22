@@ -4,7 +4,7 @@
   
 - Every `Thing`, such as this sentence, exists.
   
-### [2] Principle of Instantiation
+### [2] Principle of Existential Logic
   
 - Every `Thing` is the implication of an existential proposition.
   

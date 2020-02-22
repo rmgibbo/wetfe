@@ -2,17 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
 
     <base target="_bottom">
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
-          integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
-          integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="encounter.css">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
+          rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="encounter.css" rel="stylesheet">
 
     <title>Encounter</title>
 </head>
@@ -20,7 +20,8 @@
 
 <nav class="navbar we-navbar sticky-top navbar-light mb-1 bg-light">
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_items">
+    <!-- HAMBURGER -->
+    <button class="navbar-toggler" data-target="#navbar_items" data-toggle="collapse" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -44,7 +45,7 @@
                                 </span>
                             </div>
                             <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="load-data-input" multiple>
+                                <input class="custom-file-input" id="load-data-input" multiple type="file">
                                 <label class="custom-file-label" for="load-data-input"
                                        id="load-data-input-label"></label>
                             </div>
@@ -59,8 +60,8 @@
                     <!-- SEARCH BAR -->
                     <div class="col-6">
                         <div class="input-group">
-                            <input class="form-control" type="search" placeholder="Search by Name"
-                                   onsearch="onNameSearch(this)">
+                            <input class="form-control" onsearch="onNameSearch(this)" placeholder="Search by Name"
+                                   type="search">
                             <div class="input-group-append">
                                 <button class="btn btn-dark" id="name-search-add-btn" type="button">
                                     <span>Add</span>
@@ -71,13 +72,15 @@
 
                     <!-- ADD PLAYER -->
                     <div class="col-3 dropdown">
-                        <button class="btn btn-dark btn-block dropdown-toggle we-add-player-btn mr-10" type="button"
-                                data-toggle="dropdown">
+                        <button class="btn btn-dark btn-block dropdown-toggle we-add-player-btn mr-10"
+                                data-toggle="dropdown"
+                                type="button">
                             <i class="fas fa-grin-beam-sweat fa-lg">&nbsp;</i>
                         </button>
                         <div class="dropdown-menu we-player-ddmenu">
-                            <button class="dropdown-item" type="button" data-playermap-key="*"
-                                    onclick="addSelectedPlayerToParticipants(this)">
+                            <button class="dropdown-item" data-playermap-key="*"
+                                    onclick="addSelectedPlayerToParticipants(this)"
+                                    type="button">
                                 <span>ADD ALL</span>
                             </button>
                         </div>
@@ -85,8 +88,9 @@
 
                     <!-- ADD BEING -->
                     <div class="col-3 dropdown">
-                        <button class="btn btn-dark btn-block dropdown-toggle we-add-being-btn mr10" type="button"
-                                data-toggle="dropdown">
+                        <button class="btn btn-dark btn-block dropdown-toggle we-add-being-btn mr10"
+                                data-toggle="dropdown"
+                                type="button">
                             <i class="fas fa-spider fa-lg">&nbsp;</i>
                         </button>
                         <div class="dropdown-menu we-being-ddmenu"></div>
@@ -104,8 +108,8 @@
     <div class="row">
         <!-- NEXT TURN -->
         <div class="col text-center">
-            <button class="btn btn-outline-primary mb-1" id="next-turn-btn" type="button"
-                    onclick="activateNextParticipant()">
+            <button class="btn btn-outline-primary mb-1" id="next-turn-btn" onclick="activateNextParticipant()"
+                    type="button">
                 <i class="fas fa-hourglass-end">&nbsp;</i>
                 <span>Begin Round 1</span>
             </button>
@@ -125,13 +129,14 @@
         <!-- KEY MODE -->
         <div class="col text-center">
             <div class="btn-group-horizontal btn-group-sm btn-group-toggle" data-toggle="buttons">
-                <label class="btn btn-sm btn-outline-success active" id="key-mod-listener" onclick="onClickKeyModBtn(this)">
-                    <input type="radio" id="key-mod-listener-input" autocomplete="off" checked>
-                        <span>Key Mode ON</span>
+                <label class="btn btn-sm btn-outline-success active" id="key-mod-listener"
+                       onclick="onClickKeyModBtn(this)">
+                    <input autocomplete="off" checked id="key-mod-listener-input" type="radio">
+                    <span>Key Mode ON</span>
                 </label>
                 <label class="btn btn-sm btn-outline-dark" id="key-mod-muter" onclick="onClickKeyModBtn(this)">
-                    <input type="radio" id="key-mod-muter-input" autocomplete="off">
-                        <span>Key Mode OFF</span>
+                    <input autocomplete="off" id="key-mod-muter-input" type="radio">
+                    <span>Key Mode OFF</span>
                 </label>
             </div>
         </div>
@@ -154,32 +159,32 @@
         <table class="table table-hover table-sm we-ptable">
             <thead class="thead-dark">
             <tr>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Round Order">#</th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Momentum">𝓂</th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Condition">ℂ</th>
-                <th scope="col" class="text-left" data-toggle="tooltip" title="Participant Key">Key</th>
-                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Round Order">#</th>
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Momentum">𝓂</th>
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Condition">ℂ</th>
+                <th class="text-left" data-toggle="tooltip" scope="col" title="Participant Key">Key</th>
+                <th class="text-center" data-html="true" data-toggle="tooltip" scope="col"
                     title="<h6>Health Deque</h6><span class='we-text-power-light'>power chips</span><br><span class='we-text-soul-light'>soul chips</span>">
                     <span class="we-text-soul-light">[H]</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                <th class="text-center" data-html="true" data-toggle="tooltip" scope="col"
                     title="<h6>Damage Deque</h6><span class='we-text-affliction-light'>affliction chips</span><br><span class='we-text-soul-light'>soul chips</span>">
                     <span class="we-text-soul-light">[D]</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" data-html="true"
+                <th class="text-center" data-html="true" data-toggle="tooltip" scope="col"
                     title="<h6>Fatigue Deque</h6><span class='we-text-trauma-light'>trauma chips</span><br><span class='we-text-soul-light'>soul chips</span>">
                     <span class="we-text-soul-light">[F]</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Soul Pool">
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Soul Pool">
                     <span class="we-text-soul-light text-weight-bold">SP</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Stagger Threshold"><span
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Stagger Threshold"><span
                         class="we-text-stagger-light">Ḡ</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Constitution"><span
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Constitution"><span
                         class="we-text-con">CON</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Dexterity"><span class="we-text-dex">DEX</span>
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Dexterity"><span class="we-text-dex">DEX</span>
                 </th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Intelligence"><span
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Intelligence"><span
                         class="we-text-int">INT</span></th>
-                <th scope="col" class="text-center" data-toggle="tooltip" title="Willpower"><span class="we-text-wil">WIL</span>
+                <th class="text-center" data-toggle="tooltip" scope="col" title="Willpower"><span class="we-text-wil">WIL</span>
                 </th>
-                <th scope="col" class="text-right"></th>
+                <th class="text-right" scope="col"></th>
             </tr>
             </thead>
             <tbody class="we-ptbody">
@@ -191,7 +196,7 @@
     <!-- RESET -->
     <div class="row justify-content-end">
         <div class="col text-right">
-            <button class="btn btn-sm btn-outline-danger" id="reset-btn" type="button" onclick="resetParticipantList()">
+            <button class="btn btn-sm btn-outline-danger" id="reset-btn" onclick="resetParticipantList()" type="button">
                 <i class="fas fa-redo-alt">&nbsp;</i>
                 <span>Reset</span>
             </button>
@@ -200,16 +205,16 @@
 
 </div> <!-- main container -->
 
-<!-- CLONE: PLAYER DROPDOWN -->
-<button class="dropdown-item we-player-dditem we-clone-element d-none" type="button"
-        onclick="addSelectedPlayerToParticipants(this)"></button>
+       <!-- CLONE: PLAYER DROPDOWN -->
+<button class="dropdown-item we-player-dditem we-clone-element d-none" onclick="addSelectedPlayerToParticipants(this)"
+        type="button"></button>
 
-<!-- CLONE: BEING DROPDOWN -->
-<button class="dropdown-item we-being-dditem we-clone-element d-none" type="button"
-        onclick="addSelectedBeingToParticipants(this)"></button>
+       <!-- CLONE: BEING DROPDOWN -->
+<button class="dropdown-item we-being-dditem we-clone-element d-none" onclick="addSelectedBeingToParticipants(this)"
+        type="button"></button>
 
-<!-- CLONE: PARTICIPANT TOOLBAR BUTTON -->
-<button class="btn btn-sm we-pbtn we-clone-element mr-1 d-none" type="button" onclick="selectParticipant(this)">
+       <!-- CLONE: PARTICIPANT TOOLBAR BUTTON -->
+<button class="btn btn-sm we-pbtn we-clone-element mr-1 d-none" onclick="selectParticipant(this)" type="button">
     <span class="we-pbtn-txt"></span></button>
 
 <table class="d-none">
@@ -217,7 +222,7 @@
     <tbody class="d-none">
     <!-- CLONE: PARTICIPANT ROW -->
     <tr class="we-prow we-clone-element d-none">
-        <th scope="row" class="we-prow-order text-center align-middle" data-toggle="tooltip" title="100.0"></th>
+        <th class="we-prow-order text-center align-middle" data-toggle="tooltip" scope="row" title="100.0"></th>
         <td class="we-prow-momentum text-center align-middle text-monospace" data-pstate-key="momentum"></td>
         <td class="we-prow-condition text-center align-middle" data-pstate-key="condition">
             <h4><i class="we-prow-condition-i fas" data-toggle="tooltip"></i></h4></td>
@@ -236,15 +241,15 @@
         <td class="text-center align-middle text-monospace">
             <span class="we-prow-stagger we-text-stagger" data-pstate-key="stagger"></span></td>
         <td class="text-center align-middle text-monospace">
-            <span class="we-prow-con we-text-con" data-pstate-key="con" data-attr-state=""></span></td>
+            <span class="we-prow-con we-text-con" data-attr-state="" data-pstate-key="con"></span></td>
         <td class="text-center align-middle text-monospace">
-            <span class="we-prow-dex we-text-dex" data-pstate-key="dex" data-attr-state=""></span></td>
+            <span class="we-prow-dex we-text-dex" data-attr-state="" data-pstate-key="dex"></span></td>
         <td class="text-center align-middle text-monospace">
-            <span class="we-prow-int we-text-int" data-pstate-key="int" data-attr-state=""></span></td>
+            <span class="we-prow-int we-text-int" data-attr-state="" data-pstate-key="int"></span></td>
         <td class="text-center align-middle text-monospace">
-            <span class="we-prow-wil we-text-wil" data-pstate-key="wil" data-attr-state=""></span></td>
+            <span class="we-prow-wil we-text-wil" data-attr-state="" data-pstate-key="wil"></span></td>
         <td class="text-right align-middle">
-            <button class="btn btn-sm btn-outline-secondary d-none" type="button" onclick="removeParticipant(this)">
+            <button class="btn btn-sm btn-outline-secondary d-none" onclick="removeParticipant(this)" type="button">
                 <i class="fas fa-trash"></i>
             </button>
         </td>
@@ -252,24 +257,25 @@
     </tbody>
 </table>
 
-<!-- SERIALIZATION TEXT AREA -->
-<!--<textarea id="data-serialization-text" class="form-control"></textarea>-->
+       <!-- Bottom Navbar -->
+<nav class="navbar we-navbar fixed-bottom navbar-light bg-light mb-1">
+    <span class="navbar-text">
+        <div>&copy; 2020&nbsp;<a href="https://github.com/rmgibbo">Ryan Gibbons</a></div>
+    </span>
+    <a class="navbar-brand" href="https://github.com/rmgibbo/wetfe">
+        <i class="fab fa-github" data-toggle="tooltip" title="WETFE on GitHub"></i>
+    </a>
+</nav>
 
-<!-- SCRIPTS -->
-<!-- Bootstrap Stack -->
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-<!-- Kotlin transpiled WETFE core code -->
+       <!-- SCRIPTS -->
+       <!-- Bootstrap Stack -->
+<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script crossorigin="anonymous" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+       <!-- Kotlin transpiled WETFE core code -->
 <script src="kotlin.js"></script>
 <script src="wetfe.js"></script>
-<!-- DOM manipulating WETFE scripts -->
+       <!-- DOM manipulating WETFE scripts -->
 <script src="text.js"></script>
 <script src="encounter.js"></script>
 </body>

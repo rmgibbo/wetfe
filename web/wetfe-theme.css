@@ -181,16 +181,14 @@
     text-shadow: 0 0 1px black;
     border: 2px solid var(--power-color);
     border-radius: 4px;
-    /*  -webkit-text-stroke-width: 1px;
-      -webkit-text-stroke-color: black; */
 }
-.btn.we-state-change[data-state-target="BRK"] {
+.btn.we-state-change[data-state-target="AFL"] {
     color: var(--affliction-color);
     text-shadow: 0 0 1px black;
     border: 2px solid var(--affliction-color);
     border-radius: 4px;
 }
-.btn.we-state-change[data-state-target="AFL"] {
+.btn.we-state-change[data-state-target="TRM"] {
     color: var(--trauma-color);
     text-shadow: 0 0 1px black;
     border: 2px solid var(--trauma-color);

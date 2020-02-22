@@ -2,123 +2,147 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <title>Character Manager</title>
     <base target="_bottom">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css"
-          integrity="sha384-rdyFrfAIC05c5ph7BKz3l5NG5yEottvO/DQ0dCrwD8gzeQDjYBHNr1ucUpQuljos" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
-          integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
-    <link rel="stylesheet" href="character-manager.css">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/solid.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/brands.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.5.0/css/fontawesome.css"
+          rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="character-manager.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar we-navbar navbar-light bg-light mb-2">
 
-    <!-- HAMBURGER -->
-    <button class="navbar-toggler" id="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_items"
-            onclick="toggleEditModeNavSpan()">
+    <!-- HAMBURGER BUTTON -->
+    <button class="navbar-toggler" data-target="#navbar_items" data-toggle="collapse" id="navbar-toggler" type="button">
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- SAVE CHARACTER -->
-    <div class="collapse navbar-collapse my-2" id="navbar_items">
-        <div class="navbar-nav my-2">
-            <div class="nav-item">
-                <button class="btn btn-block btn-dark text-center align-middle" style="color: var(--power-color);"
-                        id="level-up-btn" type="button" onclick="levelUp()">
-                    <i class="fas fa-grin-stars fa-2x">&nbsp;</i>
-                    <span style="font-size: 150%;">Level The Fuck Up!</span>
+    <!-- EDIT MODE BUTTON -->
+    <div class="navbar-text text-left">
+        <span class="text-left" id="edit-mode-nav-span">
+                <button class="btn btn-danger" data-toggle="tooltip" id="edit-mode-btn" onclick="setEditMode(true)"
+                        title="Edit Character"
+                        type="button">
+                  <i class="fas fa-edit"></i>
                 </button>
-            </div>
-        </div>
+                <button class="btn btn-success we-edit-mode d-none" data-toggle="tooltip" id="save-btn"
+                        onclick="saveCurrentData()"
+                        title="Save Character" type="button">
+                  <i class="fas fa-save"></i>
+                </button>
+              </span>
     </div>
-
-    <!-- EDIT MODE ON -->
-    <span class="navbar-text d-none" id="edit-mode-nav-span">
-        <button class="btn btn-danger" id="edit-mode-btn" data-toggle="tooltip" title="Edit Character" type="button"
-                onclick="setEditMode(true)">
-          <i class="fas fa-edit"></i>
-        </button>
-        <button class="btn btn-success we-edit-mode d-none" id="save-btn" data-toggle="tooltip" title="Save Character"
-                type="button" onclick="saveCurrentData()">
-          <i class="fas fa-save"></i>
-        </button>
-      </span>
-
-    <!-- SOUL POOL -->
-    <span class="navbar-text">
-        <div class="card border-info text-center" style="width: 5rem;" data-toggle="tooltip" title="Soul Pool">
-          <div class="card-body">
-            <h3 class="card-text" data-param-key="SP" data-min-val="0" style="color: var(--soul-color);">0</h3>
-          </div>
-        </div>
-      </span>
-
-    <!-- CHARACTER CHOOSER -->
-    <span class="navbar-text we-char-picker d-none" id="char_picker">
-        <div class="dropdown">
-          <button class="btn-lg btn-outline-dark dropdown-toggle we-sel-char-btn" type="button" data-toggle="dropdown">
-              <span class="we-character-name">Select A Character</span>
-          </button>
-          <div class="dropdown-menu we-char-ddmenu">
-            <button class="dropdown-item" type="button" data-char-key="NEW" onclick="createCharacter(this)">
-              <h6>
-                <i class="fas fa-plus" style="color:green">&nbsp;</i>
-                <span>NEW</span>
-              </h6>
-            </button>
-          </div>
-        </div>
-      </span>
-
-    <!-- LEVEL -->
-    <span class="navbar-text">
-        <div class="card border-secondary text-center" style="width: 5rem;" data-toggle="tooltip" title="Level">
-          <div class="card-body">
-            <h3 class="card-text" data-param-key="LVL" data-min-val="0" style="color: dimgrey;">0</h3>
-          </div>
-        </div>
-      </span>
 
     <!-- WETFE-Web Brand -->
     <a class="navbar-brand" href="wetfe.html">
         <i class="fas fa-globe" data-toggle="tooltip" title="WETFE-Web"></i>
     </a>
 
-</nav>
-
-<div class="container">
-
-    <!-- LOADING HUD -->
-    <div class="row justify-content-center we-loading-hud">
-        <div class="col-auto">
-            <h3>
-                <i class="fas fa-cog fa-spin we-loading-spinner"></i>
-                <span class="we-loading-txt">Loading Your Characters</span>
-            </h3>
+    <!-- HAMBURGER ITEMS -->
+    <div class="collapse navbar-collapse my-2" id="navbar_items">
+        <!-- LEVEL UP -->
+        <div class="navbar-nav my-2">
+            <div class="nav-item row align-items-center justify-content-between">
+                <div class="col-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text" id="load-data-intro">
+                                    <strong class="info-int" id="num-loaded-players">0</strong>&nbsp;PCs&nbsp;&bull;&nbsp;
+                                    <strong class="info-int" id="num-loaded-beings">0</strong>&nbsp;NPCs
+                                </span>
+                        </div>
+                        <div class="custom-file">
+                            <input class="custom-file-input" id="load-data-input" multiple type="file">
+                            <label class="custom-file-label" for="load-data-input"
+                                   id="load-data-input-label"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item row align-items-center justify-content-between">
+                <!-- CHARACTER CHOOSER -->
+                <div class="col-auto" id="char_picker">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-dark dropdown-toggle we-sel-char-btn"
+                                data-toggle="dropdown"
+                                type="button">
+                            <span class="we-character-name">Select A Character</span>
+                        </button>
+                        <div class="dropdown-menu we-char-ddmenu">
+                            <button class="dropdown-item" data-char-key="NEW" onclick="createCharacter(this)"
+                                    type="button">
+                                    <span>
+                                        <i class="fas fa-plus" style="color:green">&nbsp;</i>
+                                        <span>NEW</span>
+                                    </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <!-- LOAD DATA -->
+                <div class="col-auto">
+                    <button class="btn btn-block btn-dark text-center" id="level-up-btn"
+                            onclick="levelUp()" style="color: var(--power-color);" type="button">
+                        <i class="fas fa-grin-stars fa-2x">
+                            <span>Level Up!</span></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
+
+</nav>
+<br>
+<div class="container">
+    <div class="row align-items-center justify-content-between we-loading-hud">
+        <div class="col-1">
+            <div class="card border-info text-center" data-toggle="tooltip" style="width: 5rem;" title="Soulpool">
+                <div class="card-body">
+                    <h3 class="card-text" data-min-val="0" data-param-key="SP" style="color: var(--soul-color);">0</h3>
+                </div>
+            </div>
+        </div>
+        <!-- LOADING HUD -->
+        <div class="col-auto">
+            <div class="text-center">
+                <h3>
+                    <i class="fas fa-cog fa-spin we-loading-spinner"></i>
+                    <span class="we-loading-txt">Loading Your Characters</span>
+                </h3>
+            </div>
+        </div>
+        <div class="col-1">
+            <div class="card border-secondary text-center" data-toggle="tooltip" style="width: 5rem;" title="Level">
+                <div class="card-body">
+                    <h3 class="card-text" data-min-val="0" data-param-key="LVL" style="color: dimgrey;">0</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
     <!-- STACKS -->
     <div class="row my-5">
         <div class="col-2"></div>
-
         <!-- HEALTH STACK -->
         <div class="col-2 align-middle">
             <div class="row justify-content-between we-edit-mode d-none my-2">
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" type="button"
-                            data-state-target="PWR" onclick="increment(this)">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="PWR"
+                            onclick="increment(this)" type="button">
                         <i class="fas fa-long-arrow-alt-down fa-2x"></i>
                         <span>ADD</span>
                     </button>
                 </div>
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" type="button"
-                            data-state-target="PWR" onclick="decrement(this)">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="PWR"
+                            onclick="decrement(this)" type="button">
                         <span>POP</span>
                         <i class="fas fa-long-arrow-alt-up fa-2x"></i>
                     </button>
@@ -141,15 +165,15 @@
             <!-- HEALTH OPS -->
             <div class="row justify-content-between we-edit-mode d-none my-2">
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" type="button"
-                            data-state-target="HEL" onclick="takeDamage()">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="HEL"
+                            onclick="takeDamage()" type="button">
                         <span class="align-middle">DMG</span>
                         <i class="fas fa-angle-right fa-2x align-middle"></i>
                     </button>
                 </div>
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" type="button"
-                            data-state-target="HEL" onclick="accumulateFatigue('HEL')">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="HEL"
+                            onclick="accumulateFatigue('HEL')" type="button">
                         <span class="align-middle">FTG</span>
                         <i class="fas fa-angle-double-right fa-2x align-middle"></i>
                     </button>
@@ -164,15 +188,15 @@
             <!-- BREAKAGE OPS -->
             <div class="row justify-content-between we-edit-mode d-none my-2">
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="BRK"
-                            type="button" onclick="increment(this)">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="AFL"
+                            onclick="increment(this)" type="button">
                         <i class="fas fa-long-arrow-alt-down fa-2x"></i>
                         <span>ADD</span>
                     </button>
                 </div>
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="BRK"
-                            type="button" onclick="decrement(this)">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="AFL"
+                            onclick="decrement(this)" type="button">
                         <span>POP</span>
                         <i class="fas fa-long-arrow-alt-up fa-2x"></i>
                     </button>
@@ -182,7 +206,7 @@
             <div class="row my-2">
                 <div class="col-12 p-0">
                     <h2 class="text-monospace w-100"><span class="btn badge badge-pill we-affliction-chip w-100"
-                                                           data-state-key="BRK">0</span></h2>
+                                                           data-state-key="AFL">0</span></h2>
                 </div>
             </div>
             <!-- DAMAGED SOUL CHIPS -->
@@ -196,14 +220,14 @@
             <div class="row justify-content-between we-edit-mode d-none my-2">
                 <div class="col-5 p-0 m-0">
                     <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="DMG"
-                            type="button" onclick="healDamage()">
+                            onclick="healDamage()" type="button">
                         <i class="fas fa-angle-left fa-2x align-middle"></i>
                         <span class="align-middle">HEAL</span>
                     </button>
                 </div>
                 <div class="col-5 p-0 m-0">
                     <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="DMG"
-                            type="button" onclick="accumulateFatigue('DMG')">
+                            onclick="accumulateFatigue('DMG')" type="button">
                         <span class="align-middle">FTG</span>
                         <i class="fas fa-angle-right fa-2x align-middle"></i>
                     </button>
@@ -215,28 +239,28 @@
 
         <!-- FATIGUE STACK -->
         <div class="col-2 align-middle">
-            <!-- AFFLICTION OPS -->
+            <!-- TRAUMA OPS -->
             <div class="row justify-content-between we-edit-mode d-none my-2">
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="AFL"
-                            type="button" onclick="increment(this)">
+                    <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="TRM"
+                            onclick="increment(this)" type="button">
                         <i class="fas fa-long-arrow-alt-down fa-2x"></i>
                         <span>ADD</span>
                     </button>
                 </div>
                 <div class="col-5 p-0 m-0">
-                    <button class="btn btn-sm bg-transparent btn-block we-state-change" data-state-target="AFL"
-                            type="button" onclick="decrement(this)">
+                    <button class="btn btn-sm bg-transparent btn-block we-state-change" data-state-target="TRM"
+                            onclick="decrement(this)" type="button">
                         <span>POP</span>
                         <i class="fas fa-long-arrow-alt-up fa-2x"></i>
                     </button>
                 </div>
             </div>
-            <!-- AFFLICTION CHIPS -->
+            <!-- TRAUMA CHIPS -->
             <div class="row my-2">
                 <div class="col-12 p-0">
                     <h2 class="text-monospace w-100"><span class="btn badge badge-pill we-trauma-chip w-100"
-                                                           data-state-key="AFL">0</span></h2>
+                                                           data-state-key="TRM">0</span></h2>
                 </div>
             </div>
             <!-- FATIGUED SOUL CHIPS -->
@@ -250,7 +274,7 @@
             <div class="row justify-content-start we-edit-mode d-none my-2">
                 <div class="col-12 p-0 m-0">
                     <button class="btn btn-sm btn-block bg-transparent we-state-change" data-state-target="FTG"
-                            type="button" onclick="restoreFatigue()">
+                            onclick="restoreFatigue()" type="button">
                         <i class="fas fa-angle-double-left fa-2x align-middle"></i>
                         <span class="align-middle">RESTORE</span>
                     </button>
@@ -275,7 +299,7 @@
             <div class="card-body">
                 <h1 class="card-title text-monospace">CON</h1>
                 <div class="card-text we-nature" data-nature-of="CON">Absent</div>
-                <div clas="card-text">
+                <div class="card-text">
                     <div class="progress w-100">
                         <div class="progress-bar progress-bar-striped" data-param-link="CON"
                              style="width: 0%; background-color: var(--con-color)"></div>
@@ -295,7 +319,7 @@
             <div class="card-body">
                 <h1 class="card-title text-monospace">DEX</h1>
                 <div class="card-text we-nature" data-nature-of="DEX">Absent</div>
-                <div clas="card-text">
+                <div class="card-text">
                     <div class="progress w-100">
                         <div class="progress-bar progress-bar-striped" data-param-link="DEX"
                              style="width: 0%; background-color: var(--dex-color)"></div>
@@ -315,7 +339,7 @@
             <div class="card-body">
                 <h1 class="card-title text-monospace">INT</h1>
                 <div class="card-text we-nature" data-nature-of="INT">Absent</div>
-                <div clas="card-text">
+                <div class="card-text">
                     <div class="progress w-100">
                         <div class="progress-bar progress-bar-striped" data-param-link="INT"
                              style="width: 0%; background-color: var(--int-color)"></div>
@@ -335,7 +359,7 @@
             <div class="card-body">
                 <h1 class="card-title text-monospace">WIL</h1>
                 <div class="card-text we-nature" data-nature-of="WIL">Absent</div>
-                <div clas="card-text">
+                <div class="card-text">
                     <div class="progress w-100">
                         <div class="progress-bar progress-bar-striped" data-param-link="WIL"
                              style="width: 0%; background-color: var(--wil-color)"></div>
@@ -347,23 +371,25 @@
 
 </div> <!-- main container -->
 
-<!-- CLONE: CHAR DROPDOWN -->
-<button class="dropdown-item we-char-dditem we-clone-element d-none" type="button"
-        onclick="selectCharacter(this)"></button>
+       <!-- CLONE: CHAR DROPDOWN -->
+<button class="dropdown-item we-char-dditem we-clone-element d-none" onclick="selectCharacter(this)"
+        type="button"></button>
 
-<!-- SERIALIZATION TEXT AREA -->
-<!--<textarea id="data-serialization-text" class="form-control"></textarea>-->
+       <!-- Bottom Navbar -->
+<nav class="navbar we-navbar fixed-bottom navbar-light bg-light mb-1">
+    <span class="navbar-text">
+        <div>&copy; 2020&nbsp;<a href="https://github.com/rmgibbo">Ryan Gibbons</a></div>
+    </span>
+    <a class="navbar-brand" href="https://github.com/rmgibbo/wetfe">
+        <i class="fab fa-github" data-toggle="tooltip" title="WETFE on GitHub"></i>
+    </a>
+</nav>
 
-<!-- SCRIPTS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+       <!-- SCRIPTS -->
+<script crossorigin="anonymous" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 <script src="text.js"></script>
 <script src="character-manager.js"></script>
 </body>

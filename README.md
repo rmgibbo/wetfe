@@ -3,6 +3,8 @@
 "What Ever The Fun Ever"  
 [wetfe.com](https://wetfe.com "WETFE Web App")  
   
+_cosmos.jpg_ credits: [Miriam Espacio](https://www.pexels.com/@miriamespacio "@miriamespacio")
+  
 Copyright © 2020 Ryan Gibbons  
   
 _The software comprising this GitHub repository is licensed under_  

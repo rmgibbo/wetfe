@@ -1,0 +1,198 @@
+:root {
+    --con-color: #990000;
+    --dex-color: #b45f06;
+    --int-color: #1155cc;
+    --wil-color: #38761d;
+    --bs-dark-color: #343a40;
+    --soul-color: blueviolet;
+    --power-color: gold;
+    --affliction-color: crimson;
+    --trauma-color: limegreen;
+}
+.we-navbar {
+    box-shadow: 0 1px 8px black;
+}
+.we-character-name {
+    font-size: 200%;
+    font-family: "Lobster";
+}
+.we-text-soul {
+    color: black;
+    text-shadow: 0 0 10px var(--soul-color);
+}
+.we-text-pool {
+    color: var(--soul-color);
+    font-weight: bold;
+}
+.we-text-power {
+    color: black;
+    text-shadow: 0 0 10px var(--power-color);
+}
+.we-text-affliction {
+    color: black;
+    text-shadow: 0 0 10px var(--affliction-color);
+}
+.we-text-trauma {
+    color: black;
+    text-shadow: 0 0 10px var(--trauma-color);
+}
+.we-text-stagger {
+    color: indianred;
+    font-weight: bold;
+}
+.we-text-soul-light {
+    color: #b4a7d6;
+}
+.we-text-power-light {
+    color: #ffe599;
+}
+.we-text-affliction-light {
+    color: #ea9999;
+}
+.we-text-trauma-light {
+    color: #b6d7a8;
+}
+.we-text-stagger-light {
+    color: #dd7e6b;
+}
+.we-text-con {
+    font-size: 125%;
+    color: var(--con-color);
+}
+.we-text-dex {
+    font-size: 125%;
+    color: var(--dex-color);
+}
+.we-text-int {
+    font-size: 125%;
+    color: var(--int-color);
+}
+.we-text-wil {
+    font-size: 125%;
+    color: var(--wil-color);
+}
+[data-attr-state="+"] {
+    font-size: 150%;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px 2px white, 0 0 5px darkorange, 0 0 10px orange, 0 0 15px gold, 0 0 25px goldenrod, 0 0 35px yellow;
+}
+[data-attr-state="-"] {
+    font-size: 150%;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 5px gray, 0 0 15px darkblue, 0 0 25px blue;
+}
+.we-active-prow {
+    background-color: #fefefe;
+    border: 2px outset #007bff;
+}
+.we-target-prow {
+    background-color: #fefefe;
+    box-shadow: 0 0 15px yellow, 0 0 10px orange, 0 0 5px darkorange;
+}
+.we-active-pbtn {
+    font-weight: bold;
+    color: #007bff;
+    background-color: #fefefe;
+    border: 2px outset #007bff;
+}
+.we-target-pbtn {
+    font-weight: bold;
+    text-shadow: 0 0 15px yellow, 0 0 10px orange, 0 0 5px darkorange;
+    background-color: #fefefe;
+    box-shadow: 0 0 15px yellow, 0 0 10px orange, 0 0 5px darkorange;
+}
+.we-active-prow > .we-prow-order {
+    font-size: 125%;
+    color: #007bff;
+}
+.we-target-prow > .we-prow-order {
+    font-size: 125%;
+    text-shadow: 0 0 15px yellow, 0 0 10px orange, 0 0 5px darkorange;
+}
+.we-soul-chip {
+    color: white;
+    text-shadow: 0 1px 2px black;
+    background-color: var(--soul-color);
+    box-shadow: 0 2px 4px black;
+}
+.we-power-chip {
+    color: white;
+    text-shadow: 0 1px 2px black;
+    background-color: var(--power-color);
+    box-shadow: 0 2px 4px black;
+}
+.we-affliction-chip {
+    color: white;
+    text-shadow: 0 1px 2px black;
+    background-color: var(--affliction-color);
+    box-shadow: 0 2px 4px black;
+}
+.we-trauma-chip {
+    color: white;
+    text-shadow: 0 1px 2px black;
+    background-color: var(--trauma-color);
+    box-shadow: 0 2px 4px black;
+}
+.border-danger {
+    border-color: var(--con-color) !important;
+    box-shadow: 0 1px 3px var(--con-color);
+}
+.border-warning {
+    border-color: var(--dex-color) !important;
+    box-shadow: 0 1px 3px var(--dex-color);
+}
+.border-primary {
+    border-color: var(--int-color) !important;
+    box-shadow: 0 1px 3px var(--int-color);
+}
+.border-success {
+    border-color: var(--wil-color) !important;
+    box-shadow: 0 1px 3px var(--wil-color);
+}
+.border-info {
+    border-color: var(--soul-color) !important;
+    box-shadow: 0 1px 3px var(--soul-color);
+}
+.border-secondary {
+    border-color: dimgrey !important;
+    box-shadow: 0 1px 3px dimgrey;
+}
+.btn.we-state-change[data-state-target="HEL"] {
+    color: var(--soul-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--soul-color);
+    border-radius: 4px;
+}
+.btn.we-state-change[data-state-target="DMG"] {
+    color: var(--soul-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--soul-color);
+    border-radius: 4px;
+}
+.btn.we-state-change[data-state-target="FTG"] {
+    color: var(--soul-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--soul-color);
+    border-radius: 4px;
+}
+.btn.we-state-change[data-state-target="PWR"] {
+    color: var(--power-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--power-color);
+    border-radius: 4px;
+    /*  -webkit-text-stroke-width: 1px;
+      -webkit-text-stroke-color: black; */
+}
+.btn.we-state-change[data-state-target="BRK"] {
+    color: var(--affliction-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--affliction-color);
+    border-radius: 4px;
+}
+.btn.we-state-change[data-state-target="AFL"] {
+    color: var(--trauma-color);
+    text-shadow: 0 0 1px black;
+    border: 2px solid var(--trauma-color);
+    border-radius: 4px;
+}

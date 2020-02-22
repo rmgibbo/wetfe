@@ -6,7 +6,6 @@ if (typeof wetfe === 'undefined') {
 }
 
 let data = null;
-let unselected_hidden = true;
 
 const CORE = wetfe.wetfe.core;
 const QuadStat = CORE.character.QuadStat;
@@ -65,7 +64,6 @@ function setTpi(i) {
     // update participant table
     let $cur_tprow = $('.we-target-prow');
     $cur_tprow.removeClass('we-target-prow').addClass('we-unselected-prow');
-    if (unselected_hidden) $cur_tprow.addClass('d-none');
     let $new_tprow = $('.we-prow[data-pkey="' + targetKey + '"]');
     $new_tprow.removeClass('we-unselected-prow d-none').addClass('we-target-prow');
 }
@@ -113,24 +111,6 @@ function removeParticipant(element) {
     const pkey = $prow.attr('data-pkey');
     encounter.removeParticipant_61zpoe$(pkey);
     drawParticipantsTable();
-}
-
-function toggleUnselectedParticipants() {
-//var $unselected_prows = $('.we-unselected-prow');
-    const $unselected_prows = $('.we-prow').not('.we-clone-element, .we-target-prow');
-    const num_unselected = $unselected_prows.length;
-    if (unselected_hidden) {
-        $unselected_prows.removeClass('d-none');
-        unselected_hidden = false;
-    } else {
-        $unselected_prows.addClass('d-none');
-        unselected_hidden = true;
-    }
-    $('.we-part-toggle-btn-txt')
-        .html((unselected_hidden ? 'Show ' : 'Hide ') + ('(' + num_unselected + ')'))
-        .siblings('i').removeClass('fa-eye-slash fa-eye')
-        .addClass(unselected_hidden ? 'fa-eye' : 'fa-eye-slash');
-    focusKeyModListener();
 }
 
 function drawParticipantState($prow, participant) {
@@ -405,9 +385,6 @@ function updateTurnButton() {
 }
 
 function drawParticipantToolbar() {
-    $('.we-part-toggle-btn-txt')
-        .html((unselected_hidden ? 'Show ' : 'Hide ') + ('(' + $('.we-unselected-prow').length + ')'))
-        .siblings('i').addClass(unselected_hidden ? 'fa-eye' : 'fa-eye-slash');
     const $part_buttons = $('.we-pbtngrp');
     $part_buttons.empty();
     for (let i = 0; i < encounter.participantOrder.length; ++i) {
@@ -460,7 +437,7 @@ function drawParticipantsTable() {
         if (i === encounter.targetParticipantIndex) {
             $prow.addClass('we-target-prow');
         } else {
-            $prow.addClass('we-unselected-prow' + (unselected_hidden ? ' d-none' : ''));
+            $prow.addClass('we-unselected-prow');
         }
 
         $prow.children('.we-prow-order')
@@ -603,7 +580,6 @@ function activateNextParticipant() {
 function resetParticipantList() {
     encounter = new Encounter(EncounterType.COMBAT);
     $('[data-pkey]').removeClass('d-none');
-    unselected_hidden = true;
     drawParticipantsTable();
 }
 

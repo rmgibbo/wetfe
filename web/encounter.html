@@ -12,17 +12,22 @@
           integrity="sha384-u5J7JghGz0qUrmEsWzBQkfvc8nK3fUT7DCaQzNQ+q4oEXhGSx+P2OqjWsfIRB8QT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="wetfe-theme.css">
+    <link rel="stylesheet" href="encounter.css">
 
     <title>Encounter</title>
 </head>
 <body>
 
-<nav class="navbar we-navbar sticky-top navbar-light bg-light mb-1">
+<nav class="navbar we-navbar sticky-top navbar-light mb-1 bg-light">
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_items">
         <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- WETFE-Web Brand -->
+    <a class="navbar-brand" href="wetfe.html">
+        <i class="fas fa-globe" data-toggle="tooltip" title="WETFE-Web"></i>
+    </a>
 
     <div class="collapse navbar-collapse" id="navbar_items">
         <div class="navbar-nav">
@@ -40,7 +45,8 @@
                             </div>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="load-data-input" multiple>
-                                <label class="custom-file-label" for="load-data-input" id="load-data-input-label"></label>
+                                <label class="custom-file-label" for="load-data-input"
+                                       id="load-data-input-label"></label>
                             </div>
                         </div>
                     </div>
@@ -90,52 +96,49 @@
             </div>
         </div>
     </div>
-
-    <!-- TOGGLE PARTICIPANTS -->
-    <span class="navbar-text">
-        <button class="btn btn btn-outline-dark we-part-toggle-btn" type="button"
-                onclick="toggleUnselectedParticipants()">
-          <i class="fas">&nbsp;</i>
-          <span class="we-part-toggle-btn-txt">...</span>
-        </button>
-    </span>
-
-    <!-- NEXT TURN -->
-    <span class="navbar-text">
-        <button class="btn btn-lg btn-outline-primary mb-1" id="next-turn-btn" type="button"
-                onclick="activateNextParticipant()">
-          <i class="fas fa-hourglass-end">&nbsp;</i>
-          <span>Begin Round 1</span>
-        </button>
-        <h4 class="text-center mt-1">
-        <span class="badge badge-secondary">
-          <span id="key-mod-qty"></span>
-          <span>&nbsp;</span>
-          <span id="key-mod-param"></span>
-        </span>
-        </h4>
-    </span>
-
-    <!-- KEY MOD INPUT -->
-    <span class="navbar-text">
-        <div class="btn-group-vertical btn-group-sm btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-sm btn-outline-success active" id="key-mod-listener" onclick="onClickKeyModBtn(this)">
-            <input type="radio" id="key-mod-listener-input" autocomplete="off" checked>
-            <span>Key Mods ON</span>
-          </label>
-          <label class="btn btn-sm btn-outline-dark" id="key-mod-muter" onclick="onClickKeyModBtn(this)">
-            <input type="radio" id="key-mod-muter-input" autocomplete="off">
-            <span>Key Mods OFF</span>
-          </label>
-        </div>
-      </span>
-
-    <!-- WETFE-Web Brand -->
-    <a class="navbar-brand" href="wetfe.html">
-        <i class="fas fa-globe" data-toggle="tooltip" title="WETFE-Web"></i>
-    </a>
-
 </nav>
+
+<br>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- NEXT TURN -->
+        <div class="col text-center">
+            <button class="btn btn-outline-primary mb-1" id="next-turn-btn" type="button"
+                    onclick="activateNextParticipant()">
+                <i class="fas fa-hourglass-end">&nbsp;</i>
+                <span>Begin Round 1</span>
+            </button>
+        </div>
+
+        <!-- KEY COMMAND -->
+        <div class="col text-center">
+            <h4 class="text-center mt-1">
+                <span class="badge badge-secondary">
+                    <span id="key-mod-qty"></span>
+                    <span>&nbsp;</span>
+                    <span id="key-mod-param"></span>
+                </span>
+            </h4>
+        </div>
+
+        <!-- KEY MODE -->
+        <div class="col text-center">
+            <div class="btn-group-horizontal btn-group-sm btn-group-toggle" data-toggle="buttons">
+                <label class="btn btn-sm btn-outline-success active" id="key-mod-listener" onclick="onClickKeyModBtn(this)">
+                    <input type="radio" id="key-mod-listener-input" autocomplete="off" checked>
+                        <span>Key Mode ON</span>
+                </label>
+                <label class="btn btn-sm btn-outline-dark" id="key-mod-muter" onclick="onClickKeyModBtn(this)">
+                    <input type="radio" id="key-mod-muter-input" autocomplete="off">
+                        <span>Key Mode OFF</span>
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
 
 <div class="container-fluid">
 

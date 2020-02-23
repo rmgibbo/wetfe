@@ -10,7 +10,7 @@
   
 ### [3] Principle of Non-Exclusive Implication
   
-- Every proposition is true **and** false.
+- Every existential proposition is true **and** false.
   
 ### [4] Definition of Reality
   

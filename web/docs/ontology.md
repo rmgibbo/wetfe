@@ -46,7 +46,7 @@ Accordingly, this axiomatization makes no attempt to explain _why_ or _how_ Real
   
 ### Things vs Concepts
   
-All concepts are, in the literal sense, `Things`. Still, the distinction between the two is useful for two reasons.
+All concepts are `Things`. Still, the distinction between the two is useful for two reasons.
   
 First, concepts appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, concepts are the `Things` that they _have_ conjured up -- or rather, discovered.
   
@@ -54,19 +54,19 @@ Second, concepts are always a permutation of symbols, but only _sometimes_ have 
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
-So, what does it mean, for symbols to "have meaning"?
+So, what does it mean, for symbols to "have our meaning"?
   
-First of all, it is important to note that whatever these "meanings" that concepts may have are, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` part of the concept as proposed.
+First of all, it is important to note that whatever these meanings are that concepts may have, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` of the concept as proposed.
   
 Meaningful concepts then, are rich subspaces of related `Things`; where the relations, or "connections," themselves are also `Things`.
   
-On the other hand, if some concept we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` that reference it.
+On the other hand, if some concept we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` connected to it.
   
-Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities, such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of "meaningfulness metric," related to how highly connected they are to other `Things`.
+Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities, such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of meaningfulness metric, related to how highly connected they are to other `Things`.
   
-For example, the concept of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, _"The non-trivial factorization of the number five exists."_ is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
+For example, the concept of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, _"The non-trivial factorization of the number five exists"_ is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
   
-(I suspect that even "sparsely-connected" `Things` are related to an uncountable infinity of other `Things`. The full theory of infinite cardinals/ordinals should be necessary, at least, to begin explaining the "connectedness" of `Things` within Reality.)
+(I suspect that even "sparsely-connected" `Things` are related to an uncountable infinity of other `Things`. The full theory of infinite cardinals/ordinals should be necessary, at least, to begin explaining the connectedness of `Things` within Reality.)
   
 ### Recursion
   
@@ -78,7 +78,7 @@ Let's call this infinitely recursive existential proposition **T<sub>0</sub>**, 
   
 This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [2] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(**T<sub>0</sub>**) is completely self-similar.
   
-We might note that Reality seems to brook the concepts of "recursion", "equality", and "infinity"; and we may wonder how highly-connected each of these `Things` is...
+We might note that Reality seems to brook the concepts of _recursion_, _equality_, and _infinity_; and we may wonder how highly-connected each of these `Things` is...
   
 ### The Primicorn
   
@@ -111,7 +111,7 @@ All the axioms tell us is:
 - **If** the proposed concept of a Primicorn is a `Thing` highly connected to other `Things`, then our friend has discovered a concept of richer meaning than the ordered symbols that they used to represent it.
 - **Otherwise**, our friend has a vague concept in mind, perhaps little more than an arbitrary permutation of symbols, which does exist, but is unlikely to be useful in deeper explanations of Reality.
   
-The fundamental issue is that we have no general method of determining how meaningful concepts are a priori. And then, even if we were so equipped, we have no general method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories), critique, and experimentation shall avail us.
+The fundamental issue is that we have no general method of determining how meaningful are concepts a priori. And then, even if we were so equipped, we have no general method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories), critique, and experimentation shall avail us.
   
 ### Communication
   
@@ -139,7 +139,7 @@ Given all this, we may then ask what is special about existential propositions, 
   
 Indeed, this is the pivotal point: the symbols, the concepts, the propositions, the relations, the theories, ..., every bit of it exists in Reality. Reality contains every permutation of every symbol of every (alien) language; and all their associated meanings in every (alien) mind, as relationships between the symbols and the minds and an infinity of other `Things`.
   
-When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and "feeling" its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
+When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and _feeling_ its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
 This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
   

@@ -153,5 +153,5 @@ This seems fair, considering that we are transmuting the stones that every other
 - Every `Thing` does not exist, in some subspaces of Reality.
 - The Platonic world, physical world, psychological world, etc., are all perspectives on an underlying Reality, which implies all of them.
   
-  
+------
 Copyright © 2020 Ryan Gibbons

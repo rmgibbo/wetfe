@@ -62,5 +62,5 @@ The process of going pure distributes/imprints/encodes the being’s (quantum) i
   
 Beings that acquire Relics may innervate the Fonts within them with quanta of their own soul in a process called Soulbinding. Soulbound Relics are potent sources of power, and are prized by adventurers, warmongers, academics, collectors, etc. alike. Merchants that deal in common Relics (on the “The SRT”, “Soul Relic Trade/Index”, “The Holo Market”) are known as “Soulmongers”; or “Purveyors” if they deal in the rare, coveted variety.
   
-  
-Copyright © 2020 Ryan Gibbons
+------
+Copyright © 2020 Ryan Gibbons  

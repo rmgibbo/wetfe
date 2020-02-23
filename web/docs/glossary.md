@@ -196,5 +196,5 @@ trauma chip, Ⓣ
 willpower, WIL
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.
   
-  
+------
 Copyright © 2020 Ryan Gibbons

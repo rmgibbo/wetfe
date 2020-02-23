@@ -11,14 +11,18 @@ $section-headings-color: #571599;
   background-size: cover;
 
   @include large {
-    padding: 2rem 4rem;
+    padding: 3rem 4rem;
   }
 
   @include medium {
-    padding: 1rem 2rem;
+    padding: 2rem 3rem;
   }
 
   @include small {
-    padding: 0.5rem 1rem;
+    padding: 1rem 2rem;
   }
+}
+.anchor-header {
+  color: white;
+  text-decoration: none;
 }

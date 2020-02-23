@@ -1,65 +1,30 @@
-# Intro
+# Paths
   
-- Typically, characters start with no levels or experience.
-- TODO: Level
-- TODO: Experience
-- TODO: Ability Point (AP)
-- TODO: Ability Tree
-- TODO: Specialization
-- Path
-    - Ten of the twelve paths begin by embracing one of the archetypes
-        - May only begin upon attaining level 0, 4, or 8
-        - Always start at T<sub>0</sub>
-    - The remaining two paths begin by embracing one of the anti-archetypes
-        - May only begin upon attaining level 0, 4, or 8
-        - Must be the character's sole path. All existing paths must be abandoned prior to embracing an anti-archetype
-        - Always start at T<sub>0</sub>, even when begun at level 4 or 8
-    - Through experience and special accomplishments, characters may advance along their paths to unlock higher tiers
-- Tier
-    - Represents the degree of mastery a character has attained along a given path
-    - Higher tiers also represent the enduring impacts a character has made while following a given path
-  
-### Archetypes
+## Archetypes
   
 | Core Dev | T<sub>0</sub> | T<sub>1</sub> | T<sub>2</sub> | T<sub>3</sub> | T<sub>4</sub> |
 | ------ |:------:|:------:|:------:|:------:|:------:|
-| `CON, CON` | Brawler | " | Juggernaut | " | Titan |
-| `CON, DEX` | Contender | " | Champion | " | Paragon |
-| `CON, INT` | Shaman | " | Eldritch Knight | " | Chthonic Soul |
-| `CON, WIL` | Warden | " | Phaseguard | " | Neutralizer |
-| `DEX, DEX` | Kineticist | " | Dynamancer | " | Herald of Entropy |
-| `DEX, INT` | Rogue | " | Ninja | " | Timeslicer |
-| `DEX, WIL` | Monk | " | Grandmaster | " | Consonant Soul |
-| `INT, INT` | Scholar | " | Wizard | " | Cosmic Sage |
-| `INT, WIL` | Geomancer | " | Druid | " | Archdruid |
-| `WIL, WIL` | Enchanter | " | Commander | " | Archon |
+| `CON, CON` | Brawler | &rarr; | Juggernaut | &rarr; | Titan |
+| `CON, DEX` | Contender | &rarr; | Champion | &rarr; | Paragon |
+| `CON, INT` | Shaman | &rarr; | Eldritch Knight | &rarr; | Chthonic Soul |
+| `CON, WIL` | Warden | &rarr; | Phaseguard | &rarr; | Neutralizer |
+| `DEX, DEX` | Kineticist | &rarr; | Dynamancer | &rarr; | Herald of Entropy |
+| `DEX, INT` | Rogue | &rarr; | Ninja | &rarr; | Timeslicer |
+| `DEX, WIL` | Monk | &rarr; | Grandmaster | &rarr; | Consonant Soul |
+| `INT, INT` | Scholar | &rarr; | Wizard | &rarr; | Cosmic Sage |
+| `INT, WIL` | Geomancer | &rarr; | Druid | &rarr; | Archdruid |
+| `WIL, WIL` | Enchanter | &rarr; | Commander | &rarr; | Archon |
   
-### Anti-Archetypes
+## Anti-Archetypes
   
 | Core Dev | T<sub>0</sub> | T<sub>1</sub> | T<sub>2</sub> | T<sub>3</sub> | T<sub>4</sub> |
 | ------ |:------:|:------:|:------:|:------:|:------:|
-| `---, ---` | Ranger | " | Aura | " | Saoshyant |
-| `---, ---` | Sorcerer | " | Dragon | " | Recursive Soul |
+| `---, ---` | Ranger | &rarr; | Aura | &rarr; | Saoshyant |
+| `---, ---` | Sorcerer | &rarr; | Dragon | &rarr; | Recursive Soul |
   
-### Paths
+# Level by Level
   
-1. `CON, CON` &bull; Brawler &rarr; Juggernaut &rarr; Titan &rarr; ?
-2. `CON, DEX` &bull; Contender &rarr; Champion &rarr; Paragon &rarr; ?
-3. `CON, INT` &bull; Shaman &rarr; Eldritch Knight &rarr; Chthonic Soul &rarr; ?
-4. `CON, WIL` &bull; Warden &rarr; Phaseguard &rarr; Neutralizer &rarr; ?
-5. `DEX, DEX` &bull; Kineticist &rarr; Dynamancer &rarr; Herald of Entropy &rarr; ?
-6. `DEX, INT` &bull; Rogue &rarr; Ninja &rarr; Timeslicer &rarr; ?
-7. `DEX, WIL` &bull; Monk &rarr; Grandmaster &rarr; Consonant Soul &rarr; ?
-8. `INT, INT` &bull; Scholar &rarr; Wizard &rarr; Cosmic Sage &rarr; ?
-9. `INT, WIL` &bull; Geomancer &rarr; Druid &rarr; Archdruid &rarr; ?
-10. `WIL, WIL` &bull; Enchanter &rarr; Commander &rarr; Archon &rarr; ?
-11. _`---, ---` &bull; Ranger &rarr; Aura &rarr; Saoshyant &rarr; ?_
-12. _`---, ---` &bull; Sorcerer &rarr; Dragon &rarr; Recursive Soul &rarr; ?_
-  
-# Details
-  
-- Create character
-- Begin at level 0
+- Characters begin at level zero
 - Every _**even**_ level thereafter, gain +1 to any core attribute
 - Every _**odd**_ level thereafter, gain +1 ability point
 - Every _**four**_ levels thereafter, gain +1 soulpool
@@ -111,5 +76,33 @@
   
 - No auto-advancement; complete special objectives to continue along your paths
   
+# Summary
+  
+- Level
+  - General indication of power a being possesses
+  - Start at level zero... and by level 32 it's about time to ascend to godhood
+- Experience
+  - Accumulated through combat, social, and environmental encounters
+  - As a character gains experience, so do they gain levels
+- Ability Point (AP)
+  - Awarded every odd level
+  - Spent to unlock general abilities
+- Ability Tree
+  - The collection of general abilities, organized by type and prerequisites
+- Specialization
+  - The specific permutation of abilities a character has unlocked on the ability tree
+- Path
+  - Ten of the twelve paths begin by embracing one of the archetypes
+      - May only begin upon attaining level 0, 4, or 8
+      - Always start at T<sub>0</sub>
+  - The remaining two paths begin by embracing one of the anti-archetypes
+      - May only begin upon attaining level 0, 4, or 8
+      - Must be the character's sole path. All existing paths must be abandoned prior to embracing an anti-archetype
+      - Always start at T<sub>0</sub>, even when begun at level 4 or 8
+  - Through experience and special accomplishments, characters may advance along their paths to unlock higher tiers
+- Tier
+  - Represents the degree of mastery a character has attained along a given path
+  - Higher tiers also represent the enduring impacts a character has made while following a given path
+
   
 Copyright © 2020 Ryan Gibbons

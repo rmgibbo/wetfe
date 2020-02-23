@@ -4,10 +4,10 @@
     --int-color: #1155cc;
     --wil-color: #38761d;
     --bs-dark-color: #343a40;
-    --soul-color: blueviolet;
+    --soul-color: #571599;
     --power-color: gold;
-    --affliction-color: crimson;
-    --trauma-color: limegreen;
+    --affliction-color: #d91735;
+    --trauma-color: #35c917;
 }
 .we-navbar {
     box-shadow: 0 1px 8px black;

@@ -1,5 +1,4 @@
 # WETFE
-"What Ever The Fuck Ever"  
 "What Ever The Fun Ever"  
 [wetfe.com](https://wetfe.com "WETFE Web App")  
   

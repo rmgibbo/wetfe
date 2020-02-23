@@ -25,4 +25,8 @@ $section-headings-color: #571599;
 .anchor-header {
   color: white;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
 }

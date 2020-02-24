@@ -13,9 +13,10 @@
     <link href="wetfe.css" rel="stylesheet">
     <title>WETFE</title>
 </head>
-<body>
+<body class="bg-cosmos">
 <!-- Top Navbar -->
 <nav class="navbar we-navbar sticky-top navbar-dark bg-dark mb-1">
+    <!-- Documents -->
     <div class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" href="#" id="dropdown-menu-link"
            role="button">Docs</a>
@@ -28,11 +29,18 @@
         </div>
     </div>
 
+    <!-- Encounter App -->
     <span class="navbar-text"><a class="nav-link" href="encounter.html">Encounter</a></span>
 
+    <!-- Character Manager App -->
     <span class="navbar-text"><a class="nav-link" href="character-manager.html">Character Manager</a></span>
 
-    <!-- WETFE Web Brand -->
+    <!-- Cycle Background -->
+    <div class="navbar-brand btn" onclick="cycleBackground()">
+        <i class="fas fa-images" data-toggle="tooltip" title="Cycle Background"></i>
+    </div>
+
+    <!-- WETFE Web -->
     <a class="navbar-brand" href="wetfe.html">
         <i class="fas fa-globe" data-toggle="tooltip" title="WETFE Web"></i>
     </a>
@@ -42,7 +50,7 @@
 <nav class="navbar we-navbar fixed-bottom navbar-dark bg-dark mb-1">
     <div class="navbar-text">
         <div>&copy; 2020&nbsp;<a href="https://github.com/rmgibbo">Ryan Gibbons</a></div>
-        <div>Background image by&nbsp;<a
+        <div>"Galaxy" image by&nbsp;<a
                 href="https://www.pexels.com/@miriamespacio">Miriam Espacio</a></div>
     </div>
     <a class="navbar-brand" href="https://github.com/rmgibbo/wetfe">
@@ -56,5 +64,15 @@
 <script crossorigin="anonymous"
         src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script crossorigin="anonymous" src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script>
+    const bg_classes = ["bg-cosmos", "bg-physics", "bg-deques", "bg-charasheet"];
+    let bg_index = 0;
+    function cycleBackground() {
+        if (++bg_index >= bg_classes.length) {
+            bg_index = 0;
+        }
+        $("body").attr("class", bg_classes[bg_index]);
+    }
+</script>
 </body>
 </html>

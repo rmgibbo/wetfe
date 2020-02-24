@@ -40,7 +40,8 @@ object Physics {
 
 /**
  * Events are given by a "displacement 4-vector from origin", where the origin
- *   is the "Big Bang" = [0 0 0 0]. This simplifies to a 4-position in the
+ *   is the "Big Bang" = [0 0 0 0], as regarded by some "natural" reference frame.
+ *   This simplifies to a 4-position in the
  *   appropriate spacetime manifold.
  *   I guess.
  *   This needs work.

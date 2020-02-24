@@ -1,8 +1,29 @@
 @import url("wetfe-theme.css");
 
-body {
+body.bg-cosmos {
     background-image: url("images/cosmos.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-color: var(--bs-dark-color);
+}
+
+body.bg-physics {
+    background-image: url("images/interphysics.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bs-light-color);
+}
+
+body.bg-deques {
+    background-image: url("images/deques.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bs-light-color);
+}
+
+body.bg-charasheet {
+    background-image: url("images/charasheet.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--bs-light-color);
 }

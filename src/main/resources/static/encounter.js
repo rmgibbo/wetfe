@@ -1,4 +1,4 @@
-/*
+ /*
  * !THIS FILE MUST BE LOADED AFTER kotlin.js AND wetfe.js
  */
 if (typeof wetfe === 'undefined') {

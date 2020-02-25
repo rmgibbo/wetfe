@@ -51,6 +51,8 @@ var wetfe = function (_, Kotlin) {
   EncounterType.prototype.constructor = EncounterType;
   DataSource.prototype = Object.create(Enum.prototype);
   DataSource.prototype.constructor = DataSource;
+  PathType.prototype = Object.create(Enum.prototype);
+  PathType.prototype.constructor = PathType;
   Realm.prototype = Object.create(Enum.prototype);
   Realm.prototype.constructor = Realm;
   Vulnerability.prototype = Object.create(Enum.prototype);
@@ -1007,42 +1009,39 @@ var wetfe = function (_, Kotlin) {
   StatModeState.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.conMode, other.conMode) && Kotlin.equals(this.dexMode, other.dexMode) && Kotlin.equals(this.intMode, other.intMode) && Kotlin.equals(this.wilMode, other.wilMode)))));
   };
-  function CharaSpec(tier, name, customName) {
-    if (customName === void 0)
-      customName = '';
+  function CharaPath(pathType, tier) {
+    if (pathType === void 0)
+      pathType = PathType$CON_CON_getInstance();
+    if (tier === void 0)
+      tier = 0;
+    this.pathType = pathType;
     this.tier = tier;
-    this.name = name;
-    this.customName = customName;
   }
-  CharaSpec.$metadata$ = {
+  CharaPath.$metadata$ = {
     kind: Kind_CLASS,
-    simpleName: 'CharaSpec',
+    simpleName: 'CharaPath',
     interfaces: []
   };
-  CharaSpec.prototype.component1 = function () {
+  CharaPath.prototype.component1 = function () {
+    return this.pathType;
+  };
+  CharaPath.prototype.component2 = function () {
     return this.tier;
   };
-  CharaSpec.prototype.component2 = function () {
-    return this.name;
+  CharaPath.prototype.copy_v1omx$ = function (pathType, tier) {
+    return new CharaPath(pathType === void 0 ? this.pathType : pathType, tier === void 0 ? this.tier : tier);
   };
-  CharaSpec.prototype.component3 = function () {
-    return this.customName;
+  CharaPath.prototype.toString = function () {
+    return 'CharaPath(pathType=' + Kotlin.toString(this.pathType) + (', tier=' + Kotlin.toString(this.tier)) + ')';
   };
-  CharaSpec.prototype.copy_s4fhmi$ = function (tier, name, customName) {
-    return new CharaSpec(tier === void 0 ? this.tier : tier, name === void 0 ? this.name : name, customName === void 0 ? this.customName : customName);
-  };
-  CharaSpec.prototype.toString = function () {
-    return 'CharaSpec(tier=' + Kotlin.toString(this.tier) + (', name=' + Kotlin.toString(this.name)) + (', customName=' + Kotlin.toString(this.customName)) + ')';
-  };
-  CharaSpec.prototype.hashCode = function () {
+  CharaPath.prototype.hashCode = function () {
     var result = 0;
+    result = result * 31 + Kotlin.hashCode(this.pathType) | 0;
     result = result * 31 + Kotlin.hashCode(this.tier) | 0;
-    result = result * 31 + Kotlin.hashCode(this.name) | 0;
-    result = result * 31 + Kotlin.hashCode(this.customName) | 0;
     return result;
   };
-  CharaSpec.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.tier, other.tier) && Kotlin.equals(this.name, other.name) && Kotlin.equals(this.customName, other.customName)))));
+  CharaPath.prototype.equals = function (other) {
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.pathType, other.pathType) && Kotlin.equals(this.tier, other.tier)))));
   };
   function CharaState(health, damage, fatigue, power, affliction, trauma, momentum, modes, condition, tapped) {
     if (health === void 0)
@@ -1134,15 +1133,12 @@ var wetfe = function (_, Kotlin) {
   CharaState.prototype.equals = function (other) {
     return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.health, other.health) && Kotlin.equals(this.damage, other.damage) && Kotlin.equals(this.fatigue, other.fatigue) && Kotlin.equals(this.power, other.power) && Kotlin.equals(this.affliction, other.affliction) && Kotlin.equals(this.trauma, other.trauma) && Kotlin.equals(this.momentum, other.momentum) && Kotlin.equals(this.modes, other.modes) && Kotlin.equals(this.condition, other.condition) && Kotlin.equals(this.tapped, other.tapped)))));
   };
-  function CharaRepertoire(general, specialty, growth, soulbound, exceptional) {
+  function CharaRepertoire(general, archetypal, soulbound, exceptional, circumstantial) {
     if (general === void 0) {
       general = ArrayList_init();
     }
-    if (specialty === void 0) {
-      specialty = ArrayList_init();
-    }
-    if (growth === void 0) {
-      growth = ArrayList_init();
+    if (archetypal === void 0) {
+      archetypal = ArrayList_init();
     }
     if (soulbound === void 0) {
       soulbound = ArrayList_init();
@@ -1150,11 +1146,14 @@ var wetfe = function (_, Kotlin) {
     if (exceptional === void 0) {
       exceptional = ArrayList_init();
     }
+    if (circumstantial === void 0) {
+      circumstantial = ArrayList_init();
+    }
     this.general = general;
-    this.specialty = specialty;
-    this.growth = growth;
+    this.archetypal = archetypal;
     this.soulbound = soulbound;
     this.exceptional = exceptional;
+    this.circumstantial = circumstantial;
   }
   CharaRepertoire.$metadata$ = {
     kind: Kind_CLASS,
@@ -1165,36 +1164,36 @@ var wetfe = function (_, Kotlin) {
     return this.general;
   };
   CharaRepertoire.prototype.component2 = function () {
-    return this.specialty;
+    return this.archetypal;
   };
   CharaRepertoire.prototype.component3 = function () {
-    return this.growth;
-  };
-  CharaRepertoire.prototype.component4 = function () {
     return this.soulbound;
   };
-  CharaRepertoire.prototype.component5 = function () {
+  CharaRepertoire.prototype.component4 = function () {
     return this.exceptional;
   };
-  CharaRepertoire.prototype.copy_3gjsvu$ = function (general, specialty, growth, soulbound, exceptional) {
-    return new CharaRepertoire(general === void 0 ? this.general : general, specialty === void 0 ? this.specialty : specialty, growth === void 0 ? this.growth : growth, soulbound === void 0 ? this.soulbound : soulbound, exceptional === void 0 ? this.exceptional : exceptional);
+  CharaRepertoire.prototype.component5 = function () {
+    return this.circumstantial;
+  };
+  CharaRepertoire.prototype.copy_3gjsvu$ = function (general, archetypal, soulbound, exceptional, circumstantial) {
+    return new CharaRepertoire(general === void 0 ? this.general : general, archetypal === void 0 ? this.archetypal : archetypal, soulbound === void 0 ? this.soulbound : soulbound, exceptional === void 0 ? this.exceptional : exceptional, circumstantial === void 0 ? this.circumstantial : circumstantial);
   };
   CharaRepertoire.prototype.toString = function () {
-    return 'CharaRepertoire(general=' + Kotlin.toString(this.general) + (', specialty=' + Kotlin.toString(this.specialty)) + (', growth=' + Kotlin.toString(this.growth)) + (', soulbound=' + Kotlin.toString(this.soulbound)) + (', exceptional=' + Kotlin.toString(this.exceptional)) + ')';
+    return 'CharaRepertoire(general=' + Kotlin.toString(this.general) + (', archetypal=' + Kotlin.toString(this.archetypal)) + (', soulbound=' + Kotlin.toString(this.soulbound)) + (', exceptional=' + Kotlin.toString(this.exceptional)) + (', circumstantial=' + Kotlin.toString(this.circumstantial)) + ')';
   };
   CharaRepertoire.prototype.hashCode = function () {
     var result = 0;
     result = result * 31 + Kotlin.hashCode(this.general) | 0;
-    result = result * 31 + Kotlin.hashCode(this.specialty) | 0;
-    result = result * 31 + Kotlin.hashCode(this.growth) | 0;
+    result = result * 31 + Kotlin.hashCode(this.archetypal) | 0;
     result = result * 31 + Kotlin.hashCode(this.soulbound) | 0;
     result = result * 31 + Kotlin.hashCode(this.exceptional) | 0;
+    result = result * 31 + Kotlin.hashCode(this.circumstantial) | 0;
     return result;
   };
   CharaRepertoire.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.general, other.general) && Kotlin.equals(this.specialty, other.specialty) && Kotlin.equals(this.growth, other.growth) && Kotlin.equals(this.soulbound, other.soulbound) && Kotlin.equals(this.exceptional, other.exceptional)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.general, other.general) && Kotlin.equals(this.archetypal, other.archetypal) && Kotlin.equals(this.soulbound, other.soulbound) && Kotlin.equals(this.exceptional, other.exceptional) && Kotlin.equals(this.circumstantial, other.circumstantial)))));
   };
-  function CharaData(id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
+  function CharaData(id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, paths, level, experience, soulpool, constitution, conScale, dexterity, dexScale, intelligence, intScale, willpower, wilScale, staggerThreshold, state, repertoire, rollsheetLayout) {
     CharaData$Companion_getInstance();
     if (id === void 0)
       id = CharaData$Companion_getInstance().newId();
@@ -1235,23 +1234,31 @@ var wetfe = function (_, Kotlin) {
     if (characteristics === void 0) {
       characteristics = ArrayList_init();
     }
-    if (specialties === void 0) {
-      specialties = ArrayList_init();
+    if (paths === void 0) {
+      paths = ArrayList_init();
     }
     if (level === void 0)
-      level = 1;
+      level = 0;
     if (experience === void 0)
       experience = 0;
     if (soulpool === void 0)
-      soulpool = 5;
+      soulpool = 4;
     if (constitution === void 0)
-      constitution = 10;
+      constitution = 8;
+    if (conScale === void 0)
+      conScale = 1;
     if (dexterity === void 0)
-      dexterity = 10;
+      dexterity = 8;
+    if (dexScale === void 0)
+      dexScale = 1;
     if (intelligence === void 0)
-      intelligence = 10;
+      intelligence = 8;
+    if (intScale === void 0)
+      intScale = 1;
     if (willpower === void 0)
-      willpower = 10;
+      willpower = 8;
+    if (wilScale === void 0)
+      wilScale = 1;
     if (staggerThreshold === void 0)
       staggerThreshold = 0;
     if (state === void 0)
@@ -1279,14 +1286,18 @@ var wetfe = function (_, Kotlin) {
     this.titles = titles;
     this.renown = renown;
     this.characteristics = characteristics;
-    this.specialties = specialties;
+    this.paths = paths;
     this.level = level;
     this.experience = experience;
     this.soulpool = soulpool;
     this.constitution = constitution;
+    this.conScale = conScale;
     this.dexterity = dexterity;
+    this.dexScale = dexScale;
     this.intelligence = intelligence;
+    this.intScale = intScale;
     this.willpower = willpower;
+    this.wilScale = wilScale;
     this.staggerThreshold = staggerThreshold;
     this.state = state;
     this.repertoire = repertoire;
@@ -1370,7 +1381,7 @@ var wetfe = function (_, Kotlin) {
     return this.characteristics;
   };
   CharaData.prototype.component19 = function () {
-    return this.specialties;
+    return this.paths;
   };
   CharaData.prototype.component20 = function () {
     return this.level;
@@ -1385,31 +1396,43 @@ var wetfe = function (_, Kotlin) {
     return this.constitution;
   };
   CharaData.prototype.component24 = function () {
-    return this.dexterity;
+    return this.conScale;
   };
   CharaData.prototype.component25 = function () {
-    return this.intelligence;
+    return this.dexterity;
   };
   CharaData.prototype.component26 = function () {
-    return this.willpower;
+    return this.dexScale;
   };
   CharaData.prototype.component27 = function () {
-    return this.staggerThreshold;
+    return this.intelligence;
   };
   CharaData.prototype.component28 = function () {
-    return this.state;
+    return this.intScale;
   };
   CharaData.prototype.component29 = function () {
-    return this.repertoire;
+    return this.willpower;
   };
   CharaData.prototype.component30 = function () {
+    return this.wilScale;
+  };
+  CharaData.prototype.component31 = function () {
+    return this.staggerThreshold;
+  };
+  CharaData.prototype.component32 = function () {
+    return this.state;
+  };
+  CharaData.prototype.component33 = function () {
+    return this.repertoire;
+  };
+  CharaData.prototype.component34 = function () {
     return this.rollsheetLayout;
   };
-  CharaData.prototype.copy_u1r339$ = function (id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, specialties, level, experience, soulpool, constitution, dexterity, intelligence, willpower, staggerThreshold, state, repertoire, rollsheetLayout) {
-    return new CharaData(id === void 0 ? this.id : id, source === void 0 ? this.source : source, realm === void 0 ? this.realm : realm, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, characteristics === void 0 ? this.characteristics : characteristics, specialties === void 0 ? this.specialties : specialties, level === void 0 ? this.level : level, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, dexterity === void 0 ? this.dexterity : dexterity, intelligence === void 0 ? this.intelligence : intelligence, willpower === void 0 ? this.willpower : willpower, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
+  CharaData.prototype.copy_52p3wb$ = function (id, source, realm, fullName, commonName, shortName, homeworld, species, birthEvent, properMass, properAge, livingAge, properHeight, commonHeight, commonCalendarAge, titles, renown, characteristics, paths, level, experience, soulpool, constitution, conScale, dexterity, dexScale, intelligence, intScale, willpower, wilScale, staggerThreshold, state, repertoire, rollsheetLayout) {
+    return new CharaData(id === void 0 ? this.id : id, source === void 0 ? this.source : source, realm === void 0 ? this.realm : realm, fullName === void 0 ? this.fullName : fullName, commonName === void 0 ? this.commonName : commonName, shortName === void 0 ? this.shortName : shortName, homeworld === void 0 ? this.homeworld : homeworld, species === void 0 ? this.species : species, birthEvent === void 0 ? this.birthEvent : birthEvent, properMass === void 0 ? this.properMass : properMass, properAge === void 0 ? this.properAge : properAge, livingAge === void 0 ? this.livingAge : livingAge, properHeight === void 0 ? this.properHeight : properHeight, commonHeight === void 0 ? this.commonHeight : commonHeight, commonCalendarAge === void 0 ? this.commonCalendarAge : commonCalendarAge, titles === void 0 ? this.titles : titles, renown === void 0 ? this.renown : renown, characteristics === void 0 ? this.characteristics : characteristics, paths === void 0 ? this.paths : paths, level === void 0 ? this.level : level, experience === void 0 ? this.experience : experience, soulpool === void 0 ? this.soulpool : soulpool, constitution === void 0 ? this.constitution : constitution, conScale === void 0 ? this.conScale : conScale, dexterity === void 0 ? this.dexterity : dexterity, dexScale === void 0 ? this.dexScale : dexScale, intelligence === void 0 ? this.intelligence : intelligence, intScale === void 0 ? this.intScale : intScale, willpower === void 0 ? this.willpower : willpower, wilScale === void 0 ? this.wilScale : wilScale, staggerThreshold === void 0 ? this.staggerThreshold : staggerThreshold, state === void 0 ? this.state : state, repertoire === void 0 ? this.repertoire : repertoire, rollsheetLayout === void 0 ? this.rollsheetLayout : rollsheetLayout);
   };
   CharaData.prototype.toString = function () {
-    return 'CharaData(id=' + Kotlin.toString(this.id) + (', source=' + Kotlin.toString(this.source)) + (', realm=' + Kotlin.toString(this.realm)) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', characteristics=' + Kotlin.toString(this.characteristics)) + (', specialties=' + Kotlin.toString(this.specialties)) + (', level=' + Kotlin.toString(this.level)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
+    return 'CharaData(id=' + Kotlin.toString(this.id) + (', source=' + Kotlin.toString(this.source)) + (', realm=' + Kotlin.toString(this.realm)) + (', fullName=' + Kotlin.toString(this.fullName)) + (', commonName=' + Kotlin.toString(this.commonName)) + (', shortName=' + Kotlin.toString(this.shortName)) + (', homeworld=' + Kotlin.toString(this.homeworld)) + (', species=' + Kotlin.toString(this.species)) + (', birthEvent=' + Kotlin.toString(this.birthEvent)) + (', properMass=' + Kotlin.toString(this.properMass)) + (', properAge=' + Kotlin.toString(this.properAge)) + (', livingAge=' + Kotlin.toString(this.livingAge)) + (', properHeight=' + Kotlin.toString(this.properHeight)) + (', commonHeight=' + Kotlin.toString(this.commonHeight)) + (', commonCalendarAge=' + Kotlin.toString(this.commonCalendarAge)) + (', titles=' + Kotlin.toString(this.titles)) + (', renown=' + Kotlin.toString(this.renown)) + (', characteristics=' + Kotlin.toString(this.characteristics)) + (', paths=' + Kotlin.toString(this.paths)) + (', level=' + Kotlin.toString(this.level)) + (', experience=' + Kotlin.toString(this.experience)) + (', soulpool=' + Kotlin.toString(this.soulpool)) + (', constitution=' + Kotlin.toString(this.constitution)) + (', conScale=' + Kotlin.toString(this.conScale)) + (', dexterity=' + Kotlin.toString(this.dexterity)) + (', dexScale=' + Kotlin.toString(this.dexScale)) + (', intelligence=' + Kotlin.toString(this.intelligence)) + (', intScale=' + Kotlin.toString(this.intScale)) + (', willpower=' + Kotlin.toString(this.willpower)) + (', wilScale=' + Kotlin.toString(this.wilScale)) + (', staggerThreshold=' + Kotlin.toString(this.staggerThreshold)) + (', state=' + Kotlin.toString(this.state)) + (', repertoire=' + Kotlin.toString(this.repertoire)) + (', rollsheetLayout=' + Kotlin.toString(this.rollsheetLayout)) + ')';
   };
   CharaData.prototype.hashCode = function () {
     var result = 0;
@@ -1431,14 +1454,18 @@ var wetfe = function (_, Kotlin) {
     result = result * 31 + Kotlin.hashCode(this.titles) | 0;
     result = result * 31 + Kotlin.hashCode(this.renown) | 0;
     result = result * 31 + Kotlin.hashCode(this.characteristics) | 0;
-    result = result * 31 + Kotlin.hashCode(this.specialties) | 0;
+    result = result * 31 + Kotlin.hashCode(this.paths) | 0;
     result = result * 31 + Kotlin.hashCode(this.level) | 0;
     result = result * 31 + Kotlin.hashCode(this.experience) | 0;
     result = result * 31 + Kotlin.hashCode(this.soulpool) | 0;
     result = result * 31 + Kotlin.hashCode(this.constitution) | 0;
+    result = result * 31 + Kotlin.hashCode(this.conScale) | 0;
     result = result * 31 + Kotlin.hashCode(this.dexterity) | 0;
+    result = result * 31 + Kotlin.hashCode(this.dexScale) | 0;
     result = result * 31 + Kotlin.hashCode(this.intelligence) | 0;
+    result = result * 31 + Kotlin.hashCode(this.intScale) | 0;
     result = result * 31 + Kotlin.hashCode(this.willpower) | 0;
+    result = result * 31 + Kotlin.hashCode(this.wilScale) | 0;
     result = result * 31 + Kotlin.hashCode(this.staggerThreshold) | 0;
     result = result * 31 + Kotlin.hashCode(this.state) | 0;
     result = result * 31 + Kotlin.hashCode(this.repertoire) | 0;
@@ -1446,19 +1473,12 @@ var wetfe = function (_, Kotlin) {
     return result;
   };
   CharaData.prototype.equals = function (other) {
-    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.source, other.source) && Kotlin.equals(this.realm, other.realm) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.characteristics, other.characteristics) && Kotlin.equals(this.specialties, other.specialties) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
+    return this === other || (other !== null && (typeof other === 'object' && (Object.getPrototypeOf(this) === Object.getPrototypeOf(other) && (Kotlin.equals(this.id, other.id) && Kotlin.equals(this.source, other.source) && Kotlin.equals(this.realm, other.realm) && Kotlin.equals(this.fullName, other.fullName) && Kotlin.equals(this.commonName, other.commonName) && Kotlin.equals(this.shortName, other.shortName) && Kotlin.equals(this.homeworld, other.homeworld) && Kotlin.equals(this.species, other.species) && Kotlin.equals(this.birthEvent, other.birthEvent) && Kotlin.equals(this.properMass, other.properMass) && Kotlin.equals(this.properAge, other.properAge) && Kotlin.equals(this.livingAge, other.livingAge) && Kotlin.equals(this.properHeight, other.properHeight) && Kotlin.equals(this.commonHeight, other.commonHeight) && Kotlin.equals(this.commonCalendarAge, other.commonCalendarAge) && Kotlin.equals(this.titles, other.titles) && Kotlin.equals(this.renown, other.renown) && Kotlin.equals(this.characteristics, other.characteristics) && Kotlin.equals(this.paths, other.paths) && Kotlin.equals(this.level, other.level) && Kotlin.equals(this.experience, other.experience) && Kotlin.equals(this.soulpool, other.soulpool) && Kotlin.equals(this.constitution, other.constitution) && Kotlin.equals(this.conScale, other.conScale) && Kotlin.equals(this.dexterity, other.dexterity) && Kotlin.equals(this.dexScale, other.dexScale) && Kotlin.equals(this.intelligence, other.intelligence) && Kotlin.equals(this.intScale, other.intScale) && Kotlin.equals(this.willpower, other.willpower) && Kotlin.equals(this.wilScale, other.wilScale) && Kotlin.equals(this.staggerThreshold, other.staggerThreshold) && Kotlin.equals(this.state, other.state) && Kotlin.equals(this.repertoire, other.repertoire) && Kotlin.equals(this.rollsheetLayout, other.rollsheetLayout)))));
   };
   function Character(charaData) {
     if (charaData === void 0)
       charaData = new CharaData();
     this.cdata_wnkotf$_0 = charaData;
-    this.valcache_est45l$_0 = LinkedHashMap_init();
-    var tmp$, tmp$_0;
-    tmp$ = CoreParam$values();
-    for (tmp$_0 = 0; tmp$_0 !== tmp$.length; ++tmp$_0) {
-      var param = tmp$[tmp$_0];
-      this.valcache_est45l$_0.put_xwzc9p$(param, null);
-    }
   }
   Character.prototype.getId = function () {
     return this.cdata_wnkotf$_0.id;
@@ -2582,6 +2602,126 @@ var wetfe = function (_, Kotlin) {
     }
   }
   DataSource.valueOf_61zpoe$ = DataSource$valueOf;
+  function PathType(name, ordinal) {
+    Enum.call(this);
+    this.name$ = name;
+    this.ordinal$ = ordinal;
+  }
+  function PathType_initFields() {
+    PathType_initFields = function () {
+    };
+    PathType$CON_CON_instance = new PathType('CON_CON', 0);
+    PathType$CON_DEX_instance = new PathType('CON_DEX', 1);
+    PathType$CON_INT_instance = new PathType('CON_INT', 2);
+    PathType$CON_WIL_instance = new PathType('CON_WIL', 3);
+    PathType$DEX_DEX_instance = new PathType('DEX_DEX', 4);
+    PathType$DEX_INT_instance = new PathType('DEX_INT', 5);
+    PathType$DEX_WIL_instance = new PathType('DEX_WIL', 6);
+    PathType$INT_INT_instance = new PathType('INT_INT', 7);
+    PathType$INT_WIL_instance = new PathType('INT_WIL', 8);
+    PathType$WIL_WIL_instance = new PathType('WIL_WIL', 9);
+    PathType$ALL_instance = new PathType('ALL', 10);
+    PathType$NONE_instance = new PathType('NONE', 11);
+  }
+  var PathType$CON_CON_instance;
+  function PathType$CON_CON_getInstance() {
+    PathType_initFields();
+    return PathType$CON_CON_instance;
+  }
+  var PathType$CON_DEX_instance;
+  function PathType$CON_DEX_getInstance() {
+    PathType_initFields();
+    return PathType$CON_DEX_instance;
+  }
+  var PathType$CON_INT_instance;
+  function PathType$CON_INT_getInstance() {
+    PathType_initFields();
+    return PathType$CON_INT_instance;
+  }
+  var PathType$CON_WIL_instance;
+  function PathType$CON_WIL_getInstance() {
+    PathType_initFields();
+    return PathType$CON_WIL_instance;
+  }
+  var PathType$DEX_DEX_instance;
+  function PathType$DEX_DEX_getInstance() {
+    PathType_initFields();
+    return PathType$DEX_DEX_instance;
+  }
+  var PathType$DEX_INT_instance;
+  function PathType$DEX_INT_getInstance() {
+    PathType_initFields();
+    return PathType$DEX_INT_instance;
+  }
+  var PathType$DEX_WIL_instance;
+  function PathType$DEX_WIL_getInstance() {
+    PathType_initFields();
+    return PathType$DEX_WIL_instance;
+  }
+  var PathType$INT_INT_instance;
+  function PathType$INT_INT_getInstance() {
+    PathType_initFields();
+    return PathType$INT_INT_instance;
+  }
+  var PathType$INT_WIL_instance;
+  function PathType$INT_WIL_getInstance() {
+    PathType_initFields();
+    return PathType$INT_WIL_instance;
+  }
+  var PathType$WIL_WIL_instance;
+  function PathType$WIL_WIL_getInstance() {
+    PathType_initFields();
+    return PathType$WIL_WIL_instance;
+  }
+  var PathType$ALL_instance;
+  function PathType$ALL_getInstance() {
+    PathType_initFields();
+    return PathType$ALL_instance;
+  }
+  var PathType$NONE_instance;
+  function PathType$NONE_getInstance() {
+    PathType_initFields();
+    return PathType$NONE_instance;
+  }
+  PathType.$metadata$ = {
+    kind: Kind_CLASS,
+    simpleName: 'PathType',
+    interfaces: [Enum]
+  };
+  function PathType$values() {
+    return [PathType$CON_CON_getInstance(), PathType$CON_DEX_getInstance(), PathType$CON_INT_getInstance(), PathType$CON_WIL_getInstance(), PathType$DEX_DEX_getInstance(), PathType$DEX_INT_getInstance(), PathType$DEX_WIL_getInstance(), PathType$INT_INT_getInstance(), PathType$INT_WIL_getInstance(), PathType$WIL_WIL_getInstance(), PathType$ALL_getInstance(), PathType$NONE_getInstance()];
+  }
+  PathType.values = PathType$values;
+  function PathType$valueOf(name) {
+    switch (name) {
+      case 'CON_CON':
+        return PathType$CON_CON_getInstance();
+      case 'CON_DEX':
+        return PathType$CON_DEX_getInstance();
+      case 'CON_INT':
+        return PathType$CON_INT_getInstance();
+      case 'CON_WIL':
+        return PathType$CON_WIL_getInstance();
+      case 'DEX_DEX':
+        return PathType$DEX_DEX_getInstance();
+      case 'DEX_INT':
+        return PathType$DEX_INT_getInstance();
+      case 'DEX_WIL':
+        return PathType$DEX_WIL_getInstance();
+      case 'INT_INT':
+        return PathType$INT_INT_getInstance();
+      case 'INT_WIL':
+        return PathType$INT_WIL_getInstance();
+      case 'WIL_WIL':
+        return PathType$WIL_WIL_getInstance();
+      case 'ALL':
+        return PathType$ALL_getInstance();
+      case 'NONE':
+        return PathType$NONE_getInstance();
+      default:throwISE('No enum constant wetfe.core.game.PathType.' + name);
+    }
+  }
+  PathType.valueOf_61zpoe$ = PathType$valueOf;
   function Realm(name, ordinal) {
     Enum.call(this);
     this.name$ = name;
@@ -2986,7 +3126,7 @@ var wetfe = function (_, Kotlin) {
     get: Attribute_getInstance
   });
   package$character.StatModeState = StatModeState;
-  package$character.CharaSpec = CharaSpec;
+  package$character.CharaPath = CharaPath;
   package$character.CharaState = CharaState;
   package$character.CharaRepertoire = CharaRepertoire;
   Object.defineProperty(CharaData, 'Companion', {
@@ -3033,6 +3173,43 @@ var wetfe = function (_, Kotlin) {
   });
   var package$game = package$core.game || (package$core.game = {});
   package$game.DataSource = DataSource;
+  Object.defineProperty(PathType, 'CON_CON', {
+    get: PathType$CON_CON_getInstance
+  });
+  Object.defineProperty(PathType, 'CON_DEX', {
+    get: PathType$CON_DEX_getInstance
+  });
+  Object.defineProperty(PathType, 'CON_INT', {
+    get: PathType$CON_INT_getInstance
+  });
+  Object.defineProperty(PathType, 'CON_WIL', {
+    get: PathType$CON_WIL_getInstance
+  });
+  Object.defineProperty(PathType, 'DEX_DEX', {
+    get: PathType$DEX_DEX_getInstance
+  });
+  Object.defineProperty(PathType, 'DEX_INT', {
+    get: PathType$DEX_INT_getInstance
+  });
+  Object.defineProperty(PathType, 'DEX_WIL', {
+    get: PathType$DEX_WIL_getInstance
+  });
+  Object.defineProperty(PathType, 'INT_INT', {
+    get: PathType$INT_INT_getInstance
+  });
+  Object.defineProperty(PathType, 'INT_WIL', {
+    get: PathType$INT_WIL_getInstance
+  });
+  Object.defineProperty(PathType, 'WIL_WIL', {
+    get: PathType$WIL_WIL_getInstance
+  });
+  Object.defineProperty(PathType, 'ALL', {
+    get: PathType$ALL_getInstance
+  });
+  Object.defineProperty(PathType, 'NONE', {
+    get: PathType$NONE_getInstance
+  });
+  package$game.PathType = PathType;
   Object.defineProperty(Realm, 'CONFLUENT', {
     get: Realm$CONFLUENT_getInstance
   });

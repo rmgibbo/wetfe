@@ -1,6 +1,24 @@
-var CHARS = null; // character files loaded from user's WETFE/Character folder
-var CHARMAP = {};
-var CDATA = null; // the data of the current character
+/*
+* !THIS FILE MUST BE LOADED AFTER kotlin.js AND wetfe.js
+*/
+if (typeof wetfe === 'undefined') {
+    throw new Error("Error loading script 'character-manager.js'. Its dependency 'wetfe' was not found. Please, check whether 'wetfe' is loaded prior to 'encounter.js'.");
+}
+
+let charaMap = {};
+let character = null; // the current character
+
+const CORE = wetfe.wetfe.core;
+const QuadStat = CORE.character.QuadStat;
+const CoreParam = CORE.character.CoreParam;
+const StateParam = CORE.character.StateParam;
+const StatMode = CORE.character.StatMode;
+const Attribute = CORE.character.Attribute;
+const CharaData = CORE.character.CharaData;
+const Character = CORE.character.Character;
+
+// var CHARS = null; // character files loaded from user's WETFE/Character folder
+// var CHARMAP = {};
 
 function rand(min, max) {
     return Math.random() * (max - min) + min;
@@ -35,20 +53,20 @@ function toggleEditMode() {
 function INC(k, n, is_state) {
     if (typeof is_state === 'undefined' || is_state === null) is_state = isSTATE(k);
     var data_prefix = is_state  ? 'data-state-' : 'data-param-';
-    var val = is_state ? STATE[k](CDATA) : CHAR[k](CDATA);
+    var val = is_state ? STATE[k](character) : CHAR[k](character);
     if (typeof val === 'number') {
         var max = MAX(k);
         var wal = BOUND(k, val + n);
         if (wal === val) return;
         if (is_state) {
-            STATE[k](CDATA, wal);
+            STATE[k](character, wal);
         } else {
             var mod = {
                 type: "FREE EDIT",
-                level: CHAR.LVL(CDATA),
+                level: CHAR.LVL(character),
                 val: (wal - val)
             };
-            CHAR[k](CDATA, mod);
+            CHAR[k](character, mod);
             if (wal >= 0 && wal < NATURES.length) $('.we-nature[data-nature-of="' + k + '"]').html(NATURES[wal]);
         }
         $('[' + data_prefix + 'key="' + k + '"]').html(wal);
@@ -58,7 +76,7 @@ function INC(k, n, is_state) {
 }
 
 function increment(element, n) {
-    if (!CDATA) return;
+    if (!character) return;
     if (typeof n !== 'number') n = 1;
     var $element = $(element);
     var is_state = $element.is('.we-state-change');
@@ -76,12 +94,12 @@ function DEC(k, n, is_state) {
 }
 
 function reallocate(src_key, dst_key, n) {
-    if (!(CDATA && CDATA.state)) return;
+    if (!(character && character.state)) return;
     if (!src_key && !dst_key) return;
     if (typeof n !== 'number') n = 1;
     if (n < 1) return;
     if (typeof src_key === 'string') {
-        var src_val = STATE[src_key](CDATA);
+        var src_val = STATE[src_key](character);
         if (src_val < 1) return;
         if (n > src_val) n = src_val;
         DEC(src_key, n, true);
@@ -133,9 +151,9 @@ var $char_dditem_ce = null;
 function addCharDropdownItem(char) {
     if ($char_dditem_ce === null) $char_dditem_ce = $('.we-char-dditem.we-clone-element');
     $char_dditem_ce.clone()
-        .attr('data-char-key', char.key)
+        .attr('data-chara-id', char.getId())
         .removeClass('we-clone-element d-none')
-        .html(char.data.common_name)
+        .html(char.getName())
         .appendTo('.we-char-ddmenu');
 }
 
@@ -148,17 +166,25 @@ function repopulateCharDropdown() {
     }
 }
 
-function onCharacterCreated(char) {
-    STATE.newState(char.data);
-    console.log('[PCMScript::onCharacterCreated] INFO: Created character "' + char.key + '"');
-    addCharacter(char);
-    clearLoadingHud();
-    $('.we-char-dditem[data-char-key="' + char.key + '"]').click();
-}
+// function onCharacterCreated(char) {
+//     STATE.newState(char.data);
+//     console.log('[PCMScript::onCharacterCreated] INFO: Created character "' + char.getId() + '"');
+//     addCharacter(char);
+//     clearLoadingHud();
+//     $('.we-char-dditem[data-chara-id="' + char.getId() + '"]').click();
+// }
+
+// function createCharacter(element) {
+//     drawLoadingHud('Creating New Character');
+//     google.script.run.withSuccessHandler(onCharacterCreated).createCharacter();
+// }
 
 function createCharacter(element) {
-    drawLoadingHud('Creating New Character');
-    google.script.run.withSuccessHandler(onCharacterCreated).createCharacter();
+        let newCharacter = new Character();
+        console.log('[character-manager.js] INFO: Created character "' + newCharacter.getId() + '"');
+        addCharacter(newCharacter);
+        $('.we-character-name').text(newCharacter.getName());
+        $('.we-char-dditem[data-chara-id="' + newCharacter.getId() + '"]').click();
 }
 
 function onDataSaved() {
@@ -168,128 +194,125 @@ function onDataSaved() {
 }
 
 function saveCurrentData() {
-    if (!CDATA) return;
+    if (!character) return;
     drawLoadingHud('Saving Character');
-    var char = CHARMAP[CDATA.key];
+    var char = CHARMAP[character.getId()];
     if (!char) {
-        console.error('FAILED TO SAVE CURRENT DATA. Unable to find Character for key "' + CDATA.key + '"');
+        console.error('FAILED TO SAVE CURRENT DATA. Unable to find Character for id "' + character.getId() + '"');
     }
     google.script.run.withSuccessHandler(onDataSaved).saveCharacter(char);
 }
 
 function addCharacter(char) {
     if (!char) {
-        console.error('[PCMScript::addCharacter] ERROR: The given character "char" was null.');
+        console.error('[character-manager.js] ERROR: The given character was null.');
         return;
     }
-    char.data.key = char.key; // enable reverse lookups
-    if (!Array.isArray(CHARS)) CHARS = [];
-    CHARS.push(char);
-    if (!CHARMAP || typeof CHARMAP !== 'object') CHARMAP = {};
-    CHARMAP[char.key] = char;
+    if (!charaMap || typeof charaMap !== 'object') charaMap = {};
+    charaMap[char.getId()] = char;
     addCharDropdownItem(char);
 }
 
 function drawCharacter() {
-    if (!CDATA) return;
-    $('.we-character-name').html(CDATA.full_name);
-    for (var pk of PARAM_KEYS) {
-        var val = CHAR[pk](CDATA);
+    if (!character) return;
+    $('.we-character-name').html(character.getFullName());
+    for (let cparam of CoreParam.values()) {
+        let val = character.getParam_qosqn7$(cparam);
+        let pk = cparam.key;
+        console.log(`Drawing character core param ${pk} with val of ${val}`);
         $('[data-param-key="' + pk + '"]').html(val);
         if (typeof val === 'number') {
-            var $linked_pbars = $('.progress-bar[data-param-link="' + pk + '"]');
+            let $linked_pbars = $('.progress-bar[data-param-link="' + pk + '"]');
             if ($linked_pbars.length > 0) {
-                var max = MAX(pk);
-                if (isPOS(max)) $linked_pbars.css('width', '' + (100*val/max).toFixed(0) + '%');
+                let max = Attribute.Limit.Companion.of_qosqn7$(cparam).max;
+                if (max > 0) $linked_pbars.css('width', '' + (100*val/max).toFixed(0) + '%');
             }
-            var $natures = $('.we-nature[data-nature-of="' + pk + '"]');
-            if ($natures.length > 0 && val >= 0 && val < NATURES.length) {
-                $natures.html(NATURES[val]);
+            let $natures = $('.we-nature[data-nature-of="' + pk + '"]');
+            if ($natures.length > 0) {
+                $natures.html(Attribute.Nature.Companion.of_za3lpa$(val));
             }
         }
     }
-    if (!CDATA.state) STATE.newState(CDATA);
-    for (var sk of STATE_KEYS) {
-        var val = STATE[sk](CDATA);
+    for (let sparam of StateParam.values()) {
+        let val = character.getParam_alacmf$(sparam);
+        let sk = sparam.key;
+        console.log(`Drawing character state param ${sk} with val of ${val}`);
         $('[data-state-key="' + sk + '"]').html(val);
-        var $linked_pbars = $('.progress-bar[data-state-link="' + sk + '"]');
+        let $linked_pbars = $('.progress-bar[data-state-link="' + sk + '"]');
         if ($linked_pbars.length > 0) {
-            var max = MAX(sk);
-            if (isPOS(max)) $linked_pbars.css('width', '' + (100*val/max).toFixed(0) + '%');
+            let max = Attribute.Limit.Companion.of_alacmf$(sparam);
+            if (max > 0) $linked_pbars.css('width', '' + (100*val/max).toFixed(0) + '%');
         }
     }
 }
 
 function selectCharacter(element) {
     $cdditem = $(element);
-    var ckey = $cdditem.attr('data-char-key');
-    if (typeof ckey !== 'string') {
-        console.log('[PCMScript::selectCharacter] ERROR: char dditem missing attribute "data-char-key"');
+    const cid = $cdditem.attr('data-chara-id');
+    if (typeof cid !== 'string') {
+        console.log('[character-manager.js] ERROR: char dditem missing attribute "data-chara-id"');
         return;
     }
-    CDATA = CHARMAP[ckey].data;
-    if (!CDATA) {
-        console.log('[PCMScript::selectCharacter] ERROR: Unable to lookup character with key "' + ckey + '"');
+    character = new Character(clone(charaMap[cid]).cdata_wnkotf$_0);
+    if (!character) {
+        console.log('[character-manager.js] ERROR: Unable to lookup character with id "' + cid + '"');
         return;
     }
     drawCharacter();
 }
 
-function onDataLoaded(chars) {
-    CHARS = [];
-    if (Array.isArray(chars)) {
-        for (var c of chars) {
-            addCharacter(c);
-        }
-    }
-    clearLoadingHud();
-    //$('#data-serialization-text').val(JSON.stringify(CHARS));
-}
+// function onDataLoaded(chars) {
+//     CHARS = [];
+//     if (Array.isArray(chars)) {
+//         for (var c of chars) {
+//             addCharacter(c);
+//         }
+//     }
+//     clearLoadingHud();
+//     //$('#data-serialization-text').val(JSON.stringify(CHARS));
+// }
 
-function loadData() {
-    google.script.run.withSuccessHandler(onDataLoaded).getCharacters();
-}
+// function loadData() {
+//     google.script.run.withSuccessHandler(onDataLoaded).getCharacters();
+// }
 
 $(function () {
     $('[data-toggle="tooltip"]').tooltip();
-    loadData();  //TODO: Use this line after testing
-    drawLoadingHud(new Character(new CharData()).condition());
-    //onDataLoaded(getTestChars()); //TODO: Remove this line after testing
 });
 
 
 ///
 
 // CHARACTER OPERATORS
-const PARAM_KEYS = Object.freeze([
-    "LVL", "EXP", "TIER", "SP", "CON", "DEX", "INT", "WIL"
-]);
-
-function isPARAM(key) {
-    return PARAM_KEYS.includes(key);
-}
+// const PARAM_KEYS = Object.freeze([
+//     "LVL", "EXP", "SP", "CON", "DEX", "INT", "WIL"
+// ]);
+//
+// function isPARAM(key) {
+//     return PARAM_KEYS.includes(key);
+// }
 
 ///
 
 
 
 // CHARACTER STATE OPERATORS
-const STATE_KEYS = Object.freeze([
-    "CDN", "PWR", "HEL", "BRK", "DMG", "AFL", "FTG"
-]);
-
-function isSTATE(key) {
-    return STATE_KEYS.includes(key);
-}
-
-function newState(cdata) {
-    cdata.state = {
-        condition: "NORMAL",
-        power: 0,
-        //health: CHAR.SP(cdata), //TODO: subtract soulbound chips
-        breakage: 0,
-        damage: 0,
-        affliction: 0,
-        fatigue: 0
-    };
-}
+// const STATE_KEYS = Object.freeze([
+//     "CDN", "PWR", "HEL", "BRK", "DMG", "AFL", "FTG"
+// ]);
+//
+// function isSTATE(key) {
+//     return STATE_KEYS.includes(key);
+// }
+//
+// function newState(cdata) {
+//     cdata.state = {
+//         condition: "NORMAL",
+//         power: 0,
+//         //health: CHAR.SP(cdata), //TODO: subtract soulbound chips
+//         breakage: 0,
+//         damage: 0,
+//         affliction: 0,
+//         fatigue: 0
+//     };
+// }

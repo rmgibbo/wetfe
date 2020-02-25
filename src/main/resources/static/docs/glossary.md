@@ -57,6 +57,9 @@ core attribute
 
 core natures
 : `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
+  
+core scale
+: The base-20 scale that a given core attribute is scored relative to. Scales are denoted by an integer, which indicates the exponent (of 20) of the scale. The common scale (Scale 1) is assumed for any attribute score that makes no explicit reference to its scale. 
 
 damage, dmg
 : The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in five types: anatomical, psychological, infernal, celestial, and exotic.

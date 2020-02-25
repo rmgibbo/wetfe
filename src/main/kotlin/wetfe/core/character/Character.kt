@@ -1,6 +1,7 @@
 package wetfe.core.character
 
 import wetfe.core.game.DataSource
+import wetfe.core.game.PathType
 import wetfe.core.universe.Event
 import wetfe.core.universe.Realm
 import kotlin.math.absoluteValue
@@ -274,12 +275,11 @@ data class StatModeState(var conMode: StatMode = StatMode.NATURAL,
 }
 
 /**
- *  CharaSpec
+ *  CharaPath
  *  -----------------------------------
  */
-data class CharaSpec(var tier: Int,
-                     var name: String,
-                     var customName: String = "")
+data class CharaPath(var pathType: PathType = PathType.CON_CON,
+                     var tier: Int = 0)
 
 /**
  *  CharaState
@@ -303,10 +303,10 @@ data class CharaState(var health: Int = 0,
  *  The repertoire of all abilities known by a Character.
  */
 data class CharaRepertoire(val general: MutableList<String> = mutableListOf(),
-                           val specialty: MutableList<String> = mutableListOf(),
-                           val growth: MutableList<String> = mutableListOf(),
+                           val archetypal: MutableList<String> = mutableListOf(),
                            val soulbound: MutableList<String> = mutableListOf(),
-                           val exceptional: MutableList<String> = mutableListOf())
+                           val exceptional: MutableList<String> = mutableListOf(),
+                           val circumstantial: MutableList<String> = mutableListOf())
 
 /**
  *  CharaData
@@ -332,14 +332,18 @@ data class CharaData(val id: String = newId(),
                      var titles: MutableList<String> = mutableListOf(),
                      var renown: MutableList<String> = mutableListOf(),
                      var characteristics: MutableList<String> = mutableListOf(),
-                     var specialties: MutableList<CharaSpec> = mutableListOf(),
-                     var level: Int = 1,
+                     var paths: MutableList<CharaPath> = mutableListOf(),
+                     var level: Int = 0,
                      var experience: Int = 0,
-                     var soulpool: Int = 5,
-                     var constitution: Int = 10,
-                     var dexterity: Int = 10,
-                     var intelligence: Int = 10,
-                     var willpower: Int = 10,
+                     var soulpool: Int = 4,
+                     var constitution: Int = 8,
+                     var conScale: Int = 1,
+                     var dexterity: Int = 8,
+                     var dexScale: Int = 1,
+                     var intelligence: Int = 8,
+                     var intScale: Int = 1,
+                     var willpower: Int = 8,
+                     var wilScale: Int = 1,
                      var staggerThreshold: Int = 0,
                      var state: CharaState = CharaState(),
                      var repertoire: CharaRepertoire = CharaRepertoire(),
@@ -369,14 +373,6 @@ data class CharaData(val id: String = newId(),
  */
 open class Character(charaData: CharaData = CharaData()) {
     private val cdata: CharaData = charaData
-
-    private val valcache: MutableMap<CoreParam, Int?> = mutableMapOf()
-
-    init {
-        for (param in CoreParam.values()) {
-            valcache[param] = null
-        }
-    }
 
     fun getId(): String {
         return cdata.id

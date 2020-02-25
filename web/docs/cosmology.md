@@ -9,17 +9,17 @@
 - Affine 3-Space
 - Invariant Mass Density
   
-## Exotic Realm &bull; The Queersphere 
+## Exotic Realm &bull; The Queersphere
   
 - Quantum Multiverse
   
-## Confluent Realm &bull; The Neosphere 
+## Confluent Realm &bull; The Neosphere
   
 - Emergent Physics/Phenomena
   - Spacetime Manifold
   - Particle Physics
   - Quantum Mechanics
-  - Thermodynamics (Arrow of Time)
+  - Thermodynamics	
   - Chemistry
   - Biology
   - Evolution
@@ -35,11 +35,11 @@ Reality. A mind-numbingly vast and alien domain, teeming with an infinite variet
   
 ## Celestial Realm
   
-From one of its cosmic parents, known to some as the Celestial Realm, or the Bitsphere, it inherits the geometry of its three spatial dimensions; and the invariant mass field that permeates it. Thus, it is equipped with the structures that admit highly distinct regions of matter-space, and vast amounts of information.
+From one of its cosmic parents, known to some as the Celestial Realm, or the Bitsphere, it inherits the geometry of its three spatial dimensions, and the invariant mass field that permeates it. Thus, it is imbued with structures that admit highly distinct regions of matter-space, and vast amounts of information.
   
 ## Infernal Realm
   
-From another parent cosmos, known to some as the Infernal Realm, or the Chronosphere, it acquires the geometry of its temporal dimension, and of its prime consequences, the Arrow of Time, manifest in asymmetric thermodynamic processes. Thus the systems of mass-energy within the child cosmos inexorably climb to ever-higher entropy states, thereby obscuring information and driving the macrocosm toward thermal equilibrium.
+From another parent cosmos, known to some as the Infernal Realm, or the Chronosphere, it acquires the geometry of its temporal dimension, which manifests as the Arrow of Time that induces asymmetric thermodynamic processes. Thus, the emergent systems of mass-energy within the child cosmos inexorably climb to ever-higher entropy states, thereby obscuring information and driving the macrocosm toward thermal equilibrium.
   
 ## Exotic Realm
   

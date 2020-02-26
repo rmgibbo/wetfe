@@ -27,11 +27,11 @@
   - Universal Computers
   - Etc.
   
-# Intro
+# The Myth
   
 ## Child Cosmos
   
-Reality. A mind-numbingly vast and alien domain, teeming with an infinite variety of subspaces, each known as a realm, or a cosmos. Sufficiently rich subspaces of Reality permit phenomena, and even physics, to emerge from the denizens of different realms. Within one such space, three realms have intermixed with each other. And of this confluence, a new cosmos has been wrought. It is a child cosmos, born of an eclectic, supremely special, yet cohesive mixture of its parents’ properties...
+Reality. A mind-numbingly vast and alien domain, teeming with an infinite variety of subspaces, each known as a realm, or a cosmos. Sufficiently rich subspaces of Reality permit phenomena, and even physics, to emerge from the denizens of different realms. Within one such space, three realms have intermixed with each other. And of this confluence, a new cosmos has been wrought. It is a child cosmos, born of an eclectic, supremely special, yet cohesive mixture of its parents’ properties:
   
 ## Celestial Realm
   
@@ -47,20 +47,6 @@ From its final cosmic progenitor, known to some as the Exotic Realm, or the Quee
   
 ## Confluent Realm
 Thus formed, the child cosmos is imbued with the ingredients necessary to exhibit a wealth of emergent physics and phenomena. And so they did emerge: particles, gravity, chemistry, biology; and eventually social consciousness, which gradually became aware of these phenomena, and then of the cosmos itself, and then even of its progenitors...
-  
-# ~ NOTES
-  
-## Going Pure
-  
-Jaded, powerful beings may end their existence in the Confluent Realm by _going pure_: an irreversible process (akin to an ER wormhole journey) whereby they commit to exist as a denizen of another realm. Typically, the being becomes disillusioned with their existence in their own realm, and attempts to transcend it by permanently transferring their soul to another, to which they feel a strong affinity.
-  
-## Relics & Fonts
-  
-The process of going pure encodes the quantum information of the being in mass-energy structures known as holographs.  Holo Hunters are (typically groups of) beings that make a living searching the cosmos for these holographic remnants of transcended beings. Once located, artisans called _reifiers_, or _soulcrafters_, attempt to reify (via a process known as _reification_) the holograph into soul reliquiae, which are commonly known as _relics_. These relics are powerful items that harbor vestigial information -- and thus powers -- of their progenitor. These vessels of power within the relics are commonly called _fonts_, and are what makes them (potentially supremely) valuable.
-  
-## Soulbinding
-  
-Beings that acquire relics may innervate the fonts within them with quanta of their own soul in a process called _soulbinding_. Soulbound relics are potent sources of power, and are prized by adventurers, warmongers, academics, collectors, etc., alike. Merchants that deal in lesser relics (on the the Holo Market, or Soul Relic Trade, "SRT") are known as _soulmongers_; or as _purveyors_ if they deal in the rare, coveted variety.
   
 ------
 Copyright © 2020 Ryan Gibbons  

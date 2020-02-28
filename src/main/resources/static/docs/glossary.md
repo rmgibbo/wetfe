@@ -30,8 +30,8 @@ below/above
 bloodfont
 : A type of font found on equipment that typically augments or grants physical abilities.
   
-buff, _enhance_
-: To cause the enhancement of one or more core attributes.
+buff, _buff_
+: A positive effect. See **enhancement**.
   
 channelling, _channel_
 : The state of heightened focus a being must enter to resolve skills that require more power chips Ⓟ than are currently available. Once channelling, the caster or performer immediately ends their turn, though their skill is not considered resolved yet. Immediately upon their next turn, they cease channelling, gain a number of power chips Ⓟ equal to their number of healthy soul chips Ⓢ, and resume the skill they began on their previous turn.
@@ -54,23 +54,26 @@ constitution, CON
 core attribute
 : An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured on scales from 1 to 20, where 10 (on the common scale) roughly corresponds to a forte of a capable adventurer.
   
-core natures
+core attribute assessment
 : `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
   
 core scale
 : The base-20 scale that a given core attribute is scored relative to. Scales are denoted by an integer, which indicates the exponent (of 20) of the scale. The common scale, Scale 1, is assumed for any attribute score that makes no explicit reference to its scale. 
   
 damage, dmg
-: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage comes in combinations of effect realms {Infernal, Celestial, Exotic, Confluent} and modes {Anatomical, Psychological, Superpsychical, ...}.
+: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters.
+  
+damage type
+: Damage types are distinguished by their causative realm {Infernal, Celestial, Exotic, Confluent} and mode of effect {anatomical, psychological, superpsychical, ...}. The vulnerability systems details the strength of interaction between all pairwise permutations of realms; where the first realm of the pair indicates the physics of the causative system, and the second indicates the physics of the affected system. First, however, the modes of effect must be reconciled. The modes are a simple list of qualities that must be present in the affected system _for each present in the causative system_, in order for the effect to resolve as intended.
   
 damage deque, Damage[]
 : The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
   
-debuff, _enfeeble_
-: To cause the enfeeblement of one or more core attributes.
+debuff, _debuff_
+: A negative effect. See **enfeeblement**.
   
-defense roll
-: A d20 roll against the hardiness or mettle table that determines the magnitude of mitigation of incoming damage. Generally, all anatomical damage is mitigated with a defense roll governed by constitution; all psychological damage is mitigated with a defense roll governed by willpower; and the remaining damage types—infernal, celestial, and exotic—bypass defenses. Overrolls result in the minimum level of the defense table.
+delay, _delay_
+: A decremental impact to momentum. This reduces a combatant's likelihood of acting before others in the next round.
   
 deque
 : _Pronounced "deck."_ A vertical column of chips that grows by accumulating chips atop or beneath it. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
@@ -88,7 +91,7 @@ enhancement, _enhance_
 : An effect that temporarily intensifies one or more core attributes of a being. Any skills governed by an enhanced attribute are augmented by rolling an additional d6 against the enhancement table, which is applied to the accompanying d20 result ℜ.
   
 experience, EXP
-: Acquired by the characters in an adventuring party after completing an encounter. Typical encounters award one, two, or three experience points. TODO: Describe the loosely-coupled exp/level system here.
+: Acquired by the characters in an adventuring party after completing an encounter. Typical encounters award one, two, or three experience points. [TODO: Describe the loosely-coupled exp/level system.]
   
 fatigue, ftg
 : Represents the temporary loss of soul chips Ⓢ due to extreme exertion of physical and mental faculties. Accumulates during the stressful events that occur between peaceful periods of adventuring. Automatically restored after each sound rest.
@@ -112,7 +115,10 @@ feats of charisma & courage, Ғ:WIL
 : A character’s attempt to win a contest, or overcome a challenge using their charisma and courage. For example, a character may attempt to intimidate another being. The character would roll a WIL check, while their opponent would also roll a WIL check to test their mettle against the intimidation. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s. [TODO: Give one example of an Ғ:WIL challenge.]
   
 font
-: Vessels of untapped energy that can be found on equipment. Powerful beings may use part of their soul to innervate a font, thereby tapping into its energy and harnessing its effects.
+: Vessels of information that can be found within relics. Powerful beings may sacrifice quanta of their soul to innervate a font, and thus harness its power.
+  
+haste, _hasten_
+: An incremental impact to momentum. This increases a combatant's likelihood of acting before others in the next round.
   
 healing, _heal_
 : The process of restoring damaged soul chips (Ⓢ in the damage deque) to the health deque. Healing affects the chips of the damage deque point-per-chip, from the top down, and according to their type. Affliction chips Ⓐ simply pop, whereas soul chips pop and queue into the health deque.
@@ -129,8 +135,11 @@ intelligence, INT
 manafont
 : A type of font found on some equipment that typically augments or grants mental abilities.
   
+mode of effect
+: Any qualifier of an effect that must be present in both the causative and affected systems to manifest as intended.
+  
 momentum, 𝓂
-: TODO. Integer. (-, 0, +). Haste, delay. Round order.
+: A being's moment-to-moment groove during combat encounters. Represented by an integer, which resets to 0 at the beginning of every round, and may then increase (due to hastening effects) or decrease (due to delaying effects) throughout it.
   
 overkill
 : A killing blow that would have otherwise staggered its target. Overkills grant the same morale-based healing as staggers, and the killer is hastened; and there may be other circumstantial ramifications, such as inspiring fear in the allies of the overkilled being.
@@ -154,10 +163,13 @@ _queue_
 : The act of adding a soul chip Ⓢ to the bottom of a deque. Soul chips always accumulate in this manner; i.e. they never stack.
   
 reaction
-: A type of ability, governed by dexterity or intelligence, that may be attempted any time its trigger occurs in an encounter.
+: A type of ability that may be executed any time its trigger occurs in an encounter, within a reasonably short amount of time. Offensive reactions are governed by DEX or INT, whereas defensive reactions are governed by CON or WIL.
   
 reaction roll
-: A d20 roll against the reaction table that determines the success of a reaction. Overrolls yield the minimum level of the table.
+: A d20 roll against a reaction table that determines the success of a reaction. Overrolls yield the minimum level of the table.
+  
+round
+: A segment of time during a combat in which each combatant takes one turn. Turn order is randomized at the beginning of each round, taking into account each combatant's current momentum.
   
 skill
 : A practiced ability executed by beings in combat, social, or environmental encounters. Skills are resolved with a roll against a result table.
@@ -181,10 +193,10 @@ _stack_
 : The act of adding a chip to the top of a deque. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.
   
 staggered, _stagger_
-: The state an NPC combatant enters upon suffering damage equal to or greater than its stagger threshold in a single turn. It is delayed, and suffers a +1 vulnerability to its anatomical and psychological damage adjustments. Additionally, all opponents that are aware of the staggering receive a morale boost in the form of 1 healing.
+: The state a combatant enters upon suffering damage equal to or greater than their stagger threshold in a single turn. It is delayed, and suffers a +1 vulnerability to their anatomical and psychological damage adjustments. Additionally, all opponents that are aware of the staggering receive a morale boost in the form of 1 healing.
   
 stagger threshold, Ḡ
-: A property of NPC combatants that sets how much damage they must suffer on a single turn to become staggered.
+: A property of combatants that sets how much damage they must suffer on a single turn to become staggered.
   
 trait
 : A type of ability that grants a passive effect to a character. Traits are not rolled (as skills and reactions are), and typically modify other abilities -- or the general rules of the game -- for a character.
@@ -194,6 +206,12 @@ trauma
   
 trauma chip, Ⓣ
 : The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue deque, where each trauma chip prevents _all_ fatigue from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
+  
+turn
+: The brief segment of time during which beings act -- in roughly chronological order -- during encounters.
+  
+vulnerability physics
+: The system that describes the fundamental interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system. For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
   
 willpower, WIL
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.

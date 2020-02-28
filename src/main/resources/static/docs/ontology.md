@@ -62,7 +62,7 @@ Meaningful concepts then, are rich subspaces of related `Things`; where the rela
   
 On the other hand, if some concept we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` connected to it.
   
-Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities, such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of meaningfulness metric, related to how highly connected they are to other `Things`.
+Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of meaningfulness metric, related to how highly connected they are to other `Things`.
   
 For example, the concept of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, _"The non-trivial factorization of the number five exists"_ is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
   
@@ -72,7 +72,7 @@ For example, the concept of a _"non-trivial factorization of a prime number"_ is
   
 We may consider the existential proposition _"The existential proposition of itself exists."_
   
-By [1], ∃(∃(∃(...))) exists.
+By [1], ∃(∃(∃(...))) exists, and by [2] has the standard meaning.
   
 Let's call this infinitely recursive existential proposition **T<sub>0</sub>**, and note that ∃(∃(∃(...))) = **T<sub>0</sub>** = ∃(**T<sub>0</sub>**).
   
@@ -86,7 +86,7 @@ Let **c<sub>Primicorn</sub>** mean _"the non-trivial factorization of a prime nu
   
 Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says _"The non-trivial factorization of a prime number exists."_
   
-By [1], ∃(**c<sub>Primicorn</sub>**) exists.
+By [1], ∃(**c<sub>Primicorn</sub>**) exists, and by [2] has the standard meaning.
   
 Then by [3], ∃(**c<sub>Primicorn</sub>**) is true, at least somewhere in Reality, and _poof!_ it seems we've summoned a Primicorn.
   
@@ -111,7 +111,7 @@ All the axioms tell us is:
 - **If** the proposed concept of a Primicorn is a `Thing` highly connected to other `Things`, then our friend has discovered a concept of richer meaning than the ordered symbols that they used to represent it.
 - **Otherwise**, our friend has a vague concept in mind, perhaps little more than an arbitrary permutation of symbols, which does exist, but is unlikely to be useful in deeper explanations of Reality.
   
-The fundamental issue is that we have no general method of determining how meaningful are concepts a priori. And then, even if we were so equipped, we have no general method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories), critique, and experimentation shall avail us.
+The fundamental issue is that we have no general method of determining how meaningful concepts are a priori. And then, even if we were so equipped, we have no general method of determining what the nature and extent of our `Realm` is, again a priori. In both cases, however, propositions of concepts (i.e. theories), critique, and experimentation shall avail us.
   
 ### Communication
   

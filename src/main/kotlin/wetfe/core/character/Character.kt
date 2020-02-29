@@ -136,7 +136,7 @@ enum class StateCondition(val key: String, val priority: Int) {
     CHANNELING("^", 30),
     STAGGERED("$", 60),
     UNCONSCIOUS("*", 70),
-    COMATOSE("~", 80),
+    DYING("~", 80),
     DEAD("_", 90);
 
     companion object {
@@ -203,7 +203,7 @@ object Attribute {
         }
     }
 
-    enum class Nature(val label: String) {
+    enum class Assessment(val label: String) {
         UNDEFINED("Undefined"), // N/A
         ABSENT("Absent"), // 0
         PALTRY("Paltry"), // 1, 2
@@ -218,7 +218,7 @@ object Attribute {
         MIRACULOUS("Miraculous"); // 20
 
         companion object {
-            fun of(n: Int): Nature {
+            fun of(n: Int): Assessment {
                 return when (n) {
                     0 -> ABSENT
                     1, 2 -> PALTRY
@@ -237,7 +237,7 @@ object Attribute {
         }
     }
 
-    fun hasNature(n: Int): Boolean {
+    fun hasAssessment(n: Int): Boolean {
         return n in 0..20
     }
 
@@ -705,7 +705,7 @@ open class Character(charaData: CharaData = CharaData()) {
                 increment(StateParam.FATIGUE, n2)
                 setDamage(d1)
                 if (d1 <= 0) {
-                    setCondition(StateCondition.COMATOSE)
+                    setCondition(StateCondition.DYING)
                 }
             } else {
                 setCondition(StateCondition.DEAD)
@@ -773,7 +773,7 @@ open class Character(charaData: CharaData = CharaData()) {
             setDamage(d1)
             increment(StateParam.FATIGUE, f1)
             if (d1 == 0) {
-                setCondition(StateCondition.COMATOSE)
+                setCondition(StateCondition.DYING)
             }
         } else {
             setCondition(StateCondition.DEAD)
@@ -796,7 +796,7 @@ open class Character(charaData: CharaData = CharaData()) {
         decrement(StateParam.FATIGUE, f2)
         increment(StateParam.HEALTH, f2)
         if (hel > 0 && (cdn == StateCondition.UNCONSCIOUS ||
-                        cdn == StateCondition.COMATOSE)) {
+                        cdn == StateCondition.DYING)) {
             setCondition(StateCondition.NORMAL, true)
         }
         return f2
@@ -903,7 +903,7 @@ open class Character(charaData: CharaData = CharaData()) {
             increment(StateParam.FATIGUE, ftg)
             setDamage(d2)
             if (d2 < 1) {
-                setCondition(StateCondition.COMATOSE)
+                setCondition(StateCondition.DYING)
             }
         }
         return ftg

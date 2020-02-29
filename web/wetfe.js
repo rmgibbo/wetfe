@@ -41,8 +41,8 @@ var wetfe = function (_, Kotlin) {
   StateCondition.prototype.constructor = StateCondition;
   Attribute$Limit.prototype = Object.create(Enum.prototype);
   Attribute$Limit.prototype.constructor = Attribute$Limit;
-  Attribute$Nature.prototype = Object.create(Enum.prototype);
-  Attribute$Nature.prototype.constructor = Attribute$Nature;
+  Attribute$Assessment.prototype = Object.create(Enum.prototype);
+  Attribute$Assessment.prototype.constructor = Attribute$Assessment;
   ParticipantStatus.prototype = Object.create(Enum.prototype);
   ParticipantStatus.prototype.constructor = ParticipantStatus;
   CharacterParticipant.prototype = Object.create(Character.prototype);
@@ -461,7 +461,7 @@ var wetfe = function (_, Kotlin) {
     StateCondition$CHANNELING_instance = new StateCondition('CHANNELING', 3, '^', 30);
     StateCondition$STAGGERED_instance = new StateCondition('STAGGERED', 4, '$', 60);
     StateCondition$UNCONSCIOUS_instance = new StateCondition('UNCONSCIOUS', 5, '*', 70);
-    StateCondition$COMATOSE_instance = new StateCondition('COMATOSE', 6, '~', 80);
+    StateCondition$DYING_instance = new StateCondition('DYING', 6, '~', 80);
     StateCondition$DEAD_instance = new StateCondition('DEAD', 7, '_', 90);
     StateCondition$Companion_getInstance();
   }
@@ -495,10 +495,10 @@ var wetfe = function (_, Kotlin) {
     StateCondition_initFields();
     return StateCondition$UNCONSCIOUS_instance;
   }
-  var StateCondition$COMATOSE_instance;
-  function StateCondition$COMATOSE_getInstance() {
+  var StateCondition$DYING_instance;
+  function StateCondition$DYING_getInstance() {
     StateCondition_initFields();
-    return StateCondition$COMATOSE_instance;
+    return StateCondition$DYING_instance;
   }
   var StateCondition$DEAD_instance;
   function StateCondition$DEAD_getInstance() {
@@ -540,7 +540,7 @@ var wetfe = function (_, Kotlin) {
     interfaces: [Enum]
   };
   function StateCondition$values() {
-    return [StateCondition$NORMAL_getInstance(), StateCondition$BLITZING_getInstance(), StateCondition$TURTLING_getInstance(), StateCondition$CHANNELING_getInstance(), StateCondition$STAGGERED_getInstance(), StateCondition$UNCONSCIOUS_getInstance(), StateCondition$COMATOSE_getInstance(), StateCondition$DEAD_getInstance()];
+    return [StateCondition$NORMAL_getInstance(), StateCondition$BLITZING_getInstance(), StateCondition$TURTLING_getInstance(), StateCondition$CHANNELING_getInstance(), StateCondition$STAGGERED_getInstance(), StateCondition$UNCONSCIOUS_getInstance(), StateCondition$DYING_getInstance(), StateCondition$DEAD_getInstance()];
   }
   StateCondition.values = StateCondition$values;
   function StateCondition$valueOf(name) {
@@ -557,8 +557,8 @@ var wetfe = function (_, Kotlin) {
         return StateCondition$STAGGERED_getInstance();
       case 'UNCONSCIOUS':
         return StateCondition$UNCONSCIOUS_getInstance();
-      case 'COMATOSE':
-        return StateCondition$COMATOSE_getInstance();
+      case 'DYING':
+        return StateCondition$DYING_getInstance();
       case 'DEAD':
         return StateCondition$DEAD_getInstance();
       default:throwISE('No enum constant wetfe.core.character.StateCondition.' + name);
@@ -714,196 +714,196 @@ var wetfe = function (_, Kotlin) {
     }
   }
   Attribute$Limit.valueOf_61zpoe$ = Attribute$Limit$valueOf;
-  function Attribute$Nature(name, ordinal, label) {
+  function Attribute$Assessment(name, ordinal, label) {
     Enum.call(this);
     this.label = label;
     this.name$ = name;
     this.ordinal$ = ordinal;
   }
-  function Attribute$Nature_initFields() {
-    Attribute$Nature_initFields = function () {
+  function Attribute$Assessment_initFields() {
+    Attribute$Assessment_initFields = function () {
     };
-    Attribute$Nature$UNDEFINED_instance = new Attribute$Nature('UNDEFINED', 0, 'Undefined');
-    Attribute$Nature$ABSENT_instance = new Attribute$Nature('ABSENT', 1, 'Absent');
-    Attribute$Nature$PALTRY_instance = new Attribute$Nature('PALTRY', 2, 'Paltry');
-    Attribute$Nature$RUDIMENTARY_instance = new Attribute$Nature('RUDIMENTARY', 3, 'Rudimentary');
-    Attribute$Nature$INFERIOR_instance = new Attribute$Nature('INFERIOR', 4, 'Inferior');
-    Attribute$Nature$UNREMARKABLE_instance = new Attribute$Nature('UNREMARKABLE', 5, 'Unremarkable');
-    Attribute$Nature$RESPECTABLE_instance = new Attribute$Nature('RESPECTABLE', 6, 'Respectable');
-    Attribute$Nature$CONSIDERABLE_instance = new Attribute$Nature('CONSIDERABLE', 7, 'Considerable');
-    Attribute$Nature$FORMIDABLE_instance = new Attribute$Nature('FORMIDABLE', 8, 'Formidable');
-    Attribute$Nature$PHENOMENAL_instance = new Attribute$Nature('PHENOMENAL', 9, 'Phenomenal');
-    Attribute$Nature$PRODIGIOUS_instance = new Attribute$Nature('PRODIGIOUS', 10, 'Prodigious');
-    Attribute$Nature$MIRACULOUS_instance = new Attribute$Nature('MIRACULOUS', 11, 'Miraculous');
-    Attribute$Nature$Companion_getInstance();
+    Attribute$Assessment$UNDEFINED_instance = new Attribute$Assessment('UNDEFINED', 0, 'Undefined');
+    Attribute$Assessment$ABSENT_instance = new Attribute$Assessment('ABSENT', 1, 'Absent');
+    Attribute$Assessment$PALTRY_instance = new Attribute$Assessment('PALTRY', 2, 'Paltry');
+    Attribute$Assessment$RUDIMENTARY_instance = new Attribute$Assessment('RUDIMENTARY', 3, 'Rudimentary');
+    Attribute$Assessment$INFERIOR_instance = new Attribute$Assessment('INFERIOR', 4, 'Inferior');
+    Attribute$Assessment$UNREMARKABLE_instance = new Attribute$Assessment('UNREMARKABLE', 5, 'Unremarkable');
+    Attribute$Assessment$RESPECTABLE_instance = new Attribute$Assessment('RESPECTABLE', 6, 'Respectable');
+    Attribute$Assessment$CONSIDERABLE_instance = new Attribute$Assessment('CONSIDERABLE', 7, 'Considerable');
+    Attribute$Assessment$FORMIDABLE_instance = new Attribute$Assessment('FORMIDABLE', 8, 'Formidable');
+    Attribute$Assessment$PHENOMENAL_instance = new Attribute$Assessment('PHENOMENAL', 9, 'Phenomenal');
+    Attribute$Assessment$PRODIGIOUS_instance = new Attribute$Assessment('PRODIGIOUS', 10, 'Prodigious');
+    Attribute$Assessment$MIRACULOUS_instance = new Attribute$Assessment('MIRACULOUS', 11, 'Miraculous');
+    Attribute$Assessment$Companion_getInstance();
   }
-  var Attribute$Nature$UNDEFINED_instance;
-  function Attribute$Nature$UNDEFINED_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$UNDEFINED_instance;
+  var Attribute$Assessment$UNDEFINED_instance;
+  function Attribute$Assessment$UNDEFINED_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$UNDEFINED_instance;
   }
-  var Attribute$Nature$ABSENT_instance;
-  function Attribute$Nature$ABSENT_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$ABSENT_instance;
+  var Attribute$Assessment$ABSENT_instance;
+  function Attribute$Assessment$ABSENT_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$ABSENT_instance;
   }
-  var Attribute$Nature$PALTRY_instance;
-  function Attribute$Nature$PALTRY_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$PALTRY_instance;
+  var Attribute$Assessment$PALTRY_instance;
+  function Attribute$Assessment$PALTRY_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$PALTRY_instance;
   }
-  var Attribute$Nature$RUDIMENTARY_instance;
-  function Attribute$Nature$RUDIMENTARY_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$RUDIMENTARY_instance;
+  var Attribute$Assessment$RUDIMENTARY_instance;
+  function Attribute$Assessment$RUDIMENTARY_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$RUDIMENTARY_instance;
   }
-  var Attribute$Nature$INFERIOR_instance;
-  function Attribute$Nature$INFERIOR_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$INFERIOR_instance;
+  var Attribute$Assessment$INFERIOR_instance;
+  function Attribute$Assessment$INFERIOR_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$INFERIOR_instance;
   }
-  var Attribute$Nature$UNREMARKABLE_instance;
-  function Attribute$Nature$UNREMARKABLE_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$UNREMARKABLE_instance;
+  var Attribute$Assessment$UNREMARKABLE_instance;
+  function Attribute$Assessment$UNREMARKABLE_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$UNREMARKABLE_instance;
   }
-  var Attribute$Nature$RESPECTABLE_instance;
-  function Attribute$Nature$RESPECTABLE_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$RESPECTABLE_instance;
+  var Attribute$Assessment$RESPECTABLE_instance;
+  function Attribute$Assessment$RESPECTABLE_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$RESPECTABLE_instance;
   }
-  var Attribute$Nature$CONSIDERABLE_instance;
-  function Attribute$Nature$CONSIDERABLE_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$CONSIDERABLE_instance;
+  var Attribute$Assessment$CONSIDERABLE_instance;
+  function Attribute$Assessment$CONSIDERABLE_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$CONSIDERABLE_instance;
   }
-  var Attribute$Nature$FORMIDABLE_instance;
-  function Attribute$Nature$FORMIDABLE_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$FORMIDABLE_instance;
+  var Attribute$Assessment$FORMIDABLE_instance;
+  function Attribute$Assessment$FORMIDABLE_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$FORMIDABLE_instance;
   }
-  var Attribute$Nature$PHENOMENAL_instance;
-  function Attribute$Nature$PHENOMENAL_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$PHENOMENAL_instance;
+  var Attribute$Assessment$PHENOMENAL_instance;
+  function Attribute$Assessment$PHENOMENAL_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$PHENOMENAL_instance;
   }
-  var Attribute$Nature$PRODIGIOUS_instance;
-  function Attribute$Nature$PRODIGIOUS_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$PRODIGIOUS_instance;
+  var Attribute$Assessment$PRODIGIOUS_instance;
+  function Attribute$Assessment$PRODIGIOUS_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$PRODIGIOUS_instance;
   }
-  var Attribute$Nature$MIRACULOUS_instance;
-  function Attribute$Nature$MIRACULOUS_getInstance() {
-    Attribute$Nature_initFields();
-    return Attribute$Nature$MIRACULOUS_instance;
+  var Attribute$Assessment$MIRACULOUS_instance;
+  function Attribute$Assessment$MIRACULOUS_getInstance() {
+    Attribute$Assessment_initFields();
+    return Attribute$Assessment$MIRACULOUS_instance;
   }
-  function Attribute$Nature$Companion() {
-    Attribute$Nature$Companion_instance = this;
+  function Attribute$Assessment$Companion() {
+    Attribute$Assessment$Companion_instance = this;
   }
-  Attribute$Nature$Companion.prototype.of_za3lpa$ = function (n) {
+  Attribute$Assessment$Companion.prototype.of_za3lpa$ = function (n) {
     var tmp$;
     switch (n) {
       case 0:
-        tmp$ = Attribute$Nature$ABSENT_getInstance();
+        tmp$ = Attribute$Assessment$ABSENT_getInstance();
         break;
       case 1:
       case 2:
-        tmp$ = Attribute$Nature$PALTRY_getInstance();
+        tmp$ = Attribute$Assessment$PALTRY_getInstance();
         break;
       case 3:
       case 4:
-        tmp$ = Attribute$Nature$RUDIMENTARY_getInstance();
+        tmp$ = Attribute$Assessment$RUDIMENTARY_getInstance();
         break;
       case 5:
       case 6:
-        tmp$ = Attribute$Nature$INFERIOR_getInstance();
+        tmp$ = Attribute$Assessment$INFERIOR_getInstance();
         break;
       case 7:
       case 8:
-        tmp$ = Attribute$Nature$UNREMARKABLE_getInstance();
+        tmp$ = Attribute$Assessment$UNREMARKABLE_getInstance();
         break;
       case 9:
       case 10:
-        tmp$ = Attribute$Nature$RESPECTABLE_getInstance();
+        tmp$ = Attribute$Assessment$RESPECTABLE_getInstance();
         break;
       case 11:
       case 12:
-        tmp$ = Attribute$Nature$CONSIDERABLE_getInstance();
+        tmp$ = Attribute$Assessment$CONSIDERABLE_getInstance();
         break;
       case 13:
       case 14:
-        tmp$ = Attribute$Nature$FORMIDABLE_getInstance();
+        tmp$ = Attribute$Assessment$FORMIDABLE_getInstance();
         break;
       case 15:
       case 16:
-        tmp$ = Attribute$Nature$PHENOMENAL_getInstance();
+        tmp$ = Attribute$Assessment$PHENOMENAL_getInstance();
         break;
       case 17:
       case 18:
       case 19:
-        tmp$ = Attribute$Nature$PRODIGIOUS_getInstance();
+        tmp$ = Attribute$Assessment$PRODIGIOUS_getInstance();
         break;
       case 20:
-        tmp$ = Attribute$Nature$MIRACULOUS_getInstance();
+        tmp$ = Attribute$Assessment$MIRACULOUS_getInstance();
         break;
-      default:tmp$ = Attribute$Nature$UNDEFINED_getInstance();
+      default:tmp$ = Attribute$Assessment$UNDEFINED_getInstance();
         break;
     }
     return tmp$;
   };
-  Attribute$Nature$Companion.$metadata$ = {
+  Attribute$Assessment$Companion.$metadata$ = {
     kind: Kind_OBJECT,
     simpleName: 'Companion',
     interfaces: []
   };
-  var Attribute$Nature$Companion_instance = null;
-  function Attribute$Nature$Companion_getInstance() {
-    Attribute$Nature_initFields();
-    if (Attribute$Nature$Companion_instance === null) {
-      new Attribute$Nature$Companion();
+  var Attribute$Assessment$Companion_instance = null;
+  function Attribute$Assessment$Companion_getInstance() {
+    Attribute$Assessment_initFields();
+    if (Attribute$Assessment$Companion_instance === null) {
+      new Attribute$Assessment$Companion();
     }
-    return Attribute$Nature$Companion_instance;
+    return Attribute$Assessment$Companion_instance;
   }
-  Attribute$Nature.$metadata$ = {
+  Attribute$Assessment.$metadata$ = {
     kind: Kind_CLASS,
-    simpleName: 'Nature',
+    simpleName: 'Assessment',
     interfaces: [Enum]
   };
-  function Attribute$Nature$values() {
-    return [Attribute$Nature$UNDEFINED_getInstance(), Attribute$Nature$ABSENT_getInstance(), Attribute$Nature$PALTRY_getInstance(), Attribute$Nature$RUDIMENTARY_getInstance(), Attribute$Nature$INFERIOR_getInstance(), Attribute$Nature$UNREMARKABLE_getInstance(), Attribute$Nature$RESPECTABLE_getInstance(), Attribute$Nature$CONSIDERABLE_getInstance(), Attribute$Nature$FORMIDABLE_getInstance(), Attribute$Nature$PHENOMENAL_getInstance(), Attribute$Nature$PRODIGIOUS_getInstance(), Attribute$Nature$MIRACULOUS_getInstance()];
+  function Attribute$Assessment$values() {
+    return [Attribute$Assessment$UNDEFINED_getInstance(), Attribute$Assessment$ABSENT_getInstance(), Attribute$Assessment$PALTRY_getInstance(), Attribute$Assessment$RUDIMENTARY_getInstance(), Attribute$Assessment$INFERIOR_getInstance(), Attribute$Assessment$UNREMARKABLE_getInstance(), Attribute$Assessment$RESPECTABLE_getInstance(), Attribute$Assessment$CONSIDERABLE_getInstance(), Attribute$Assessment$FORMIDABLE_getInstance(), Attribute$Assessment$PHENOMENAL_getInstance(), Attribute$Assessment$PRODIGIOUS_getInstance(), Attribute$Assessment$MIRACULOUS_getInstance()];
   }
-  Attribute$Nature.values = Attribute$Nature$values;
-  function Attribute$Nature$valueOf(name) {
+  Attribute$Assessment.values = Attribute$Assessment$values;
+  function Attribute$Assessment$valueOf(name) {
     switch (name) {
       case 'UNDEFINED':
-        return Attribute$Nature$UNDEFINED_getInstance();
+        return Attribute$Assessment$UNDEFINED_getInstance();
       case 'ABSENT':
-        return Attribute$Nature$ABSENT_getInstance();
+        return Attribute$Assessment$ABSENT_getInstance();
       case 'PALTRY':
-        return Attribute$Nature$PALTRY_getInstance();
+        return Attribute$Assessment$PALTRY_getInstance();
       case 'RUDIMENTARY':
-        return Attribute$Nature$RUDIMENTARY_getInstance();
+        return Attribute$Assessment$RUDIMENTARY_getInstance();
       case 'INFERIOR':
-        return Attribute$Nature$INFERIOR_getInstance();
+        return Attribute$Assessment$INFERIOR_getInstance();
       case 'UNREMARKABLE':
-        return Attribute$Nature$UNREMARKABLE_getInstance();
+        return Attribute$Assessment$UNREMARKABLE_getInstance();
       case 'RESPECTABLE':
-        return Attribute$Nature$RESPECTABLE_getInstance();
+        return Attribute$Assessment$RESPECTABLE_getInstance();
       case 'CONSIDERABLE':
-        return Attribute$Nature$CONSIDERABLE_getInstance();
+        return Attribute$Assessment$CONSIDERABLE_getInstance();
       case 'FORMIDABLE':
-        return Attribute$Nature$FORMIDABLE_getInstance();
+        return Attribute$Assessment$FORMIDABLE_getInstance();
       case 'PHENOMENAL':
-        return Attribute$Nature$PHENOMENAL_getInstance();
+        return Attribute$Assessment$PHENOMENAL_getInstance();
       case 'PRODIGIOUS':
-        return Attribute$Nature$PRODIGIOUS_getInstance();
+        return Attribute$Assessment$PRODIGIOUS_getInstance();
       case 'MIRACULOUS':
-        return Attribute$Nature$MIRACULOUS_getInstance();
-      default:throwISE('No enum constant wetfe.core.character.Attribute.Nature.' + name);
+        return Attribute$Assessment$MIRACULOUS_getInstance();
+      default:throwISE('No enum constant wetfe.core.character.Attribute.Assessment.' + name);
     }
   }
-  Attribute$Nature.valueOf_61zpoe$ = Attribute$Nature$valueOf;
-  Attribute.prototype.hasNature_za3lpa$ = function (n) {
+  Attribute$Assessment.valueOf_61zpoe$ = Attribute$Assessment$valueOf;
+  Attribute.prototype.hasAssessment_za3lpa$ = function (n) {
     return 0 <= n && n <= 20;
   };
   Attribute.prototype.hasLimit_61zpoe$ = function (key) {
@@ -1862,7 +1862,7 @@ var wetfe = function (_, Kotlin) {
         this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), n2_0);
         this.setDamage_za3lpa$(d1);
         if (d1 <= 0) {
-          this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+          this.setCondition_5crjny$(StateCondition$DYING_getInstance());
         }
       }
        else {
@@ -1929,7 +1929,7 @@ var wetfe = function (_, Kotlin) {
       this.setDamage_za3lpa$(d1);
       this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), f1);
       if (d1 === 0) {
-        this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+        this.setCondition_5crjny$(StateCondition$DYING_getInstance());
       }
     }
      else {
@@ -1950,7 +1950,7 @@ var wetfe = function (_, Kotlin) {
     var f2 = coerceAtMost(f1, f1);
     this.decrement_hek9tz$(StateParam$FATIGUE_getInstance(), f2);
     this.increment_hek9tz$(StateParam$HEALTH_getInstance(), f2);
-    if (hel > 0 && (cdn === StateCondition$UNCONSCIOUS_getInstance() || cdn === StateCondition$COMATOSE_getInstance())) {
+    if (hel > 0 && (cdn === StateCondition$UNCONSCIOUS_getInstance() || cdn === StateCondition$DYING_getInstance())) {
       this.setCondition_5crjny$(StateCondition$NORMAL_getInstance(), true);
     }
     return f2;
@@ -2043,7 +2043,7 @@ var wetfe = function (_, Kotlin) {
       this.increment_hek9tz$(StateParam$FATIGUE_getInstance(), ftg);
       this.setDamage_za3lpa$(d2);
       if (d2 < 1) {
-        this.setCondition_5crjny$(StateCondition$COMATOSE_getInstance());
+        this.setCondition_5crjny$(StateCondition$DYING_getInstance());
       }
     }
     return ftg;
@@ -3043,8 +3043,8 @@ var wetfe = function (_, Kotlin) {
   Object.defineProperty(StateCondition, 'UNCONSCIOUS', {
     get: StateCondition$UNCONSCIOUS_getInstance
   });
-  Object.defineProperty(StateCondition, 'COMATOSE', {
-    get: StateCondition$COMATOSE_getInstance
+  Object.defineProperty(StateCondition, 'DYING', {
+    get: StateCondition$DYING_getInstance
   });
   Object.defineProperty(StateCondition, 'DEAD', {
     get: StateCondition$DEAD_getInstance
@@ -3082,46 +3082,46 @@ var wetfe = function (_, Kotlin) {
     get: Attribute$Limit$Companion_getInstance
   });
   Attribute.prototype.Limit = Attribute$Limit;
-  Object.defineProperty(Attribute$Nature, 'UNDEFINED', {
-    get: Attribute$Nature$UNDEFINED_getInstance
+  Object.defineProperty(Attribute$Assessment, 'UNDEFINED', {
+    get: Attribute$Assessment$UNDEFINED_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'ABSENT', {
-    get: Attribute$Nature$ABSENT_getInstance
+  Object.defineProperty(Attribute$Assessment, 'ABSENT', {
+    get: Attribute$Assessment$ABSENT_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'PALTRY', {
-    get: Attribute$Nature$PALTRY_getInstance
+  Object.defineProperty(Attribute$Assessment, 'PALTRY', {
+    get: Attribute$Assessment$PALTRY_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'RUDIMENTARY', {
-    get: Attribute$Nature$RUDIMENTARY_getInstance
+  Object.defineProperty(Attribute$Assessment, 'RUDIMENTARY', {
+    get: Attribute$Assessment$RUDIMENTARY_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'INFERIOR', {
-    get: Attribute$Nature$INFERIOR_getInstance
+  Object.defineProperty(Attribute$Assessment, 'INFERIOR', {
+    get: Attribute$Assessment$INFERIOR_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'UNREMARKABLE', {
-    get: Attribute$Nature$UNREMARKABLE_getInstance
+  Object.defineProperty(Attribute$Assessment, 'UNREMARKABLE', {
+    get: Attribute$Assessment$UNREMARKABLE_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'RESPECTABLE', {
-    get: Attribute$Nature$RESPECTABLE_getInstance
+  Object.defineProperty(Attribute$Assessment, 'RESPECTABLE', {
+    get: Attribute$Assessment$RESPECTABLE_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'CONSIDERABLE', {
-    get: Attribute$Nature$CONSIDERABLE_getInstance
+  Object.defineProperty(Attribute$Assessment, 'CONSIDERABLE', {
+    get: Attribute$Assessment$CONSIDERABLE_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'FORMIDABLE', {
-    get: Attribute$Nature$FORMIDABLE_getInstance
+  Object.defineProperty(Attribute$Assessment, 'FORMIDABLE', {
+    get: Attribute$Assessment$FORMIDABLE_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'PHENOMENAL', {
-    get: Attribute$Nature$PHENOMENAL_getInstance
+  Object.defineProperty(Attribute$Assessment, 'PHENOMENAL', {
+    get: Attribute$Assessment$PHENOMENAL_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'PRODIGIOUS', {
-    get: Attribute$Nature$PRODIGIOUS_getInstance
+  Object.defineProperty(Attribute$Assessment, 'PRODIGIOUS', {
+    get: Attribute$Assessment$PRODIGIOUS_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'MIRACULOUS', {
-    get: Attribute$Nature$MIRACULOUS_getInstance
+  Object.defineProperty(Attribute$Assessment, 'MIRACULOUS', {
+    get: Attribute$Assessment$MIRACULOUS_getInstance
   });
-  Object.defineProperty(Attribute$Nature, 'Companion', {
-    get: Attribute$Nature$Companion_getInstance
+  Object.defineProperty(Attribute$Assessment, 'Companion', {
+    get: Attribute$Assessment$Companion_getInstance
   });
-  Attribute.prototype.Nature = Attribute$Nature;
+  Attribute.prototype.Assessment = Attribute$Assessment;
   Object.defineProperty(package$character, 'Attribute', {
     get: Attribute_getInstance
   });

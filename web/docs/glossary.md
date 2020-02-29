@@ -61,10 +61,10 @@ core scale
 : The base-20 scale that a given core attribute is scored relative to. Scales are denoted by an integer, which indicates the exponent (of 20) of the scale. The common scale, Scale 1, is assumed for any attribute score that makes no explicit reference to its scale. 
   
 damage, dmg
-: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters.
+: The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage types follow the **effect type** system.
   
-damage type
-: Damage types are distinguished by their causative realm {Infernal, Celestial, Exotic, Confluent} and mode of effect {anatomical, psychological, superpsychical, ...}. The vulnerability systems details the strength of interaction between all pairwise permutations of realms; where the first realm of the pair indicates the physics of the causative system, and the second indicates the physics of the affected system. First, however, the modes of effect must be reconciled. The modes are a simple list of qualities that must be present in the affected system _for each present in the causative system_, in order for the effect to resolve as intended.
+effect type
+: The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm {Infernal, Celestial, Exotic, Confluent} and a list of modes (e.g. anatomical, psychological, superpsychical, etc.). The modes are qualities that must be present in the affected system _for each present in the causative system_, in order for the effect to resolve as intended. For example, a frightening effect meant to cause psychological damage would be innefective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** finally specifies the nature of the effect.
   
 damage deque, Damage[]
 : The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
@@ -127,16 +127,16 @@ health deque, Health[]
 : The deque of soul chips Ⓢ and power chips Ⓟ that represents healthy or empowered lifeforce. Generally, characters begin every encounter with all of their soul chips in this deque, and may temporarily accumulate one or more power chips above them.
   
 _innervate_
-: When a being uses the energy of their soul to unlock the power of a font, thereby binding with it.
+: When a being uses the energy of their soul to harness the power of a font, thereby binding with it.
   
 intelligence, INT
-: The quality encompassing a being’s mental agility, perception, insight, logic, and detailed memory.
+: The quality encompassing a being’s mental agility, perception, insight, logic, and memory.
   
 manafont
-: A type of font found on some equipment that typically augments or grants mental abilities.
+: A type of font found on some relics that typically augments or grants mental abilities.
   
 mode of effect
-: Any qualifier of an effect that must be present in both the causative and affected systems to manifest as intended.
+: Any qualifier of an effect that must be present in the affected system to resolve as intended.
   
 momentum, 𝓂
 : A being's moment-to-moment groove during combat encounters. Represented by an integer, which resets to 0 at the beginning of every round, and may then increase (due to hastening effects) or decrease (due to delaying effects) throughout it.
@@ -208,10 +208,10 @@ trauma chip, Ⓣ
 : The unit and representation of trauma. They accumulate above soul chips Ⓢ on the fatigue deque, where each trauma chip prevents _all_ fatigue from being recovered after any sound rest the character takes. They persist until explicitly relieved by an ability, or special effect.
   
 turn
-: The brief segment of time during which beings act -- in roughly chronological order -- during encounters.
+: The brief segment of time during which each being acts -- in roughly chronological order -- during encounters.
   
-vulnerability physics
-: The system that describes the fundamental interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system. For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
+vulnerability system, interphysics
+: The system that describes the nature of interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system. For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
   
 willpower, WIL
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.

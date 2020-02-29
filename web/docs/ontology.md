@@ -72,7 +72,7 @@ For example, the concept of a _"non-trivial factorization of a prime number"_ is
   
 We may consider the existential proposition _"The existential proposition of itself exists."_
   
-By [1], ∃(∃(∃(...))) exists, and by [2] has the standard meaning.
+By [1], ∃(∃(∃(...))) exists; and by [2], it has the standard meaning.
   
 Let's call this infinitely recursive existential proposition **T<sub>0</sub>**, and note that ∃(∃(∃(...))) = **T<sub>0</sub>** = ∃(**T<sub>0</sub>**).
   
@@ -86,7 +86,7 @@ Let **c<sub>Primicorn</sub>** mean _"the non-trivial factorization of a prime nu
   
 Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says _"The non-trivial factorization of a prime number exists."_
   
-By [1], ∃(**c<sub>Primicorn</sub>**) exists, and by [2] has the standard meaning.
+By [1], ∃(**c<sub>Primicorn</sub>**) exists; and by [2], it has the standard meaning.
   
 Then by [3], ∃(**c<sub>Primicorn</sub>**) is true, at least somewhere in Reality, and _poof!_ it seems we've summoned a Primicorn.
   
@@ -119,7 +119,7 @@ We must be careful to distinguish what are essentially communication issues betw
   
 Crucially, the former class of problems is ubiquitous (for humans at least), and the latter is a fallacy.
   
-Let's summon the Primicorn yet again, and suppose our friend is still fervently advocating for its veracity. This time, they bring a pencil to the proverbial table.
+Let's summon the Primicorn yet again, and suppose our friend is still fervently advocating for its veracity. This time they bring a pencil to the proverbial table.
   
 "Look," they say, as they sketch a remarkable proof that P is _clearly_ not NP -- but it hinges on the existence of a Primicorn. At this, we are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
   

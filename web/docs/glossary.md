@@ -43,8 +43,15 @@ combatant
 : A being involved in a combat encounter.
   
 condition, ℂ  
-: The mutually exclusive states a being may inhabit at any given time.    
-: `[=] normal` • `[!] blitzing` • `[@] turtling` • `[^] channeling` • `[$] staggered` • `[*] unconscious` • `[~] dying` • `[_] dead`
+: The mutually exclusive states a being may inhabit at any given time.  
+- `[=] normal`
+- `[!] blitzing`
+- `[@] turtling`
+- `[^] channeling`
+- `[$] staggered`
+- `[*] unconscious`
+- `[~] dying`
+- `[_] dead`
   
 contingent effect  
 : An additional effect of a skill that occurs if and only if the opponent is unable to completely negate the damage the primary effect causes.
@@ -54,7 +61,17 @@ constitution, CON
   
 core assessment  
 : Qualitative assessments of each score that may be assigned to a core attribute on a given scale.  
-: `0 absent` • `1..2 paltry` • `3..4 rudimentary` • `5..6 inferior` • `7..8 unremarkable` • `9..10 respectable` • `11..12 considerable` • `13..14 formidable` • `15..16 phenomenal` • `17..19 prodigious` • `20 miraculous`
+- `   00 absent`
+- `01-02 paltry`
+- `03-04 rudimentary`
+- `05-06 inferior`
+- `07-08 unremarkable`
+- `09-10 respectable`
+- `11-12 considerable`
+- `13-14 formidable`
+- `15-16 phenomenal`
+- `17-19 prodigious`
+- `   20 miraculous`
   
 core attribute  
 : An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured on scales from 1 to 20, where 10 (on the common scale) roughly corresponds to a forte of a capable adventurer.
@@ -64,9 +81,6 @@ core scale
   
 damage, dmg  
 : The unit of harm suffered by souls. Generally, each point of damage is resolved by transferring one soul chip Ⓢ from the affected being’s health deque to their damage deque. This process is automatically reversed once sufficient time has elapsed between encounters. Damage types follow the **effect type** system.
-  
-effect type  
-: The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm {Infernal, Celestial, Exotic, Confluent} and a list of modes (e.g. anatomical, psychological, superpsychical, etc.). The modes are qualities that must be present in the affected system _for each that is present in the causative system_, in order for the effect to resolve as intended. For example, a frightening effect meant to cause psychological damage would be ineffective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** finally specifies the nature of the effect.
   
 damage deque, Damage[]  
 : The deque of soul chips Ⓢ and affliction chips Ⓐ that represents wounded lifeforce and other impairments. The chips of this deque can be readily restored by the abilities of adventurers, and therefore do not generally persist between encounters.
@@ -78,10 +92,15 @@ delay, _delay_
 : A decremental impact to momentum. This reduces a combatant's likelihood of acting before others in the next round.
   
 deque  
-: _Pronounced "deck."_ A vertical column of chips that grows by accumulating chips atop or beneath it. The position of the different types of chips in a deque is directly relevant to resolving many game effects. For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
+: _Pronounced "deck."_ A vertical column of chips that grows by accumulating chips atop or beneath it. The position of the different types of chips in a deque is directly relevant to resolving many game effects.  
+: For example, power chips Ⓟ accumulate above soul chips Ⓢ, indicating that incoming damage is first applied to (and absorbed by) the power chips before the underlying soul chips.
   
 dexterity, DEX  
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.
+  
+effect type  
+: The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm {Infernal, Celestial, Exotic, Confluent} and a list of modes (e.g. anatomical, psychological, eusociological, etc.). The modes are qualities that must be present in the affected system _for each that is present in the causative system_, in order for the effect to resolve as intended.  
+: For example, a frightening effect meant to cause psychological damage would be ineffective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** finally specifies the magnitude of the effect.
   
 encounter  
 : Any combat, social, or environmental event that challenges the wit, prowess, and luck of an adventuring party.
@@ -195,7 +214,8 @@ soul, soulpool
 : A being’s overall lifeforce. Measured by a number of soul chips Ⓢ, where more chips represent a more formidable being with greater reserves of physical and mental energy. Generally, the size of a being’s soulpool directly sets its power limit.
   
 soul chip, Ⓢ  
-: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three deques (health, damage, fatigue), as well as any fonts they have innervated. For example, soul chips in the health deque represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue deque indicate a critical state of enervation.
+: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three deques (health, damage, fatigue), as well as any fonts they have innervated.  
+: For example, soul chips in the health deque represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue deque indicate a critical state of enervation.
   
 soulbinding  
 : The process whereby a character innervates a font with their soul: they remove soul chips Ⓢ from their health deque and dedicate them to a bloodfont or a manafont found within their equipment. Once innervated, each font typically grants power to the character, who becomes thus specially bound to their equipment.
@@ -224,8 +244,9 @@ trauma chip, Ⓣ
 turn  
 : The brief segment of time during which each being acts -- in roughly chronological order -- during encounters.
   
-vulnerability system, interphysics  
-: The system that describes the nature of interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system. For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
+vulnerability system, conphysics  
+: The system that describes the nature of interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system.  
+: For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
   
 willpower, WIL  
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.

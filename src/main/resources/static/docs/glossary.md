@@ -74,7 +74,7 @@ core assessment
 - `   20 miraculous`
   
 core attribute  
-: An element of the set of four qualities {CON, DEX, INT, WIL} that characterize most beings. Measured on scales from 1 to 20, where 10 (on the common scale) roughly corresponds to a forte of a capable adventurer.
+: An element of the set of four qualities [CON, DEX, INT, WIL] that characterize most beings. Measured on scales from 1 to 20, where 10 (on the common scale) roughly corresponds to a forte of a capable adventurer.
   
 core scale  
 : The base-20 scale that a given core attribute is scored relative to. Scales are denoted by an integer, which indicates the exponent (of 20) of the scale. The common scale, Scale 1, is assumed for any attribute score that makes no explicit reference to its scale. 
@@ -99,7 +99,7 @@ dexterity, DEX
 : The quality encompassing a being’s physical agility, reflexes, acrobatics, and finesse with tools and weapons.
   
 effect type  
-: The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm {Infernal, Celestial, Exotic, Confluent} and a list of modes (e.g. anatomical, psychological, eusociological, etc.). The modes are qualities that must be present in the affected system _for each that is present in the causative system_, in order for the effect to resolve as intended.  
+: The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm [Infernal, Celestial, Exotic, Confluent] and a list of modes (e.g. anatomical, psychological, eusociological, etc.). The modes are qualities that must be present in the affected system _for each that is present in the causative system_, in order for the effect to resolve as intended.  
 : For example, a frightening effect meant to cause psychological damage would be ineffective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** finally specifies the magnitude of the effect.
   
 encounter  
@@ -112,7 +112,8 @@ enhancement, _enhance_
 : An effect that temporarily intensifies one or more core attributes of a being. Any skills governed by an enhanced attribute are augmented by rolling an additional d6 against the enhancement table, which is applied to the accompanying d20 result ℜ.
   
 experience, EXP  
-: Acquired by the characters in an adventuring party after completing an encounter. Typical encounters award one, two, or three experience points. [TODO: Describe the loosely-coupled exp/level system.]
+: Acquired by the characters in an adventuring party after completing an encounter. Typical encounters award one, two, or three experience points.  
+: _TODO: Describe the loosely-coupled exp/level system._
   
 fatigue, ftg  
 : Represents the temporary loss of soul chips Ⓢ due to extreme exertion of physical and mental faculties. Accumulates during the stressful events that occur between peaceful periods of adventuring. Automatically restored after each sound rest.
@@ -127,22 +128,22 @@ feat, Ғ
 feats of strength & endurance, Ғ:CON  
 : A character’s attempt to win a contest, or overcome a challenge using their strength and endurance.  
 : For example, a character may attempt to pin an opponent by grappling them. The character would roll a CON check, as would their opponent. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s.  
-: [TODO: Give one example of an Ғ:CON challenge.]
+: _TODO: Give one example of an Ғ:CON challenge._
   
 feats of subtlety & finesse, Ғ:DEX  
 : A character’s attempt to win a contest, or overcome a challenge using their subtlety and finesse.  
 : For example, a character may attempt to pickpocket another being. The character would roll a DEX check, while their opponent would roll an INT check to test their perception of the theft. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s.  
-: [TODO: Give one example of an Ғ:DEX challenge.]
+: _TODO: Give one example of an Ғ:DEX challenge._
   
 feats of perception & logic, Ғ:INT  
 : A character’s attempt to win a contest, or overcome a challenge using their perception and logic.  
 : For example, a character may to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would roll a state check against a set challenge score. Overrolls result in ℜ = 0. The character wins the challenge if and only if their result is higher than their opponent’s.  
-: [TODO: Give one example of an Ғ:INT contest.]
+: _TODO: Give one example of an Ғ:INT contest._
   
 feats of charisma & courage, Ғ:WIL  
 : A character’s attempt to win a contest, or overcome a challenge using their charisma and courage.  
 : For example, a character may attempt to intimidate another being. The character would roll a WIL check, while their opponent would also roll a WIL check to test their mettle against the intimidation. Overrolls result in ℜ = 0. The character wins the contest if and only if their result is higher than their opponent’s.  
-: [TODO: Give one example of an Ғ:WIL challenge.]
+: _TODO: Give one example of an Ғ:WIL challenge._
   
 font  
 : Vessels of information that can be found within relics. Powerful beings may sacrifice quanta of their soul to innervate a font, and thus harness its power.

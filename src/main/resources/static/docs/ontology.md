@@ -141,7 +141,7 @@ Indeed, this is the pivotal point: the symbols, the concepts, the propositions, 
   
 When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and _feeling_ its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
-This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
+This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, blindly.
   
 # Summary
   

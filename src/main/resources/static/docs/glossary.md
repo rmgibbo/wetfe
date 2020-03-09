@@ -100,7 +100,7 @@ dexterity, `DEX`
   
 effect type  
 : The descriptors of effects that determine when and how they may resolve based on the Realms of the causative and affected systems. Effect types are distinguished by their causative Realm [Infernal, Celestial, Exotic, Confluent] and a list of modes (e.g. anatomical, psychological, eusociological, etc.). The modes are qualities that must be present in the affected system _for each that is present in the causative system_, in order for the effect to resolve as intended.  
-: For example, a frightening effect meant to cause psychological damage would be ineffective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** finally specifies the magnitude of the effect.
+: For example, a frightening effect meant to cause psychological damage would be ineffective against a brick wall, since it lacks the "psychological" quality. If all the necessary modes are present in the affected system, then the **vulnerability system** specifies the magnitude of the effect.
   
 encounter  
 : Any combat, social, or environmental event that challenges the wit, prowess, and luck of an adventuring party.
@@ -141,7 +141,7 @@ feats of subtlety & finesse, `Ғ:DEX`
   
 feats of perception & logic, `Ғ:INT`  
 : A character’s attempt to win a contest, or overcome a challenge using their perception and logic.  
-: For example, a character may to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would roll a state check against a set challenge score. Overrolls result in `ℜ` = 0. The character wins the challenge if and only if their result is higher than their opponent’s.  
+: For example, a character may attempt to eavesdrop on a conversation that is rich in jargon, or even held in a foreign tongue that the character has but studied academically. The character would roll an INT check, while the GM would make a circumstance roll. Overrolls result in `ℜ` = 0. The character wins the challenge if and only if their result is higher than their opponent’s.  
 : _TODO: Give one example of an Ғ:INT contest._
   
 feats of charisma & courage, `Ғ:WIL`  

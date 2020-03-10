@@ -1,13 +1,13 @@
 # Realms
   
-## Infernal Realm &bull; The Chronosphere 
-  
-- Temporal Manifold
-  
 ## Celestial Realm &bull; The Bitsphere
   
 - Affine 3-Space
 - Invariant Mass Density
+  
+## Infernal Realm &bull; The Chronosphere 
+  
+- Temporal Manifold
   
 ## Exotic Realm &bull; The Queersphere
   

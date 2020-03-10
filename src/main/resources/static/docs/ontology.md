@@ -50,7 +50,7 @@ All concepts are `Things`. Still, the distinction between the two is useful for 
   
 First, concepts appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, concepts are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, concepts are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutation of symbols themselves when we form existential propositions of them.
+Second, concepts are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutations of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
@@ -141,7 +141,7 @@ Indeed, this is the pivotal point: the symbols, the concepts, the propositions, 
   
 When we form an existential proposition of some concept, we are _not_ querying Reality as we might use some standard language to query a database. Instead, we are grabbing hold of a stone -- an abstract stone, but no less a `Thing` for it -- and _feeling_ its connectedness to other `Things`. It is akin to the function of any sensory organ we posses. The difference, for humans anyway, is that we expend a tremendous amount of time/energy/_effort_ using and interpreting the sensory organ we call consciousness.
   
-This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, unseen.
+This seems fair, considering that we are transmuting the stones that every other life form we know about has only tripped over, blindly.
   
 # Summary
   

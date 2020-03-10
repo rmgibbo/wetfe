@@ -370,12 +370,25 @@
             </div>
         </div>
     </div>
+</div>
 
-</div> <!-- main container -->
+<!-- Character Form with Auto-Generated Fields -->
+<div class="container my-5">
+    <form id="we-chara-edit-form">
+    </form>
+</div>
 
        <!-- CLONE: CHAR DROPDOWN -->
 <button class="dropdown-item we-char-dditem we-clone-element d-none" onclick="selectCharacter(this)"
         type="button"></button>
+
+<!-- CLONE: EDIT FIELD (TEXT) -->
+<div class="form-group row align-items-center we-chara-edit-text we-clone-element d-none">
+    <label class="col-2 col-form-label we-chara-field-label" style="text-align: right;"></label>
+    <div class="col-10">
+        <textarea class="form-control" rows="1"></textarea>
+    </div>
+</div>
 
        <!-- Bottom Navbar -->
 <nav class="navbar we-navbar fixed-bottom navbar-light bg-light mb-1">

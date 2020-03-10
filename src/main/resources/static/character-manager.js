@@ -17,9 +17,6 @@ const Attribute = CORE.character.Attribute;
 const CharaData = CORE.character.CharaData;
 const Character = CORE.character.Character;
 
-// var CHARS = null; // character files loaded from user's WETFE/Character folder
-// var CHARMAP = {};
-
 function rand(min, max) {
     return Math.random() * (max - min) + min;
 }
@@ -36,6 +33,21 @@ function setEditMode(on) {
         $('.we-edit-mode').addClass('d-none');
         $('#edit-mode-btn').removeClass('d-none');
     }
+    const $form = $('#we-chara-edit-form');
+    $form.empty();
+    Object.getOwnPropertyNames(character.cdata_wnkotf$_0).forEach(function(p) {
+        const v = character.cdata_wnkotf$_0[p];
+        if (v === null) return;
+        if (typeof v === 'string') {
+            const newId = 'we-chara-field-text-' + p;
+            const $newField = $('.we-chara-edit-text.we-clone-element').clone();
+            $newField.children('label').attr('for', newId).text(p);
+            $newField.children('div').children('textarea').attr('id', newId).text(v);
+            $newField.removeClass('we-clone-element d-none').appendTo($form);
+        } else {
+            console.log(`TODO: handle character field "${p}" of type "${typeof v}"`)
+        }
+    });
 }
 
 function toggleEditModeNavSpan() {
@@ -195,12 +207,8 @@ function onDataSaved() {
 
 function saveCurrentData() {
     if (!character) return;
-    drawLoadingHud('Saving Character');
-    var char = CHARMAP[character.getId()];
-    if (!char) {
-        console.error('FAILED TO SAVE CURRENT DATA. Unable to find Character for id "' + character.getId() + '"');
-    }
-    google.script.run.withSuccessHandler(onDataSaved).saveCharacter(char);
+    // drawLoadingHud('Saving Character');
+    console.log(`TODO: Save the following string of character data:\n${JSON.stringify(character)}`)
 }
 
 function addCharacter(char) {
@@ -229,7 +237,7 @@ function drawCharacter() {
             }
             let $natures = $('.we-nature[data-nature-of="' + pk + '"]');
             if ($natures.length > 0) {
-                $natures.html(Attribute.Nature.Companion.of_za3lpa$(val));
+                $natures.html(Attribute.Assessment.Companion.of_za3lpa$(val));
             }
         }
     }

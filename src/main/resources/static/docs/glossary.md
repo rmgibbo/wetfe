@@ -195,13 +195,15 @@ soul, soulpool
 : A being’s overall lifeforce. Measured by a number of soul chips Ⓢ, where more chips represent a more formidable being with greater reserves of physical and mental energy. Generally, the size of a being’s soulpool directly sets its power limit.
   
 soul chip, Ⓢ  
-: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three deques (health, damage, fatigue), as well as any fonts they have innervated. For example, soul chips in the health deque represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue deque indicate a critical state of enervation.
+: The unit and representation of lifeforce. A number of soul chips comprises a being’s soulpool, which is distributed among their three deques (health, damage, fatigue), as well as any fonts they have innervated.  
+: For example, soul chips in the health deque represent an amount of physical and mental energy available to a being, whereas multiple chips in the fatigue deque indicate a critical state of enervation.
   
 soulbinding  
 : The process whereby a character innervates a font with their soul: they remove soul chips Ⓢ from their health deque and dedicate them to a bloodfont or a manafont found within their equipment. Once innervated, each font typically grants power to the character, who becomes thus specially bound to their equipment.
   
 sound rest  
-: A period of peace and relaxation sufficient to recuperate a being's mental and physical reserves. Generally, it restores all soul chips Ⓢ to the being's health deque. A sound rest for a human being typically involves eight hours of "good" sleep.
+: A period of peace and relaxation sufficient to recuperate a being's mental and physical reserves. Generally, it restores all soul chips Ⓢ to the being's health deque.  
+: A sound rest for a human being typically involves eight hours of "good" sleep.
   
 _stack_  
 : The act of adding a chip to the top of a deque. Power chips Ⓟ, affliction chips Ⓐ, and trauma chips Ⓣ always accumulate in this manner; i.e. they never queue.
@@ -225,7 +227,8 @@ turn
 : The brief segment of time during which each being acts -- in roughly chronological order -- during encounters.
   
 vulnerability system, interphysics  
-: The system that describes the nature of interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system. For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
+: The system that describes the nature of interactions between the four Realms. Effects have different resolutions depending on the interaction between the Realms of the causative system and the affected system.  
+: For example, Infernal effects are hyper-effective against Celestial entities, but completely ineffective against denizens of the Exotic Realm.
   
 willpower, WIL  
 : The quality encompassing a being’s mental health, mettle, and strength of character and convictions.

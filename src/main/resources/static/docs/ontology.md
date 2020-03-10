@@ -50,7 +50,7 @@ All concepts are `Things`. Still, the distinction between the two is useful for 
   
 First, concepts appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, concepts are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, concepts are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutations of symbols themselves when we form existential propositions of them.
+Second, concepts are always a permutation of symbols, but only _may_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutations of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of our _meaning_ of the symbols.
   

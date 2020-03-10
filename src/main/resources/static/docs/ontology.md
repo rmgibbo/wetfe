@@ -54,11 +54,11 @@ Second, concepts are always a permutation of symbols, but only _sometimes_ have 
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
-So, what does it mean, for symbols to "have our meaning"?
+So what does it mean, for symbols to "have our meaning"?
   
 First of all, it is important to note that whatever these meanings are that concepts may have, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` of the concept as proposed.
   
-Meaningful concepts then, are rich subspaces of related `Things`; where the relations, or "connections," themselves are also `Things`.
+Meaningful concepts, then, are rich subspaces of related `Things`, where the "connections" between them are also `Things`.
   
 On the other hand, if some concept we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` connected to it.
   
@@ -94,7 +94,7 @@ Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it 
   
 First, if Primicorns exist as we mean here, then they -- like all `Things` -- can be _discovered_, not summoned.
   
-Second, the fact that ∃(**c<sub>Primicorn</sub>**) is true does _not_ imply that a particular _meaning_ of **c<sub>Primicorn</sub>** exists.
+Second, the fact that ∃(**c<sub>Primicorn</sub>**) is true does _not_ imply that a particular meaning of **c<sub>Primicorn</sub>** exists.
   
 It implies that somewhere within Reality the string _"the non-trivial factorization of a prime number"_ exists. In this case, it's likely sparsely connected to other `Things`.
   

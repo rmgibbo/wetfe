@@ -50,21 +50,21 @@ All concepts are `Things`. Still, the distinction between the two is useful for 
   
 First, concepts appeal to the human-like perception of `Things`. While all `Things` and only `Things` exist, including anything our minds may conjure up, concepts are the `Things` that they _have_ conjured up -- or rather, discovered.
   
-Second, concepts are always a permutation of symbols, but only _sometimes_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutations of symbols themselves when we form existential propositions of them.
+Second, concepts are always a permutation of symbols, but only _may_ have a particular meaning. And it is the symbols and their permutations that certainly exist, and therefore why all concepts are `Things`. However, we're rarely interested in the permutations of symbols themselves when we form existential propositions of them.
   
 What we're really after is the existence of our _meaning_ of the symbols.
   
-So, what does it mean, for symbols to "have our meaning"?
+So what does it mean, for symbols to "have our meaning"?
   
 First of all, it is important to note that whatever these meanings are that concepts may have, they are nothing mystical, and nothing uniquely anthropomorphic. They are simply `Things` in Reality, like everything else. Specifically, they are a subspace of `Things` that are more or less intimately related to the symbol-`Things` of the concept as proposed.
   
-Meaningful concepts then, are rich subspaces of related `Things`; where the relations, or "connections," themselves are also `Things`.
+Meaningful concepts, then, are rich subspaces of related `Things`, where the "connections" between them are also `Things`.
   
 On the other hand, if some concept we have in mind is not very meaningful, then it exists relatively "alone" in Reality, with few other `Things` connected to it.
   
 Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of meaningfulness metric, related to how highly connected they are to other `Things`.
   
-For example, the concept of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, _"The non-trivial factorization of the number five exists"_ is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
+For example, the concept of _the non-trivial factorization of a prime number_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, "The non-trivial factorization of the number five exists." is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
   
 (I suspect that even "sparsely-connected" `Things` are related to an uncountable infinity of other `Things`. The full theory of infinite cardinals/ordinals should be necessary, at least, to begin explaining the connectedness of `Things` within Reality.)
   
@@ -78,13 +78,13 @@ Let's call this infinitely recursive existential proposition **T<sub>0</sub>**, 
   
 This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [2] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(**T<sub>0</sub>**) is completely self-similar.
   
-We might note that Reality seems to brook the concepts of _recursion_, _equality_, and _infinity_; and we may wonder how highly-connected each of these `Things` is...
+We might note that Reality seems to brook the concepts of _recursion,_ _equality,_ and _infinity;_ and we may wonder how highly-connected each of these `Things` is...
   
 ### The Primicorn
   
-Let **c<sub>Primicorn</sub>** mean _"the non-trivial factorization of a prime number."_
+Let **c<sub>Primicorn</sub>** mean _the non-trivial factorization of a prime number._
   
-Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says _"The non-trivial factorization of a prime number exists."_
+Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says "The non-trivial factorization of a prime number exists."
   
 By [1], ∃(**c<sub>Primicorn</sub>**) exists; and by [2], it has the standard meaning.
   
@@ -92,11 +92,11 @@ Then by [3], ∃(**c<sub>Primicorn</sub>**) is true, at least somewhere in Reali
   
 Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it seems, for two reasons.
   
-First, if Primicorns exist as we mean here, then they -- like all `Things` -- can be _discovered_, not summoned.
+First, if Primicorns exist as we mean here, then they -- like all `Things` -- can be _discovered,_ not summoned.
   
-Second, the fact that ∃(**c<sub>Primicorn</sub>**) is true does _not_ imply that a particular _meaning_ of **c<sub>Primicorn</sub>** exists.
+Second, the fact that ∃(**c<sub>Primicorn</sub>**) is true does _not_ imply that a particular meaning of **c<sub>Primicorn</sub>** exists.
   
-It implies that somewhere within Reality the string _"the non-trivial factorization of a prime number"_ exists. In this case, it's likely sparsely connected to other `Things`.
+It implies that somewhere within Reality the string _the non-trivial factorization of a prime number_ exists. In this case, it's likely sparsely connected to other `Things`.
   
 ### The Primicorn, Again
   

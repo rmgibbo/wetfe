@@ -64,7 +64,7 @@ On the other hand, if some concept we have in mind is not very meaningful, then 
   
 Thus, concepts encompass "Platonic" entities such as the number one, or a Euclidean circle; and "physical" entities such as a photon, or a cat; and "meta-physical" entities such as aesthetics, or economics; and all of these are `Things`. And they all have a sort of meaningfulness metric, related to how highly connected they are to other `Things`.
   
-For example, the concept of a _"non-trivial factorization of a prime number"_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, _"The non-trivial factorization of the number five exists"_ is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
+For example, the concept of _the non-trivial factorization of a prime number_ is unlikely to be very meaningful, since it is contradictory in its own terms. Therefore, "The non-trivial factorization of the number five exists." is an existential proposition of a concept that exists like any other `Thing`, but likely as a mere permutation of symbols in a sparsely-connected corner of Reality.
   
 (I suspect that even "sparsely-connected" `Things` are related to an uncountable infinity of other `Things`. The full theory of infinite cardinals/ordinals should be necessary, at least, to begin explaining the connectedness of `Things` within Reality.)
   
@@ -78,13 +78,13 @@ Let's call this infinitely recursive existential proposition **T<sub>0</sub>**, 
   
 This construction holds for the symbols and their (standard) meanings, and is consistent with the axioms. In fact, [2] _requires_ that every `Thing` and its existential proposition expand into an infinite composition like so, though only ∃(**T<sub>0</sub>**) is completely self-similar.
   
-We might note that Reality seems to brook the concepts of _recursion_, _equality_, and _infinity_; and we may wonder how highly-connected each of these `Things` is...
+We might note that Reality seems to brook the concepts of _recursion,_ _equality,_ and _infinity;_ and we may wonder how highly-connected each of these `Things` is...
   
 ### The Primicorn
   
-Let **c<sub>Primicorn</sub>** mean _"the non-trivial factorization of a prime number."_
+Let **c<sub>Primicorn</sub>** mean _the non-trivial factorization of a prime number._
   
-Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says _"The non-trivial factorization of a prime number exists."_
+Now, we may consider ∃(**c<sub>Primicorn</sub>**), which says "The non-trivial factorization of a prime number exists."
   
 By [1], ∃(**c<sub>Primicorn</sub>**) exists; and by [2], it has the standard meaning.
   
@@ -92,11 +92,11 @@ Then by [3], ∃(**c<sub>Primicorn</sub>**) is true, at least somewhere in Reali
   
 Unfortunately, although Primicorns _may_ exist, this "summoning" is not what it seems, for two reasons.
   
-First, if Primicorns exist as we mean here, then they -- like all `Things` -- can be _discovered_, not summoned.
+First, if Primicorns exist as we mean here, then they -- like all `Things` -- can be _discovered,_ not summoned.
   
 Second, the fact that ∃(**c<sub>Primicorn</sub>**) is true does _not_ imply that a particular meaning of **c<sub>Primicorn</sub>** exists.
   
-It implies that somewhere within Reality the string _"the non-trivial factorization of a prime number"_ exists. In this case, it's likely sparsely connected to other `Things`.
+It implies that somewhere within Reality the string _the non-trivial factorization of a prime number_ exists. In this case, it's likely sparsely connected to other `Things`.
   
 ### The Primicorn, Again
   

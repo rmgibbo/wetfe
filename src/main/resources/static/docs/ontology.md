@@ -115,7 +115,7 @@ The fundamental issue is that we have no general method of determining how meani
   
 ### Communication
   
-We must be careful to distinguish what are essentially communication issues between various minds probing Reality from within, and "mis-interpretations" made by Reality itself.
+We must be careful to distinguish what are essentially communication issues between various minds probing Reality from within, and "misinterpretations" made by Reality itself.
   
 Crucially, the former class of problems is ubiquitous (for humans at least), and the latter is a fallacy.
   

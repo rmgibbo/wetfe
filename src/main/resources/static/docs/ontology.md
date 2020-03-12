@@ -121,15 +121,15 @@ Crucially, the former class of problems is ubiquitous (for humans at least), and
   
 Let's summon the Primicorn yet again, and suppose our friend is still fervently advocating for its veracity. This time they bring a pencil to the proverbial table.
   
-"Look," they say, as they sketch a remarkable proof that P is clearly not NP -- but it hinges on the existence of a Primicorn. At this, we are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
+"Look," they say, as they sketch a remarkable proof that P is clearly not NP -- but which hinges on the existence of a Primicorn. At this, we are reflexively tempted to declare it a neat line of logic that is hopelessly lost by false assumptions. But, caught up in their excitement, we instead re-examine the Primicorn, there in the crux of the proof.
   
-We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- but it's used incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
+We notice it's presented exactly as we'd expect -- as what we both call "a Primicorn" -- except it's used incorrectly. In fact, it's used exactly as if it were logically _not_ a Primicorn!
   
 How can this be? How can we both wrap exactly the same symbols in an existential proposition, and get different answers back, so to speak?
   
 First a pedantic note, using the metaphor: we do both get the same answer. The answer to _every_ existential question is "Yes and no," which means "Yes, those symbols exist somewhere; and no, they don't exist somewhere, too."
   
-But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over -- or walk up to and kick, if we're brave enough. And after we do -- assuming we survive the ordeal -- we get a shock, and start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
+But the metaphor is poor, so the pedantic interpretation above isn't as discouraging as it may seem. In fact, we never get any direct answers to our queries against Reality. Instead, Reality presents us with a landscape full of stones, which we occasionally trip over -- or walk up to and kick, if we're brave enough. And after we do, assuming we survive the ordeal, we get a shock, and we start thinking. And we get our fellow mind-bodies to do the same, so we can watch and then compare notes on our experiences. And we start to form theories about the stone; and so on...
   
 In the case of the (not-)Primicorn, the theory precedes the kick. (Which is the normal order for humans.) But the question remains: did Reality somehow misinterpret the symbols when our friend invoked them, versus when we did, so that they were granted access to the opposite meaning than intended? Emphatically: no, Reality does not interpret our symbols, nor our meanings.
   
@@ -149,8 +149,8 @@ This seems fair, considering that we are transmuting the stones that every other
 - No `Thing` is absolutely fundamental, nor absolutely emergent.
 - Every `Thing` is relatively fundamental, and relatively emergent.
 - Reality is a "multiverse" -- an infinite space of `Things`, where every proposition about them is true **and** false.
-- Every `Thing` exists, in some subspaces of Reality.
-- Every `Thing` does not exist, in some subspaces of Reality.
+  - Every `Thing` exists, in some subspaces of Reality.
+  - Every `Thing` does not exist, in some subspaces of Reality.
 - The Platonic world, physical world, psychological world, etc., are all perspectives on an underlying Reality, which implies all of them.
   
 ------

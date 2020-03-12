@@ -133,7 +133,7 @@ But the metaphor is poor, so the pedantic interpretation above isn't as discoura
   
 In the case of the (not-)Primicorn, the theory precedes the kick. (Which is the normal order for humans.) But the question remains: did Reality somehow misinterpret the symbols when our friend invoked them, versus when we did, so that they were granted access to the opposite meaning than intended? Emphatically: no, Reality does not interpret our symbols, nor our meanings.
   
-Rather, the existential proposition is one of our footholds in Reality, which we liberally employ to form elaborate what-if and if-then theories about it. At some point, we then march up to the stone and, equipped with a vast existential web of concepts, pour a mixture of hydrochloric/nitric acid onto it, collect and process the resultant chloroauric acid, and walk away with gold.
+Rather, the existential proposition is one of our footholds in Reality, which we liberally employ to form elaborate what-if and if-then theories about it. At some point, we then march up to the stone and, equipped with a vast existential web of concepts, pour a mixture of hydrochloric/nitric acid onto it, process the resultant chloroauric acid, and walk away with gold.
   
 Given all this, we may then ask what is special about existential propositions, when even if we do employ them as cornerstones of our theories, Reality itself seems to ignore their meaning altogether?
   
